@@ -1,2 +1,2 @@
 # OCanrenTutorial
-A tutorial on using OCanren 
+A tutorial on using OCanren (work in progress)
