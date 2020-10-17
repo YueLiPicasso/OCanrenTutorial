@@ -80,11 +80,9 @@ let _ =
     Stream.take ~n:1 @@
       run q (fun q -> ocanren { q == str }) project;;
 ``` 
-is for the side effect of the right hand side of the let binding.
-
-The right hand side is divided into three
-sub-expressions by the right associative infix operator @@ that is
-provided by OCaml's core library Stdlib. 
+is for the side effect of the right hand side of the let binding which
+is divided into three sub-expressions by the right associative infix
+operator @@ that is provided by OCaml's core library Stdlib. 
 
 The expression:
 ```ocaml
