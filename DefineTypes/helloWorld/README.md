@@ -67,6 +67,5 @@ interface of Logic that:
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
 Therefore the expression str has type (string, string logic) injected.
-OCanren exclusively manipulates values of types of the
-form ('a, 'a logic) injected.
+OCanren exclusively manipulates values of types of this form.
 
