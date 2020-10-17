@@ -20,11 +20,11 @@ We first execute the code. The source code resides in [hello.ml](hello.ml).
 To compile and link it, you would need the [Makefile](Makefile).
 Now open terminal under the `helloworld` direcory, and:
 ```
-/helloworld$ make
+make
 ```
 This would produce a `.opt` file, execution of which by:
 ```
-/helloworld$ ./hello.opt
+./hello.opt
 ```
 shall print `hello world!` on your terminal.
 
