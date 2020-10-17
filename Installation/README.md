@@ -1,11 +1,13 @@
 # Installation
 
 I give an overview of the OCanren installation process, and then follows detailed
-explanation of some steps.
+explanation of some steps. Note that glitches may occur during the installation process.
+The flow of actions demonstrated below only _represents_ a typical successful installation.
+Please raise an issue in case you meet any problem.
 
 ## Overview
 
-### Installation Sequence
+Installation Sequence
 
 - Linux OS
 - opam >=2.0
@@ -14,34 +16,31 @@ explanation of some steps.
 - GT
 - OCanren
 
-### Terminal Instructions
+### Major Terminal Instructions
 
 Under any directory:
-
 - opam switch 4.07.1+fp+flambda
 - opam install ppxlib.0.13.0 
 - opam install GT
 
 Then under the ocanren directory:
-
-- eval $(opam env)
 - make
 - make install
 
 ## Details
 
-You shall have a computer running Linux, with git, opam and OCaml installed. Instructions for
-installing Linux, git, opam and OCaml in general is out of the scope of this tuturial. I recommend
+You shall have a computer running Linux, with Git, Opam and OCaml installed. Instructions for
+installing Linux, Git, Opam and OCaml in general is out of the scope of this tuturial. I recommend
 however the following points of reference:
 
-- Ubuntu Linux: https://ubuntu.com/
+- [Ubuntu Linux](https://ubuntu.com/)
 
-- Opam and OCaml installation: https://dev.realworldocaml.org/install.html
+- [Opam and OCaml installation](https://dev.realworldocaml.org/install.html)
 
-- Git: https://git-scm.com/
+- [Git](https://git-scm.com/)
 
-When I give command line instructions below, I mean that that instruction can be executed under
-any directory, unless explicitly stated otherwise. 
+When I give command line instructions below, I mean that the given instruction can be executed under
+any directory, unless explicitly stated otherwise.
 
 ### Switching to the Right OCaml Compiler
 
@@ -69,7 +68,7 @@ to install it and consequently make it the current compiler.
 
 ### GT Installation
 
- GT (Generic Transformer)  provides a Haskell-typeclass-style
+[GT (Generic Transformer)](https://github.com/JetBrains-Research/GT) provides a Haskell-typeclass-style
 feature to OCaml, and is helpful if not indispensable for wriing OCanren code. To install
 GT, run:
 ```
@@ -77,9 +76,9 @@ opam install ppxlib.0.13.0
 opam install GT
 ```
 
-Youu may find helpful to get a local copy of the GT source as well:
+Youu may find it helpful to get a local copy of the GT source as well:
 ```
-git clone https://github.com/JetBrains-Research/GT && cd GT
+git clone https://github.com/JetBrains-Research/GT
 ```
 
 ### Obtaining and Building OCanren Source Code
@@ -103,4 +102,4 @@ eval $(opam env)
 make
 make install
 ```
-  
+
