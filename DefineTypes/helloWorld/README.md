@@ -105,5 +105,11 @@ OCanren module, and its interface is
 [RStream.mli](../../ocanren/src/core/RStream.mli) where we could find
 the signature of the miniKanren-like function take:
 ```ocaml
-val take : 
+val take : ?n:int -> 'a t -> 'a list
 ```
+implying that the type of:
+```ocaml
+run q (fun q -> ocanren { q == str }) project
+```
+has the form 'a RStream.t that is in agreement with the type of run from the
+module [Core](../../ocanren/src/core/Core.mli):
