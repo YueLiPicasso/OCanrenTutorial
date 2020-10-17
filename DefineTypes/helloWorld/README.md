@@ -72,3 +72,30 @@ OCanren exclusively manipulates values of types of this form, which we
 shall call an _injected type_. Conversion to an injected type is
  an integral part of OCanren programming.
 
+
+The 3rd line:
+```ocaml
+let _ =
+  List.iter print_string @@
+    Stream.take ~n:1 @@
+      run q (fun q -> ocanren { q == str }) project;;
+``` 
+is for the side effect of the right hand side of the let binding.
+
+The right hand side It is divided into three
+sub-expressions by the right associative infix operator @@ that is
+provided by OCaml's core library Stdlib. 
+
+The expression:
+```ocaml
+List.iter print_string
+```
+consists of the OCaml standard library function:
+```ocaml
+val iter : ('a -> unit) -> 'a list -> unit
+```
+and the core library function:
+```ocaml
+val print_string : string -> unit
+```
+
