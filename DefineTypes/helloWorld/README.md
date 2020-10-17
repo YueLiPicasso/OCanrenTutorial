@@ -34,9 +34,17 @@ The first line
 ```ocaml
 open OCanren;;
 ```
-makes the names from [OCanren.ml](../../ocanren/src/OCanren.ml) available
-for later use. Inspecting the content of `OCanren.ml` we see that basically
+makes the names from the module OCanren available for later use.
+The source code of this module resides in
+[OCanren.ml](../../ocanren/src/OCanren.ml) 
+Inspecting the content thereof,  we shall see that basically
 it includes two modules `Logic` and `Core`, and renames the module `RStream`
-to `Stream`, and finally defines the `Std` module. The interfaces of modules
-`Logic` and `Core` reside in [Logic.mli](../../ocanren/src/core/Logic.mli)
-and [Core.mli](../../ocanren/src/core/Core.mli) respectively.
+to `Stream`, and finally defines the `Std` module.
+
+The interfaces of modules
+Logic and Core reside in [Logic.mli](../../ocanren/src/core/Logic.mli)
+and [Core.mli](../../ocanren/src/core/Core.mli) respectively. These will
+be the most frequently referenced files when you program in OCanren. The
+module Logic contains the secrets of OCanren's types system that enables
+typed relational programming, whereas the module Core provides all the
+miniKanren-like constructs such as `conde`, `run` etc. 
