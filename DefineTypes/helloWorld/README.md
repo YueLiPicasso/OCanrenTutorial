@@ -45,6 +45,6 @@ The interfaces of modules
 Logic and Core reside in [Logic.mli](../../ocanren/src/core/Logic.mli)
 and [Core.mli](../../ocanren/src/core/Core.mli) respectively. These will
 be the most frequently referenced files when you program in OCanren. The
-module Logic contains the secrets of OCanren's types system that enables
+module Logic contains the secrets of OCanren's type system that enables
 typed relational programming, whereas the module Core provides all the
 miniKanren-like constructs such as `conde`, `fresh`, `run` etc. 
