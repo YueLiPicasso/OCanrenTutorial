@@ -100,7 +100,7 @@ Therefore we can infer that the ensemble:
 ```ocaml
 Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
-has the type (string list). The module name Stream is provided by the
+has the type string list. The module name Stream is provided by the
 OCanren module, and its interface is
 [RStream.mli](../../ocanren/src/core/RStream.mli) where we could find:
 ```ocaml
