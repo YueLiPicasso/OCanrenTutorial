@@ -31,3 +31,6 @@ _opam/
 
 # emacs backup files
 *.*~
+
+# ocanren dependency file
+.depend
