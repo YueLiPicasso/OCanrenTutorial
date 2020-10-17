@@ -46,8 +46,8 @@ Logic and Core reside in [Logic.mli](../../ocanren/src/core/Logic.mli)
 and [Core.mli](../../ocanren/src/core/Core.mli) respectively. These will
 be the most frequently referenced files when you program in OCanren. The
 module Logic contains the secrets of OCanren's type system that enables
-typed relational programming, whereas the module Core provides all the
-miniKanren-like constructs such as `conde`, `fresh`, `run` and `==`
+_typed_ relational programming, whereas the module Core provides all the
+generic (miniKanren family) constructs such as `conde`, `fresh`, `run` and `==`
 (unification) etc.
 
 The second line:
@@ -96,20 +96,33 @@ and the core library function:
 ```ocaml
 val print_string : string -> unit
 ```
-Therefore we can infer that the expression:
+Therefore we can infer that the ensemble:
 ```ocaml
 Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
-has the type string list. The module name Stream is provided by the
+has the type (string list). The module name Stream is provided by the
 OCanren module, and its interface is
-[RStream.mli](../../ocanren/src/core/RStream.mli) where we could find
-the signature of the miniKanren-like function take:
+[RStream.mli](../../ocanren/src/core/RStream.mli) where we could find:
 ```ocaml
 val take : ?n:int -> 'a t -> 'a list
 ```
-implying that the type of:
+implying that the type of the ensemble:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-has the form 'a RStream.t that is in agreement with the type of run from the
-module [Core](../../ocanren/src/core/Core.mli):
+is just (string RStream.t) that is in agreement with the return
+type of run from the module [Core](../../ocanren/src/core/Core.mli):
+```ocaml
+val run :
+(unit -> ('a -> State.t -> 'b) * ('c -> VarEnv.t -> 'd) * ('b -> 'c * State.t RStream.t) * ('e -> 'd -> 'f))
+ -> 'a -> 'e -> 'f RStream.t
+```
+
+At this point I shall firstly give a top level description of the expression:
+```ocaml
+run q (fun q -> ocanren { q == str }) project
+```
+and then we work through a typing exercise to see how the types of conponents of this
+expression fits together. Being able to understand OCanren codes at the top level and
+to perfomre type analysis is required for We will Note that only the top level description would be important
+for using OCanren, but the typing exercise is included only for the sake of 
