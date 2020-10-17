@@ -12,7 +12,6 @@ Installation Sequence
 - Linux OS
 - opam >=2.0
 - ocaml 4.07.1+fp+flambda
-- ppxlib.0.13.0
 - GT
 - OCanren
 
