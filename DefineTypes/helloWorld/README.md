@@ -82,7 +82,7 @@ let _ =
 ``` 
 is for the side effect of the right hand side of the let binding.
 
-The right hand side It is divided into three
+The right hand side is divided into three
 sub-expressions by the right associative infix operator @@ that is
 provided by OCaml's core library Stdlib. 
 
