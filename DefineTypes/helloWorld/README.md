@@ -30,7 +30,7 @@ shall print `hello world!` on your terminal.
 
 ## Understand the Program
 
-The first line
+The first line:
 ```ocaml
 open OCanren;;
 ```
@@ -47,4 +47,26 @@ and [Core.mli](../../ocanren/src/core/Core.mli) respectively. These will
 be the most frequently referenced files when you program in OCanren. The
 module Logic contains the secrets of OCanren's type system that enables
 typed relational programming, whereas the module Core provides all the
-miniKanren-like constructs such as `conde`, `fresh`, `run` etc. 
+miniKanren-like constructs such as `conde`, `fresh`, `run` etc.
+
+The second line:
+```ocaml
+let str = !!("hello world!\n");;
+```
+associates the value name str with the expression that
+is the prefix symbol !! (double exclamation) applied to the
+string literal "hello world!\n".
+
+The prefix symbol !! is also known as
+_primitive injection_, which we will use very often with primitive
+OCaml values such as strings, characters, constant constructors
+(of variant values) etc.  It is provided by the module
+Logic which is included in the module OCanren. We could see from the
+interface of Logic that:
+```ocaml
+val (!!) : 'a -> ('a, 'a logic) injected
+```
+Therefore the expression str has type (string, string logic) injected.
+OCanren exclusively manipulates values of types of the
+form ('a, 'a logic) injected.
+
