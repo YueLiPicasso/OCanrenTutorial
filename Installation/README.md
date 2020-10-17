@@ -1,78 +1,106 @@
 # Installation
 
-We install OCanren following the steps below. These steps constitute a precise record of 
-what I did and what I saw when tring to install OCanren on a freshly installed, most recent (15 Oct 2020) ubuntu Linux. 
-There are three sections: Summary, Sucessful Steps and Problems Begin.
+I give an overview of the OCanren installation process, and then follows detailed
+explanation of some steps.
 
-## Summary
+## Overview
+
+### Installation Sequence
+
+- Linux OS
+- opam >=2.0
+- ocaml 4.07.1+fp+flambda
+- ppxlib.0.13.0
+- GT
+- OCanren
+
+### Terminal Instructions
+
+Under any directory:
+
+- opam switch 4.07.1+fp+flambda
+- opam install ppxlib.0.13.0 
+- opam install GT
+
+Then under the ocanren directory:
+
+- eval $(opam env)
+- make
+- make install
+
+## Details
+
+You shall have a computer running Linux, with git, opam and OCaml installed. Instructions for
+installing Linux, git, opam and OCaml in general is out of the scope of this tuturial. I recommend
+however the following points of reference:
+
+- Ubuntu Linux: https://ubuntu.com/
+
+- Opam and OCaml installation: https://dev.realworldocaml.org/install.html
+
+- Git: https://git-scm.com/
+
+When I give command line instructions below, I mean that that instruction can be executed under
+any directory, unless explicitly stated otherwise. 
+
+### Switching to the Right OCaml Compiler
+
+OCanren depends on a particular version of OCaml which is _4.07.1+fp+flambda_. You can check
+if it is already on your computer by running
+```
+opam switch
+```
+which lists all available OCaml compilers.
+
+If it is there, but is not the current compiler, run:
+```
+opam switch 4.07.1+fp+flambda
+eval $(opam env)
+```
+to make it the current compiler.
+
+If it is not there, run:
+```
+opam switch create 4.07.1+fp+flambda
+eval $(opam env)
+```
+to install it and consequently make it the current compiler.
+
+
+### GT Installation
+
+ GT (Generic Transformer)  provides a Haskell-typeclass-style
+feature to OCaml, and is helpful if not indispensable for wriing OCanren code. To install
+GT, run:
+```
+opam install ppxlib.0.13.0 
+opam install GT
+```
+
+Youu may find helpful to get a local copy of the GT source as well:
+```
+git clone https://github.com/JetBrains-Research/GT && cd GT
+```
+
+### Obtaining and Building OCanren Source Code
+
+Run in your directory of choice:
+```
+git clone https://github.com/JetBrains-Research/OCanren.git ocanren && cd ocanren
+```
+The command gets you a local copy of the OCanren source code and then changes
+the working directory to it.
+
+
+Afterwards, install other dependencies of OCanren by:
+```
+opam install . --deps-only --yes
+```
+
+Finally (avoid using `sudo` together with the following commands):
+```
+eval $(opam env)
+make
+make install
+```
   
-  Installation of OCanren failed because GT cannot be built. Then installation of GT failed because of unbound module Base, despite that 
-  `opam install base` had installed base successfully.
- 
-
-## Successful Steps
-
-OCanren depends on a particular version of OCaml which is _4.07.1+fp+flambda_. To install it and 
-make it the current OCaml compiler, run in your terminal: 
-
-`opam switch create 4.07.1+fp+flambda` 
-
- and follow the displayed instructions. It may take as long as 7 minutes.
-
-Next we run: 
-
-`opam pin add GT https://github.com/JetBrains-Research/GT.git -n -y` 
-
-to make available the GT (Generic Transformer) package. GT provides a Haskell-typeclass-style
-feature to OCaml, and is helpful if not indispensable for wriing OCanren code.  This step is very quick. 
-
-Now we download the OCanren source package and install it locally. Run, in your directory of choice:
-
-`git clone https://github.com/JetBrains-Research/OCanren.git ocanren && cd ocanren`
-
-to get a local copy of the source. The above command also changes the working directory to the _ocanren_
- folder where the following commands will be run. 
- 
- 
-## Problems Begin
-  
- We install the OCanren dependencies by:
-
-`opam install . --deps-only --yes` 
-
-This would take some time. Then we are ready to install OCanren itself. First, run:
-
-`make`
-
-You may find that the `make` command failed, citing that "Package GT not found". Indeed, in this case the trace of the
-dependency installation step would indicate a failure of building GT. To resolve this problem, we should try
- to install GT separately. In your directory of choice:
- 
- `https://github.com/JetBrains-Research/GT`
- 
- and then 
- 
- `cd GT && make`. At this point an error message shows that the package "base" is not found, which we now install by:
- 
- `opam install base`
- 
- And we try `make` under the GT directory again. This time it shows that there is still unbound module Base. 
- 
- Being confused, we move back to
- the ocanren directory and `make clean && make`. This time we were told that the command _ocamlbuild_ is not found.
- Curiously, running `opam install ocamlbuild` shows that this package has already been installed, but running `ocamlbuild`
- itself shows "command not found" againt, but this time prompts us to install it with `sudo apt install ocamlbuild`. So let's
-  do it.
-  
-  Then back to ocanren directory and `make`. Failed again. Running `ocamlfind` gives: 
-  
-  "command 'ocamlfind' not found, but can be installed with: sudo apt install ocaml-findlib". We follow this and install
-  ocaml-findlib.
-  
-
- 
-   
-
- 
-
-
