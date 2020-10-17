@@ -34,4 +34,9 @@ The first line
 ```ocaml
 open OCanren;;
 ```
-makes the names from [OCanren.ml](../../ocanren/src/OCanren.ml) available for later use. 
+makes the names from [OCanren.ml](../../ocanren/src/OCanren.ml) available
+for later use. Inspecting the content of `OCanren.ml` we see that basically
+it includes two modules `Logic` and `Core`, and renames the module `RStream`
+to `Stream`, and finally defines the `Std` module. The interfaces of modules
+`Logic` and `Core` reside in [logic.mli](../../ocanren/src/core/logic.mli)
+and [core.mli](../../ocanren/src/core/core.mli) respectively.
