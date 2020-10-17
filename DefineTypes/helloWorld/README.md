@@ -67,5 +67,7 @@ interface of Logic that:
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
 Therefore the expression str has type (string, string logic) injected.
-OCanren exclusively manipulates values of types of this form.
+OCanren exclusively manipulates values of types of this form, which we
+shall call an _injected type_. Conversion to an injected type is
+ an integral part of OCanren programming.
 
