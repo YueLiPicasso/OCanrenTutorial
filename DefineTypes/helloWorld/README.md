@@ -38,8 +38,8 @@ makes the names from the module OCanren available for later use.
 The source code of this module resides in
 [OCanren.ml](../../ocanren/src/OCanren.ml). 
 Inspecting the content thereof,  we shall see that basically
-it includes two modules `Logic` and `Core`, and renames the module `RStream`
-to `Stream`, and finally defines the `Std` module.
+it includes two modules Logic and Core, and renames the module RStream
+to Stream, and finally defines the Std module.
 
 The interfaces of modules
 Logic and Core reside in [Logic.mli](../../ocanren/src/core/Logic.mli)
