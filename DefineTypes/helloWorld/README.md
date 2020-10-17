@@ -47,4 +47,4 @@ and [Core.mli](../../ocanren/src/core/Core.mli) respectively. These will
 be the most frequently referenced files when you program in OCanren. The
 module Logic contains the secrets of OCanren's types system that enables
 typed relational programming, whereas the module Core provides all the
-miniKanren-like constructs such as `conde`, `run` etc. 
+miniKanren-like constructs such as `conde`, `fresh`, `run` etc. 
