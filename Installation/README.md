@@ -1,8 +1,8 @@
 # Installation
 
-I give an overview of the OCanren installation process, and then follows detailed
-explanation of some steps. Note that glitches may occur during the installation process.
-The flow of actions demonstrated below only _represents_ a typical successful installation.
+I give an overview of OCanren installation, then follows detailed
+explanation of some steps. Note that glitches may occur, and
+the flow of actions demonstrated below only _represents_ a typical successful installation.
 Please raise an issue in case you meet any problem.
 
 ## Overview
