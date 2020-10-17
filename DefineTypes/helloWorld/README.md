@@ -110,7 +110,7 @@ implying that the type of the ensemble:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-is just (string RStream.t) that is in agreement with the return
+is just string RStream.t that is in agreement with the return
 type of run from the module [Core](../../ocanren/src/core/Core.mli):
 ```ocaml
 val run :
