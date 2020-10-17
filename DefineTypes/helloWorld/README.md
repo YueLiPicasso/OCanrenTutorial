@@ -18,15 +18,20 @@ let _ =
 
 We first execute the code. The source code resides in [hello.ml](hello.ml).
 To compile and link it, you would need the [Makefile](Makefile).
-Now open terminal under the 'helloworld' direcory, and:
+Now open terminal under the `helloworld` direcory, and:
 ```
-> make
+/helloworld$ make
 ```
 This would produce a `.opt` file, execution of which by:
 ```
-> ./hello.opt
+/helloworld$ ./hello.opt
 ```
 shall print `hello world!` on your terminal.
 
 ## Understand the Program
 
+The first line
+```ocaml
+open OCanren;;
+```
+makes the names from [OCanren.ml](../../ocanren/src/OCanren.ml) available for later use. 
