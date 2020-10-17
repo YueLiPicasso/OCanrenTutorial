@@ -110,7 +110,7 @@ implying that the type of the ensemble:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-is just string RStream.t that is in agreement with the return
+is just string RStream.t that is in agreement with the _return_
 type of run from the module [Core](../../ocanren/src/core/Core.mli):
 ```ocaml
 val run :
@@ -122,7 +122,6 @@ At this point I shall firstly give a top level description of the expression:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-and then we work through a typing exercise to see how the types of conponents of this
-expression fits together. Being able to understand OCanren codes at the top level and
-to perfomre type analysis is required for We will Note that only the top level description would be important
-for using OCanren, but the typing exercise is included only for the sake of 
+and then we work through a typing exercise to see how the types of components of this
+expression fit together. Understanding OCanren codes at the top level and
+typing exercises are part of everyday OCanren programming. 
