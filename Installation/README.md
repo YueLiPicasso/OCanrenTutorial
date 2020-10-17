@@ -30,7 +30,7 @@ Major Terminal Instructions
 ## Details
 
 You shall have a computer running Linux, with Git, Opam and OCaml installed. Instructions for
-installing Linux, Git, Opam and OCaml in general is out of the scope of this tuturial. I recommend
+installing Linux, Git, Opam and OCaml in general is out of the scope of this tutorial. I recommend
 however the following points of reference:
 
 - [Ubuntu Linux](https://ubuntu.com/)
