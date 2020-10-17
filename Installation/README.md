@@ -16,16 +16,16 @@ Installation Sequence
 - GT
 - OCanren
 
-### Major Terminal Instructions
+Major Terminal Instructions
 
-Under any directory:
-- opam switch 4.07.1+fp+flambda
-- opam install ppxlib.0.13.0 
-- opam install GT
+- Under any directory:
+  - opam switch 4.07.1+fp+flambda
+  - opam install ppxlib.0.13.0 
+  - opam install GT
 
-Then under the ocanren directory:
-- make
-- make install
+- Then under the ocanren directory:
+  - make
+  - make install
 
 ## Details
 
