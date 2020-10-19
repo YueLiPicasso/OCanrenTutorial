@@ -153,6 +153,6 @@ the answer is ground, i.e.,  no free logic variables therein.
 The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.io/)
 syntax preprocessor to the `<content>` according to user-defined rules that in our case is
  specified in [pa_ocanren.ml](../../ocanren/camlp5/pa_ocanren.ml).
- The effect is, for instance, we can use `==` rather than the longer `===` and `OCanren.unify`
+ The effect is, for instance, we can use `==` rather than the longer `===` or `unify`
 (both defined in [Core](../../ocanren/src/core/Core.mli#L36)) according to the [prescription](../../ocanren/camlp5/pa_ocanren.ml#L238).
 
