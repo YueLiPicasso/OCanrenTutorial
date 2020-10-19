@@ -112,7 +112,7 @@ Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
 has the type _string list_. The module name _Stream_ is provided by the
 [OCanren](../../ocanren/src/OCanren.ml#L22) module, and its interface is
-RStream.mli where we could [find](../../ocanren/src/core/RStream.mli#L79):
+[RStream.mli](../../ocanren/src/core/RStream.mli) where we could find:
 ```ocaml
 val take : ?n:int -> 'a t -> 'a list
 ```
@@ -121,7 +121,9 @@ implying that the type of the ensemble:
 run q (fun q -> ocanren { q == str }) project
 ```
 is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
-type of _run_ from the module [Core](../../ocanren/src/core/Core.mli#L120).
+type of _run_ from the module [Core](../../ocanren/src/core/Core.mli#L120). The 3rd line therefore
+collects all possible answers in a stream and takes one (the first one) from it to form a
+singleton list and print the member of this list.
 
 ### Programming-wise
 
