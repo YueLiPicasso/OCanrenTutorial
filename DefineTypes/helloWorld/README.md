@@ -123,11 +123,11 @@ run q (fun q -> ocanren { q == str }) project
 is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
 type of _run_ from the module [Core](../../ocanren/src/core/Core.mli).
 
-### programming-wise
+### Programming-wise
 
-The occurrence of _q_ immediately after _run_ is a name provided by
-the module [Core](../../ocanren/src/core/Core.mli), and similar (predefined) names
-as _qr_, _qrs_, _qrst_ etc., used respectively when you query about two, three, and four
+The occurrence of q immediately after `run` is a name provided by
+ [Core](../../ocanren/src/core/Core.mli), and similar (predefined) names
+as qr, qrs, qrst etc., used respectively when you query about two, three, and four
 _logic variables_. In our hello-world example we only query about one logic variable, so we
 use _q_. In other words, whenever you query about one logic variable, you shall always put
 _q_ immediately after _run_, and for two logic variables, put _qr_, and so on. The _run_ function
