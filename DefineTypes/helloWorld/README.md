@@ -145,7 +145,8 @@ Within `ocanren{}` goes your
 goals, built using unification, conjunction, disjunction etc. The third argument
 casts (projects) the
 answer from an injected type to some "usual" type for
-the answer is ground, i.e.,  no free logic variables therein.
+the answer is ground, i.e.,  no free logic variables therein. The type of _project_ is
+documented in [Logic.mli](../../ocanren/src/core/Logic.mli#L128).
 
 
 ### Camlp5 Syntax Extension-wise
