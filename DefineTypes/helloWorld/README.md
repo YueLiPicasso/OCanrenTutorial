@@ -154,5 +154,5 @@ syntax preprocessor to the <content>` according to user-defined rules that in ou
  specified in [pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml).
  The effect is, for instance, we can use `==` rather than the longer `===`
 (defined in [Core](../../ocanren/src/core/Core.mli)) for
-unification, as prescribed by [line 238 in pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml#L238).
+unification.
 
