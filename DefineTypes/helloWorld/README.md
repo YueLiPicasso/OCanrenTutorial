@@ -134,7 +134,7 @@ _q_ immediately after _run_, and for two logic variables, put _qr_, and so on. T
 takes three arguments: a _size indicator_ (q, qr, etc.), a _query_ (fun ...) and the third
 argument. The query shall list all logic variables that you query about immediately after
 _fun_, and whose number shall agree with the size indicator. In our example the logic variable
-that query about happens to be named q, but we can use any other name, like _honey_, then the
+ queried about happens to be named q, but we can use any other name, like _honey_, then the
 line would become:
 ```ocaml
 run q (fun honey -> ocanren {honey == str}) project;;
