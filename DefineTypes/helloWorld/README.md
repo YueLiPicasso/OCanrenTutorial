@@ -122,8 +122,8 @@ run q (fun q -> ocanren { q == str }) project
 ```
 is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
 type of _run_ from the module [Core](../../ocanren/src/core/Core.mli#L120). The 3rd line therefore
-collects all possible answers in a stream and takes one (the first one) from it to form a
-singleton list and print the member of this list.
+collects all possible answers to form a stream and takes one (the first one) from it to in turn
+form a (singleton) list and print the member of this list.
 
 ### Programming-wise
 
