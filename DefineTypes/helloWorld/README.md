@@ -141,22 +141,18 @@ run q (fun honey -> ocanren {honey == str}) project;;
 ```
 Within `ocanren{}` goes your
 goals, built using unification, conjunction, disjunction etc. The third argument is some
-boilerplate piece that does type project (the reverse process of type injection)
-or reification (to provide pretty, easy-to-read names for free logic variables). 
+boilerplate that does type projection (the reverse process of type injection, in case
+the answer is ground: no free logic vraiables therein)
+or reification (to provide pretty-looking, easy-to-read names for free logic variables
+in the answer).
 
 
 ### Camlp5 Syntax Extension-wise
 
-The kind of type reasoning we went through above happens in everyday OCanren programming.
-Now we explain at a high level about the expression:
-```ocaml
-run q (fun q -> ocanren { q == str }) project
-```
-The q in `fun q ->` is a logic variable (the kind of variable that OCanren works
-with) whose value we want OCanren to compute. The `q == str` part reads "q unifies with str".
-The `ocanren{}` construct is a syntax transformer: among others, it converts `==` into `===` that
-is defined in [Core]((../../ocanren/src/core/Core.mli)). Using `ocanren{}`we can write relational
-programs in a less verbose syntax, for instance, we can use `==` rather than the longer `===` for
-unification. `ocanren{}` is also known as a user-defined [camlp5](https://camlp5.github.io/)
-syntax extension, and it is specified in [pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml).
+The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.io/)
+syntax preprocessor to the <content>` according to user-defined rules that in our case is
+ specified in [pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml).
+ The effect is, for instance, we can use `==` rather than the longer `===`
+(defined in [Core](../../ocanren/src/core/Core.mli)) for
+unification, as prescribed by [line 238 in pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml#L238).
 
