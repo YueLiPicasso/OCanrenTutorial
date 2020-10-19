@@ -80,9 +80,16 @@ let _ =
     Stream.take ~n:1 @@
       run q (fun q -> ocanren { q == str }) project;;
 ``` 
-is for the side effect of the right hand side of the let binding which
+finds all q's that unify with str then prints the first of them.
+
+I now elaborate on aspects of this line.
+
+### Type-wise
+
+This line is for the side effect of the right hand side of the let binding which
 is divided into three sub-expressions by the right associative infix
 operator @@ that is provided by OCaml's core library Stdlib. 
+
 
 The expression:
 ```ocaml
@@ -117,11 +124,18 @@ val run :
 (unit -> ('a -> State.t -> 'b) * ('c -> VarEnv.t -> 'd) * ('b -> 'c * State.t RStream.t) * ('e -> 'd -> 'f))
  -> 'a -> 'e -> 'f RStream.t
 ```
+### Camlp5 Syntax Extension-wise
 
-At this point I shall firstly give a top level description of the expression:
+The kind of type reasoning we went through above happens in everyday OCanren programming.
+Now we explain at a high level about the expression:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-and then we work through a typing exercise to see how the types of components of this
-expression fit together. Understanding OCanren codes at the top level and
-typing exercises are part of everyday OCanren programming. 
+The q in `fun q ->` is a logic variable (the kind of variable that OCanren works
+with) whose value we want OCanren to compute. The `q == str` part reads "q unifies with str".
+The `ocanren{}` construct is a syntax transformer: among others, it converts `==` into `===` that
+is defined in [Core]((../../ocanren/src/core/Core.mli)). Using `ocanren{}`we can write relational
+programs in a less verbose syntax, for instance, we can use `==` rather than the longer `===` for
+unification. `ocanren{}` is also known as a user-defined [camlp5](https://camlp5.github.io/)
+syntax extension, and it is specified in [pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml).
+
