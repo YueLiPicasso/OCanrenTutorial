@@ -169,6 +169,6 @@ A syntax preprocessor is used to make OCanren programs look intuitive in the eye
 (Scheme based) miniKanren programmer.
 
 In the next lesson, we will use OCanren to work with
-constant constructors of variant types, moving on to the next level of complexity from that of
+constant constructors of variant values, moving on to the next level of complexity from that of
 this lesson where we dealt with the primitive OCaml value of a string literal. 
 
