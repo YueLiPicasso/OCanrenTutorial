@@ -110,9 +110,9 @@ Therefore we can infer that the ensemble:
 ```ocaml
 Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
-has the type _string list_. The module name _Stream_ is provided by [the
-OCanren module](../../ocanren/src/OCanren.ml), and its interface is
-[RStream.mli](../../ocanren/src/core/RStream.mli) where we could find:
+has the type _string list_. The module name _Stream_ is provided by the
+[OCanren](../../ocanren/src/OCanren.ml#L22) module, and its interface is
+RStream.mli where we could [find](../../ocanren/src/core/RStream.mli#L79):
 ```ocaml
 val take : ?n:int -> 'a t -> 'a list
 ```
@@ -121,12 +121,12 @@ implying that the type of the ensemble:
 run q (fun q -> ocanren { q == str }) project
 ```
 is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
-type of _run_ from the module [Core](../../ocanren/src/core/Core.mli).
+type of _run_ from the module [Core](../../ocanren/src/core/Core.mli#L120).
 
 ### Programming-wise
 
 The occurrence of q immediately after _run_ is a name provided by
- [Core](../../ocanren/src/core/Core.mli), and similar (predefined) names
+ [Core](../../ocanren/src/core/Core.mli#L225), and similar (predefined) names
 as qr, qrs, qrst etc., used respectively when you query about two, three, and four
 _logic variables_. In our hello-world example we only query about one logic variable, so we
 use _q_. In other words, whenever you query about one logic variable, you shall always put
@@ -140,12 +140,10 @@ line would become:
 run q (fun honey -> ocanren {honey == str}) project;;
 ```
 Within `ocanren{}` goes your
-goals, built using unification, conjunction, disjunction etc. The third argument is some
-boilerplate that does type projection (in case
-the answer is ground: no free logic variables therein, to cast, or project the
-answer from an injected type to some "usual" type)
-or reification (to provide pretty-looking, easy-to-read names for free logic variables
-in the answer).
+goals, built using unification, conjunction, disjunction etc. The third argument
+casts (projects) the
+answer from an injected type to some "usual" type for
+the answer is ground, i.e.,  no free logic variables therein.
 
 
 ### Camlp5 Syntax Extension-wise
@@ -153,7 +151,6 @@ in the answer).
 The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.io/)
 syntax preprocessor to the `<content>` according to user-defined rules that in our case is
  specified in [pa_ocanren.ml](../../ocanren/camlp5/pa_ocanren.ml).
- The effect is, for instance, we can use `==` rather than the longer `===`
-(defined in [Core](../../ocanren/src/core/Core.mli) for
-unification according to the [prescription](../../ocanren/camlp5/pa_ocanren.ml#L238).
+ The effect is, for instance, we can use `==` rather than the longer `===` and `OCanren.unify`
+(both defined in [Core](../../ocanren/src/core/Core.mli#L36)) according to the [prescription](../../ocanren/camlp5/pa_ocanren.ml#L238).
 
