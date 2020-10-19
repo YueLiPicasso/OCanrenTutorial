@@ -154,6 +154,6 @@ The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.
 syntax preprocessor to the `<content>` according to user-defined rules that in our case is
  specified in [pa_ocanren.ml](../../ocanren/camlp5/pa_ocanren.ml).
  The effect is, for instance, we can use `==` rather than the longer `===`
-(defined in [Core](../../ocanren/src/core/Core.mli)) for
+(defined in [Core](../../ocanren/src/core/Core.mli) for
 unification according to the [prescription](../../ocanren/camlp5/pa_ocanren.ml#L238).
 
