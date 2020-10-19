@@ -121,11 +121,11 @@ implying that the type of the ensemble:
 run q (fun q -> ocanren { q == str }) project
 ```
 is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
-type of _run_ from the module [Core](../../ocanren/src/core/Core.mli).
+type of run from the module [Core](../../ocanren/src/core/Core.mli).
 
 ### Programming-wise
 
-The occurrence of q immediately after `run` is a name provided by
+The occurrence of q immediately after run is a name provided by
  [Core](../../ocanren/src/core/Core.mli), and similar (predefined) names
 as qr, qrs, qrst etc., used respectively when you query about two, three, and four
 _logic variables_. In our hello-world example we only query about one logic variable, so we
