@@ -141,8 +141,8 @@ run q (fun honey -> ocanren {honey == str}) project;;
 ```
 Within `ocanren{}` goes your
 goals, built using unification, conjunction, disjunction etc. The third argument is some
-boilerplate that does type projection (the reverse process of type injection, in case
-the answer is ground: no free logic vraiables therein)
+boilerplate that does type projection (in case
+the answer is ground: no free logic variables therein)
 or reification (to provide pretty-looking, easy-to-read names for free logic variables
 in the answer).
 
@@ -150,7 +150,7 @@ in the answer).
 ### Camlp5 Syntax Extension-wise
 
 The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.io/)
-syntax preprocessor to the <content>` according to user-defined rules that in our case is
+syntax preprocessor to the `<content>` according to user-defined rules that in our case is
  specified in [pa_ocanren.ml](../../ocanren/campl5/pa_ocanren.ml).
  The effect is, for instance, we can use `==` rather than the longer `===`
 (defined in [Core](../../ocanren/src/core/Core.mli)) for
