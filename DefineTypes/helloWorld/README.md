@@ -86,20 +86,23 @@ I now elaborate on aspects of this line.
 
 ### Type-wise
 
-This line is for the side effect of the right hand side of the let binding which
+This line is for the side effect of the right hand side of the let-binding which
 is divided into three sub-expressions by the right associative infix
-operator @@ that is provided by OCaml's core library Stdlib. 
+operator @@ that is provided by OCaml's core library
+[Stdlib](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html).
+The wild card is finally assigned the constant value `()` of type unit.
 
 
-The expression:
+The sub-expression:
 ```ocaml
 List.iter print_string
 ```
-consists of the OCaml standard library function:
+consists of the OCaml [List](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
+standard library function:
 ```ocaml
 val iter : ('a -> unit) -> 'a list -> unit
 ```
-and the core library function:
+and the [Stdlib](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html) function:
 ```ocaml
 val print_string : string -> unit
 ```
@@ -107,7 +110,7 @@ Therefore we can infer that the ensemble:
 ```ocaml
 Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
-has the type string list. The module name Stream is provided by the
+has the type _string list_. The module name _Stream_ is provided by the
 OCanren module, and its interface is
 [RStream.mli](../../ocanren/src/core/RStream.mli) where we could find:
 ```ocaml
@@ -117,13 +120,25 @@ implying that the type of the ensemble:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-is just string RStream.t that is in agreement with the _return_
-type of run from the module [Core](../../ocanren/src/core/Core.mli):
-```ocaml
-val run :
-(unit -> ('a -> State.t -> 'b) * ('c -> VarEnv.t -> 'd) * ('b -> 'c * State.t RStream.t) * ('e -> 'd -> 'f))
- -> 'a -> 'e -> 'f RStream.t
-```
+is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
+type of _run_ from the module [Core](../../ocanren/src/core/Core.mli).
+
+### programming-wise
+
+The occurrence of _q_ immediately after _run_ is a name provided by
+the module [Core](../../ocanren/src/core/Core.mli), and similar (predefined) names
+as _qr_, _qrs_, _qrst_ etc., used respectively when you query about two, three, and four
+_logic variables_. In our hello-world example we only query about one logic variable, so we
+use _q_. In other words, whenever you query about one logic variable, you shall always put
+_q_ immediately after _run_, and for two logic variables, put _qr_, and so on. The _run_ function
+takes three arguments: a _size indicator_ (q, qr, etc.), a _query_ (fun ...) and the third
+argument. The query shall list all logic variables that you query about immediately after
+_fun_, and whose number shall agree with the size indicator. Within `ocanren{}` goes your
+goals, built using unification, conjunction, disjunction etc. The third argument is some
+boilerplate piece that does type project (the reverse process of type injection)
+or reification (to provide pretty, easy-to-read names for free logic variables). 
+
+
 ### Camlp5 Syntax Extension-wise
 
 The kind of type reasoning we went through above happens in everyday OCanren programming.
