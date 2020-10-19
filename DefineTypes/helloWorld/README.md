@@ -142,7 +142,8 @@ run q (fun honey -> ocanren {honey == str}) project;;
 Within `ocanren{}` goes your
 goals, built using unification, conjunction, disjunction etc. The third argument is some
 boilerplate that does type projection (in case
-the answer is ground: no free logic variables therein)
+the answer is ground: no free logic variables therein, to cast, or project the
+answer from an injected type to some "usual" type)
 or reification (to provide pretty-looking, easy-to-read names for free logic variables
 in the answer).
 
