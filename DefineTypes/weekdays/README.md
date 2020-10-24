@@ -22,9 +22,11 @@ does what is done by the familiar:
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday;;
 ```
-and additionally creates a _show_ function for values of the type _weekdays_, which converts
-any such value to a character string that facilitates display of the value. This syntax
-extension is provided by the GT package. If we amend 
+and additionally among others  creates a _show_ function for values of the type _weekdays_,
+which converts any such value to a character string that facilitates display of the value.
+This syntax extension is provided by the GT package.
+
+We may pursue the difference between using `type` and using `@type` further. Let's amend 
 the [BFLAGS](Makefile#L11) variable with the `-i` (show info) option:
 ```
 BFLAGS = -rectypes -g -i
