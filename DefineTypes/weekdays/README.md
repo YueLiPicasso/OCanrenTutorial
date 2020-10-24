@@ -6,7 +6,9 @@ we define a type called _weekdays_ whose inhabitants are five distinct constant 
 _Monday_, _Tuesday_ etc. The relational programming that we want to perform on this type
 is relatively simple: we define the _next day_ relation. The emphasis, however, is on the
 extra infrastructure that we must build in order to work with such basic variant values in
-OCanren. We inspect the source code block by block.
+OCanren. The reader may wish to `make` in the lesson directory and then `./test.opt`
+for a display of all members of the next-day relation.  We now inspect the source code
+block by block.
 
 The 1st block:
 ```ocaml
