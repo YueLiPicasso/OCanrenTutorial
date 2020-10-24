@@ -30,7 +30,7 @@ setup.log
 _opam/
 
 # emacs backup files
-*.*~
+*~
 
 # ocanren dependency file
 .depend

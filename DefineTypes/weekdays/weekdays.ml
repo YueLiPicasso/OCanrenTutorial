@@ -3,11 +3,11 @@ open OCanren;;
 @type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
 
 module Inj = struct
-  let monday = fun () -> !!(Monday)
-  and tuesday = fun () -> !!(Tuesday)
+  let monday    = fun () -> !!(Monday)
+  and tuesday   = fun () -> !!(Tuesday)
   and wednesday = fun () -> !!(Wednesday)
-  and thursday = fun () -> !!(Thursday)
-  and friday = fun () -> !!(Friday);;
+  and thursday  = fun () -> !!(Thursday)
+  and friday    = fun () -> !!(Friday);;
 end;;
 
 open Inj;;
