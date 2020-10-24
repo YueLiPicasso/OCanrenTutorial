@@ -26,7 +26,7 @@ and additionally creates a _show_ function for values of the type _weekdays_, wh
 any such value to a character string that facilitates display of the value. This syntax
 extension is provided by the GT package. If we modify the Makefile by amending
 the [BFLAGS](Makefile#L12) variable with the `-i` (show info) option:
-```makefile
+```
 BFLAGS = -rectypes -g -i
 ```
 and run:
