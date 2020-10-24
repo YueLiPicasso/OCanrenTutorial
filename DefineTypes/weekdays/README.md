@@ -26,7 +26,7 @@ and additionally among others  creates a _show_ function for values of the type 
 which converts any such value to a character string that facilitates display of the value.
 This syntax extension is provided by the GT package.
 
-We may pursue the difference between using `type` and using `@type` further. Let's amend 
+We may pursue the difference between using `type` and using `@type` a bit further. Let's amend 
 the [BFLAGS](Makefile#L11) variable with the `-i` (show info) option:
 ```
 BFLAGS = -rectypes -g -i
@@ -40,8 +40,8 @@ and run `make`.
  modifacation of the source code, such as typing a space and then deleting it and saving the
  file, and run `make` again.
 
-The terminal would lay bare all cannotations brought about by this `@type` line, which we
-copy below:
+The terminal would lay bare all semantical cannotations of by this `@type` line, which we
+reproduce below and in which we shall not get bogged down:
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday
 class virtual ['inh, 'extra, 'syn] weekdays_t :
