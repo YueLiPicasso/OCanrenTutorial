@@ -25,7 +25,7 @@ type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday;;
 and additionally creates a _show_ function for values of the type _weekdays_, which converts
 any such value to a character string that facilitates display of the value. This syntax
 extension is provided by the GT package. If we modify the Makefile by amending
-the [BFLAGS](Makefile#L12) variable with the `-i` (show info) option:
+the [BFLAGS](Makefile#L11) variable with the `-i` (show info) option:
 ```
 BFLAGS = -rectypes -g -i
 ```

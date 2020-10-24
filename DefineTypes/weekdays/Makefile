@@ -9,7 +9,7 @@ OUTO = $(TOPFILE).opt
 CAMLP5 = -syntax camlp5o -package ocanren.syntax,GT.syntax.all 
 PXFLAGS = $(CAMLP5)
 # add flag -i to BFLAGS to show types only
-BFLAGS = -rectypes -g -i 
+BFLAGS = -rectypes -g 
 OFLAGS = $(BFLAGS)
 CLEAN = $(wildcard *.cmi *.cmo *.cmx *.annot *.o *.opt *.byte *~ *depend)
 
