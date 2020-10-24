@@ -37,7 +37,7 @@ and run `make`.
  the _make_ utility recompiles only upon upddates of any prerequisite
  (See [GNU make](https://www.gnu.org/software/make/manual/)),
  but not upon updates of the Makefile itself. In response we could simply do some null
- modifacation of the source code, such as typing a space and then deleting it and saving the
+ modification of the source code, such as typing a space and then deleting it and saving the
  file, and run `make` again.
 
 The terminal would lay bare all the semantical cannotations of this `@type` line, which we
