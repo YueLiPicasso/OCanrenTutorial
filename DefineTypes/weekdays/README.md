@@ -7,7 +7,7 @@ _Monday_, _Tuesday_ etc. The relational programming that we want to perform on t
 is relatively simple: we define the _next day_ relation. The emphasis, however, is on the
 extra infrastructure that we must build in order to work with such basic variant values in
 OCanren. The reader may now wish to `make` in the lesson directory and then `./test.opt`
-for a display of all members of the next-day relation.  And now we inspect the source code
+for the result of some queries to the next-day relation.  And now we inspect the source code
 block by block.
 
 The 1st block:

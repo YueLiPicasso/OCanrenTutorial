@@ -21,9 +21,15 @@ let next = fun d1 d2 ->
     | d1 == Friday & d2 == Monday 
     };;
 
-@type wdpairs = weekdays * weekdays with show;;
 
 let _ =
-  List.iter (fun x -> print_string (GT.show(wdpairs) x ^ "\n")) @@ 
+  List.iter (fun x -> print_string (GT.show(weekdays) x ^ "\n")) @@ 
     Stream.take @@
-      run qr (fun q r ->  next q r) (fun q r -> project q, project r);;
+      run q (fun r -> ocanren{next Monday r})  project;;
+
+
+let _ =
+  List.iter (fun x -> print_string (GT.show(weekdays) x ^ "\n")) @@ 
+    Stream.take @@
+      run q (fun r -> ocanren{next r Friday})  project;;
+
