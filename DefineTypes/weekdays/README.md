@@ -40,7 +40,7 @@ and run `make`.
  modifacation of the source code, such as typing a space and then deleting it and saving the
  file, and run `make` again.
 
-The terminal would lay bare all semantical cannotations of by this `@type` line, which we
+The terminal would lay bare all the semantical cannotations of this `@type` line, which we
 reproduce below and in which we shall not get bogged down:
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday
