@@ -24,16 +24,21 @@ type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday;;
 ```
 and additionally creates a _show_ function for values of the type _weekdays_, which converts
 any such value to a character string that facilitates display of the value. This syntax
-extension is provided by the GT package. If we modify the Makefile by amending
+extension is provided by the GT package. If we amend 
 the [BFLAGS](Makefile#L11) variable with the `-i` (show info) option:
 ```
 BFLAGS = -rectypes -g -i
 ```
-and run:
-```
-make
-```
-, the terminal would lay bare all cannotations brought about by this `@type` line, which we
+and run `make`.
+
+**Note**: Now the terminal may say that _make: Nothing to be done for 'all'._ This is becuase
+ the _make_ utility recompiles only upon upddates of any prerequisite
+ (See [GNU make](https://www.gnu.org/software/make/manual/)),
+ but not upon updates of the Makefile itself. In response we could simply do some null
+ modifacation of the source code, such as typing a space and then deleting it and saving the
+ file, and run `make` again.
+
+The terminal would lay bare all cannotations brought about by this `@type` line, which we
 copy below:
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday
