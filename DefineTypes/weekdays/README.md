@@ -79,11 +79,11 @@ val weekdays :
 val show_weekdays : weekdays -> string
 ```
 We could see that:
-```@type <typedef> with <plugins>
+```@type \<typedef\> with <plugins>
 ```
 is:
 ```
-type <typedef>
+type \<typedef\>
 ```
 togther with some (virtual) class and value definitions, notably the _show_weekdays_
  function, which is invoked as `GT.show(weekdays)` in our [program](weekdays.ml#26).  
