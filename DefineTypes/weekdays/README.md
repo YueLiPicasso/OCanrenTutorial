@@ -31,10 +31,11 @@ val show_weekdays : weekdays -> string
 which converts any value of the type _weekdays_ to a character string
 that facilitates display of the value. This `@type` syntax is provided by the GT package.
 
-**Note**: We may pursue the difference between using `type` and using `@type` a bit further
+**Note**: We may observe the difference between using `type` and using `@type`
 by amending the [BFLAGS](Makefile#L11) variable with the `-i` (display module interface only)
-option: `BFLAGS = -rectypes -g -i`
-in order to instruct the terminal to display the signature of the _weekdays_ source code. 
+option: `BFLAGS = -rectypes -g -i` (in order to instruct the terminal to display the signature of the _weekdays_ source code. The
+reader can mark as comment all lines below the `@type` line in the source file  and then `make`
+to see what exactly the `@type` line expands into.
 
 
 The 3rd block is: 
@@ -58,8 +59,9 @@ intuitive for an OCaml programmer. I shall explain these points now.
 
 **Type Hierarchy** OCanren involves a four-level type hierarchy:
 
---|--
-Level No. | Level Name 
+
+Level No. | Level Name
+--        |--
 1         | Abstract
 2a        | Ground
 2b        | Logic
