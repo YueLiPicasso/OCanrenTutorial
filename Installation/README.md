@@ -29,14 +29,16 @@ a Haskell typeclass style feature to OCaml, and is helpful if not indispensable 
 To install
 GT, run:
 ```
-opam install ppxlib.0.13.0 
 opam install GT
 ```
+
+**Note** Since GT is under active development, installation details of it may change. Please consult the project
+webpage for the most updated instructions.
 
 ## Step 3:  Installing OCanren
 
 The [official OCanren](https://github.com/JetBrains-Research/OCanren.git) is
-under active development. This tutorial  provides a stable and minimal [distribution](../ocanren). 
+under active development. This tutorial [includes](../ocanren) a stable and minimal distribution. 
 Change directory to this distribution, and execute the following commands: 
 ```
 eval $(opam env)
