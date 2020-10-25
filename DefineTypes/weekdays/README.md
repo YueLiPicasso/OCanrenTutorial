@@ -67,10 +67,8 @@ Level No. | Level Name
 3         | Logic
 4         | Injected
 
+In our example program the absract level and ground level type coincide (given by the
+`@type` line) and we omitted defining type abbreviations for the logic level and the injected level.   
 
 
-
-
-
-, notably the _show_weekdays_
  function, which is invoked as `GT.show(weekdays)` in our program.  
