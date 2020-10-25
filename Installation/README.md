@@ -39,7 +39,7 @@ webpage for the most updated instructions.
 
 The [official OCanren](https://github.com/JetBrains-Research/OCanren.git) is
 under active development. This tutorial includes a stable and minimal distribution. 
-Change directory to [this](./ocanren) distribution, and execute the following commands: 
+Change directory to [ocanren](./ocanren) and execute the following commands: 
 ```
 eval $(opam env)
 opam install . --deps-only --yes
@@ -47,3 +47,10 @@ make
 make install
 ```
 
+## Uninstall OCanren
+
+Change directory to [ocanren](./ocanren) and execute the following commands:
+```
+make uninstall
+make clean
+```
