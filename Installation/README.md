@@ -47,7 +47,7 @@ make
 make install
 ```
 
-## Uninstall OCanren
+## To Uninstall OCanren:
 
 Change directory to [ocanren](./ocanren) and execute the following commands:
 ```
