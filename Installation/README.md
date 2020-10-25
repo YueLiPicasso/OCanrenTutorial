@@ -38,8 +38,8 @@ webpage for the most updated instructions.
 ## Step 3:  Installing OCanren
 
 The [official OCanren](https://github.com/JetBrains-Research/OCanren.git) is
-under active development. This tutorial [includes](../ocanren) a stable and minimal distribution. 
-Change directory to this distribution, and execute the following commands: 
+under active development. This tutorial includes a stable and minimal distribution. 
+Change directory to [this](./ocanren) distribution, and execute the following commands: 
 ```
 eval $(opam env)
 opam install . --deps-only --yes
