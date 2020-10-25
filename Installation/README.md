@@ -24,7 +24,7 @@ to install it and consequently make it the current compiler.
 
 ## Step 2:  Installing GT
 
-[GT (Generic Transformer)](https://github.com/JetBrains-Research/GT) provides
+[GT](https://github.com/JetBrains-Research/GT) provides
 a Haskell typeclass style feature to OCaml, and is helpful if not indispensable for wriing OCanren code.
 To install
 GT, run:
