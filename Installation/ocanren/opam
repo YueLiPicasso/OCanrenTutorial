@@ -1,0 +1,30 @@
+opam-version: "2.0"
+
+name: "ocanren"
+version: "0.0.2"
+maintainer: "kakadu.hafanana@gmail.com"
+authors: ["https://github.com/dboulytchev" "https://github.com/Kakadu"]
+homepage: "https://github.com/jetbrains-research/ocanren"
+bug-reports: "https://github.com/jetbrains-research/ocanren/issues"
+
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+  "camlp5"
+  "logger-p5" { = "0.4.2" }
+  "GT" { >= "0.2.0" }
+]
+build: [
+  [make]
+  [make "test"] {with-test}
+]
+install: [make "PREFIX=%{prefix}%" "install"]
+remove: [make "PREFIX=%{prefix}%" "uninstall"]
+
+synopsis: "Relational programming library in miniKanren manner"
+
+dev-repo: "git+https://github.com/jetbrains-research/ocanren.git"
+url {
+  src: "git+https://github.com/jetbrains-research/ocanren"
+}
+
