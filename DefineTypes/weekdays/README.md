@@ -63,9 +63,9 @@ intuitive for an OCaml programmer. I shall explain these points now.
 Level No. | Level Name
 --        |--
 1         | Abstract
-2a        | Ground
-2b        | Logic
-3         | Injected
+2         | Ground
+3         | Logic
+4         | Injected
 
 
 
