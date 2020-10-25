@@ -1,4 +1,4 @@
-TOPFILE = hello
+TOPFILE = hello2
 SOURCES = hello2.ml
 OCAMLC = ocamlfind c
 OCAMLOPT = ocamlfind opt

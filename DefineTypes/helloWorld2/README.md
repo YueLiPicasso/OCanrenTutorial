@@ -33,3 +33,8 @@ Level No. | Level Name
 2         | Ground
 3         | Logic
 4         | Injected
+
+
+
+GT.string is the same type as the OCaml built-in string type and it additional supports
+GT features.
