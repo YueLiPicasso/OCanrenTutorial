@@ -1,102 +1,53 @@
 # Installation
 
-I begin with an overview of OCanren installation, then follows detailed
-explanation of some steps. Note that the flow of actions demonstrated below only
-_represents_ a typical successful installation, and glitches may occur when you work
-through this chapter. Please do not hesitate to raise an issue in case you meet any problem.
+We shall have a computer running Linux, with [Git](https://git-scm.com/)
+and [Opam](https://opam.ocaml.org/) installed.
+We then install the following:  
 
-## Overview
+1. ocaml 4.07.1+fp+flambda
+1. GT
+1. OCanren
 
-Installation Sequence
-
-- Linux OS
-- opam >=2.0
-- ocaml 4.07.1+fp+flambda
-- GT
-- OCanren
-
-Major Terminal Instructions
-
-- Under any directory:
-  - opam switch 4.07.1+fp+flambda
-  - opam install GT
-
-- Then under the ocanren directory:
-  - make
-  - make install
-
-## Details
-
-You shall have a computer running Linux, with Git, Opam and OCaml installed. Instructions for
-installing Linux, Git, Opam and OCaml in general is out of the scope of this tutorial. I recommend
-however the following points of reference:
-
-- [Ubuntu Linux](https://ubuntu.com/)
-
-- [Opam and OCaml installation](https://dev.realworldocaml.org/install.html)
-
-- [Git](https://git-scm.com/)
-
-When I give command line instructions below, I mean that the given instruction can be executed under
-any directory, unless explicitly stated otherwise.
-
-### Switching to the Right OCaml Compiler
+## Step 1: Swtching to the right OCaml compiler
 
 OCanren depends on a particular version of OCaml which is _4.07.1+fp+flambda_. You can check
 if it is already on your computer by running
 ```
 opam switch
 ```
-which lists all available OCaml compilers.
-
-If it is there, but is not the current compiler, run:
-```
-opam switch 4.07.1+fp+flambda
-eval $(opam env)
-```
-to make it the current compiler.
-
-If it is not there, run:
+which lists all available OCaml compilers. If it is not there, run:
 ```
 opam switch create 4.07.1+fp+flambda
 eval $(opam env)
 ```
 to install it and consequently make it the current compiler.
 
+If it is already there, but is not the current compiler, run:
+```
+opam switch 4.07.1+fp+flambda
+eval $(opam env)
+```
+to make it the current compiler.
 
-### GT Installation
+## Step 2:  Installing GT
 
-[GT (Generic Transformer)](https://github.com/JetBrains-Research/GT) provides a Haskell-typeclass-style
-feature to OCaml, and is helpful if not indispensable for wriing OCanren code. To install
+[GT (Generic Transformer)](https://github.com/JetBrains-Research/GT) provides
+a Haskell typeclass style feature to OCaml, and is helpful if not indispensable for wriing OCanren code.
+To install
 GT, run:
 ```
 opam install ppxlib.0.13.0 
 opam install GT
 ```
 
-Youu may find it helpful to get a local copy of the GT source as well:
-```
-git clone https://github.com/JetBrains-Research/GT
-```
+## Step 3:  Installing OCanren
 
-### Obtaining and Building OCanren Source Code
-
-Run in your directory of choice:
-```
-git clone https://github.com/JetBrains-Research/OCanren.git ocanren && cd ocanren
-```
-The command gets you a local copy of the OCanren source code and then changes
-the working directory to it.
-
-
-Afterwards, install other dependencies of OCanren by:
-```
-opam install . --deps-only --yes
-```
-
-Finally (avoid using `sudo` together with the following commands):
+The [official OCanren](https://github.com/JetBrains-Research/OCanren.git) is
+under active development. This tutorial  provides a stable and minimal [distribution](../ocanren). 
+Change directory to this distribution, and execute the following commands: 
 ```
 eval $(opam env)
+opam install . --deps-only --yes
 make
 make install
 ```
