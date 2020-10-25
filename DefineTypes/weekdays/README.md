@@ -29,7 +29,7 @@ which converts any such value to a character string that facilitates display of 
 This syntax extension is provided by the GT package.
 
 We may pursue the difference between using `type` and using `@type` a bit further. Let's amend 
-the [BFLAGS](Makefile#L11) variable with the `-i` (show info) option:
+the [BFLAGS](Makefile#L11) variable with the `-i` (display module interface only) option:
 ```
 BFLAGS = -rectypes -g -i
 ```
@@ -46,6 +46,7 @@ The terminal would lay bare all the semantical cannotations of this `@type` line
 reproduce below and in which we shall not get bogged down:
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday
+
 class virtual ['inh, 'extra, 'syn] weekdays_t :
   object
     method virtual c_Friday : 'inh -> 'extra -> 'syn
@@ -54,7 +55,9 @@ class virtual ['inh, 'extra, 'syn] weekdays_t :
     method virtual c_Tuesday : 'inh -> 'extra -> 'syn
     method virtual c_Wednesday : 'inh -> 'extra -> 'syn
   end
+  
 val gcata_weekdays : ('a, weekdays, 'b) #weekdays_t -> 'a -> weekdays -> 'b
+
 class ['a] show_weekdays_t :
   'b ->
   object
@@ -65,11 +68,22 @@ class ['a] show_weekdays_t :
     method c_Tuesday : unit -> 'a -> string
     method c_Wednesday : unit -> 'a -> string
   end
+  
 val weekdays :
   (('a, weekdays, 'b) #weekdays_t -> 'a -> weekdays -> 'b,
    < show : weekdays -> string >,
    (('c -> weekdays -> 'd) -> ('c, weekdays, 'd) #weekdays_t) ->
    'c -> weekdays -> 'd)
   GT.t
+  
 val show_weekdays : weekdays -> string
 ```
+We could see that:
+```@type <typedef> with <plugins>
+```
+is:
+```
+type <typedef>
+```
+togther with some (virtual) class and value definitions, notably the _show_weekdays_
+ function, which is invoked as `GT.show(weekdays)` in our [program](weekdays.ml#26).  
