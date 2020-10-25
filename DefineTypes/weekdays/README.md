@@ -20,7 +20,7 @@ The 2ed block:
 ```ocaml
 @type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
 ```
-is a syntactic suger which is expanded into 
+is syntactic sugar which is expanded into 
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday;;
 ```
@@ -39,3 +39,39 @@ BFLAGS = -rectypes -g -i
 ```
 in order to instruct the terminal to display the signature of the _weekdays_ source code. 
 
+
+The 3rd block is: 
+```ocaml
+module Inj = struct
+  let monday    = fun () -> !!(Monday)
+  and tuesday   = fun () -> !!(Tuesday)
+  and wednesday = fun () -> !!(Wednesday)
+  and thursday  = fun () -> !!(Thursday)
+  and friday    = fun () -> !!(Friday);;
+end;;
+
+```
+which is characteristic of OCanren programming. For every constructor of a (user-defined) variant
+type we shall define an _injection function_ whose name must be the same as the constructor name
+except that the initial letter is set in lowercase. The purpose of these injection functions
+is two fold: firstly they perform type convertion in order for OCanren to process
+(representations of) values of the user type;
+secondly together with the `ocanren{}` environment they serve to make writing in OCanren
+intuitive for an OCaml programmer. I shall explain these points now.
+
+**Type Hierarchy** OCanren involves a four-level type hierarchy:
+
+--|--
+Level No. | Level Name 
+1         | Abstract
+2a        | Ground
+2b        | Logic
+3         | Injected
+
+
+
+
+
+
+, notably the _show_weekdays_
+ function, which is invoked as `GT.show(weekdays)` in our program.  
