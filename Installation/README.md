@@ -22,13 +22,6 @@ eval $(opam env)
 ```
 to install it and consequently make it the current compiler.
 
-If it is already there, but is not the current compiler, run:
-```
-opam switch 4.07.1+fp+flambda
-eval $(opam env)
-```
-to make it the current compiler.
-
 ## Step 2:  Installing GT
 
 [GT (Generic Transformer)](https://github.com/JetBrains-Research/GT) provides
