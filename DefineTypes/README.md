@@ -1,4 +1,11 @@
-## Values in OCanren
+## OCanren Tutorial Outline
 
-* [Lesson 1 : Hellow World !](./helloworld)  (On base values, e.g., string)
-* [Lesson 2 : Weekdays](./weekdays)  (On variant values, e.g., constant constructors) 
+- [General feelings](./helloWorld)
+- [Type hierarchy](./helloWorld2)  
+- Variant type:
+  - [constant constructors](./weekdays)  
+  - non-constant constructor
+    - non-recursive
+    - recusive 
+- Pairs and Tuples
+
