@@ -33,10 +33,7 @@ that facilitates display of the value. This `@type` syntax is provided by the GT
 
 **Note**: We may pursue the difference between using `type` and using `@type` a bit further
 by amending the [BFLAGS](Makefile#L11) variable with the `-i` (display module interface only)
-option:
-```
-BFLAGS = -rectypes -g -i
-```
+option: `BFLAGS = -rectypes -g -i`
 in order to instruct the terminal to display the signature of the _weekdays_ source code. 
 
 
