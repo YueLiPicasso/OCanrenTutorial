@@ -60,8 +60,8 @@ where the syntactic category `<typedef>` is the same as
 [that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml.
 
 A type definition of the form `@type <typedef> with <plugins>` is expanded at the syntactic level
-by GT into
-1) A type definition of the form `type <typedef>` that preserves the value of <typedef>, and
+by GT into:
+1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
 The most frequently used plugins
