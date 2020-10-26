@@ -48,7 +48,7 @@ Now we are ready to dig into the details.
 
 ## The @type Syntax
 
-A type is usually defined by :
+In OCanren, types are often defined by :
 ```
 <type definition> ::= @type <typedef> with <plugins>
 
