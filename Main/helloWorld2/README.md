@@ -41,7 +41,7 @@ In other words, we do not mean that it has no equation and no representation. Ra
 it is a framework such that types at the other levels are defined in terms of it. In the String
 module, the type `t` is at the abstract level, and the type `ground` is at the ground level,
 `logic` at the logic level, and `groundi` at the injected level. In our example the abstract level
-and ground level coincide, but in general they are quite different, as we will see when working
+and the ground level coincide, but in general they are quite different, as we will see when working
 with non-constant constructors of variant types.  
 
 GT.string is the same type as the OCaml built-in string type and it additional supports
