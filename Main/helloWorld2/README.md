@@ -49,7 +49,7 @@ Now we are ready to dig into the details.
 ## The @type Syntax
 
 In OCanren, types are often defined by :
-```bnf
+```
 <type definition> ::= @type <typedef> with <plugins>
 
 <plugins> ::= <plugin> { , <plugin> }
