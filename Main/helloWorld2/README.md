@@ -44,5 +44,29 @@ module, the type `t` is at the abstract level, and the type `ground` is at the g
 and the ground level coincide, but in general they are quite different, as we will see when working
 with non-constant constructors of variant types.  
 
+Now we are ready to dig into the details.
+
+## The @type Syntax
+
+A type is usually defined by :
+```
+<type definition> ::= @type <typedef> with <plugins>
+
+<plugins> ::= <plugin> {, <plugin> }
+
+<plugin>  ::= show | gmap | <etc>
+```
+where the syntactic category `<typedef>` is the same as that of OCaml. The most frequently used plugins
+in OCanren is _show_ and _gmap_, providing for the defined type a (to-)string converson function
+(like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
+a structure preserving mapping function 
+(a generalization of  [List.map](https://ocaml.org/releases/4.11/htmlman/libref/List.html))  respectively.
+
+Writing `@type <typedef> with <plugins>` is the same as writing `type <typedef>` togeter with several
+class and function definitions. The expansion is done automatically by GT. 
+``
+
+
+
 GT.string is the same type as the OCaml built-in string type and it additional supports
 GT features.
