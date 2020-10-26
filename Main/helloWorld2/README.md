@@ -52,7 +52,7 @@ In OCanren, types are often defined by :
 ```
 <type definition> ::= @type <typedef> with <plugins>
 
-<plugins> ::= <plugin> {, <plugin> }
+<plugins> ::= <plugin> { , <plugin> }
 
 <plugin>  ::= show | gmap | <etc>
 ```
