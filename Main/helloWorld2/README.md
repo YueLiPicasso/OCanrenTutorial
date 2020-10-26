@@ -57,15 +57,28 @@ In OCanren, types are often defined by :
 <plugin>  ::= show | gmap | <etc>
 ```
 where the syntactic category `<typedef>` is the same as
-[that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml. The most frequently used plugins
+[that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml.
+A line of `@type <typedef> with <plugins>` is expanded at the syntactic level
+by GT into a line of `type <typedef>` togeter with several (auto-generated) plugin definitions.  
+
+The most frequently used plugins
 in OCanren is _show_ and _gmap_, providing for the defined type a (to-)string converson function
 (like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
 a structure preserving mapping function 
 (a generalization of  [List.map](https://ocaml.org/releases/4.11/htmlman/libref/List.html))  respectively.
 
-Writing `@type <typedef> with <plugins>` is the same as writing `type <typedef>` togeter with several
-class and function definitions. The expansion is done automatically by GT. 
-``
+
+
+## The Plugins
+
+(t1, ..., tn) t
+
+show(t1) <= show(t2) ... show(tn)
+
+Similar for gmap.
+
+
+
 
 
 
