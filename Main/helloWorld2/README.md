@@ -61,8 +61,8 @@ where the syntactic category `<typedef>` is the same as
 
 A type definition of the form `@type <typedef> with <plugins>` is expanded at the syntactic level
 by GT into
-1) a type definition of the form `type <typedef>` preserving the value of <typedef>, and
-1) several (auto-generated) plugin definitions.
+1) A type definition of the form `type <typedef>` that preserves the value of <typedef>, and
+1) Several (auto-generated) plugin definitions.
 
 The most frequently used plugins
 in OCanren is _show_ and _gmap_, providing for the defined type a (to-)string converson function
