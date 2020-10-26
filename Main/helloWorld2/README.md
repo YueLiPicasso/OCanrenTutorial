@@ -34,6 +34,8 @@ module String = struct
   type groundi = (ground, logic) injected;;
 end;;
 ```
+that shows how the type `String.groundi` of `str` is defined following the four-step routine.
+
 When we say that a type is at the _abstract level_, we do not mean that it is an _abstract type_.
 In other words, we do not mean that it has no equation and no representation. Rather, we mean that
 it is a framework such that types at the other levels are defined in terms of it. In the String
