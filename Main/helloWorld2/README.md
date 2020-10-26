@@ -2,7 +2,7 @@
 
 The purpose of this lesson is to expose the reader to the intricacies of types in OCanren. Whatever
 types we want to work with in OCanren, let it be string, integer, list, tree, or tuple, etc., that type
-must be defined for four times, corresponding to the four levels given in the table below:
+is always defined in four steps, corresponding to the four levels given in the table below:
 
 
 Level No. | Level Name
