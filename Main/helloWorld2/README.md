@@ -82,7 +82,7 @@ provided that there is a type equation between them.
 (`<typeconstr>`<sub>1</sub>, ..., `<typeconstr>`<sub>n</sub>) `<typeconstr>`.
 but each is
 
-<font color="maroon">_typeconstr_</font>
+<font color="red">_typeconstr_</font>
 
 
 equated that there is a type equation between
