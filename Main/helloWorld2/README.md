@@ -72,11 +72,12 @@ by GT into:
 ## The Plugins
 
 Plugins are auto-generated in an inductive manner described as follows.
-Assume that there exist a plugin `<plugin>` for the type constructor `t` that takes parameters `'a1 ... 'an`.
-The same plugin `<plugin>` can be generated for another type constructor `k` if:
-* _Base Case:_ There is a type equation between 'k' and 't', or
-* _Inductive Case:_`k` is an instance of `('a1, ..., 'an) t`, of the form `(t1, ..., tn) t` and all
-plugins  `<plugin>(t1) ... <plugin>(tn)` exist. 
+Assume that there exist a plugin `<plugin>` for some type constructor `<typecontr>`<sub>1<\sub> that takes
+parameters `<type-param>_1 ... `<type-param>_n`.
+The same plugin `<plugin>` can be generated for another type constructor `<typeconstr>` if:
+* _Base Case:_ There is a type equation between '<typecontr-name>_1' and '<typecontr-name>`<sub>2<\sub>, or
+* _Inductive Case:_`<typecontr-name>_2` is an instance of `(<type-param>_1, ..., `<type-param>_n) t`
+of the form `(t1, ..., tn) t` and all plugins  `<plugin>(t1) ... <plugin>(tn)` exist. 
 
 (For example refer to the definition of
 the type constructor `String.logic`).
