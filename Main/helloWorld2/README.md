@@ -72,8 +72,7 @@ by GT into:
 ## The Plugins
 
 Plugins are auto-generated in an inductive manner described as follows.
-Assume that there exist a  
-plugin `<plugin>` for the type constructor `t` that takes parameters `'a1 ... 'an`.
+Assume that there exist a plugin `<plugin>` for the type constructor `t` that takes parameters `'a1 ... 'an`.
 The same plugin `<plugin>` can be generated for another type constructor `k` if:
 * _Base Case:_ There is a type equation between 'k' and 't', or
 * _Inductive Case:_`k` is an instance of `('a1, ..., 'an) t`, of the form `(t1, ..., tn) t` and all
