@@ -67,7 +67,7 @@ by GT into:
 1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
-## The `logic` type
+## The `logic` Type
 
 The `logic` type constructor occuring on the right hand side of the type equation:
 ```ocaml
