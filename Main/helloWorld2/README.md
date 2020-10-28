@@ -44,8 +44,6 @@ module, the type `t` is at the abstract level, and the type `ground` is at the g
 and the ground level coincide, but in general they are quite different, as we will see when working
 with non-constant constructors of variant types.  
 
-Now we are ready to dig into the details.
-
 ## The @type Syntax
 
 In OCanren, type constructors are often defined by :
