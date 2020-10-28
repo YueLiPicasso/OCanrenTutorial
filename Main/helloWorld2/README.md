@@ -69,4 +69,18 @@ by GT into:
 
 ## The `logic` type
 
-The [Logic](../../Installation/) module 
+The `logic` type constructor occuring on the right hand side of the type equation:
+```ocaml
+@type 'a logic' = 'a logic with show;;
+```
+is provided by the
+[Logic](../../Installation/ocanren/src/core/Logic.mli#L21) module
+(included in the OCanren module). To define the string type at the logic level,
+we need to alias the `Logic.logic` constructor as `logic'`. This is also a piece
+of OCanren boilerplate.
+
+
+## Summary
+
+All types manipulated by OCanren are at the injected level, but to define such types
+we need three other kinds of types which we call _abstract_, _ground_ and _logic_. 
