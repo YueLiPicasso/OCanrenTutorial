@@ -76,25 +76,10 @@ Plugins are auto-generated in an inductive manner described as follows.
  a plugin of the same kind can be generated for `<typeconstr>`<sub>2</sub>
 provided that there is a type equation between them.
 1. If a kind of plugin <plugin> exists for type constructors `<typeconstr>`<sub>1</sub>, ...,
-`<typeconstr>`<sub>n</sub> all of which do not have type parameters, and there is a type constructor
-`<typeconstr>` for which `<plugin>` also exists, then the same kind of plugin can be generated for
-`<typecontr>'` that takes n parameters and is related by a type equation to the type expression
+`<typeconstr>`<sub>n</sub> all of which do not have type parameters and there is a type constructor
+`<typeconstr>` for which `<plugin>` also exists, then '<plugin>' can be generated for
+`<typecontr>'` that is related by a type equation to the type expression
 (`<typeconstr>`<sub>1</sub>, ..., `<typeconstr>`<sub>n</sub>) `<typeconstr>`.
-but each is
-
-<font color="red">_typeconstr_</font>
 
 
-equated that there is a type equation between
-`<typeconstr>`<sub>3</sub> and an instance of the type expression
-(`<type-param>`<sub>1</sub>, ..., `<type-param>`<sub>n</sub>) `<typeconstr>`<sub>1</sub>
-of the form `(t1, ..., tn) t` and all plugins  `<plugin>(t1) ... <plugin>(tn)` exist. 
 
-(For example refer to the definition of
-the type constructor `String.logic`).
-(For example refer to the definitions of
-the type constructors `logic'`, `String.t`, `String.ground`)
-GT.string is the same type as the OCaml built-in string type and it additional supports
-GT features.
-
-that takes
