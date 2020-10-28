@@ -79,8 +79,8 @@ is provided by the
 we need to alias the `Logic.logic` constructor as `logic'`. This is also a piece
 of OCanren boilerplate.
 
-
 ## Summary
 
 All types manipulated by OCanren are at the injected level, but to define such types
-we need three other kinds of types which we call _abstract_, _ground_ and _logic_. 
+we need three other kinds of types which are said to be at the
+_abstract_, _ground_ and _logic_ levels. 
