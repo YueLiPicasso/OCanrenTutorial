@@ -72,7 +72,7 @@ by GT into:
 ## The Plugins
 
 Plugins are auto-generated in an inductive manner, described as follows.
-let `<plugin>(t)` denote some
+Let `<plugin>(t)` denote some
 plugin named `<plugin>` for the type constructor `t` that takes parameters `'a1, ..., 'an`.
 The same plugin `<plugin>` can be generated for another type constructor `k` if:
 1. `k` is related to `t` by a type equation (For example, refer to the definitions of
