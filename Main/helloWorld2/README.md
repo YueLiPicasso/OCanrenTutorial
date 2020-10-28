@@ -48,7 +48,7 @@ Now we are ready to dig into the details.
 
 ## The @type Syntax
 
-In OCanren, types are often defined by :
+In OCanren, type constructors are often defined by :
 ```
 <type definition> ::= @type <typedef> with <plugins>
 
@@ -69,12 +69,17 @@ by GT into:
 1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
-
-
-
 ## The Plugins
 
-(t1, ..., tn) t
+Plugins are auto-generated in an inductive manner, described as follows.
+let `<plugin>(t)` denote some
+plugin named `<plugin>` for the type constructor `t` that takes parameters `'a1, ..., 'an`.
+The same plugin `<plugin>` can be generated for another type constructor `k` if:
+1. `k` is related to `t` by a type equation (For example, refer to the definitions of
+the type constructors `logic'`, `String.t`, `String.ground`), or
+1. `k` is an instance of `('a1, ..., 'an) t`, of the form `(t1, ..., tn) t`, and all
+plugins  `<plugin>(t1), ..., <plugin>(tn)` can be generated or have been defined.
+
 
 show(t1) <= show(t2) ... show(tn)
 
