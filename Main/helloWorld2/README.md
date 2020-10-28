@@ -75,7 +75,7 @@ Plugins are auto-generated in an inductive manner described as follows.
 1. If there exist a plugin for type constructor `<typeconstr>`<sub>1</sub> then
  a plugin of the same kind can be generated for `<typeconstr>`<sub>2</sub>
 provided that there is a type equation between these two type constructors.
-1. If a kind of plugin <plugin> exists for type constructors `<typeconstr>`<sub>1</sub>, ...,
+1. If a kind of plugin `<plugin>` exists for type constructors `<typeconstr>`<sub>1</sub>, ...,
 `<typeconstr>`<sub>n</sub> all of which do not have type parameters and there is a type constructor
 `<typeconstr>` for which `<plugin>` also exists, then '<plugin>' can be generated for
 `<typecontr>'` that is related by a type equation to the type expression
