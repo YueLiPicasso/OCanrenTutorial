@@ -72,7 +72,7 @@ by GT into:
 ## The Plugins
 
 Plugins are auto-generated in an inductive manner described as follows.
-Assume that there exist a plugin `<plugin>` for some type constructor `<typecontr>`<sub>1</sub> that takes
+Assume that there exist a plugin `<plugin>` for some type constructor `<typeconstr>`<sub>1</sub> that takes
 parameters `<type-param>`<sub>1</sub>, ..., `<type-param>`<sub>n</sub>.
 The same plugin `<plugin>` can be generated for another type constructor `<typeconstr>` if:
 * _Base Case:_ There is a type equation between '<typecontr-name>_1' and '<typecontr-name>`<sub>2</sub>, or
