@@ -56,7 +56,7 @@ In OCanren, type constructors are often defined by :
 ```
 where the syntactic category `<typedef>` is the same as
 [that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml. The most frequently used plugins
-in OCanren is _show_ and _gmap_, providing for the defined type a (to-)string converson function
+in OCanren is _show_ and _gmap_, providing for the defined type a string converson function
 (like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
 a structure preserving mapping function 
 (a generalization of  [List.map](https://ocaml.org/releases/4.11/htmlman/libref/List.html))  respectively.
