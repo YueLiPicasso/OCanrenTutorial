@@ -71,24 +71,17 @@ by GT into:
 
 ## The Plugins
 
-Plugins are auto-generated in an inductive manner, described as follows.
-Let `<plugin>(t)` denote some
-plugin named `<plugin>` for the type constructor `t` that takes parameters `'a1, ..., 'an`.
+Plugins are auto-generated in an inductive manner described as follows.
+Assume that there exist a  
+plugin `<plugin>` for the type constructor `t` that takes parameters `'a1 ... 'an`.
 The same plugin `<plugin>` can be generated for another type constructor `k` if:
-1. `k` is related to `t` by a type equation (For example, refer to the definitions of
-the type constructors `logic'`, `String.t`, `String.ground`), or
-1. `k` is an instance of `('a1, ..., 'an) t`, of the form `(t1, ..., tn) t`, and all
-plugins  `<plugin>(t1), ..., <plugin>(tn)` can be generated or have been defined.
+* _Base Case:_ There is a type equation between 'k' and 't', or
+* _Inductive Case:_`k` is an instance of `('a1, ..., 'an) t`, of the form `(t1, ..., tn) t` and all
+plugins  `<plugin>(t1) ... <plugin>(tn)` exist. 
 
-
-show(t1) <= show(t2) ... show(tn)
-
-Similar for gmap.
-
-
-
-
-
-
+(For example refer to the definition of
+the type constructor `String.logic`).
+(For example refer to the definitions of
+the type constructors `logic'`, `String.t`, `String.ground`)
 GT.string is the same type as the OCaml built-in string type and it additional supports
 GT features.
