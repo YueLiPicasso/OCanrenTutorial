@@ -36,14 +36,14 @@ open OCanren;;
 ```
 makes the names from the module OCanren available for later use.
 The source code of this module resides in
-[OCanren.ml](../../ocanren/src/OCanren.ml). 
+[OCanren.ml](../../Installation/ocanren/src/OCanren.ml). 
 Inspecting the content thereof,  we shall see that basically
 it includes two modules Logic and Core, and renames the module RStream
 to Stream, and finally defines the Std module.
 
 The interfaces of modules
-Logic and Core reside in [Logic.mli](../../ocanren/src/core/Logic.mli)
-and [Core.mli](../../ocanren/src/core/Core.mli) respectively. These will
+Logic and Core reside in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli)
+and [Core.mli](../../Installation/ocanren/src/core/Core.mli) respectively. These will
 be the most frequently referenced files when you program in OCanren. The
 module Logic contains the secrets of OCanren's type system that enables
 _typed_ relational programming, whereas the module Core provides all the
@@ -111,8 +111,8 @@ Therefore we can infer that the ensemble:
 Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
 has the type _string list_. The module name _Stream_ is provided by the
-[OCanren](../../ocanren/src/OCanren.ml#L22) module, and its interface is
-[RStream.mli](../../ocanren/src/core/RStream.mli) where we could find:
+[OCanren](../../Installation/ocanren/src/OCanren.ml#L22) module, and its interface is
+[RStream.mli](../../Installation/ocanren/src/core/RStream.mli) where we could find:
 ```ocaml
 val take : ?n:int -> 'a t -> 'a list
 ```
@@ -121,14 +121,14 @@ implying that the type of the ensemble:
 run q (fun q -> ocanren { q == str }) project
 ```
 is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
-type of _run_ from the module [Core](../../ocanren/src/core/Core.mli#L120). The 3rd line therefore
+type of _run_ from the module [Core](../../Installation/ocanren/src/core/Core.mli#L120). The 3rd line therefore
 collects all possible answers to form a stream and takes one (the first one) from it to in turn
 form a (singleton) list and print the member of this list.
 
 ### Programming-wise
 
 The occurrence of q immediately after _run_ is a name provided by
- [Core](../../ocanren/src/core/Core.mli#L225), and similar (predefined) names
+ [Core](../../Installation/ocanren/src/core/Core.mli#L225), and similar (predefined) names
 as qr, qrs, qrst etc., used respectively when you query about two, three, and four
 _logic variables_. In our hello-world example we only query about one logic variable, so we
 use _q_. In other words, whenever you query about one logic variable, you shall always put
@@ -146,16 +146,16 @@ goals, built using unification, conjunction, disjunction etc. The third argument
 casts (projects) the
 answer from an injected type to some "usual" type for
 the answer is ground, i.e.,  no free logic variables therein. The type of _project_ is
-documented in [Logic.mli](../../ocanren/src/core/Logic.mli#L128).
+documented in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli#L128).
 
 
 ### Camlp5 Syntax Extension-wise
 
 The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.io/)
 syntax preprocessor to the `<content>` according to user-defined rules that in our case is
- specified in [pa_ocanren.ml](../../ocanren/camlp5/pa_ocanren.ml).
+ specified in [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml).
  The effect is, for instance, we can use `==` rather than the longer `===` or `unify`
-(both defined in [Core](../../ocanren/src/core/Core.mli#L36)) according to the [prescription](../../ocanren/camlp5/pa_ocanren.ml#L238).
+(both defined in [Core](../../Installation/ocanren/src/core/Core.mli#L36)) according to the [prescription](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238).
 
 ## Summary
 

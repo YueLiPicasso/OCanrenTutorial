@@ -67,4 +67,6 @@ by GT into:
 1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
+## The `logic` type
 
+The [Logic](../../Installation/) module 
