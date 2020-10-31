@@ -63,13 +63,14 @@ let _ =
     Stream.take ~n:1 @@
       run q (fun q -> ocanren { q == str }) project;;
 ``` 
-finds all q's that unify with `str` then prints the first of them. We say that a value
-_v_<sub>1</sub> (of some type _t_) _unifies_ another value _v_<sub>2</sub> (also of _t_)
-if both values have zero or more logic variables (possibly of different types) as sub-terms
-and by replacing these logic variables we can make the resulting values
-syntactically identical. For example: `x + 1` unifies with
-`2 + y` by replacing `x` by `2`,  and `y` by `1`, for then both become `2 + 1` which are
-syntactically equal.
+finds all q's that unify with `str` then prints the first of them.
+
+Given two expressions of the same type, we say that
+they _unify_  if both have zero or more sub-expressions (possibly of different types)
+considered as logic variables,  and by replacing these logic variables by some expressions
+(the replacement shall respect types) we can make the resulting expressions
+syntactically identical. For example: the expressions `x + 1` and `2 + y` unify for
+ replacing `x` by `2`,  and `y` by `1` makes both be `2 + 1`.
 
 
 
