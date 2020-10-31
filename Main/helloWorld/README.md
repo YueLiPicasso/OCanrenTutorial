@@ -26,7 +26,7 @@ makes the names from the module OCanren available for later use.
 
 The source code of the module OCanren resides in
 [OCanren.ml](../../Installation/ocanren/src/OCanren.ml)
-(It does not have an interface `.mli` file). 
+(It does not have an accompanying `.mli` file). 
 Inspecting the content thereof,  we shall see that basically
 it includes two modules [Logic](../../Installation/ocanren/src/core/Logic.mli)
 and [Core](../../Installation/ocanren/src/core/Core.mli), and renames the module
