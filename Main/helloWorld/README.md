@@ -70,26 +70,31 @@ operator `@@` that is provided by OCaml's core library
  ```ocaml
  run q (fun q -> ocanren { q == str }) project
  ```
- whose most important part is: `q == str`. 
+called _run-expression_ whose most important part is: `q == str`. 
+
+### Unification
 
 Given two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub> of the same type, we say that
 they _unify_, denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub> , 
 if both have zero or more sub-expressions
 considered as logic variables,  and by replacing these logic variables by some expressions
 (the replacement shall respect types) we can make the resulting expressions
-syntactically identical. For example: `(x + 1) == (2 + y)` is true since
+syntactically identical.
+
+**Example** `(x + 1) == (2 + y)` is true since
  replacing `x` by `2`,  and `y` by `1` makes both the expression `2 + 1`.
 
-All logic variales in OCanren are introduced either
-as parameters of `fun` (as in our program) or as parameters of the `fresh` keyword
-(we'll see in later lessons).  
+**Example** `z == "I'm a string"` is true since replacing the logic variable `z` with
+the constant "I'm a string" makes both sides of `==` be the same constant.
 
-In `q == str`, `q` itself is a logic variable but `str` does not contain any, so
-there is only one (rather trivial) answer: replace `q` by `str`.
+### Parsing the _Run-Expression_
 
-In general, the expression:
+We can parse the run-expression following the simplified syntax below, where occurrences
+of the notation `<etc>` signifies omission from the definirion: there is no syntactic
+category named `<etc>`.
+
 ```ocaml
-<top level> ::= run <size-indicator> <goal> <hander>
+<run-expression> ::= run <size-indicator> <goal> <hander>
 
 <size-indicator> ::=  one | two | three | four | five
                     | q   | qr  | qrs   | qrst | qrstu
@@ -99,6 +104,18 @@ In general, the expression:
 
 <handler> ::= project | <etc>
 ```
+
+.
+The `q == str`  proposition is essentially 
+
+All logic variales in OCanren are introduced either
+as parameters of `fun` (as in our program) or as parameters of the `fresh` keyword
+(we'll see in later lessons).  
+
+In `q == str`, `q` itself is a logic variable but `str` does not contain any, so
+there is only one (rather trivial) answer: replace `q` by `str`.
+
+
 
 
 ### Type-wise
