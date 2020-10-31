@@ -93,7 +93,7 @@ syntactically identical.
  replacing `x` by `2`,  and `y` by `1` makes both the expression `2 + 1`.
 
 **Example** `z == "I'm a string"` is true since replacing the logic variable `z` with
-the constant "I'm a string" makes both sides of `==` be the same constant.
+the constant `"I'm a string"` makes both sides of `==` be the same constant.
 
 ### Parsing the _Run-Expression_
 
