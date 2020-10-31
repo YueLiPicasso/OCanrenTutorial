@@ -1,8 +1,5 @@
 # Say "Hello World!" in OCanren
 
-The goal of this lesson is to introduce, with the help of a [hello-world](hello.ml) program,
-to the reader things that an OCanren programmer generally does, thinks about or
-refers to.
 
 ##  Executing the Program
 
