@@ -101,7 +101,7 @@ We can parse the run-expression following the simplified syntax below, where occ
 of the notation `<etc>` signifies omission from the definirion: there is no syntactic
 category named `<etc>`.
 
-```ocaml
+```c
 <run-expression> ::= run <size-indicator> <goal> <hander>
 
 <size-indicator> ::=  one | two | three | four | five
