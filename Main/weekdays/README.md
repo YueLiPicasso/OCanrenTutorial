@@ -21,7 +21,7 @@ OCanren program is organized. We explain the parts below.
 
 ## Part 1: Type Definitions
 
-This part does type definitions:
+This part connsists of:
 ```ocaml
 @type 'a logic' = 'a logic with show;;
 @type t = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
