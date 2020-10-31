@@ -43,7 +43,7 @@ applied to the string literal `"hello world!\n"`.
 The operator `!!`, provided by the module Logic, make type conversion to the OCanren
 internal representation, something like what a calculator program
 does when it receives an input string "1" and converts it to the integer
-or floating-point type value for further processing. We could see from the interface that:
+or floating-point type for further processing. We could see from the interface that:
 ```ocaml
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
