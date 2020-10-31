@@ -54,7 +54,7 @@ The `injected` type constructor is provided by the module Logic as an abstract t
 The `logic` type constructor is also
 provided by the module Logic, but as a new variant type.
 It has two constructors `Var` and `Value` which
-represent respectively a logic _Var_<>iable and a concrete _Value_
+represent respectively a logic _Var_<nospace>iable and a concrete _Value_
 of the parameter type of `logic`.
 
 
