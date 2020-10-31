@@ -31,7 +31,8 @@ The source code of the module OCanren resides in
 (It does not have an interface `.mli` file). 
 Inspecting the content thereof,  we shall see that basically
 it includes two modules [Logic](../../Installation/ocanren/src/core/Logic.mli)
-and [Core](../../Installation/ocanren/src/core/Core.mli), and renames the module RStream
+and [Core](../../Installation/ocanren/src/core/Core.mli), and renames the module
+[RStream](../../Installation/ocanren/src/core/RStream.mli)
 to Stream, and finally defines the Std module. 
 
 The second line:
