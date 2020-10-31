@@ -46,18 +46,24 @@ string literal `"hello world!\n"`.
 The prefix symbol `!!` is also known as
 _primitive injection_, which we will use very often with primitive
 OCaml values such as strings, characters, constant constructors
-(of variant values) etc.  It is provided by the module
-[Logic](../../Installation/ocanren/src/core/Logic.mli)
-which is included in the module OCanren. We could see from the
-interface of Logic that:
+(of variant values) etc.  It is provided by the module Logic.
+We could see from the interface that:
 ```ocaml
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
-Therefore the expression str has type `(string, string logic) injected`
+Therefore the expression `str` has type `(string, string logic) injected`
 (read "string, string-logic, injected").
 OCanren exclusively manipulates values of types of this form, which we
-shall call an _injected type_. Conversion to an injected type is
- an integral part of OCanren programming.
+shall call an _injected type_.
+
+The `injected` type constructor is provided
+by the module Logic as an abstract type.
+
+The `logic` type constructor is also
+provided by the module Logic, but as a new variant type.
+It has two (value) constructors `Var` and `Value` which
+represent respectively a logic _Var_iable and a concrete _Value_
+of the parameter type of `logic`.
 
 
 The 3rd line:
