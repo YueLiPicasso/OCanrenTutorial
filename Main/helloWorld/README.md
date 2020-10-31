@@ -62,7 +62,7 @@ by the module Logic as an abstract type.
 The `logic` type constructor is also
 provided by the module Logic, but as a new variant type.
 It has two (value) constructors `Var` and `Value` which
-represent respectively a logic _Var_iable and a concrete _Value_
+represent respectively a logic _Var_<>iable and a concrete _Value_
 of the parameter type of `logic`.
 
 
