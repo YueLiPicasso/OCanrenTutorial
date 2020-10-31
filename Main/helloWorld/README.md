@@ -63,22 +63,46 @@ let _ =
     Stream.take ~n:1 @@
       run q (fun q -> ocanren { q == str }) project;;
 ``` 
-finds all q's that unify with `str` then prints the first of them.
+is divided into three sub-expressions by the right associative infix
+operator `@@` that is provided by OCaml's core library
+[Stdlib](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html). The most
+ important sub-expression is:
+ ```ocaml
+ run q (fun q -> ocanren { q == str }) project
+ ```
 
-Given two expressions of the same type, we say that
-they _unify_  if both have zero or more sub-expressions (possibly of different types)
+Given two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub> of the same type, we say that
+they _unify_  (denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub>)
+if both have zero or more sub-expressions
 considered as logic variables,  and by replacing these logic variables by some expressions
 (the replacement shall respect types) we can make the resulting expressions
-syntactically identical. For example: the expressions `x + 1` and `2 + y` unify since
+syntactically identical. For example: the expressions `(x + 1) == (2 + y)` is true since
  replacing `x` by `2`,  and `y` by `1` makes both the expression `2 + 1`.
 
+All logic variales in OCanren are introduced either
+as parameters of `fun` (as in our program) or as parameters of the `fresh` keyword
+(we'll see in later lessons).  
+
+In `q == str`, `q` itself is a logic variable but `str` does not contain any, so
+there is only one (rather trivial) answer: replace `q` by `str`.
+
+In general, the expression:
+```ocaml
+<top level> ::= run <size-indicator> <goal> <hander>
+
+<size-indicator> ::=  one | two | three | four | five
+                    | q   | qr  | qrs   | qrst | qrstu
+		    | succ <size-indicator>
+
+<goal> ::= fun <parameters> -> ocanren { <goal-body> }
+
+<handler> ::= project | <etc>
+```
 
 
 ### Type-wise
 
-This line is divided into three sub-expressions by the right associative infix
-operator `@@` that is provided by OCaml's core library
-[Stdlib](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html).
+This line
 
 
 The sub-expression:
@@ -106,7 +130,7 @@ val take : ?n:int -> 'a t -> 'a list
 ```
 implying that the type of the ensemble:
 ```ocaml
-run q (fun q -> ocanren { q == str }) project
+
 ```
 is just `string RStream.t` (i.e., a stream of strings) that is in agreement with the return
 type of `run` from the module [Core](../../Installation/ocanren/src/core/Core.mli#L120).
