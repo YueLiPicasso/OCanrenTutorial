@@ -113,8 +113,9 @@ category named `<etc>`.
 <handler> ::= project | <etc>
 ```
 
-> To do: Check the camlp5 extension for the goal-bogy category; write a markdown extension
-for BNF notation.
+> To do: Check the camlp5 extension for the goal-body category
+
+> To do: Write a markdown extension for BNF notation.
 
 .
 The `q == str`  proposition is essentially 
