@@ -47,12 +47,14 @@ or floating-point type for further processing. We could see from the interface t
 ```ocaml
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
-The `injected` type constructor is provided by the module Logic as an abstract type.
+The `injected` type constructor is provided by the module Logic as an abstract type
+ (so we do not concern ourselves with its implementation).
 The `logic` type constructor, also
 provided by the module Logic, takes one type parameter and has two constructors
-`Var` and `Value`, representing respectively a _logic variable_ and a _concrete value_
-over or of the parameter type, in the sense that wrt. the arithmetic expression `1 + x` we
-know that `x` is a logic variable over the set of integers and `1` is a concrete value. 
+`Var` and `Value` representing respectively a _logic variable_ and a _concrete value_
+over/of the parameter type, in the sense that wrt. the arithmetic expression `1 + x` we
+know that `x` is a logic variable over the integer type and `1` is a concrete value of
+the interger type. 
 
 The 3rd line:
 ```ocaml
