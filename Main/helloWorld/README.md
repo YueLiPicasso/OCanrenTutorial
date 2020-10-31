@@ -73,7 +73,7 @@ operator `@@` that is provided by OCaml's core library
  whose most important part is: `q == str`. 
 
 Given two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub> of the same type, we say that
-they _unify_  (denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub>)
+they _unify_, denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub> , 
 if both have zero or more sub-expressions
 considered as logic variables,  and by replacing these logic variables by some expressions
 (the replacement shall respect types) we can make the resulting expressions
