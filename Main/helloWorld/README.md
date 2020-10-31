@@ -56,11 +56,12 @@ The `injected` type constructor is provided by the module Logic as an abstract t
 ### Logic Variables
 
 The `logic` type constructor which appears in the type of `!!` above is also
-provided by the module Logic, but as an exposed varant type.
-It takes one type parameter and has two constructors
-`Var` and `Value` representing respectively a _logic variable_ and a _concrete value_
+provided by the module Logic. 
+It takes one type parameter and its type representation is exposed: we could
+see from the module interface that it has two constructors
+`Var` and `Value`,  representing respectively a _logic variable_ and a _concrete value_
 over/of the parameter type, in the sense that wrt. the arithmetic expression `1 + x` we
-know that `x` is a logic variable over the integer type and `1` is a concrete value of
+say that `x` is a logic variable over the integer type and `1` is a concrete value of
 the integer type. 
 
 The 3rd line:
