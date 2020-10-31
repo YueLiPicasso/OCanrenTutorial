@@ -69,7 +69,7 @@ Given two expressions of the same type, we say that
 they _unify_  if both have zero or more sub-expressions (possibly of different types)
 considered as logic variables,  and by replacing these logic variables by some expressions
 (the replacement shall respect types) we can make the resulting expressions
-syntactically identical. For example: the expressions `x + 1` and `2 + y` unify for
+syntactically identical. For example: the expressions `x + 1` and `2 + y` unify since
  replacing `x` by `2`,  and `y` by `1` makes both be `2 + 1`.
 
 
