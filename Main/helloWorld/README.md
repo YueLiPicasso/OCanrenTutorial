@@ -4,40 +4,37 @@ The goal of this lesson is to introduce, with the help of a [hello-world](hello.
 to the reader things that an OCanren programmer generally does, thinks about or
 refers to.
 
-##  Execute the Program
+##  Executing the Program
 
 The source code has to be compiled and linked, for which you would need the [Makefile](Makefile).
 Now open terminal under the `helloworld` direcory, and:
 ```
 make
 ```
-This would produce a `.opt` file, execution of which by:
+This would produce a native-code file `hello.opt`, execution of which by:
 ```
 ./hello.opt
 ```
 shall print `hello world!` on your terminal.
 
-## Understand the Program
+## Understanding the Program
 
 The first line:
 ```ocaml
 open OCanren;;
 ```
 makes the names from the module OCanren available for later use.
-The source code of this module resides in
-[OCanren.ml](../../Installation/ocanren/src/OCanren.ml). 
+
+
+The source code of the module OCanren resides in
+[OCanren.ml](../../Installation/ocanren/src/OCanren.ml)
+(It does not have an interface `.mli` file). 
 Inspecting the content thereof,  we shall see that basically
 it includes two modules Logic and Core, and renames the module RStream
-to Stream, and finally defines the Std module.
-
-The interfaces of modules
-Logic and Core reside in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli)
-and [Core.mli](../../Installation/ocanren/src/core/Core.mli) respectively. These will
-be the most frequently referenced files when you program in OCanren. The
-module Logic contains the secrets of OCanren's type system that enables
-_typed_ relational programming, whereas the module Core provides all the
-generic (miniKanren family) constructs such as `conde`, `fresh`, `run` and `==`
-(unification) etc.
+to Stream, and finally defines the Std module. The interfaces of modules
+Logic and Core reside in [Logic.mli]
+and [Core.mli] respectively. They will
+be the files most frequently referred to when you program in OCanren.
 
 The second line:
 ```ocaml
@@ -51,7 +48,8 @@ The prefix symbol `!!` is also known as
 _primitive injection_, which we will use very often with primitive
 OCaml values such as strings, characters, constant constructors
 (of variant values) etc.  It is provided by the module
-Logic which is included in the module OCanren. We could see from the
+[Logic](../../Installation/ocanren/src/core/Logic.mli)
+which is included in the module OCanren. We could see from the
 interface of Logic that:
 ```ocaml
 val (!!) : 'a -> ('a, 'a logic) injected
@@ -146,7 +144,7 @@ The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.
 syntax preprocessor to the `<content>` according to user-defined rules that in our case is
  specified in [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml).
  The effect is, for instance, we can use `==` rather than the longer `===` or `unify`
-(both defined in [Core](../../Installation/ocanren/src/core/Core.mli#L36)) according to the [prescription](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238).
+(both defined in [Core](../../Installation/ocanren/src/core/Core.mli)) according to the [prescription](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238).
 
 ## Summary
 
