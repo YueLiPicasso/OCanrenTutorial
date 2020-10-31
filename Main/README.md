@@ -8,4 +8,5 @@
     - Non-recursive
     - Recusive 
 - Pairs and Tuples
+- Semantics of Relations
 
