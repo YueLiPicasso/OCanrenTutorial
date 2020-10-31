@@ -56,22 +56,29 @@ the `-i`  option as in `BFLAGS = -rectypes -g -i` and save.
 
 ```ocaml
 module Inj = struct
-  let monday    = fun () -> !!(Monday)
-  and tuesday   = fun () -> !!(Tuesday)
-  and wednesday = fun () -> !!(Wednesday)
-  and thursday  = fun () -> !!(Thursday)
-  and friday    = fun () -> !!(Friday);;
+  let monday    : unit -> groundi = fun () -> !!(Monday)
+  and tuesday   : unit -> groundi = fun () -> !!(Tuesday)
+  and wednesday : unit -> groundi = fun () -> !!(Wednesday)
+  and thursday  : unit -> groundi = fun () -> !!(Thursday)
+  and friday    : unit -> groundi = fun () -> !!(Friday);;
 end;;
 
 open Inj;;
 ```
-which is characteristic of OCanren programming. For every constructor of a (user-defined) variant
+For every constructor of a (user-defined) variant
 type we shall define an _injection function_ whose name must be the same as the constructor name
-except that the initial letter is set in lowercase. The purpose of these injection functions
-is two fold: firstly they perform type convertion in order for OCanren to process
-(representations of) values of the user type;
-secondly together with the `ocanren{}` environment they serve to make writing in OCanren
-intuitive for an OCaml programmer. I shall explain these points now.
+except that the initial letter is set in lowercase. These injection functions
+does two things:
+1. They create injnected level representations of the variant values.
+1. Together with the `ocanren{}` environment, they serve to make writing in OCanren
+intuitive for an OCaml programmer.
+
+The first point above is understood wrt. the conventional view of a constant constructior. For
+example, the constructor `Monday` is conventionally regarded as a function that take a unit
+value `() : unit` and returns a value of type `t`. Similarly, the injection functions defined
+in the module `Inj` could be regarded as constructors for the `groundi` type, for that they
+take the unit value and returns a value of type `groundi`.
+
 
 ## Part 3: Relation Definitions
 

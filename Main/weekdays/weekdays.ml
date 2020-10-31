@@ -7,11 +7,11 @@ open OCanren;;
 type groundi = (ground, logic) injected;;
 
 module Inj = struct
-  let monday    = fun () -> !!(Monday)
-  and tuesday   = fun () -> !!(Tuesday)
-  and wednesday = fun () -> !!(Wednesday)
-  and thursday  = fun () -> !!(Thursday)
-  and friday    = fun () -> !!(Friday);;
+  let monday    : unit -> groundi = fun () -> !!(Monday)
+  and tuesday   : unit -> groundi = fun () -> !!(Tuesday)
+  and wednesday : unit -> groundi = fun () -> !!(Wednesday)
+  and thursday  : unit -> groundi = fun () -> !!(Thursday)
+  and friday    : unit -> groundi = fun () -> !!(Friday);;
 end;;
 
 open Inj;;
