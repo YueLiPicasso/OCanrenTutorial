@@ -64,7 +64,7 @@ let _ =
       run q (fun q -> ocanren { q == str }) project;;
 ``` 
 finds all q's that unify with `str` then prints the first of them. We say that a value
-_v_<sub>1<\sub> (of some type _t_) _unifies_ another value _v_<sub>2<\sub> (also of _t_)
+_v_<sub>1</sub> (of some type _t_) _unifies_ another value _v_<sub>2</sub> (also of _t_)
 if both values have zero or more logic variables (possibly of different types) as sub-terms
 and by replacing these logic variables we can make the resulting values
 syntactically identical. For example: `x + 1` unifies with
