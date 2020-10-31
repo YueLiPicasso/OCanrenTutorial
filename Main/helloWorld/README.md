@@ -76,7 +76,7 @@ they _unify_  (denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub>)
 if both have zero or more sub-expressions
 considered as logic variables,  and by replacing these logic variables by some expressions
 (the replacement shall respect types) we can make the resulting expressions
-syntactically identical. For example: the expressions `(x + 1) == (2 + y)` is true since
+syntactically identical. For example: `(x + 1) == (2 + y)` is true since
  replacing `x` by `2`,  and `y` by `1` makes both the expression `2 + 1`.
 
 All logic variales in OCanren are introduced either
