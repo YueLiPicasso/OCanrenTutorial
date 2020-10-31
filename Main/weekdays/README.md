@@ -66,10 +66,11 @@ end;;
 open Inj;;
 ```
 For every constructor of a (user-defined) variant
-type we shall define an _injection function_ whose name must be the same as the constructor name
+type we shall define an _injection function_ whose name
+for the sake of convenience should be the same as the constructor name
 except that the initial letter is set in lowercase. These injection functions
 does two things:
-1. They create injnected level representations of the variant values.
+1. They create injected level representations of the variant values.
 1. Together with the `ocanren{}` environment, they serve to make writing in OCanren
 intuitive for an OCaml programmer.
 
