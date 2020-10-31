@@ -54,7 +54,7 @@ provided by the module Logic, takes one type parameter and has two constructors
 `Var` and `Value` representing respectively a _logic variable_ and a _concrete value_
 over/of the parameter type, in the sense that wrt. the arithmetic expression `1 + x` we
 know that `x` is a logic variable over the integer type and `1` is a concrete value of
-the interger type. 
+the integer type. 
 
 The 3rd line:
 ```ocaml
