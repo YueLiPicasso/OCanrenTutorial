@@ -138,7 +138,7 @@ use `q`. In other words, whenever you query about one logic variable, you shall 
 The `run` function
 takes three arguments: a _size indicator_ (`q`, `qr`, etc.), a _query_ (`fun` ...) and the third
 argument. The query shall list all logic variables that you query about immediately after
-`fun` of the second argument, and the number of which shall agree with the size indicator.
+`fun` , and the number of which shall agree with the size indicator.
 In our example the logic variable
  queried about happens to be named `q`, but we can use any other name, like `honey`, then the
 line would become:
