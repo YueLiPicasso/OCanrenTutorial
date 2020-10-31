@@ -47,10 +47,7 @@ or floating-point type for further processing. We could see from the interface t
 ```ocaml
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
-OCanren internally manipulates values of types of the form `('a, 'a logic) injected`.
-
 The `injected` type constructor is provided by the module Logic as an abstract type.
-
 The `logic` type constructor, also
 provided by the module Logic, takes one type parameter.
 The two constructors `Var` and `Value`
