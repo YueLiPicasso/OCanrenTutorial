@@ -81,7 +81,7 @@ let _ =
     Stream.take ~n:1 @@
       run q (fun q -> ocanren { q == str }) project;;
 ``` 
-finds all q's that unify with str then prints the first of them.
+finds all q's that unify with `str` then prints the first of them.
 
 I now elaborate on aspects of this line.
 
@@ -111,7 +111,7 @@ Therefore we can infer that the ensemble:
 ```ocaml
 Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
 ```
-has the type _string list_. The module name _Stream_ is provided by the
+has the type _string list_. The module Stream is provided by the
 [OCanren](../../Installation/ocanren/src/OCanren.ml#L22) module, and its interface is
 [RStream.mli](../../Installation/ocanren/src/core/RStream.mli) where we could find:
 ```ocaml
@@ -121,23 +121,27 @@ implying that the type of the ensemble:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
 ```
-is just _string RStream.t_ (i.e., a stream of strings) that is in agreement with the return
-type of _run_ from the module [Core](../../Installation/ocanren/src/core/Core.mli#L120). The 3rd line therefore
+is just `string RStream.t` (i.e., a stream of strings) that is in agreement with the return
+type of `run` from the module [Core](../../Installation/ocanren/src/core/Core.mli#L120).
+The 3rd line therefore
 collects all possible answers to form a stream and takes one (the first one) from it to in turn
 form a (singleton) list and print the member of this list.
 
 ### Programming-wise
 
-The occurrence of q immediately after _run_ is a name provided by
+The occurrence of `q` immediately after `run` is a name provided by
  [Core](../../Installation/ocanren/src/core/Core.mli#L225), and similar (predefined) names
-as qr, qrs, qrst etc., used respectively when you query about two, three, and four
+as `qr`, `qrs`, `qrst` etc., used respectively when you query about two, three, and four
 _logic variables_. In our hello-world example we only query about one logic variable, so we
-use _q_. In other words, whenever you query about one logic variable, you shall always put
-_q_ immediately after _run_, and for two logic variables, put _qr_, and so on. The _run_ function
-takes three arguments: a _size indicator_ (q, qr, etc.), a _query_ (fun ...) and the third
+use `q`. In other words, whenever you query about one logic variable, you shall always put
+`q` immediately after `run`, and for two logic variables, put `qr`, and so on.
+
+The `run` function
+takes three arguments: a _size indicator_ (`q`, `qr`, etc.), a _query_ (`fun` ...) and the third
 argument. The query shall list all logic variables that you query about immediately after
-_fun_, and whose number shall agree with the size indicator. In our example the logic variable
- queried about happens to be named q, but we can use any other name, like _honey_, then the
+`fun` of the second argument, and the number of which shall agree with the size indicator.
+In our example the logic variable
+ queried about happens to be named `q`, but we can use any other name, like `honey`, then the
 line would become:
 ```ocaml
 run q (fun honey -> ocanren {honey == str}) project;;
@@ -145,9 +149,8 @@ run q (fun honey -> ocanren {honey == str}) project;;
 Within `ocanren{}` goes your
 goals, built using unification, conjunction, disjunction etc. The third argument
 casts (projects) the
-answer from an injected type to some "usual" type for
-the answer is ground, i.e.,  no free logic variables therein. The type of _project_ is
-documented in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli#L128).
+answer from an injected type to some user friendly type, in our case `string`.
+ The type of _project_ is documented in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli#L128).
 
 
 ### Camlp5 Syntax Extension-wise
