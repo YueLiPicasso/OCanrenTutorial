@@ -77,7 +77,7 @@ intuitive for an OCaml programmer.
 The first point above is understood wrt. the conventional view of a constant constructior. For
 example, the constructor `Monday` is conventionally regarded as a function that take a unit
 value `() : unit` and returns a value of type `t`. Similarly, the injection functions defined
-in the module `Inj` could be regarded as constructors for the `groundi` type, for that they
+in the module Inj could be regarded as constructors for the `groundi` type, for that they
 take the unit value and return values of type `groundi`.
 
 The second point is understood  wrt. Part 3 as follows.
