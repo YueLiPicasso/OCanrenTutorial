@@ -78,7 +78,7 @@ operator `@@` that is provided by OCaml's core library
  ```ocaml
  run q (fun q -> ocanren { q == str }) project
  ```
-called _run-expression_ whose most important part is: `q == str`. 
+called a _run-expression_ whose most important part is: `q == str`. 
 
 ### Unification
 
