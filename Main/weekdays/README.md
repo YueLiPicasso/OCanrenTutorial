@@ -53,8 +53,6 @@ by:
 1) Marking as comment all lines except the `@type t = ...` line in the source file and save.
 2) Amending the _BFLAGS_ variable in the [Makefile](Makefile#L11) with
 the `-i`  option as in `BFLAGS = -rectypes -g -i` and save.
-See also [Native-code Compilation](https://ocaml.org/releases/4.11/htmlman/native.html)
- and [GNU Make](https://www.gnu.org/software/make/).
 3) Running `make`  to instruct the terminal to display the signature of the source code. 
 
 ## Part 2
