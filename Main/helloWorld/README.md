@@ -40,28 +40,23 @@ The second line:
 let str = !!("hello world!\n");;
 ```
 associates the value name `str` with the expression that
-is the prefix symbol `!!` (double exclamation) applied to the
-string literal `"hello world!\n"`.
+is the prefix operator `!!` (named _primitive injection_)
+applied to the string literal `"hello world!\n"`.
 
-The prefix symbol `!!` is also known as
-_primitive injection_, which we will use very often with primitive
-OCaml values such as strings, characters, constant constructors
-(of variant values) etc.  It is provided by the module Logic.
-We could see from the interface that:
+The operator `!!`, provided by the module Logic, make type conversion to the OCanren
+internal representation, something like what a calculator program
+does when it receives an input string "1" and converts it to the integer
+or floating-point type value for further processing. We could see from the interface that:
 ```ocaml
 val (!!) : 'a -> ('a, 'a logic) injected
 ```
-Therefore the expression `str` has type `(string, string logic) injected`
-(read "string, string-logic, injected").
-OCanren exclusively manipulates values of types of this form, which we
-shall call an _injected type_.
+OCanren internally manipulates values of types of the form `('a, 'a logic) injected`.
 
-The `injected` type constructor is provided
-by the module Logic as an abstract type.
+The `injected` type constructor is provided by the module Logic as an abstract type.
 
 The `logic` type constructor is also
 provided by the module Logic, but as a new variant type.
-It has two (value) constructors `Var` and `Value` which
+It has two constructors `Var` and `Value` which
 represent respectively a logic _Var_<>iable and a concrete _Value_
 of the parameter type of `logic`.
 
