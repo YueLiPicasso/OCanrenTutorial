@@ -1,2 +1,7 @@
 # OCanrenTutorial
-A tutorial on using OCanren (work in progress)
+
+(work in progress)
+
+A tutorial on using OCanren.
+
+I assume the reader knows OCaml. 
