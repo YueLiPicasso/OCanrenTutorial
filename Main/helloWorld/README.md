@@ -4,17 +4,6 @@ The goal of this lesson is to introduce, with the help of a hello-world program,
 to the reader things that an OCanren programmer generally thinks about or
 refers to.
 
-```ocaml
-open OCanren;;
-
-let str = !!("hello world!\n");;
-
-let _ =
-  List.iter print_string @@
-    Stream.take ~n:1 @@
-      run q (fun q -> ocanren { q == str }) project;;
-```
-
 ##  Execute the Program
 
 We first execute the code. The source code resides in [hello.ml](hello.ml).
