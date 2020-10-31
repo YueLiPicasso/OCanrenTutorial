@@ -1,13 +1,12 @@
 # Say "Hello World!" in OCanren
 
-The goal of this lesson is to introduce, with the help of a hello-world program,
+The goal of this lesson is to introduce, with the help of a [hello-world](hello.ml) program,
 to the reader things that an OCanren programmer generally thinks about or
 refers to.
 
 ##  Execute the Program
 
-We first execute the code. The source code resides in [hello.ml](hello.ml).
-To compile and link it, you would need the [Makefile](Makefile).
+The source code has to be compiled and linked, for which you would need the [Makefile](Makefile).
 Now open terminal under the `helloworld` direcory, and:
 ```
 make
