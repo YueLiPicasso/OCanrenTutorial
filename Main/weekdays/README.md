@@ -45,10 +45,7 @@ together with a string conversion function:
 ```ocaml
 val show_weekdays : weekdays -> string
 ```
- among others.
-
-
-**Note**: We may observe the exact effect of using `@type`
+We could observe the exact effect of using `@type`
 by:
 1) Marking as comment all lines except the `@type t = ...` line in the source file and save.
 2) Amending the _BFLAGS_ variable in the [Makefile](Makefile#L11) with
