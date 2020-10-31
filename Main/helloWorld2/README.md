@@ -13,7 +13,7 @@ Level No. | Level Name
 4         | Injected
 
 
-The [program](hello2.mi) that we study in this lesson is almost the
+The [program](hello2.ml) that we study in this lesson is almost the
 same as [the one](../helloWorld/hello.ml) of the previous lesson, except that the line:
 ```ocaml
 let str = !!("hello world!\n");;
