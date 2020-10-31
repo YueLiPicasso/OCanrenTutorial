@@ -54,11 +54,11 @@ The second line:
 ```ocaml
 let str = !!("hello world!\n");;
 ```
-associates the value name str with the expression that
-is the prefix symbol !! (double exclamation) applied to the
-string literal "hello world!\n".
+associates the value name `str` with the expression that
+is the prefix symbol `!!` (double exclamation) applied to the
+string literal `"hello world!\n"`.
 
-The prefix symbol !! is also known as
+The prefix symbol `!!` is also known as
 _primitive injection_, which we will use very often with primitive
 OCaml values such as strings, characters, constant constructors
 (of variant values) etc.  It is provided by the module
