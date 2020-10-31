@@ -150,9 +150,8 @@ syntax preprocessor to the `<content>` according to user-defined rules that in o
 
 ## Summary
 
-OCanren is analogous to   
-"hello world!\n" simultaneously inhabits conceptually different domains signified
-by the types _string_ and _(string, string logic) injected_.
+When working with OCanren, data like _hello world!_  inhabits the user interface type
+`string` as well as the  OCanren-internal type `(string, string logic) injected`.
 
 A syntax preprocessor is used to make OCanren programs look intuitive in the eyes of an OCaml and
 (Scheme based) miniKanren programmer. An OCanren program has to be compiled and linked, which
