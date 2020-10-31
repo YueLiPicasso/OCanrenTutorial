@@ -7,20 +7,27 @@ _Monday_, ...,  _Friday_. The relational programming that we want to perform on 
 is relatively simple: we define the _next day_ relation. The emphasis, however, is on the
 extra infrastructure that we must build in order to work with such basic variant values in
 OCanren. The reader may now wish to `make` in the lesson directory and then `./test.opt`
-for the result of some queries to the next-day relation.  And now we inspect the source code
-block by block.
+for the result of some queries to the next-day relation.  After the initial `open OCanren;;`
+statement, the source code can be organized
+into four logical parts: type definitions (Part 1), injection utilities (Part 2), relation
+definitions (Part 3) and queries (Part 4) which we explain below.
 
-The 1st block:
+## Part 1
+
+This part does type definitions:
 ```ocaml
-open OCanren;;
+@type 'a logic' = 'a logic with show;;
+@type t = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
+@type ground = t with show;;
+@type logic = t logic' with show;;
+type groundi = (ground, logic) injected;;
 ```
-provides the basic OCanren infrastructure.
 
-The 2ed block:
+As explained earlier, the `@type` definition:
 ```ocaml
 @type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
 ```
-is syntactic sugar which is expanded into 
+would be expanded into 
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday;;
 ```
@@ -28,9 +35,6 @@ and among others a _show_ function:
 ```ocaml
 val show_weekdays : weekdays -> string
 ```
-which converts any value of the type _weekdays_ to a character string
-that facilitates display of the value. This `@type` syntax is provided by the GT package.
-
 **Note**: We may observe the exact effect of using `@type`
 by:
 1) marking as comment all lines below the `@type` line in the source file and save;
@@ -38,7 +42,8 @@ by:
 option: `BFLAGS = -rectypes -g -i` and save;
 3) running `make`  to instruct the terminal to display the signature of the source code. 
 
-The 3rd block is: 
+## Part 2
+
 ```ocaml
 module Inj = struct
   let monday    = fun () -> !!(Monday)
@@ -48,6 +53,7 @@ module Inj = struct
   and friday    = fun () -> !!(Friday);;
 end;;
 
+open Inj;;
 ```
 which is characteristic of OCanren programming. For every constructor of a (user-defined) variant
 type we shall define an _injection function_ whose name must be the same as the constructor name
@@ -57,18 +63,31 @@ is two fold: firstly they perform type convertion in order for OCanren to proces
 secondly together with the `ocanren{}` environment they serve to make writing in OCanren
 intuitive for an OCaml programmer. I shall explain these points now.
 
-**Type Hierarchy** OCanren involves a four-level type hierarchy:
+## Part 3
+
+```ocaml
+let next : groundi -> groundi -> goal = fun d1 d2 ->
+  ocanren{
+      d1 == Monday & d2 == Tuesday
+    | d1 == Tuesday & d2 == Wednesday
+    | d1 == Wednesday & d2 == Thursday
+    | d1 == Thursday & d2 == Friday
+    | d1 == Friday & d2 == Monday 
+    };;
+```
+
+## Part 4
+
+```ocaml
+let _ =
+  List.iter (fun x -> print_string (GT.show(ground) x ^ "\n")) @@ 
+    Stream.take @@
+      run q (fun r -> ocanren{next Monday r})  project;;
 
 
-Level No. | Level Name
---        |--
-1         | Abstract
-2         | Ground
-3         | Logic
-4         | Injected
+let _ =
+  List.iter (fun x -> print_string (GT.show(ground) x ^ "\n")) @@ 
+    Stream.take @@
+      run q (fun r -> ocanren{next r Friday})  project;;
+```
 
-In our example program the absract level and ground level type coincide (given by the
-`@type` line) and we omitted defining type abbreviations for the logic level and the injected level.   
-
-
- function, which is invoked as `GT.show(weekdays)` in our program.  

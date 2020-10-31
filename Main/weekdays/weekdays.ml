@@ -1,13 +1,9 @@
 open OCanren;;
 
 @type 'a logic' = 'a logic with show;;
-
 @type t = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
-
 @type ground = t with show;;
-
 @type logic = t logic' with show;;
-
 type groundi = (ground, logic) injected;;
 
 module Inj = struct
