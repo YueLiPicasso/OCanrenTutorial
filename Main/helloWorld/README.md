@@ -1,7 +1,9 @@
 # Say "Hello World!" in OCanren
 
 The goal of this lesson is to execute and understand the
-following piece of OCanren code.
+following piece of OCanren code. It introduces the reader to
+things that an OCanren programmer usually thinks about or
+refers to. 
 
 ```ocaml
 open OCanren;;
@@ -162,9 +164,7 @@ syntax preprocessor to the `<content>` according to user-defined rules that in o
 
 ## Summary
 
-The most characteristic part of OCanren programming, compared with other dialects
-of logic/relational programming such as Prolog and Scheme miniKanren, is that it has
-a unique layer of type manipulation: The same piece of information like
+OCanren is analogous to   
 "hello world!\n" simultaneously inhabits conceptually different domains signified
 by the types _string_ and _(string, string logic) injected_.
 
