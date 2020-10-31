@@ -147,7 +147,7 @@ run q (fun honey -> ocanren {honey == str}) project;;
 ```
 Within `ocanren{}` goes your
 goals, built using unification, conjunction, disjunction etc. The third argument
-casts (`project`s) the
+converts the
 answer from an injected type to some user friendly type that in our case is `string`.
  The type of `project` is documented in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli#L128).
 
