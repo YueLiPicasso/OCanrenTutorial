@@ -70,6 +70,7 @@ operator `@@` that is provided by OCaml's core library
  ```ocaml
  run q (fun q -> ocanren { q == str }) project
  ```
+ whose most important part is: `q == str`. 
 
 Given two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub> of the same type, we say that
 they _unify_  (denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub>)
