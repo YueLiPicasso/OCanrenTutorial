@@ -40,7 +40,7 @@ associates the value name `str` with the expression that
 is the prefix operator `!!` (named _primitive injection_)
 applied to the string literal `"hello world!\n"`.
 
-The operator `!!`, provided by the module Logic, make type conversion to the OCanren
+The operator `!!`, provided by the module Logic, makes type conversion to the OCanren
 internal representation, something like what a calculator program
 does when it receives an input string "1" and converts it to the integer
 or floating-point type for further processing. We could see from the interface that:
