@@ -22,6 +22,7 @@ open OCanren;;
 ```
 makes the names from the module OCanren available for later use.
 
+### Important Interfaces   
 
 The source code of the module OCanren resides in
 [OCanren.ml](../../Installation/ocanren/src/OCanren.ml)
@@ -40,6 +41,8 @@ associates the value name `str` with the expression that
 is the prefix operator `!!` (named _primitive injection_)
 applied to the string literal `"hello world!\n"`.
 
+### Injecting to the OCanren Internal Representation
+
 The operator `!!`, provided by the module Logic, makes type conversion to the OCanren
 internal representation, something like what a calculator program
 does when it receives an input string "1" and converts it to the integer
@@ -49,6 +52,9 @@ val (!!) : 'a -> ('a, 'a logic) injected
 ```
 The `injected` type constructor is provided by the module Logic as an abstract type
  (so we do not concern ourselves with its implementation).
+
+### Logic Variable
+
 The `logic` type constructor, also
 provided by the module Logic, takes one type parameter and has two constructors
 `Var` and `Value` representing respectively a _logic variable_ and a _concrete value_
