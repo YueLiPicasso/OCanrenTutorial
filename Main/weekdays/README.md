@@ -22,19 +22,25 @@ This part does type definitions:
 @type logic = t logic' with show;;
 type groundi = (ground, logic) injected;;
 ```
+Ultimately the injected level type constructor `groundi` is defined but it is based on two other
+type constructors `ground` and `logic` which in turn are defined using the
+abstract level type constructor `t`that happens to coincide with `ground`.
 
-As explained earlier, the `@type` definition:
+An `@type` definition, say:
 ```ocaml
 @type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday with show;;
 ```
-would be expanded into 
+is expanded in the background into the familiar form:
 ```ocaml
 type weekdays = Monday | Tuesday | Wednesday | Thursday | Friday;;
 ```
-and among others a _show_ function:
+together with a string conversion function:
 ```ocaml
 val show_weekdays : weekdays -> string
 ```
+ among others.
+
+
 **Note**: We may observe the exact effect of using `@type`
 by:
 1) marking as comment all lines below the `@type` line in the source file and save;
