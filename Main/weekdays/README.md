@@ -1,16 +1,23 @@
 ## Weekdays
 
 In this lesson, we learn about working with variant types defined solely with
-constant constructors. Our example program is [weekdays.ml](weekdays.ml), where
-we define a type called _weekdays_ whose inhabitants are five distinct constant constructors:
+constant constructors. Such is the simplest form of variant types and learning it
+could prepare us for working with more complicated variant types later on.
+
+Our example program is [weekdays.ml](weekdays.ml), where we define a type
+called _weekdays_ whose inhabitants are five distinct constant constructors:
 _Monday_, ...,  _Friday_. The relational programming that we want to perform on this type
 is relatively simple: we define the _next day_ relation. The emphasis, however, is on the
-extra infrastructure that we must build in order to work with such basic variant values in
-OCanren. The reader may now wish to `make` in the lesson directory and then `./test.opt`
-for the result of some queries to the next-day relation.  After the initial `open OCanren;;`
-statement, the source code can be organized
+extra utilities: injection functions that we build in order to work with variant values in
+OCanren.
+
+The reader may now wish to `make` in the lesson directory and then `./test.opt`
+for the result of some queries to the next-day relation.
+
+After the initial `open OCanren;;` statement, the source code can be organized
 into four logical parts: type definitions (Part 1), injection utilities (Part 2), relation
-definitions (Part 3) and queries (Part 4) which we explain below.
+definitions (Part 3) and queries (Part 4). This is also how a typical
+OCanren program is organized. We explain the parts below. 
 
 ## Part 1
 
