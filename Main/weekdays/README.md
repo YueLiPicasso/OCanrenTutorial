@@ -80,6 +80,8 @@ value `() : unit` and returns a value of type `t`. Similarly, the injection func
 in the module `Inj` could be regarded as constructors for the `groundi` type, for that they
 take the unit value and return values of type `groundi`.
 
+The second point is understood  wrt. Part 3 as follows.
+
 
 ## Part 3: Relation Definitions
 
