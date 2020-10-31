@@ -91,7 +91,6 @@ This line is for the side effect of the right hand side of the let-binding which
 is divided into three sub-expressions by the right associative infix
 operator `@@` that is provided by OCaml's core library
 [Stdlib](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html).
-The wild card is finally assigned the constant value `()` of type unit.
 
 
 The sub-expression:
