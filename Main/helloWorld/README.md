@@ -51,12 +51,12 @@ OCanren internally manipulates values of types of the form `('a, 'a logic) injec
 
 The `injected` type constructor is provided by the module Logic as an abstract type.
 
-The `logic` type constructor is also
-provided by the module Logic, but as a new variant type.
-It has two constructors `Var` and `Value` which
-represent respectively a logic _Var_<nospace>iable and a concrete _Value_
-of the parameter type of `logic`.
-
+The `logic` type constructor, also
+provided by the module Logic, takes one type parameter.
+The two constructors `Var` and `Value`
+represent respectively a _logic variable_ and a _concrete value_
+of the parameter type, in the sense that wrt. the arithmetic expression `1 + x` we
+know that `x` is a variable over the set of integers and `1` is a concrete value. 
 
 The 3rd line:
 ```ocaml
