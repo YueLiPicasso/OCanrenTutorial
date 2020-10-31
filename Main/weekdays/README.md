@@ -15,11 +15,11 @@ The reader may now wish to `make` in the lesson directory and then `./test.opt`
 for the result of some queries to the next-day relation.
 
 After the initial `open OCanren;;` statement, the source code can be organized
-into four logical parts: type definitions (Part 1), injection utilities (Part 2), relation
-definitions (Part 3) and queries (Part 4). This is also how a typical
+into four logical parts: type definitions, injection utilities, relation
+definitions and queries. This is also how a typical
 OCanren program is organized. We explain the parts below. 
 
-## Part 1
+## Part 1: Type Definitions
 
 This part does type definitions:
 ```ocaml
@@ -55,7 +55,7 @@ by:
 the `-i`  option as in `BFLAGS = -rectypes -g -i` and save.
 3) Running `make`  to instruct the terminal to display the signature of the source code. 
 
-## Part 2
+## Part 2: Injection Utilities
 
 ```ocaml
 module Inj = struct
@@ -76,7 +76,7 @@ is two fold: firstly they perform type convertion in order for OCanren to proces
 secondly together with the `ocanren{}` environment they serve to make writing in OCanren
 intuitive for an OCaml programmer. I shall explain these points now.
 
-## Part 3
+## Part 3: Relation Definitions
 
 ```ocaml
 let next : groundi -> groundi -> goal = fun d1 d2 ->
@@ -89,7 +89,7 @@ let next : groundi -> groundi -> goal = fun d1 d2 ->
     };;
 ```
 
-## Part 4
+## Part 4: Queries
 
 ```ocaml
 let _ =
