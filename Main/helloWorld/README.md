@@ -103,19 +103,19 @@ of the meta-identifier `etc` signifies omission: there is no syntactic
 category named `etc`.
 
 ```ebnf
-run expression = 'run',  size indicator, goal, hander;
+run expression = 'run',  size indicator, goal, hander ;
 
 size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
                   | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
-		  | 'succ', size indicator;
+		  | 'succ', size indicator ;
 
-goal = 'fun', parameters, '->', 'ocanren', '{', goal body, '}';
+goal = 'fun', parameters, '->', 'ocanren', '{', goal body, '}' ;
 
-handler = 'project' | etc
+handler = 'project' | etc ;
 
-parameters = etc
+parameters = etc ;
 
-goal body = etc
+goal body = etc ;
 ```
 
 > To do: Check the camlp5 extension for the goal-body category
