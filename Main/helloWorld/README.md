@@ -102,7 +102,7 @@ of the notation `<etc>` signifies omission from the definirion: there is no synt
 category named `<etc>`.
 
 ```ebnf
-run expression ::= 'run'  size-indicator goal hander;
+run-expression ::= 'run'  size-indicator goal hander;
 
 size-indicator ::=  'one' | 'two' | 'three' | 'four' | 'five'
                   | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
