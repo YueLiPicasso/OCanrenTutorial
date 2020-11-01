@@ -102,20 +102,18 @@ of the notation `<etc>` signifies omission from the definirion: there is no synt
 category named `<etc>`.
 
 ```ebnf
-run-expression ::= 'run'  size-indicator goal hander;
+run expression = 'run',  size indicator, goal, hander;
 
-size-indicator ::=  'one' | 'two' | 'three' | 'four' | 'five'
+size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
                   | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
-		  | 'succ' size-indicator;
+		  | 'succ', size indicator;
 
-goal ::= 'fun' parameters '->' 'ocanren' '{' goal-body '}';
+goal = 'fun', parameters, '->', 'ocanren', '{', goal-body, '}';
 
-handler ::= 'project' | etc
+handler = 'project' | etc
 ```
 
 > To do: Check the camlp5 extension for the goal-body category
-
-> To do: Write a markdown extension for BNF notation.
 
 .
 The `q == str`  proposition is essentially 
