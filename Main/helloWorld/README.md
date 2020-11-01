@@ -97,9 +97,10 @@ the constant `"I'm a string"` makes both sides of `==` the same constant.
 
 ### Parsing the _Run-Expression_
 
-We can parse the run-expression following the simplified syntax below, where occurrences
-of the notation `<etc>` signifies omission from the definirion: there is no syntactic
-category named `<etc>`.
+We can parse the run-expression following the simplified syntax below
+(Given in [EBNF](https://github.com/YueLiPicasso/language-grammars)), where occurrences
+of the meta-identifier `etc` signifies omission: there is no syntactic
+category named `etc`.
 
 ```ebnf
 run expression = 'run',  size indicator, goal, hander;
@@ -108,9 +109,13 @@ size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
                   | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
 		  | 'succ', size indicator;
 
-goal = 'fun', parameters, '->', 'ocanren', '{', goal-body, '}';
+goal = 'fun', parameters, '->', 'ocanren', '{', goal body, '}';
 
 handler = 'project' | etc
+
+parameters = etc
+
+goal body = etc
 ```
 
 > To do: Check the camlp5 extension for the goal-body category
