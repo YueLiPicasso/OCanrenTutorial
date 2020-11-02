@@ -99,15 +99,15 @@ the constant `"I'm a string"` makes both sides of `==` the same constant.
 
 The unification relation is provided by the module Core.
 
-### The _Run-Expression_
+### The OCanren Top Level: Run !
 
-We can parse the run-expression following the syntax below,
+We can parse the `run ...` expression following the syntax below,
  which is given in [EBNF](https://github.com/YueLiPicasso/language-grammars)
 except that occurrences of the meta-identifier `etc` signifies omission:
 there is no single syntactic category named `etc`.
 
 ```ebnf
-run expression = 'run',  size indicator, goal, answer handler ;
+top level = 'run',  size indicator, goal, answer handler ;
 
 size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
                 | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
