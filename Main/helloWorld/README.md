@@ -97,6 +97,8 @@ true since  replacing `x` by `2`,  and `y` by `1` makes both sides of `==` the e
 **Example** `z == "I'm a string"` is true since replacing the logic variable `z` with
 the constant `"I'm a string"` makes both sides of `==` the same constant.
 
+The unification relation `==` is provided by the module Core.
+
 ### Parsing the _Run-Expression_
 
 We can parse the run-expression following the syntax below,
@@ -120,22 +122,11 @@ parameters = etc ;
 
 goal body = etc ;
 ```
-The `run` function
-takes three arguments: a _size indicator_ (`q`, `qr`, etc.), a _query_ (`fun` ...) and the third
-argument. 
-
-
-> To do: Check the camlp5 extension for the goal-body category
-
-.
-The `q == str`  proposition is essentially 
-
-All logic variales in OCanren are introduced either
-as parameters of `fun` (as in our program) or as parameters of the `fresh` keyword
-(we'll see in later lessons).  
-
-In `q == str`, `q` itself is a logic variable but `str` does not contain any, so
-there is only one (rather trivial) answer: replace `q` by `str`.
+The `run` function and the size indicators are provided by Core. The goal specifies what
+are the logic variables we are querying about (as the parameters) and
+what proposition (as the goal body) they shall satisfy. The number of parameters shall
+agree with the size indicator. The answer handler is a type convertor from the OCanren
+internal representation to a user-level representation. 
 
 
 
@@ -180,10 +171,7 @@ form a (singleton) list and print the member of this list.
 
 ### Programming-wise
 
-The occurrence of `q` immediately after `run` is a name provided by
- [Core](../../Installation/ocanren/src/core/Core.mli#L225), and similar (predefined) names
-as `qr`, `qrs`, `qrst` etc., used respectively when you query about two, three, and four
-_logic variables_. In our hello-world example we only query about one logic variable, so we
+In our hello-world example we only query about one logic variable, so we
 use `q`. In other words, whenever you query about one logic variable, you shall always put
 `q` immediately after `run`, and for two logic variables, put `qr`, and so on.
 
