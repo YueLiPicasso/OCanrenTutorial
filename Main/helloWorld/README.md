@@ -4,7 +4,7 @@
 ##  Executing the Program
 
 The source code has to be compiled and linked, for which you would need the [Makefile](Makefile).
-Now open terminal under the `helloworld` direcory, and:
+Now open terminal under your local copy of the [`helloWorld`](./) direcory, and:
 ```
 make
 ```
