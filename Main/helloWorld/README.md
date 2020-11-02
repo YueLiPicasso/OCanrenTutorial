@@ -82,22 +82,24 @@ operator `@@` that is provided by OCaml's core library
  ```
 called a _run-expression_ whose most important part is: `q == str`. 
 
-### Unification
+### Syntactic Identity and  Unification
 
-Given two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub> of the same type, we say that
-they _unify_, denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub> , 
-if both have zero or more sub-expressions
-considered as logic variables,  and by replacing these logic variables by some expressions
-(the replacement shall respect types) we can make the resulting expressions
-syntactically identical.
+Syntactic identity between two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub>
+(of the same type) is  denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub>. Usually we
+are given two different expressions both of which  have zero or more sub-expressions
+considered as logic variables, and we are interested in finding (type sensitive)
+substitutes for these logic variables so that the resulting expressions are
+syntactically identical. Finding such substitutes is know as _unification_ of the
+original expressions. 
 
-**Example** Both `(x + 1) == (2 + y)` and `Node (x,1) == Node (2,y)` are
-true since  replacing `x` by `2`,  and `y` by `1` makes both sides of `==` the expression `2 + 1` or `Node (2,1)` respectively.
+**Example** In order for both `(x + 1) == (2 + y)` and `Node (x,1) == Node (2,y)`
+to be true, we  replace `x` by `2`and `y` by `1`,  making both sides of `==` the
+expression `2 + 1` or `Node (2,1)` respectively. We now unified `( x + 1)` with
+`(2 + y)`. Moreover, `Node (x,1)` is unified with `Node (2,y)`.
 
-**Example** `z == "I'm a string"` is true since replacing the logic variable `z` with
-the constant `"I'm a string"` makes both sides of `==` the same constant.
-
-The unification relation is provided by the module Core.
+**Example** How to substitute the logic variable  `z` so that `z == "hello world!"` ?
+Trivial:  replacing  `z` with the constant `"hello world!"`. This is essentially what
+our program does: solving a unification problem. 
 
 ### The OCanren Top Level: Run !
 
