@@ -97,9 +97,9 @@ true since  replacing `x` by `2`,  and `y` by `1` makes both sides of `==` the e
 **Example** `z == "I'm a string"` is true since replacing the logic variable `z` with
 the constant `"I'm a string"` makes both sides of `==` the same constant.
 
-The unification relation `==` is provided by the module Core.
+The unification relation is provided by the module Core.
 
-### Parsing the _Run-Expression_
+### The _Run-Expression_
 
 We can parse the run-expression following the syntax below,
  which is given in [EBNF](https://github.com/YueLiPicasso/language-grammars)
@@ -114,22 +114,38 @@ size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
 		| '(', size indicator, ')'
 		| 'succ', size indicator ;
 
-goal = 'fun', parameters, '->', 'ocanren', '{', goal body, '}' ;
-
-answer handler = 'project' | etc ;
+goal = 'fun', parameters, '->', goal body ;
 
 parameters = etc ;
 
-goal body = etc ;
+goal body = 'ocanren', '{', pretty goal body, '}' ;
+
+pretty goal body = etc ;
+
+answer handler = 'project' | etc ;
 ```
-The `run` function and the size indicators are provided by Core. The goal specifies what
-are the logic variables we are querying about (as the parameters) and
-what proposition (as the goal body) they shall satisfy. The number of parameters shall
-agree with the size indicator. The answer handler is a type convertor from the OCanren
-internal representation to a user-level representation. 
+A goal asks: what values shall be assumed by the parameters
+so that the proposition as given by the goal body holds? 
 
+ The `ocanren { }` environment in a goal body instructs the  [camlp5](https://camlp5.github.io/)
+ preprocessor to transform on the syntactic level the `pretty goal body` into the more
+ verbose and less intuitive OCanren internal representation. As a reference, the rules
+ by which the preprocessing is done is given in `pa_ocanren.ml`
+ [where](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) we could find,
+ for example, the `==` symbol is transformed into the name `unify`.
 
+The number of parameters shall
+agree with the size indicator, where `q`...`qrstu` are just alternative names for
+`one`...`five` respectively. If there are more than five parameters, the successor function
+`succ` can be applied to build larger size indicators, e.g., `(succ (succ five))` is for seven
+parameters.
 
+The answer handler is a type convertor from the OCanren
+internal representation to a user-level representation. When there is no free logic variables
+we use `project`. The `Not_a_value` exeption (provided by Logic) is thrown if we use project but
+as the handler the answer contains free logic variables.  
+
+The `run` function and the size indicators are provided by Core. Answer handlers are provided by Logic.
 
 ### Type-wise
 
@@ -192,11 +208,7 @@ answer from an injected type to some user friendly type.
 
 ### Camlp5 Syntax Extension-wise
 
-The `ocanren{ <content> }` construct applies the [camlp5](https://camlp5.github.io/)
-syntax preprocessor to the `<content>` according to user-defined rules that in our case is
- specified in [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml).
- The effect is, for instance, we can use `==` rather than the longer `===` or `unify`
-(both defined in [Core](../../Installation/ocanren/src/core/Core.mli)) according to the [prescription](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238).
+
 
 ## Summary
 
