@@ -105,15 +105,16 @@ where occurrences of the meta-identifier `etc` signifies omission:
 there is no syntactic category named `etc`.
 
 ```ebnf
-run expression = 'run',  size indicator, goal, hander ;
+run expression = 'run',  size indicator, goal, answer handler ;
 
 size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
                 | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
-                | 'succ', size indicator ;
+		| '(', size indicator, ')'
+		| 'succ', size indicator ;
 
 goal = 'fun', parameters, '->', 'ocanren', '{', goal body, '}' ;
 
-handler = 'project' | etc ;
+answer handler = 'project' | etc ;
 
 parameters = etc ;
 
