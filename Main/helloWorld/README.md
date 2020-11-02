@@ -145,7 +145,8 @@ internal representation to a user-level representation. When there is no free lo
 we use `project`. The `Not_a_value` exeption (provided by Logic) is thrown if we use project but
 as the handler the answer contains free logic variables.  
 
-The `run` function and the size indicators are provided by Core. Answer handlers are provided by Logic.
+The `run` function and the size indicators are provided by Core.
+Basic answer handlers are provided by Logic.
 
 ### Type-wise
 
