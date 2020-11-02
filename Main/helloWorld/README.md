@@ -12,7 +12,7 @@ This would produce a native-code file `hello.opt`, execution of which by:
 ```
 ./hello.opt
 ```
-shall print `hello world!` on your terminal.
+shall print `hello world!` in your terminal.
 
 ## Understanding the Program
 
