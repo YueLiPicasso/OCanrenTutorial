@@ -91,8 +91,8 @@ considered as logic variables,  and by replacing these logic variables by some e
 (the replacement shall respect types) we can make the resulting expressions
 syntactically identical.
 
-**Example** `(x + 1) == (2 + y)` is true since
- replacing `x` by `2`,  and `y` by `1` makes both sides of `==` the expression `2 + 1`.
+**Example** Both `(x + 1) == (2 + y)` and `Node (x,1) == Node (2,y)` are
+true since  replacing `x` by `2`,  and `y` by `1` makes both sides of `==` the expression `2 + 1` or `Node (2,1)` respectively.
 
 **Example** `z == "I'm a string"` is true since replacing the logic variable `z` with
 the constant `"I'm a string"` makes both sides of `==` the same constant.
