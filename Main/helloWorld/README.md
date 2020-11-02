@@ -127,7 +127,7 @@ pretty goal body = etc ;
 answer handler = 'project' | etc ;
 ```
 A goal asks: what values shall be assumed by the parameters
-so that the proposition as given by the goal body holds? 
+so that the proposition as given by the goal body (in which these parameters are expected to occur) holds? 
 
  The `ocanren { }` environment in a goal body instructs the  [camlp5](https://camlp5.github.io/)
  preprocessor to transform on the syntactic level the `pretty goal body` into the more
