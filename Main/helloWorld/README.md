@@ -140,10 +140,11 @@ agree with the size indicator, where `q`...`qrstu` are just alternative names fo
 `succ` can be applied to build larger size indicators, e.g., `(succ (succ five))` is for seven
 parameters.
 
-The answer handler is a type convertor from the OCanren
-internal representation to a user-level representation. When there is no free logic variables
-we use `project`. The `Not_a_value` exeption (provided by Logic) is thrown if we use project but
-as the handler the answer contains free logic variables.  
+The answer handler is a type converter from the OCanren
+internal representation to a user-level representation. When there is no free logic variables in
+the answer we use `project`. The `Not_a_value` exeption (provided by Logic) is thrown if
+we use `project` as the handler but the answer contains free logic variables: in this case
+some other handler shall be used.  
 
 The `run` function and the size indicators are provided by Core.
 Basic answer handlers are provided by Logic.
