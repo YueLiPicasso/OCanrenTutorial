@@ -80,7 +80,7 @@ operator `@@` that is provided by OCaml's core library
  ```ocaml
  run q (fun q -> ocanren { q == str }) project
  ```
-called a _run-expression_ whose most important part is: `q == str`. 
+whose most important part is: `q == str`. 
 
 ### Syntactic Identity and  Unification
 
