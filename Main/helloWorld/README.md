@@ -31,7 +31,7 @@ Inspecting the content thereof,  we shall see that basically
 it includes two modules [Logic](../../Installation/ocanren/src/core/Logic.mli)
 and [Core](../../Installation/ocanren/src/core/Core.mli), and renames the module
 [RStream](../../Installation/ocanren/src/core/RStream.mli)
-to Stream, and finally defines the Std module. Usually you should
+to Stream, and finally defines the Std module. You should
 open the module OCanren at the beginning of every source file where
 you use OCanren features.   
 
