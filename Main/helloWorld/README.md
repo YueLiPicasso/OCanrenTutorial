@@ -102,7 +102,7 @@ the constant `"I'm a string"` makes both sides of `==` the same constant.
 We can parse the run-expression following the syntax below,
  which is given in [EBNF](https://github.com/YueLiPicasso/language-grammars)
 except that occurrences of the meta-identifier `etc` signifies omission:
-there is no syntactic category named `etc`.
+there is no single syntactic category named `etc`.
 
 ```ebnf
 run expression = 'run',  size indicator, goal, answer handler ;
