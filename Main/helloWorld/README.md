@@ -99,10 +99,10 @@ the constant `"I'm a string"` makes both sides of `==` the same constant.
 
 ### Parsing the _Run-Expression_
 
-We can parse the run-expression following the simplified syntax below
-(Given in [EBNF](https://github.com/YueLiPicasso/language-grammars)), where occurrences
-of the meta-identifier `etc` signifies omission: there is no syntactic
-category named `etc`.
+We can parse the run-expression following the syntax below
+(given in [EBNF](https://github.com/YueLiPicasso/language-grammars)),
+where occurrences of the meta-identifier `etc` signifies omission:
+there is no syntactic category named `etc`.
 
 ```ebnf
 run expression = 'run',  size indicator, goal, hander ;
