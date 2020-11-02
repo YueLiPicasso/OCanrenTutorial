@@ -154,8 +154,8 @@ Basic answer handlers are provided by Logic.
 ### Taking and Displaying Aswers  
 
 
-The top level constructs a lazy stream from which an arbitrary number of
- answers could be taked, subject to answer availability.
+The top level constructs a lazy stream out of which an arbitrary number of
+ answers could be pulled, subject to answer availability.
 We use a stream instead of a finite list to
  hold the answers because generally the set of all answers is enumerable.
 Omission of the optional argument `~n` of `take` means "take all". Finally we use OCaml
