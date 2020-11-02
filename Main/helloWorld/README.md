@@ -151,75 +151,14 @@ some other handler shall be used.
 The `run` function and the size indicators are provided by Core.
 Basic answer handlers are provided by Logic.
 
-### Type-wise
-
-This line
+### Taking and Displaying Aswers  
 
 
-The sub-expression:
-```ocaml
-List.iter print_string
-```
-consists of the OCaml [List](http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html)
-standard library function:
-```ocaml
-val iter : ('a -> unit) -> 'a list -> unit
-```
-and the [Stdlib](http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html) function:
-```ocaml
-val print_string : string -> unit
-```
-Therefore we can infer that the ensemble:
-```ocaml
-Stream.take ~n:1 @@ run q (fun q -> ocanren { q == str }) project
-```
-has the type `string list`. The module Stream is provided by the module
-OCanren which is opened at the beginning, and its interface is
-[RStream.mli](../../Installation/ocanren/src/core/RStream.mli) where we could find:
-```ocaml
-val take : ?n:int -> 'a t -> 'a list
-```
-implying that the type of the ensemble:
-```ocaml
-
-```
-is just `string RStream.t` (i.e., a stream of strings) that is in agreement with the return
-type of `run` from the module [Core](../../Installation/ocanren/src/core/Core.mli#L120).
-The 3rd line therefore
-collects all possible answers to form a stream and takes one (the first one) from it to in turn
-form a (singleton) list and print the member of this list.
-
-### Programming-wise
-
-In our hello-world example we only query about one logic variable, so we
-use `q`. In other words, whenever you query about one logic variable, you shall always put
-`q` immediately after `run`, and for two logic variables, put `qr`, and so on.
-
-The query shall list all logic variables that you query about immediately after
-`fun` , and the number of which shall agree with the size indicator.
-In our example the logic variable
- queried about happens to be named `q`, but we can use any other name, like `honey`, then the
-line would become:
-```ocaml
-run q (fun honey -> ocanren {honey == str}) project;;
-```
-Within `ocanren{}` goes your
-goals, built using unification, conjunction, disjunction etc. The third argument
-converts the
-answer from an injected type to some user friendly type.
- The type of `project` is documented in [Logic.mli](../../Installation/ocanren/src/core/Logic.mli#L128).
-
-
-### Camlp5 Syntax Extension-wise
-
-
-
-## Summary
-
-When working with OCanren, data like _hello world!_  inhabits the user interface type
-`string` as well as the  OCanren-internal type `(string, string logic) injected`.
-
-A syntax preprocessor is used to make OCanren programs look intuitive in the eyes of an OCaml and
-(Scheme based) miniKanren programmer. An OCanren program has to be compiled and linked, which
-is helped by a standard Makefile (subject to minor modification).
+The top level constructs a lazy stream from which an arbitrary number of
+ answers could be taked, subject to answer availability.
+We use a stream instead of a finite list to
+ hold the answers because generally the set of all answers is enumerable.
+Omission of the optional argument `~n` of `take` means "take all". Finally we use OCaml
+ standard functions to iterate through the taken list of answers and print each one in
+ the terminal. Our program has only one answer.
 
