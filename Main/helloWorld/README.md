@@ -108,8 +108,8 @@ there is no syntactic category named `etc`.
 run expression = 'run',  size indicator, goal, hander ;
 
 size indicator =  'one' | 'two' | 'three' | 'four' | 'five'
-                  | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
-		  | 'succ', size indicator ;
+                | 'q'   | 'qr'  | 'qrs'   | 'qrst' | 'qrstu'
+                | 'succ', size indicator ;
 
 goal = 'fun', parameters, '->', 'ocanren', '{', goal body, '}' ;
 
