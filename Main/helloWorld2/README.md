@@ -12,6 +12,8 @@ combined together, not apparent. In this lesson we break down such type expressi
 their very components, so that the reader can appreciate the construction of these internal types
 and can build his own. 
 
+## Abstract Types
+
 First  we need a notion of _abstract type_. OCaml also has a notion of abstract type
 which refers to a type constructor whose equation and representation are hidden from the user and is
 considered incompatible with any other type. However, the abstract type that we are talking about here
@@ -25,6 +27,8 @@ end;;
 The type constructor `MyList.t` is called an abstract list type for it not only abstracts over the list memeber type
  by means of the type parameter `'a`,  but also abstracts over the list tail type or in other words over the list type
  itself  by means of the type parameter `'b`. 
+
+## Ground Types
 
 How can such an abstract type be useful?  We shall at least see that its type parameters can be further instantiated,
 and together with an additional equation, to produce the familiar list type: 
@@ -45,20 +49,18 @@ type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
 
 We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
-over self, and then instantiation by self with an additional equation to close the loop. Because this
-technique is so useful, let us see another example before moving on to demonstrate its utility. We define the Peano
- numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
- The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
- is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
-```ocaml
-module Peano = struct
-  type 'a t = O | S of 'a
-  type ground = ground t
-end;;
-```
-Again the type `Peano.ground` is defined via an abstract type. Next we show how the insight of an abstract type helps with
-relational programming.  Consider how logic variables `X` and `Y` could usually occur in an (say, integer) list: `X :: Y` 
-where `X` ranges over integers and `Y` ranges over lists of integers. We can define a polymorphic type, called `'a logic`
+over self, and then instantiation by self with an additional equation to close the loop.
+
+
+
+## Logic Types
+
+Next we show how the insight of an abstract type helps with
+relational programming.
+
+Logic variables `X` and `Y` usually occur in a list in the way like `Cons (X, Y)` 
+where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
+As a first response we can define a polymorphic type, called `'a logic`
 to merge a type with all logic variables over the type:
 ```
 module Logic = struct
@@ -97,6 +99,21 @@ Now, what about the type of `Y` in `[1;X;3] ^ Y` ? Shoud it be `logic_int list`?
  ```
  type logic_logic_int_list = Value of logic_int list | Var of string
  ```
+
+
+Because this
+technique is so useful, let us see another example before moving on to demonstrate its utility. We define the Peano
+ numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
+ The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
+ is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
+```ocaml
+module Peano = struct
+  type 'a t = O | S of 'a
+  type ground = ground t
+end;;
+```
+Again the type `Peano.ground` is defined via an abstract type.
+
 
 
 
