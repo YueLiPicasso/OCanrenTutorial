@@ -62,16 +62,16 @@ In a relational program, a list engages with logic variables in manners like:
 - `Cons (1,Y)` --- An unknown list.
 - `Cons (X,Y)` --- An unknown member as well as an unknown list. 
 
-To type such a list, the ground type is inadequate, for it only allows logic variables represent
-unknown members, but not unknown lists. For instance, if the list members are supposed to have type
-`int`, we can assign `int MyList.ground` to all concrete lists, and type `int Logic.logic ground` to
+To type such a relational list, the ground type is inadequate, for it only allows logic variables
+to represent unknown members, but not unknown lists. For instance, if the list members are supposed to have type
+`int`, we can assign `int MyList.ground` to all concrete lists, and assign type `int Logic.logic ground` to
 all lists where logic variables only represent unknown members, provided the type definition:
 ```
 module Logic = struct
   type 'a logic = Value of 'a | Var of var_id 
 end;;
 ```
-
+where `var_id` is the type used for distinguishing logic variables, be it string or integer. 
 
 degree of abstraction.
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
