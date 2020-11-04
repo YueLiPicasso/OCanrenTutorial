@@ -57,7 +57,7 @@ of an abstract type helps with relational programming.
 
 In relational programming, logic variables, say, `X` and `Y` usually occur in a list in the way like `Cons (X, Y)` 
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
-To work with such an expression necessarily we need to acertain its type. 
+To work with such an expression necessarily we need to ascertain its type. 
 As a initial  response we define a polymorphic type, called `'a logic`
 to merge a type with all logic variables over the type:
 ```
