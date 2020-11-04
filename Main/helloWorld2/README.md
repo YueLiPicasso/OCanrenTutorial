@@ -1,8 +1,8 @@
 # Digesting the Types 
 
 OCanren is for typed relational programming.Two points here: it is typed, and it is relational.
-We shall now study how to work with types in OCanren. This clears the way so that we
-can then focus on relational programming.
+We shall now study how to work with the types. This clears the way so that we
+can then focus on the relational part.
 
 We have seen that the OCanren internal representation of a string has a type of the form
 `('a, 'a logic) injected` and we have named it an _injected type_, referring to the injection
