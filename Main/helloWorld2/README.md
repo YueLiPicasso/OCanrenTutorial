@@ -10,9 +10,9 @@ of data from user level representation into the internal representation. This ty
 involves several sutlties that are, when
 combined together, not apparent. In this lesson we break down such type expressions into
 their very components, so that the reader can appreciate the construction of these internal types
-and can build his own.
+and can build his own. 
 
-We shall first give a despcrition of the construction of an injected type, and then present an example.
+We shall first give a description of the construction of an injected type, and then present an example.
 For this purpose we need a notion of _abstract type_. OCaml also has a notion of abstract type
 which refers to a type constructor whose equation and representation is hidden from the user and is
 considered incompatible with any other type. However, the abstract type that we are talking about here
