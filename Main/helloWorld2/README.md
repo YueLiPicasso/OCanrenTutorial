@@ -63,7 +63,9 @@ In a relational program, a list engages with logic variables in manners like:
 - `Cons (X,Y)` --- An unknown member as well as an unknown list. 
 
 To type such a relational list, the ground type is inadequate, for it only allows logic variables
-to represent unknown members, but not unknown lists. For instance, if the list members are supposed to have type
+to represent unknown members, but not an unknown sub-list.
+
+For instance, if the list members are supposed to have type
 `int`, we can assign `int MyList.ground` to all concrete lists, and assign type `int Logic.logic ground` to
 all lists where logic variables only represent unknown members, provided the type definition:
 ```
@@ -74,6 +76,7 @@ end;;
 where the constructors `Value` and `Var` distinguish concrete values of type `'a` from logic variables that
 range over `'a`, and `var_id` is the
 type used to distinguish one from another among logic variables, and  it could be `string` or `integer` or something else.
+
 However, for a list that in which there is  a logic variables that represents a sub-list, there is no way of
 instantiating the type parameter of `ground` to make it do: this is because we need the top level constructors
 to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
