@@ -1,9 +1,18 @@
 # Say "Hello World!" Again
 
-The purpose of this lesson is to expose the reader to the intricacies of types in OCanren. Whatever
-types we want to work with in OCanren, let it be string, integer, list, tree, or tuple, etc., that type
-is always defined in four steps, corresponding to the four levels given in the table below:
+OCanren is for typed relational programming.Two points here: it is typed, and it is relational.
+We shall now study how to work with types in OCanren. This provides an environment where we
+can then focus on relational programming.
 
+We have seen that the OCanren internal representation of a string has a type of the form
+`('a, 'a logic) injected` and we have named it an _injected type_, referring to the injection
+of data from user level representation into the internal representation. This type expression
+involves several sutlties that are, when
+combined together, not apparent. In this lesson we break down such type expressions into
+their very components, so that the reader can appreciate the construction of these internal types
+and can build their own.
+
+There are four levels . 
 
 Level No. | Level Name
 --        |--
@@ -11,6 +20,14 @@ Level No. | Level Name
 2         | Ground
 3         | Logic
 4         | Injected
+
+
+
+When we say that a type is at the _abstract level_, we do not mean that it is an _abstract type_.
+In other words, we do not mean that it has no equation and no representation. Rather, we mean that
+it is a framework such that types at the other levels are defined in terms of it.
+
+
 
 
 The [program](hello2.ml) that we study in this lesson is almost the
@@ -36,9 +53,7 @@ end;;
 ```
 that shows how the type `String.groundi` of `str` is defined following the four-step routine.
 
-When we say that a type is at the _abstract level_, we do not mean that it is an _abstract type_.
-In other words, we do not mean that it has no equation and no representation. Rather, we mean that
-it is a framework such that types at the other levels are defined in terms of it. In the String
+In the String
 module, the type `t` is at the abstract level, and the type `ground` is at the ground level,
 `logic` at the logic level, and `groundi` at the injected level. In our example the abstract level
 and the ground level coincide, but in general they are quite different, as we will see when working

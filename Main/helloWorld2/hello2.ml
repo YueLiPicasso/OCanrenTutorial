@@ -1,5 +1,6 @@
 open OCanren;;
 
+
 @type 'a logic' = 'a logic with show;;
 
 module String = struct
@@ -9,9 +10,13 @@ module String = struct
   type groundi = (ground, logic) injected;;
 end;;
 
+
 let str : String.groundi = !!("hello world!\n");;
 
 let _ =
   List.iter print_string @@
     Stream.take ~n:1 @@
       run q (fun q -> ocanren { q == str }) project;;
+
+
+
