@@ -43,9 +43,12 @@ Then by `(* 1b *)` and `(* 2 *)` we have:
 ```
 type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 ```
-Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list..
+Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
 
-But why bother the decomposition? 
+We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
+over self, and then instantiation by self and an additional equation to close the loop. This insight is useful:
+think about adding logic variables into a list structure.  
+
 
 
 
