@@ -43,7 +43,7 @@ Then by `(* 1b *)` and `(* 2 *)` we have:
 ```
 type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 ```
-Equation `(* 2b *)` is the usual definition of a list type, which we call a ground list..
+Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list..
 
 But why bother the decomposition? 
 
