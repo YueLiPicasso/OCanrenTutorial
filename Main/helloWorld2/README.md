@@ -24,9 +24,14 @@ type ('a, 'b) t = Nil | Cons of 'a * 'b
 type 'a ground = ('a, 'a ground) t
 end;;
 ```
-The type constructor `MyList.t` is called an abstract type for list because it is defined by abstacrting from
-the list itself: strctly speaking it is not a list structure but its type parameters can be further instantiated
-to produce a more apparent list type `MyList.ground`.
+The type constructor `MyList.t` is called an abstract type for list because it is defined by abstracting from
+the list itself: strctly speaking it does not have a list structure but its type parameters can be further instantiated
+to produce a more apparent list type `MyList.ground`. If you substitute `'b' with `'a ground`, then the right hand side of
+the equation for `MyLst.t` would become `Nil | Cons of 'a * 'a ground` which is equated to 'a ground, i.e.:
+```
+'a ground = Nil | Cons of 'a * 'a ground
+```
+which is our familiar definition of a  polymorphic list type. 
 
 
 
