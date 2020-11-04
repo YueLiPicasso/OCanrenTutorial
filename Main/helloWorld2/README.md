@@ -50,7 +50,7 @@ Equation `(* 2b *)` is the usual definition of a list type, which we call a _gro
 
 We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
 over self, and then instantiation by self with an additional equation to close the loop. This type abstraction technique
-can be used to define any recursive type, and we now show its application for typing data items manipulated by
+works with any recursive type, and we now use it to type data items manipulated by
 relational programs.
 
 
