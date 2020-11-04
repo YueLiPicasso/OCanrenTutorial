@@ -71,7 +71,7 @@ where the `string` holds the name of the variable. Then we have:
 ```ocaml
 [Value 1;Var "X";Value 3] : logic_int list
 ```
-We can even further abstract over the type of the value and use an integer
+We can even  abstract over the type of the value and use an integer
 instead of a string to identify a logic variable:
 ```ocaml
 type 'a logic = Value of 'a | Var of int
