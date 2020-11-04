@@ -71,7 +71,9 @@ module Logic = struct
   type 'a logic = Value of 'a | Var of var_id 
 end;;
 ```
-where `var_id` is the type used to distinguish between logic variables, be it string or integer or something else.
+where the constructors `Value` and `Var` distinguish concrete values of type `'a` from logic variables that
+range over `'a`, and `var_id` is the
+type used to distinguish one from another among logic variables, and  it could be `string` or `integer` or something else.
 However, for a list that in which there is  a logic variables that represents a sub-list, there is no way of
 instantiating the type parameter of `ground` to make it do: this is because we need the top level constructors
 to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
@@ -87,8 +89,8 @@ to merge a type with all logic variables over the type:
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
   type 'a ground = ('a, 'a ground) t        (* 2 *)
-  type 'b logic =  'b aux Logic.logic       (* 3a *)
-  and    'b aux = ('b, 'b logic) t          (* 3b *) 
+  type 'b logic =  'b guard Logic.logic       (* 3a *)
+  and    'b guard = ('b, 'b logic) t          (* 3b *) 
 end;;
 ```
 NOte that (* 3a *) and (* 3b *) are a pair of mutually recursive type definitions. 
