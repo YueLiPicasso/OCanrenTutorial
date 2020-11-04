@@ -27,8 +27,8 @@ The type constructor `MyList.t` is called an abstract list type for it not only 
  by means of the type parameter `'a`,  but also abstracts over the list tail type or in other words over the list type
  itself  by means of the type parameter `'b`. 
 
-How can such an abstract type be useful?  We shall at least see that its type parameters can be further instantiated
-to produce the familiar list type: 
+How can such an abstract type be useful?  We shall at least see that its type parameters can be further instantiated,
+and together with an additional equation, to produce the familiar list type: 
 ```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
