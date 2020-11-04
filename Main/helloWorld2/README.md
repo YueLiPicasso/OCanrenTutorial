@@ -62,7 +62,7 @@ relational programming. Consider how a logic variable `X` or `Y` might occur in 
 - A list of unknown tail is `1 :: X`
 - A list with both head and tail unknown is `X :: Y`
 
-The question is how we might type expressions like the above ? For example, [2;3;4] is apparently `int list`, but the
+The question is how we might type expressions like the above ? For example, `[2;3;4]` is apparently an `int list`, but the
 type `int` does not have a constructor named `X`. A solution is to define a type that accepts both a logic variable
 and a concrete value, something like:
 ```ocaml
