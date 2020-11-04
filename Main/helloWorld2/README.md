@@ -1,4 +1,4 @@
-# Say "Hello World!" Again
+# Cook the Types 
 
 OCanren is for typed relational programming.Two points here: it is typed, and it is relational.
 We shall now study how to work with types in OCanren. This provides an environment where we
