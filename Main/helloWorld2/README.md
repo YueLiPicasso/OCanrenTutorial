@@ -60,7 +60,8 @@ In a relational program, a list engages with logic variables in manners like:
 - `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
 - `[1;X;3]` --- An unknown list member.
 - `Cons (1,Y)` --- An unknown list.
-- `Cons (X,Y)` --- An unknown member as well as an unknown list. 
+- `Cons (X,Y)` --- An unknown member as well as an unknown list.
+- X --- A list that is wholly unknown. 
 
 To type such a relational list, the ground type is inadequate, for it only allows logic variables
 to represent unknown members, but not an unknown sub-list.
