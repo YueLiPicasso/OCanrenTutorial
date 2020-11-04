@@ -71,7 +71,7 @@ module Logic = struct
   type 'a logic = Value of 'a | Var of var_id 
 end;;
 ```
-where `var_id` is the type used for distinguishing logic variables, be it string or integer. 
+where `var_id` is the type used to distinguish between logic variables, be it string or integer or something else. 
 
 degree of abstraction.
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
