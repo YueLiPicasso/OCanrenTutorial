@@ -40,7 +40,7 @@ If you substitute `'b` with `'a ground` in equation `(* 1 *)`, you would get (li
 type ('a, 'a ground) t = Nil | Cons of 'a * 'a ground  (* 1b *)
 ```
 Then by `(* 1b *)` and `(* 2 *)` we have:
-```
+```ocaml
 type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 ```
 Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
