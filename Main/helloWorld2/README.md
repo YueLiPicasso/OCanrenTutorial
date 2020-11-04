@@ -57,9 +57,29 @@ module Peano = struct
 end;;
 ```
 Again the type `Peano.ground` is defined via an abstract type. Next we show how the insight of an abstract type helps with
-relational programming. Consider how a logic variable `X` or `Y` might occur in a list:
-- A list of an unknown member is `[1;X;3]`
-- A list with both a member  and the tail unknown is `[1;X;3] ^ Y`
+relational programming.  Consider how logic variables `X` and `Y` could usually occur in an (say, integer) list: `X :: Y` 
+where `X` ranges over integers and `Y` ranges over lists of integers. We can define a polymorphic type, called `'a logic`
+to merge a type with all logic variables over the type:
+```
+module Logic = struct
+  type 'a logic = Value of 'a | Var of int
+end;;
+```
+
+```ocaml
+module MyList = struct
+  type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
+  type 'a ground = ('a, 'a ground) t        (* 2 *)
+  type 'b logic =  'b aux Logic.logic       (* 3a *)
+  and    'b aux = ('b, 'b logic) t          (* 3b *) 
+end;;
+```
+NOte that (* 3a *) and (* 3b *) are a pair of mutually recursive type definitions. 
+
+On the top level, a value of `'b MyList.logic` is `Value of 'b MyList.aux` or `Var of int`, the latter of which allows
+logic variables to range over the list type, and the former makes sure that whatever follows `Value` must have `Nil` or
+`Cons` occur in it for by ('b, b logic) t = Nil | Cons of 'b * 'b logic 
+
 
 The question is how we might type expressions like the above ? For example, `[1;X;3]` hints at the `int list`, but the
 type `int` does not have a constructor named `X`. A possible solution is to define a type that accepts both a logic variable
@@ -71,17 +91,12 @@ where the `string` holds the name of the variable. Then we have:
 ```ocaml
 [Value 1;Var "X";Value 3] : logic_int list
 ```
-We can even  abstract over the type of the value and use an integer
-instead of a string to identify a logic variable:
-```ocaml
-type 'a logic = Value of 'a | Var of int
-```
-Then we have:
-```ocaml
-[Value 1;Var "X";Value 3] : int logic list
-```
-
-
+Now, what about the type of `Y` in `[1;X;3] ^ Y` ? Shoud it be `logic_int list`? But `Y`  has nothing to do
+ with the two constructors of list, namely `Nil` and `Cons`, particularly if we somehow apply the same
+ solution to represent `Y` by `Var "Y"`! 
+ ```
+ type logic_logic_int_list = Value of logic_int list | Var of string
+ ```
 
 
 
