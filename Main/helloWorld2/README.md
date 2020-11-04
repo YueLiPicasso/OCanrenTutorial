@@ -25,8 +25,8 @@ type 'a ground = ('a, 'a ground) t
 end;;
 ```
 The type constructor `MyList.t` is called an abstract list type for it not only abstracts over the list memeber type
-but also over the list tail type or in other words over the list type itself, by means of using type parameters `'a`
- and `'b`. 
+ by means of the type parameter `'a`,  but also abstracts over the list tail type or in other words over the list type
+ itself  by means of the type parameter `'b`. 
 
 How can such an abstract type be useful?
 - Firstly,  its type parameters can be further instantiated
