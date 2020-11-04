@@ -20,7 +20,7 @@ is a different concept, and it comes from the fact that some recurive types can 
 Say we want to define a polymorphic list type:
 ```ocaml
 module MyList = struct
-type ('a, 'b) t = Nil | Cons of 'a * 'b 
+  type ('a, 'b) t = Nil | Cons of 'a * 'b 
 end;;
 ```
 The type constructor `MyList.t` is called an abstract list type for it not only abstracts over the list memeber type
@@ -31,8 +31,8 @@ How can such an abstract type be useful?  We shall see that its type parameters 
 to produce the familiar list type.
 ```ocaml
 module MyList = struct
-type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
-type 'a ground = ('a, 'a ground) t        (* 2 *)
+  type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
+  type 'a ground = ('a, 'a ground) t        (* 2 *)
 end;;
 ```
 If you substitute `'b` with `'a ground` in equation `(* 1 *)`:
