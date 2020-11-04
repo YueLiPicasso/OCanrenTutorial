@@ -77,7 +77,7 @@ where the constructors `Value` and `Var` distinguish concrete values of type `'a
 range over `'a`, and `var_id` is the
 type used to distinguish one from another among logic variables, and  it could be `string` or `integer` or something else.
 
-However, for a relational list in which there is  a logic variables that represents a sub-list, there is no way of
+However, for a relational list in which there is  a logic variable that represents a sub-list, there is no way of
 instantiating the type parameter of `MyList.ground` to make it the right type for we need the top level constructors
 to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
  at the top level on the other hand, and this contradiction is unresolvabe.
