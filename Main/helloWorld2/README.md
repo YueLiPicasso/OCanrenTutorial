@@ -68,6 +68,12 @@ and a concrete value, something like:
 ```ocaml
 type logic_int = Value of int | Var of string
 ```
+where the `string` holds the name of the variable. We can further abstract over the type of the value and use an integer
+instead of a string to identify a logic variable:
+```ocaml
+type 'a logic = Value of 'a | Var of int
+```
+
 
 
 
