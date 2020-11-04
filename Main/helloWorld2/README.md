@@ -78,14 +78,15 @@ range over `'a`, and `var_id` is the
 type used to distinguish one from another among logic variables, and  it could be `string` or `integer` or something else.
 
 However, for a relational list in which there is  a logic variable that represents a sub-list, there is no way of
-instantiating the type parameter of `MyList.ground` to make it the right type for we need the top level constructors
+instantiating the type parameter of `MyList.ground` to make it the right type, for we need the top level constructors
 to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
  at the top level on the other hand, and this contradiction is unresolvabe.
 
 But it can be bypassed. 
 
-degree of abstraction.
-where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
+
+> to do levels of abstraction: logic var, guarded list, concrete
+
 To work with such an expression necessarily we need to ascertain its type. 
 As a initial  response we define a polymorphic type, called `'a logic`
 to merge a type with all logic variables over the type:
