@@ -55,7 +55,7 @@ of an abstract type helps with typing relational programs.
 
 ## Logic Types
 
-In relational programming, logic variables, say, `X` and `Y` usually occur in a list in the ways like:
+In relational programming, logic variables, say, `X` and `Y` usually occur in a list in ways like:
 - `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
 - `[1;X;3]` --- An unknown list member.
 - `Cons (1,Y)` --- An unknown list.
