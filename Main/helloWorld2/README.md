@@ -56,7 +56,7 @@ module Peano = struct
   type ground = ground t
 end;;
 ```
-Again the type `Peano.ground` is defined via an abstract type. Now we how the insight of an abstract type helps with
+Again the type `Peano.ground` is defined via an abstract type. Next we show how the insight of an abstract type helps with
 relational programming. Consider how a logic variable might occur in a list:
 - A list of unknown head is X :: [2;3;4]
 - A list of unknown tail is 1 :: X
