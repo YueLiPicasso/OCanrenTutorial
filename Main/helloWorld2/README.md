@@ -10,7 +10,7 @@ of data from user level representation into the internal representation. This ty
 involves several sutlties that are, when
 combined together, not apparent. In this lesson we break down such type expressions into
 their very components, so that the reader can appreciate the construction of these internal types
-and can build their own.
+and can build his own.
 
 There are four levels . 
 
