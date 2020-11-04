@@ -49,8 +49,8 @@ type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
 
 We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
-over self, and then instantiation by self with an additional equation to close the loop. Next we show how the insight
-of an abstract type helps with typing relational programs.
+over self, and then instantiation by self with an additional equation to close the loop. Next we show how an abstract
+type helps with typing relational programs.
 
 
 ## Logic Types
