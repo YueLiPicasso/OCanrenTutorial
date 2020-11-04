@@ -35,7 +35,7 @@ module MyList = struct
   type 'a ground = ('a, 'a ground) t        (* 2 *)
 end;;
 ```
-If you substitute `'b` with `'a ground` in equation `(* 1 *)`:
+If you substitute `'b` with `'a ground` in equation `(* 1 *)`, you would get (literally):
 ```
 type ('a, 'a ground) t = Nil | Cons of 'a * 'a ground  (* 1b *)
 ```
