@@ -56,10 +56,10 @@ of an abstract type helps with typing relational programs.
 ## Logic Types
 
 In relational programming, logic variables, say, `X` and `Y` usually occur in a list in the ways like:
-- `[1;2;3]` No logic variable occurrance at all, the expression is absolutely concrete.
-- `[1;X;3]` A unknown list member.
-- `Cons (1,Y)` A unknown list.
-- `Cons (X, Y)``A unknown member as well as a list. 
+- `[1;2;3]` --- No logic variable occurrance at all, the expression is absolutely concrete.
+- `[1;X;3]` --- A unknown list member.
+- `Cons (1,Y)` --- A unknown list.
+- `Cons (X, Y)` --- A unknown member as well as a list. 
 
 degree of abstraction.
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
