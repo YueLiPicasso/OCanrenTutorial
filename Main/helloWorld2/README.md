@@ -12,8 +12,7 @@ combined together, not apparent. In this lesson we break down such type expressi
 their very components, so that the reader can appreciate the construction of these internal types
 and can build his own. 
 
-We shall first give a description of the construction of an injected type, and then present an example.
-For this purpose we need a notion of _abstract type_. OCaml also has a notion of abstract type
+First  we need a notion of _abstract type_. OCaml also has a notion of abstract type
 which refers to a type constructor whose equation and representation is hidden from the user and is
 considered incompatible with any other type. However, the abstract type that we are talking about here
 is a different concept, and it comes from the fact that some recurive types can be defined in the following way.
@@ -46,7 +45,10 @@ type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
 
 We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
-over self, and then instantiation by self with an additional equation to close the loop. This insight is useful:
+over self, and then instantiation by self with an additional equation to close the loop. Because this
+technique is so useful, let us see another example before moving on to demotrate its utility..
+
+
 think about adding logic variables into a list structure.  
 
 
