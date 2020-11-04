@@ -55,22 +55,28 @@ of an abstract type helps with typing relational programs.
 
 ## Logic Types
 
-In relational programming, logic variables, say, `X` and `Y` usually occur in a list in ways like:
+In relational programming, a list contains logic variables in ways like:
 - `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
 - `[1;X;3]` --- An unknown list member.
 - `Cons (1,Y)` --- An unknown list.
-- `Cons (X, Y)` --- An unknown member as well as a list. 
+- `Cons (X,Y)` --- An unknown member as well as an unknown list. 
+
+To type such a list, the ground type is inadequate, for it only allows logic variables represent
+unknown members, but not unknown lists. For instance, if the list members are supposed to have type
+`int`, we can assign `int MyList.ground` to all concrete lists, and type `int Logic.logic ground` to
+all lists where logic variables only represent unknown members, provided the type definition:
+```
+module Logic = struct
+  type 'a logic = Value of 'a | Var of var_id 
+end;;
+```
+
 
 degree of abstraction.
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
 To work with such an expression necessarily we need to ascertain its type. 
 As a initial  response we define a polymorphic type, called `'a logic`
 to merge a type with all logic variables over the type:
-```
-module Logic = struct
-  type 'a logic = Value of 'a | Var of int
-end;;
-```
 
 ```ocaml
 module MyList = struct
