@@ -1,4 +1,4 @@
-# Cooking the Types 
+# Digesting the Types 
 
 OCanren is for typed relational programming.Two points here: it is typed, and it is relational.
 We shall now study how to work with types in OCanren. This clears the way so that we
