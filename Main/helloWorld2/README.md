@@ -16,7 +16,7 @@ We shall first give a description of the construction of an injected type, and t
 For this purpose we need a notion of _abstract type_. OCaml also has a notion of abstract type
 which refers to a type constructor whose equation and representation is hidden from the user and is
 considered incompatible with any other type. However, the abstract type that we are talking about here
-is a different concept, it comes from the fact that some recurive types can be defined in the following way,
+is a different concept, and it comes from the fact that some recurive types can be defined in the following way,
 say we want to define a list:
 ```ocaml
 module MyList = struct
