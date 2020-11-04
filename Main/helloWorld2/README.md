@@ -50,12 +50,18 @@ Equation `(* 2b *)` is the usual definition of a list type, which we call a _gro
 
 We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
 over self, and then instantiation by self with an additional equation to close the loop. Next we show how the insight
-of an abstract type helps with relational programming.
+of an abstract type helps with typing relational programs.
 
 
 ## Logic Types
 
-In relational programming, logic variables, say, `X` and `Y` usually occur in a list in the way like `Cons (X, Y)` 
+In relational programming, logic variables, say, `X` and `Y` usually occur in a list in the ways like:
+- `[1;2;3]` No logic variable occurrance at all, the expression is absolutely concrete.
+- `[1;X;3]` A unknown list member.
+- `Cons (1,Y)` A unknown list.
+- `Cons (X, Y)``A unknown member as well as a list. 
+
+degree of abstraction.
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
 To work with such an expression necessarily we need to ascertain its type. 
 As a initial  response we define a polymorphic type, called `'a logic`
