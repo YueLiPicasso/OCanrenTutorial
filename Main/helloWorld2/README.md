@@ -20,22 +20,26 @@ is a different concept, and it comes from the fact that some recurive types can 
 Say we want to define a polymorphic list type:
 ```ocaml
 module MyList = struct
-type ('a, 'b) t = Nil | Cons of 'a * 'b
-type 'a ground = ('a, 'a ground) t
+type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
+type 'a ground = ('a, 'a ground) t        (* 2 *)
 end;;
 ```
 The type constructor `MyList.t` is called an abstract list type for it not only abstracts over the list memeber type
  by means of the type parameter `'a`,  but also abstracts over the list tail type or in other words over the list type
  itself  by means of the type parameter `'b`. 
 
-How can such an abstract type be useful?
-- Firstly,  its type parameters can be further instantiated
-  to produce a more familiar list type. If you substitute `'b' with `'a ground`, then the right hand side of
-  the equation for `MyLst.t` would become `Nil | Cons of 'a * 'a ground', and let it be equal to 'a ground, i.e.:
-  ```
-  'a ground = Nil | Cons of 'a * 'a ground
-  ```
-- Secondly, 
+How can such an abstract type be useful?  We shall see that its type parameters can be further instantiated
+to produce the familiar list type. For instance, if you substitute `'b` with `'a ground` in equation `(* 1 *)`:
+```
+type ('a, 'a ground) t = Nil | Cons of 'a * 'a ground  (* 1b *)
+```
+Then by `(* 1b *)` and `(* 2 *)` we have:
+```
+type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
+```
+Equation `(* 2b *)` is the usual definition of a list type.
+
+But why bother the decomposition? 
 
 
 
