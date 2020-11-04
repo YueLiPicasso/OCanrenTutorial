@@ -77,10 +77,12 @@ where the constructors `Value` and `Var` distinguish concrete values of type `'a
 range over `'a`, and `var_id` is the
 type used to distinguish one from another among logic variables, and  it could be `string` or `integer` or something else.
 
-However, for a list that in which there is  a logic variables that represents a sub-list, there is no way of
-instantiating the type parameter of `ground` to make it do: this is because we need the top level constructors
+However, for a relational list in which there is  a logic variables that represents a sub-list, there is no way of
+instantiating the type parameter of `MyList.ground` to make it the right type for we need the top level constructors
 to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
- at the top level on the other hand, and this contradiction is unresolvabe --- but can be bypassed. 
+ at the top level on the other hand, and this contradiction is unresolvabe.
+
+But it can be bypassed. 
 
 degree of abstraction.
 where `X` assumes the type of the list member and `Y` assumes the type of the list itself.
