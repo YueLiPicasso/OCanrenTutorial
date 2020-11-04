@@ -56,7 +56,7 @@ relational programs.
 
 ## Logic Types
 
-In relational programming, a list contains logic variables in ways like:
+In relational programming, a list contains logic variables in manners like:
 - `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
 - `[1;X;3]` --- An unknown list member.
 - `Cons (1,Y)` --- An unknown list.
