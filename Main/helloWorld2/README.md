@@ -46,10 +46,27 @@ Equation `(* 2b *)` is the usual definition of a list type, which we call a _gro
 
 We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
 over self, and then instantiation by self with an additional equation to close the loop. Because this
-technique is so useful, let us see another example before moving on to demotrate its utility..
-
-
-think about adding logic variables into a list structure.  
+technique is so useful, let us see another example before moving on to demonstrate its utility. We define the Peano
+ numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
+ The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
+ is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
+```ocaml
+module Peano = struct
+  type 'a t = O | S of 'a
+  type ground = ground t
+end;;
+```
+Again the type `Peano.ground` is defined via an abstract type. Now we how the insight of an abstract type helps with
+relational programming. Consider how a logic variable might occur in a list:
+- A list of unknown head is X :: [2;3;4]
+- A list of unknown tail is 1 :: X
+- A list with both head and tail unknown is X :: Y
+The question is how we might type expressions like the above ? For example, [2;3;4] is apparently `int list`, but the
+type `int` does not have a constructor named `X`. A solution is to define a type that accepts both a logic variable
+and a concrete value, something like:
+```ocaml
+type logic_int = Value of int | Var of string
+```
 
 
 
