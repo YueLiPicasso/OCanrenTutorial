@@ -1,7 +1,7 @@
 # Cooking the Types 
 
 OCanren is for typed relational programming.Two points here: it is typed, and it is relational.
-We shall now study how to work with types in OCanren. This provides an environment where we
+We shall now study how to work with types in OCanren. This clears the way so that we
 can then focus on relational programming.
 
 We have seen that the OCanren internal representation of a string has a type of the form
