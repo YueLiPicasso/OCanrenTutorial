@@ -58,22 +58,28 @@ end;;
 ```
 Again the type `Peano.ground` is defined via an abstract type. Next we show how the insight of an abstract type helps with
 relational programming. Consider how a logic variable `X` or `Y` might occur in a list:
-- A list of unknown head is `X :: [2;3;4]`
-- A list of unknown tail is `1 :: X`
-- A list with both head and tail unknown is `X :: Y`
+- A list of an unknown member is `[1;X;3]`
+- A list with both a member  and the tail unknown is `[1;X;3] ^ Y`
 
-The question is how we might type expressions like the above ? For example, `[2;3;4]` is apparently an `int list`, but the
-type `int` does not have a constructor named `X`. A solution is to define a type that accepts both a logic variable
+The question is how we might type expressions like the above ? For example, `[1;X;3]` hints at the `int list`, but the
+type `int` does not have a constructor named `X`. A possible solution is to define a type that accepts both a logic variable
 and a concrete value, something like:
 ```ocaml
 type logic_int = Value of int | Var of string
 ```
-where the `string` holds the name of the variable. We can further abstract over the type of the value and use an integer
+where the `string` holds the name of the variable. Then we have:
+```ocaml
+[Value 1;Var "X";Value 3] : logic_int list
+```
+We can even further abstract over the type of the value and use an integer
 instead of a string to identify a logic variable:
 ```ocaml
 type 'a logic = Value of 'a | Var of int
 ```
-
+Then we have:
+```ocaml
+[Value 1;Var "X";Value 3] : int logic list
+```
 
 
 
