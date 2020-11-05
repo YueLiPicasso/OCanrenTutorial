@@ -30,7 +30,7 @@ The type constructor `MyList.t` is called an abstract list type for it not only 
 
 ## Ground Types
 
-The usual definition of the recursive list type can then be decomposed into the two finer steps:
+The usual definition of the recursive list type can then be decomposed into the three finer steps:
 1. Abstracting over the self type.
 1. Instantiating the abstract type by self type.
 1. Equating the instance with the self type to close the loop.
