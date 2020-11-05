@@ -52,11 +52,11 @@ Equation `(* 2b *)` is the usual definition of a list type, which we call a _gro
 ## Logic Types
 
 In a relational program, a list engages with logic variables in manners like:
-a) `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
-a) `[1;X;3]` --- An unknown list member.
-a) `Cons (1,Y)` --- An unknown sub-list.
-a) `Cons (X,Y)` --- An unknown member as well as an unknown sub-list.
-a) `X` --- A list that is wholly unknown. 
+1) `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
+1) `[1;X;3]` --- An unknown list member.
+1) `Cons (1,Y)` --- An unknown sub-list.
+1) `Cons (X,Y)` --- An unknown member as well as an unknown sub-list.
+1) `X` --- A list that is wholly unknown. 
 
 To type such a relational list, the ground type is inadequate, for it only allows logic variables
 to represent unknown members, but not an unknown sub-list.
