@@ -87,9 +87,10 @@ guarded logic list  = 'Nil'
 The type for a (polymorphic) logic list can then be implemented with mutual recursion 
  as follows:
 ```ocaml
-  type 'b logic_list  =  Value of 'b guarded_logic_list
-                      |  Var   of int * 'b logic_list list
-  and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t    
+(** A logic list type definition *)
+type 'b logic_list  =  Value of 'b guarded_logic_list
+                    |  Var   of int * 'b logic_list list
+and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t    
 ```
 where the constructors `Value` and `Var` are used to distinguish a guarded logic list from a pure
  logic list. Moreover,  The `Var` constructor's `int` argument uniquely identifies a pure logic list, and the
@@ -112,6 +113,7 @@ Regarding all these as _logic numbers_, we distinguish:
 
 We can define abstarct, ground and logic Peano number types as well:
 ```ocaml
+(** Abstarct, ground and logic Peano number types *)
 module Peano = struct
   type 'a t    = O | S of 'a             (** Abstract *)
   type ground  = ground t                (** Ground *) 
@@ -127,6 +129,7 @@ itself. This imlpies that we can extract these common parts to be reused
 when defining other logic types, by equating them to a new type constructor; meanwhile, abstracting a
 type parameter from the guarded types, as follows:
 ```ocaml
+(** A reusable type constructor for defining logic types *)
 module MyLogic = struct
   type 'a logic = Value of 'a | Var of int * 'a logic list
 end;;
