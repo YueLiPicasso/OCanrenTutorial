@@ -65,7 +65,7 @@ relational list = logic variable | guarded relational list;
 guarded relational list = 'Nil' | 'Cons', '(', list member, relational list, ')';
 ```
 The type for a (polymorphic) relational list can therefore be implemented with mutual recursion 
-as follows:
+between `(* 3a *)` and `(* 3b *)` as follows:
 
 ```ocaml
 module Logic = struct
