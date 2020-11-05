@@ -30,8 +30,10 @@ The type constructor `MyList.t` is called an abstract list type for it not only 
 
 ## Ground Types
 
-The usual definition of the recursive list type can then be decomposed into the two finer steps:  abstraction
-over self, and then instantiation by self with an additional equation to close the loop: 
+The usual definition of the recursive list type can then be decomposed into the two finer steps:
+1. Abstraction over self `(* 1 *)`.
+1. Instantiation by self followed by an additional equation to close the loop `(* 2 *)`.
+See below:
 ```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
