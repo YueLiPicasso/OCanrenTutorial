@@ -153,8 +153,7 @@ end;;
 In other words we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`. For examples, the logic list type can be rewritten as:
 ```ocaml
 module MyList = struct
-  type ('a, 'b) t = Nil | Cons of 'a * 'b    
-  type 'a ground  = ('a, 'a ground) t         
+  type ('a, 'b) t = Nil | Cons of 'a * 'b            
   type 'b logic   =  'b guarded Logic.logic and 'b guarded  = ('b, 'b logic) t           
 end;;
 ```
@@ -162,7 +161,6 @@ and the logic number type as:
 ```ocaml
 module Peano = struct
   type 'a t   = O | S of 'a
-  type ground = ground t
   type logic  =  guarded Logic.logic and guarded = logic t
 end;;
 ```
