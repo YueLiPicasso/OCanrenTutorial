@@ -82,8 +82,6 @@ pure logic list     = logic variable;
 guarded logic list  = 'Nil'
                     | 'Cons', '(', logic list member, logic list, ')';
 ```
-so that guarded logic lista are  signified by the constructor `Value` and the pure ones by `Var`. 
-
 The type for a (polymorphic) logic list can then be implemented with mutual recursion 
  as follows:
 ```ocaml
