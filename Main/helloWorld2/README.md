@@ -131,7 +131,7 @@ itself. This imlpies that we can extract these common parts for reuse
 , by equating them to a new type constructor with one
 type parameter that abstracts from the guarded types, as follows:
 ```ocaml
-(** A reusable type constructor for defining logic types *)
+(** The new, reusable type constructor for defining logic types *)
 module MyLogic = struct
   type 'a logic = Value of 'a | Var of int * 'a logic list
 end;;
