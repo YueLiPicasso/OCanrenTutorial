@@ -20,6 +20,7 @@ considered incompatible with any other type. However, the abstract type that we 
 is a different concept, and it comes from the fact that some recurive types can be defined in the following way.
 Say we want to define a polymorphic list type:
 ```ocaml
+(** The abstract list type *)
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b 
 end;;
@@ -38,6 +39,7 @@ The usual definition of the recursive list type can be decomposed into the three
 
 As in:
 ```ocaml
+(** Defining the ground list type from the abstract type *)
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
   type 'a ground = ('a, 'a ground) t        (* 2 *)
