@@ -164,6 +164,18 @@ module Peano = struct
   type logic  =  guarded Logic.logic and guarded = logic t
 end;;
 ```
+Or even shorter, skipping the guarded types:
+```ocaml
+module MyList = struct
+  type ('a, 'b) t = Nil | Cons of 'a * 'b            
+  type 'b logic   =  ('b, 'b logic) t Logic.logic           
+end;;
+
+module Peano = struct
+  type 'a t   = O | S of 'a
+  type logic  =  logic t Logic.logic
+end;;
+```
 
 ## Injected Types
 
