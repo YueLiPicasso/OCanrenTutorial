@@ -53,82 +53,37 @@ Equation `(* 2b *)` is the usual definition of a list type, which we call a _gro
 
 In a relational program, a list engages with logic variables in manners like:
 1) `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
-1) `[1;X;3]` --- An unknown list member.
-1) `Cons (1,Y)` --- An unknown sub-list.
-1) `Cons (X,Y)` --- An unknown member as well as an unknown sub-list.
-1) `X` --- A list that is wholly unknown. 
+1) `[1;X;3]` --- There are only unknown list members.
+1) `Cons (1,Y)` --- There is only an unknown sub-list.
+1) `Cons (X,Y)` --- There are both unknown list members and an unknown sub-list.
+1) `X` --- The list itself is wholly unknown. 
 
-To type such a relational list, the ground type is inadequate, for it only allows logic variables
-to represent unknown members, but not an unknown sub-list.
-
-For instance, if the list members are supposed to have type
-`int`, we can assign `int MyList.ground` to all concrete lists, and assign type `int Logic.logic ground` to
-all lists where logic variables only represent unknown members, provided the type definition:
+For all but the last case, we have some knowledge about the structure of the list. Thus we make the distinction
+between a _guarded relational list_ and a (general) relational list:
+```ebnf
+relational list = logic variable | guarded relational list;
+guarded relational list = 'Nil' | 'Cons', '(', list member, relational list, ')';
 ```
+The type for a (polymorphic) relational list can therefore be implemented by mutual recursion between
+`'a MyList.logic` and `'a Mylist.guarded`, as follows:
+
+```ocaml
 module Logic = struct
   type 'a logic = Value of 'a | Var of var_id 
 end;;
-```
-where the constructors `Value` and `Var` distinguish concrete values of type `'a` from logic variables that
-range over `'a`, and `var_id` is the
-type used to distinguish one from another among logic variables, and  it could be `string` or `integer` or something else.
 
-However, for a relational list in which there is  a logic variable that represents a sub-list, there is no way of
-instantiating the type parameter of `MyList.ground` to make it the right type, for we need the top level constructors
-to be one of `Value` and `Var`, but the `MyList.ground` type only permits one of `Nil` and `Cons`
- at the top level: a contradiction.
-
-The problem can be resolved by introducing a notion of _guarded relational list_, which is a relational list that is not
-itself a logic variable. 
-
-```ebnf
-relational list = logic variable | guarded relational list;
-guarded relational list = 'Nil' | 'Cons', '(', list member, relational list, ')'; 
-```
-A relational list is either a logic variable or a guarded relational list;
-A guarded relational list  is either Nil or Cons (elem, relational list)
-
-
-> to do levels of abstraction: logic var, guarded list, concrete
-
-To work with such an expression necessarily we need to ascertain its type. 
-As a initial  response we define a polymorphic type, called `'a logic`
-to merge a type with all logic variables over the type:
-
-```ocaml
 module MyList = struct
-  type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
-  type 'a ground = ('a, 'a ground) t        (* 2 *)
-  type 'b logic =  'b guard Logic.logic       (* 3a *)
-  and    'b guard = ('b, 'b logic) t          (* 3b *) 
+  type ('a, 'b) t = Nil | Cons of 'a * 'b     (* 1 *)
+  type 'a ground  = ('a, 'a ground) t         (* 2 *)
+  type 'b logic   =  'b guarded Logic.logic   (* 3a *)
+  and  'b guarded = ('b, 'b logic) t          (* 3b *) 
 end;;
 ```
-NOte that (* 3a *) and (* 3b *) are a pair of mutually recursive type definitions. 
 
-On the top level, a value of `'b MyList.logic` is `Value of 'b MyList.aux` or `Var of int`, the latter of which allows
-logic variables to range over the list type, and the former makes sure that whatever follows `Value` must have `Nil` or
-`Cons` occur in it for by ('b, b logic) t = Nil | Cons of 'b * 'b logic 
+## Injected Types
 
 
-The question is how we might type expressions like the above ? For example, `[1;X;3]` hints at the `int list`, but the
-type `int` does not have a constructor named `X`. A possible solution is to define a type that accepts both a logic variable
-and a concrete value, something like:
-```ocaml
-type logic_int = Value of int | Var of string
-```
-where the `string` holds the name of the variable. Then we have:
-```ocaml
-[Value 1;Var "X";Value 3] : logic_int list
-```
-Now, what about the type of `Y` in `[1;X;3] ^ Y` ? Shoud it be `logic_int list`? But `Y`  has nothing to do
- with the two constructors of list, namely `Nil` and `Cons`, particularly if we somehow apply the same
- solution to represent `Y` by `Var "Y"`! 
- ```
- type logic_logic_int_list = Value of logic_int list | Var of string
- ```
-
-
-Because this
+Finally 
 technique is so useful, let us see another example before moving on to demonstrate its utility. We define the Peano
  numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
  The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
