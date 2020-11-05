@@ -81,9 +81,14 @@ type used to distinguish one from another among logic variables, and  it could b
 However, for a relational list in which there is  a logic variable that represents a sub-list, there is no way of
 instantiating the type parameter of `MyList.ground` to make it the right type, for we need the top level constructors
 to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
- at the top level on the other hand, and this contradiction is unresolvabe.
+ at the top level on the other hand: a contradiction.
 
-But it can be bypassed. 
+```ebnf
+relational list = logic variable | guarded relational list;
+guarded relational list = 'Nil' | 'Cons', '(', list member, relational list, ')'; 
+```
+A relational list is either a logic variable or a guarded relational list;
+A guarded relational list  is either Nil or Cons (elem, relational list)
 
 
 > to do levels of abstraction: logic var, guarded list, concrete
