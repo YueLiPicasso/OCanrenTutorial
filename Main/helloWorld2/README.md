@@ -138,7 +138,7 @@ module Something = strcut
   type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
   type ('a1, ..., 'an) logic = Value of ('a1, ..., 'an) guarded
                              | Var of int * ('a1, ..., 'an) logic list    
-  and ('a1, ..., 'an) guarded = ('a1,...'an, ('a1, ..., 'an) logic) t
+  and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
 end;;
 ```
 we could write:
