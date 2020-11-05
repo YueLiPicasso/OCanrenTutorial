@@ -82,21 +82,39 @@ pure logic list     = logic variable;
 guarded logic list  = 'Nil'
                     | 'Cons', '(', logic list member, logic list, ')';
 ```
-Moreover, we shall require that a pure logic list only ranges over the set of all
-guarded logic lists, rather than the set of all logic lists, since substituting a pure logic variable
-by another logc 
-The distinction between a pure logic list and a guarded logic list is implemented by:
-```ocaml
-module Logic = struct
-  type 'a logic = Value of 'a | Var of ident 
-end;;
-```
 so that guarded logic lista are  signified by the constructor `Value` and the pure ones by `Var`. 
 
-The type for a (polymorphic) logic list can therefore be implemented with mutual recursion 
-between `(* 3a *)` and `(* 3b *)` as follows:
+The type for a (polymorphic) logic list can then be implemented with mutual recursion 
+ as follows:
+```ocaml
+  type 'b logic_list  =  Value of 'b guarded_logic_list
+                      |  Var   of int * 'b logic_list list
+  and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t    
+```
+where the constructors `Value` and `Var` are used to distinguisha guarded logic list from a pure
+ logic list. The `Var` constructor's `int` argument uniquely identifies the pure logic list, and the
+ second argument is a (possibly empty) list of logic lists that can be used to instantiate the pure
+ logic list. 
+
+### More abstraction over logic types
+
+ Let us see another example before moving on to demonstrate its utility. We define the Peano
+ numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
+ The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
+ is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
+```ocaml
+module Peano = struct
+  type 'a t = O | S of 'a
+  type logic_nat = Value of guarded_nat | Var of int * logic_nat list
+  and guarded_nat = logic_nat t
+end;;
+
 
 ```ocaml
+module Logic = struct
+  type 'a logic = Value of 'a | Var of int * 'a logic list
+end;;
+
 module MyList = struct
   type ('a, 'b) t  = Nil | Cons of 'a * 'b     (* 1 *)
   type 'a ground   = ('a, 'a ground) t         (* 2 *)
@@ -108,16 +126,6 @@ end;;
 ## Injected Types
 
 
-Finally 
-technique is so useful, let us see another example before moving on to demonstrate its utility. We define the Peano
- numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
- The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
- is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
-```ocaml
-module Peano = struct
-  type 'a t = O | S of 'a
-  type ground = ground t
-end;;
 ```
 Again the type `Peano.ground` is defined via an abstract type.
 
