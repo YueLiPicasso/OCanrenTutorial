@@ -176,6 +176,15 @@ module Peano = struct
   type logic  =  logic t MyLogic.logic
 end;;
 ```
+More generally (with ground type added):
+```ocaml
+(**  *)
+module Something = strcut
+  type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
+  type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
+  type ('a1, ..., 'an) logic =  ('a1, ..., 'an, ('a1, ..., 'an) logic) t MyLogic.logic 
+end;;
+```
 
 ## Injected Types
 
