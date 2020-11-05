@@ -52,7 +52,7 @@ Then by `(* 1b *)` and `(* 2 *)` we have:
 ```ocaml
 type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 ```
-Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground list type. The abstract list type
+Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground list type_. The abstract list type
 can also be used to define logic list types. 
 
 
