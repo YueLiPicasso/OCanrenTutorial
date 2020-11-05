@@ -113,8 +113,11 @@ Regarding all these as _logic numbers_, we distinguish:
 We can define abstarct, ground and logic Peano number types as well:
 ```ocaml
 module Peano = struct
+  (** Abstract *)
   type 'a t = O | S of 'a
+  (** Ground *)
   type ground = ground t
+  (** Logic (and guarded) *)
   type logic = Value of guarded | Var of int * logic list
   and guarded = logic t
 end;;
