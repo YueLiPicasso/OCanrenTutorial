@@ -155,7 +155,7 @@ module Something = strcut
   and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
 end;;
 ```
-for we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`.
+for we can derive the longer from the shorter using `MyLogic`.
 As examples: the logic list type can be rewritten as:
 ```ocaml
 (** Defining the logic list type using [MyLogic.logic] *)
