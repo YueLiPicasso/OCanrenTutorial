@@ -64,8 +64,8 @@ between a _guarded relational list_ and a (general) relational list:
 relational list = logic variable | guarded relational list;
 guarded relational list = 'Nil' | 'Cons', '(', list member, relational list, ')';
 ```
-The type for a (polymorphic) relational list can therefore be implemented by mutual recursion between
-`'a MyList.logic` and `'a Mylist.guarded`, as follows:
+The type for a (polymorphic) relational list can therefore be implemented with mutual recursion 
+as follows:
 
 ```ocaml
 module Logic = struct
@@ -73,10 +73,10 @@ module Logic = struct
 end;;
 
 module MyList = struct
-  type ('a, 'b) t = Nil | Cons of 'a * 'b     (* 1 *)
-  type 'a ground  = ('a, 'a ground) t         (* 2 *)
-  type 'b logic   =  'b guarded Logic.logic   (* 3a *)
-  and  'b guarded = ('b, 'b logic) t          (* 3b *) 
+  type ('a, 'b) t     = Nil | Cons of 'a * 'b     (* 1 *)
+  type 'a ground      = ('a, 'a ground) t         (* 2 *)
+  type 'b relational  =  'b guarded Logic.logic   (* 3a *)
+  and  'b guarded     = ('b, 'b relational) t     (* 3b *) 
 end;;
 ```
 
