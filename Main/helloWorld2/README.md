@@ -179,8 +179,6 @@ end;;
 
 ## Injected Types
 
-
-```
 Again the type `Peano.ground` is defined via an abstract type.
 
 
