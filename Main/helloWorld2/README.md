@@ -65,10 +65,12 @@ In a relational program, a list engages with logic variables in cases like:
 
 Due to possible presence of logic variables in various ways shown above, the concept of a list in a relational
 program is more general than the concept of a ground list. We call them _logic lists_, for which we now define
-a type. Observe that for cases 1-4, we have some knowledge about the structure of the list: we know whether
+a type.
+
+Observe that for cases 1-4, we have some knowledge about the structure of the list: we know whether
 it is empty or not because there is a top level constructor to inspect. We call such logic lists _guarded_.
 But for case 5,  we have no idea about the structure of the list for there is no top level constructor
-to provide a clue : we call it a _pure logic list_. This is an important distinction
+to provide a clue : we call it a _pure logic list_, which is just a logic variable. This is an important distinction
 needed for typing logic lists, and we formalize it as follows:
 
 ```ebnf
@@ -80,13 +82,16 @@ pure logic list     = logic variable;
 guarded logic list  = 'Nil'
                     | 'Cons', '(', logic list member, logic list, ')';
 ```
+Moreover, we shall require that a pure logic list only ranges over the set of all
+guarded logic lists, rather than the set of all logic lists, since substituting a pure logic variable
+by another logc 
 The distinction between a pure logic list and a guarded logic list is implemented by:
 ```ocaml
 module Logic = struct
   type 'a logic = Value of 'a | Var of ident 
 end;;
 ```
-where the parameter `'a` is to be instantiated by the type of a guarded logic list. 
+so that guarded logic lista are  signified by the constructor `Value` and the pure ones by `Var`. 
 
 The type for a (polymorphic) logic list can therefore be implemented with mutual recursion 
 between `(* 3a *)` and `(* 3b *)` as follows:
