@@ -73,7 +73,7 @@ Observe that for cases 1-4, we have some knowledge about the structure of the li
 it is empty or not because there is a top level constructor to inspect. We call such logic lists _guarded_.
 But for case 5,  we have no idea about the structure of the list for there is no top level constructor
 to provide a clue : we call it a _pure logic list_, which is just a logic variable. This is an important distinction
-needed for typing logic lists, and we formalize it as follows:
+needed for typing logic lists, and we summarize it as follows:
 
 ```ebnf
 logic list          = pure logic list
