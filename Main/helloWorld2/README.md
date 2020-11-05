@@ -138,7 +138,7 @@ end;;
 ```
 Next time when we what to define `('a1, ..., 'an) Something.logic`, instead of writing:
 ```ocaml
-(** longer *)
+(** longer logic type definition  *)
 module Something = strcut
   type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
   type ('a1, ..., 'an) logic = Value of ('a1, ..., 'an) guarded
@@ -148,11 +148,11 @@ end;;
 ```
 we could write:
 ```ocaml
-(** shorter *)
+(** shorter logic type definition  *)
 module Something = strcut
-  (* ... The abstract type is the same *)
+  type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
   type ('a1, ..., 'an) logic =  ('a1, ..., 'an) guarded MyLogic.logic 
-  and (* ... The guarded type is the same *)
+  and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
 end;;
 ```
 for we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`.
