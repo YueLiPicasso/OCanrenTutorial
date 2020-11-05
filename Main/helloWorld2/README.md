@@ -175,7 +175,7 @@ end;;
 Or even shorter, skipping the guarded types:
 ```ocaml
 (** Concise definitions of abstract and logic types
-   for lists and Peano numbers *)
+    for lists and Peano numbers *)
 
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b            
