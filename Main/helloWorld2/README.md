@@ -90,7 +90,7 @@ The type for a (polymorphic) logic list can then be implemented with mutual recu
   and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t    
 ```
 where the constructors `Value` and `Var` are used to distinguish a guarded logic list from a pure
- logic list. Moreover,  The `Var` constructor's `int` argument uniquely identifies the pure logic list, and the
+ logic list. Moreover,  The `Var` constructor's `int` argument uniquely identifies a pure logic list, and the
  second argument is a (possibly empty) list of logic lists that can be used to instantiate the pure
  logic list. 
 
