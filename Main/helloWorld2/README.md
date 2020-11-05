@@ -59,7 +59,7 @@ can also be used to define logic list types.
 ## Logic Types
 
 In a relational program, a list engages with logic variables in cases like:
-1) `Cons (1,Nil)` and  `Nil` --- No logic variable occurrence at all, the expression is absolutely concrete.
+1) `Cons (1,Nil)` and  `Nil` --- No logic variable occurrence at all, the expression is actually ground.
 1) `Cons (X, Nil)`           --- There are only unknown list members.
 1) `Cons (1,Y)`              --- There is only an unknown sub-list.
 1) `Cons (X,Y)`              --- There are both unknown list members and an unknown sub-list.
