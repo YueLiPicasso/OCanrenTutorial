@@ -36,7 +36,7 @@ The usual definition of the recursive list type can be decomposed into the three
 1. Instantiating the abstract type by self type.
 1. Equating the instance with the self type to close the loop.
 
-For instance:
+As in:
 ```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
