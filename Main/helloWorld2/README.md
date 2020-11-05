@@ -189,7 +189,7 @@ end;;
 ```
 More generally (and with ground type added):
 ```ocaml
-(** General definitions of abstract, ground and logic types *)
+(** General and concise definitions of abstract, ground and logic types *)
 module Something = strcut
   type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
