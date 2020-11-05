@@ -104,15 +104,19 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
  is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming,
  in cases like:
  1. `O`, `S(O)` --- Ground (Peano) numbers.
- 1. `X`, `S(X)`, `S(S(X))` --- Peano numbers with a logic variable (`X`), called _logic (Peano) numbers_.
+ 1. `X`, `S(X)`, `S(S(X))` --- Numbers with a logic variable (`X`).
+
+And we distinguish:
+   1. `X` --- The pure logic number.
+   1. `O`, `S(O)`, `S(X)`, `S(S(X))` --- Guarded logic numbers.
 
 We can define abstarct, ground and logic Peano number types as well:
 ```ocaml
 module Peano = struct
   type 'a t = O | S of 'a
   type ground = ground t
-  type logic_nat = Value of guarded_nat | Var of int * logic_nat list
-  and guarded_nat = logic_nat t
+  type logic = Value of guarded | Var of int * logic list
+  and guarded = logic t
 end;;
 ```
 
