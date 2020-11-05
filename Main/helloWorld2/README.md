@@ -127,7 +127,7 @@ end;;
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
 and the `Var` constructor's first argument is always `int` and second argument is always a `list` of the logic type
-itself. This imlpies that we can extract these common parts to be reused
+itself. This imlpies that we can extract these common parts for reuse
 when defining other logic types, by equating them to a new type constructor; meanwhile, abstracting a
 type parameter from the guarded types, as follows:
 ```ocaml
