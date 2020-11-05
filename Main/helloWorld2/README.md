@@ -154,26 +154,26 @@ In other words we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`
 ```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b            
-  type 'b logic   =  'b guarded Logic.logic and 'b guarded  = ('b, 'b logic) t           
+  type 'b logic   =  'b guarded MyLogic.logic and 'b guarded  = ('b, 'b logic) t           
 end;;
 ```
 and the logic number type as:
 ```ocaml
 module Peano = struct
   type 'a t   = O | S of 'a
-  type logic  =  guarded Logic.logic and guarded = logic t
+  type logic  =  guarded MyLogic.logic and guarded = logic t
 end;;
 ```
 Or even shorter, skipping the guarded types:
 ```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b            
-  type 'b logic   =  ('b, 'b logic) t Logic.logic           
+  type 'b logic   =  ('b, 'b logic) t MyLogic.logic           
 end;;
 
 module Peano = struct
   type 'a t   = O | S of 'a
-  type logic  =  logic t Logic.logic
+  type logic  =  logic t MyLogic.logic
 end;;
 ```
 
