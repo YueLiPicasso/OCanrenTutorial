@@ -187,7 +187,7 @@ module Peano = struct
   type logic  =  logic t MyLogic.logic
 end;;
 ```
-More generally (with ground type added):
+More generally (and with ground type added):
 ```ocaml
 (** General definitions of abstract, ground and logic types *)
 module Something = strcut
