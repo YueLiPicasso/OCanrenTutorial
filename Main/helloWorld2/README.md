@@ -108,7 +108,7 @@ module Peano = struct
   type logic_nat = Value of guarded_nat | Var of int * logic_nat list
   and guarded_nat = logic_nat t
 end;;
-
+```
 
 ```ocaml
 module Logic = struct
