@@ -113,26 +113,36 @@ Regarding all these as _logic numbers_, we distinguish:
 We can define abstarct, ground and logic Peano number types as well:
 ```ocaml
 module Peano = struct
-  (** Abstract *)
-  type 'a t = O | S of 'a
-  (** Ground *)
-  type ground = ground t
-  (** Logic (and guarded) *)
-  type logic = Value of guarded | Var of int * logic list
-  and guarded = logic t
+  type 'a t    = O | S of 'a             (** Abstract *)
+  type ground  = ground t                (** Ground *) 
+  type logic   = Value of guarded        (** Logic  *)
+               | Var of int * logic list
+  and  guarded = logic t                 (** ... and Guarded *)
 end;;
 ```
-
+Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
+`Value` and `Var` with  similar argument structures. This imlpies that we can extract this part to be reused
+when defining other logic types, by introducing a new type constructor `Logic.logic` and  abstracting a
+type parameter `'a` from the guarded types, as follows:
 ```ocaml
 module Logic = struct
   type 'a logic = Value of 'a | Var of int * 'a logic list
 end;;
-
+```
+Then the logic list type can be rewritten as:
+```
 module MyList = struct
-  type ('a, 'b) t  = Nil | Cons of 'a * 'b     (* 1 *)
-  type 'a ground   = ('a, 'a ground) t         (* 2 *)
-  type 'b logic    =  'b guarded Logic.logic   (* 3a *)
-  and  'b guarded  = ('b, 'b logic) t          (* 3b *) 
+  type ('a, 'b) t = Nil | Cons of 'a * 'b    
+  type 'a ground  = ('a, 'a ground) t         
+  type 'b logic   =  'b guarded Logic.logic and 'b guarded  = ('b, 'b logic) t           
+end;;
+```
+The logic number type as:
+```ocaml
+module Peano = struct
+  type 'a t   = O | S of 'a
+  type ground = ground t
+  type logic  =  guarded Logic.logic and guarded = logic t
 end;;
 ```
 
