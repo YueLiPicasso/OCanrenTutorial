@@ -106,7 +106,7 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
  1. `O`, `S(O)` --- Ground (Peano) numbers.
  1. `X`, `S(X)`, `S(S(X))` --- Numbers with a logic variable (`X`).
 
-And we distinguish:
+Regarding all these as _logic numbers_, we distinguish:
    1. `X` --- The pure logic number.
    1. `O`, `S(O)`, `S(X)`, `S(S(X))` --- Guarded logic numbers.
 
