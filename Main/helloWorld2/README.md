@@ -30,8 +30,8 @@ The type constructor `MyList.t` is called an abstract list type for it not only 
 
 ## Ground Types
 
-How can such an abstract type be useful?  We shall at least see that its type parameters can be further instantiated,
-and together with an additional equation, to produce the familiar list type: 
+The usual definition of the recursive list type can be decomposed into the two finer steps:  abstraction
+over self, and then instantiation by self with an additional equation to close the loop: 
 ```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b   (* 1 *)
@@ -48,20 +48,15 @@ type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 ```
 Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
 
-We have seen that the usual definition of the recursive list type can be decomposed into two finer steps: abstraction
-over self, and then instantiation by self with an additional equation to close the loop. This type abstraction technique
-works with any recursive type, and we now use it to type data items in
-relational programs.
-
 
 ## Logic Types
 
 In a relational program, a list engages with logic variables in manners like:
-- `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
-- `[1;X;3]` --- An unknown list member.
-- `Cons (1,Y)` --- An unknown list.
-- `Cons (X,Y)` --- An unknown member as well as an unknown list.
-- X --- A list that is wholly unknown. 
+a) `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
+a) `[1;X;3]` --- An unknown list member.
+a) `Cons (1,Y)` --- An unknown sub-list.
+a) `Cons (X,Y)` --- An unknown member as well as an unknown sub-list.
+a) `X` --- A list that is wholly unknown. 
 
 To type such a relational list, the ground type is inadequate, for it only allows logic variables
 to represent unknown members, but not an unknown sub-list.
@@ -80,8 +75,11 @@ type used to distinguish one from another among logic variables, and  it could b
 
 However, for a relational list in which there is  a logic variable that represents a sub-list, there is no way of
 instantiating the type parameter of `MyList.ground` to make it the right type, for we need the top level constructors
-to be one of `Value` and `Var` on the one hand, but the `MyList.ground` type only permits one of `Nil` and `Cons`
- at the top level on the other hand: a contradiction.
+to be one of `Value` and `Var`, but the `MyList.ground` type only permits one of `Nil` and `Cons`
+ at the top level: a contradiction.
+
+The problem can be resolved by introducing a notion of _guarded relational list_, which is a relational list that is not
+itself a logic variable. 
 
 ```ebnf
 relational list = logic variable | guarded relational list;
