@@ -26,11 +26,12 @@ end;;
 ```
 The type constructor `MyList.t` is called an abstract list type for it not only abstracts over the list memeber type
  by means of the type parameter `'a`,  but also abstracts over the list tail type or in other words over the list type
- itself  by means of the type parameter `'b`. 
+ itself  by means of the type parameter `'b`. We can use the abstract list type to define more interesting types of
+ lists, as we shall see next.   
 
 ## Ground Types
 
-The usual definition of the recursive list type can then be decomposed into the three finer steps:
+The usual definition of the recursive list type can be decomposed into the three finer steps:
 1. Abstracting over the self type.
 1. Instantiating the abstract type by self type.
 1. Equating the instance with the self type to close the loop.
@@ -51,7 +52,8 @@ Then by `(* 1b *)` and `(* 2 *)` we have:
 ```ocaml
 type 'a ground = Nil | Cons of 'a * 'a ground  (* 2b *)
 ```
-Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list.
+Equation `(* 2b *)` is the usual definition of a list type, which we call a _ground_ list. The abstract list type
+can also be used to define logic list types. 
 
 
 ## Logic Types
