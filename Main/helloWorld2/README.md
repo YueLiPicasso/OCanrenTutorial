@@ -150,8 +150,10 @@ module Something = strcut
   and (* ... The guarded type is the same *)
 end;;
 ```
-In other words we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`. For examples, the logic list type can be rewritten as:
+In other words we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`.
+For examples, the logic list type can be rewritten as:
 ```ocaml
+(** Defining the logic list type using [MyLogic.logic] *)
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b            
   type 'b logic   =  'b guarded MyLogic.logic and 'b guarded  = ('b, 'b logic) t           
@@ -159,6 +161,7 @@ end;;
 ```
 and the logic number type as:
 ```ocaml
+(** Defining the logic number type using [MyLogic.logic] *)
 module Peano = struct
   type 'a t   = O | S of 'a
   type logic  =  guarded MyLogic.logic and guarded = logic t
@@ -166,6 +169,9 @@ end;;
 ```
 Or even shorter, skipping the guarded types:
 ```ocaml
+(** Concise definitions of abstract and logic types
+   for lists and Peano numbers *)
+
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b            
   type 'b logic   =  ('b, 'b logic) t MyLogic.logic           
@@ -178,7 +184,7 @@ end;;
 ```
 More generally (with ground type added):
 ```ocaml
-(**  *)
+(** General definitions of abstract, ground and logic types *)
 module Something = strcut
   type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
