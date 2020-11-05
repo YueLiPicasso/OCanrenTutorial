@@ -101,10 +101,16 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
  Let us see another example of logic types. We define the Peano
  numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
  The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
- is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
+ is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming,
+ in cases like:
+ 1. `O`, `S(O)` --- Ground (Peano) numbers.
+ 1. `X`, `S(X)`, `S(S(X))` --- Peano numbers with a logic variable (`X`), called _logic (Peano) numbers_.
+
+We can define abstarct, ground and logic Peano number types as well:
 ```ocaml
 module Peano = struct
   type 'a t = O | S of 'a
+  type ground = ground t
   type logic_nat = Value of guarded_nat | Var of int * logic_nat list
   and guarded_nat = logic_nat t
 end;;
