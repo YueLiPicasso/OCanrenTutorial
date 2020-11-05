@@ -1,7 +1,8 @@
 ## OCanren Tutorial Outline
 
 - [General Feelings](./helloWorld)
-- [Type Hierarchy](./helloWorld2)  
+- [Types for Relational Programs](./digTypes)
+- [Base Types](./helloWorld2)
 - Variant Types
   - [Constant Constructors](./weekdays)  
   - Non-constant Constructors
