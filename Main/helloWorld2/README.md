@@ -98,7 +98,7 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
 
 ### More abstraction over logic types
 
- Let us see another example before moving on to demonstrate its utility. We define the Peano
+ Let us see another example of logic types. We define the Peano
  numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
  The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
  is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming.
