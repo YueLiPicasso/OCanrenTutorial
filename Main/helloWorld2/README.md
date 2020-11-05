@@ -56,32 +56,47 @@ Equation `(* 2b *)` is the usual definition of a list type, which we call a _gro
 
 ## Logic Types
 
-In a relational program, a list engages with logic variables in manners like:
-1) `[1;2;3]` --- No logic variable occurrence at all, the expression is absolutely concrete.
-1) `[1;X;3]` --- There are only unknown list members.
-1) `Cons (1,Y)` --- There is only an unknown sub-list.
-1) `Cons (X,Y)` --- There are both unknown list members and an unknown sub-list.
-1) `X` --- The list itself is wholly unknown. 
+In a relational program, a list engages with logic variables in cases like:
+1) `Cons (1,Nil)` and  `Nil` --- No logic variable occurrence at all, the expression is absolutely concrete.
+1) `Cons (X, Nil)`           --- There are only unknown list members.
+1) `Cons (1,Y)`              --- There is only an unknown sub-list.
+1) `Cons (X,Y)`              --- There are both unknown list members and an unknown sub-list.
+1) `X`                       --- The list itself is wholly unknown. 
 
-For all but the last case, we have some knowledge about the structure of the list. Thus we make the distinction
-between a _guarded relational list_ and a (general) relational list:
+Due to possible presence of logic variables in various ways shown above, the concept of a list in a relational
+program is more general than the concept of a ground list. We call them _logic lists_, for which we now define
+a type. Observe that for cases 1-4, we have some knowledge about the structure of the list: we know whether
+it is empty or not because there is a top level constructor to inspect. We call such logic lists _guarded_.
+But for case 5,  we have no idea about the structure of the list for there is no top level constructor
+to provide a clue : we call it a _pure logic list_. This is an important distinction
+needed for typing logic lists, and we formalize it as follows:
+
 ```ebnf
-relational list = logic variable | guarded relational list;
-guarded relational list = 'Nil' | 'Cons', '(', list member, relational list, ')';
+logic list          = pure logic list
+                    | guarded logic list;
+		    
+pure logic list     = logic variable;
+
+guarded logic list  = 'Nil'
+                    | 'Cons', '(', logic list member, logic list, ')';
 ```
-The type for a (polymorphic) relational list can therefore be implemented with mutual recursion 
+The distinction between a pure logic list and a guarded logic list is implemented by:
+```ocaml
+module Logic = struct
+  type 'a logic = Value of 'a | Var of ident 
+end;;
+```
+where the parameter `'a` is to be instantiated by the type of a guarded logic list. 
+
+The type for a (polymorphic) logic list can therefore be implemented with mutual recursion 
 between `(* 3a *)` and `(* 3b *)` as follows:
 
 ```ocaml
-module Logic = struct
-  type 'a logic = Value of 'a | Var of var_id 
-end;;
-
 module MyList = struct
-  type ('a, 'b) t     = Nil | Cons of 'a * 'b     (* 1 *)
-  type 'a ground      = ('a, 'a ground) t         (* 2 *)
-  type 'b relational  =  'b guarded Logic.logic   (* 3a *)
-  and  'b guarded     = ('b, 'b relational) t     (* 3b *) 
+  type ('a, 'b) t  = Nil | Cons of 'a * 'b     (* 1 *)
+  type 'a ground   = ('a, 'a ground) t         (* 2 *)
+  type 'b logic    =  'b guarded Logic.logic   (* 3a *)
+  and  'b guarded  = ('b, 'b logic) t          (* 3b *) 
 end;;
 ```
 
