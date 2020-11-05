@@ -155,8 +155,8 @@ module Something = strcut
   and (* ... The guarded type is the same *)
 end;;
 ```
-In other words we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`.
-For examples, the logic list type can be rewritten as:
+for we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`.
+As examples: the logic list type can be rewritten as:
 ```ocaml
 (** Defining the logic list type using [MyLogic.logic] *)
 module MyList = struct
