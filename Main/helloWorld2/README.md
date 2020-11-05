@@ -125,21 +125,40 @@ Comparing the types of logic lists and logic numbers, we could see that they bot
 and the `Var` constructor's first argument is always `int` and second argument is always a `list` of the logic type
 itself. This imlpies that we can extract these common parts to be reused
 when defining other logic types, by equating them to a new type constructor; meanwhile, abstracting a
-type parameter `'a` from the guarded types, as follows:
+type parameter from the guarded types, as follows:
 ```ocaml
-module Logic = struct
+module MyLogic = struct
   type 'a logic = Value of 'a | Var of int * 'a logic list
 end;;
 ```
-Then the logic list type can be rewritten as:
+Next time when we what to define `('a1, ..., 'an) Something.logic`, instead of writing:
+```ocaml
+(** longer *)
+module Something = strcut
+  type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
+  type ('a1, ..., 'an) logic = Value of ('a1, ..., 'an) guarded
+                             | Var of int * ('a1, ..., 'an) logic list    
+  and ('a1, ..., 'an) guarded = ('a1,...'an, ('a1, ..., 'an) logic) t
+end;;
 ```
+we could write:
+```ocaml
+(** shorter *)
+module Something = strcut
+  (* ... The abstract type is the same *)
+  type ('a1, ..., 'an) logic =  ('a1, ..., 'an) guarded MyLogic.logic 
+  and (* ... The guarded type is the same *)
+end;;
+```
+In other words we can derive `(** longer *)` from `(** shorter *)` and `MyLogic`. For examples, the logic list type can be rewritten as:
+```ocaml
 module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b    
   type 'a ground  = ('a, 'a ground) t         
   type 'b logic   =  'b guarded Logic.logic and 'b guarded  = ('b, 'b logic) t           
 end;;
 ```
-The logic number type as:
+and the logic number type as:
 ```ocaml
 module Peano = struct
   type 'a t   = O | S of 'a
