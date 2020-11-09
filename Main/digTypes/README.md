@@ -203,7 +203,8 @@ module Something = struct
   and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
 end;;
 ```
-for we can derive the longer from the shorter using `MyLogic`.
+for we can derive the longer from the shorter using `MyLogic` (the reader may
+write down the derivation as an exercise).
 As examples: the logic list type can be rewritten as:
 ```ocaml
 (** Defining the logic list type using [MyLogic.logic] *)
