@@ -107,7 +107,9 @@ Value (Cons (1, Value Nil));;  (* case 1 *)
 Value (Cons (1, Var (1,[])));; (* case 3 *)
 ```
 We could see that the inhabitants are logic lists where logic variables may only denote unknown sub-lists.
-To include logic variables for list members, we need to define, for example, logic numbers, as follows.    
+This is because the parameter of `logic_iist` is instantiated by a ground type (`int`).
+To allow logic variables as list members, we need to define the type of _logic number_ and use it
+as the type parameter, as follow.    
 
 ### More abstraction over logic types
 
