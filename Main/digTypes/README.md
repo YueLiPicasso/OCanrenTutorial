@@ -140,7 +140,7 @@ end;;
 ```ocaml
 Var (1,[]);;                        (* i.e., X *)
 Value O;;                           (* i.e., O *)
-Value (S Var (1,[]));;              (* i.e., S(X) *)
+Value (S (Var (1,[])));;            (* i.e., S(X) *)
 Value (S (Value O))                 (* i.e., S(O) *)
 Value (S (Value (S (Var (1,[])))))  (* i.e., S(S(X)) *)
 ```
