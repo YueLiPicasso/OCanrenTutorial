@@ -111,8 +111,6 @@ This is because the parameter of `logic_iist` is instantiated by a ground type (
 To allow logic variables as list members (as in cases 2 and 4), we need to define the type of _logic number_ and use it
 as the type parameter instead of `int`, as follows.    
 
-### More abstraction over logic types
-
  Let us see another example of logic types. We define the Peano
  numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
  The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
@@ -155,6 +153,8 @@ Value (Cons (Var (1,[]), Var (2,[])));; (* case 4 *)
 ```
 Therefore, when we talk about a list of numbers in relational programming, we are actually talking about a
 logic list of logic numbers. 
+
+### More abstraction over logic types
 
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
