@@ -297,7 +297,7 @@ Note that we defined
 the module `MyLogic`  for pedagogical purposes only, so that we do not
 have to refer to the OCanren source code. The reader is encouraged to find
 the corresponding definitions in the source code by himself. Moreover,
-the `Peano` and `MyList` types are provided by the OCanren standard libraries
+the `Peano` and `MyList` modules correspond to the OCanren standard libraries
 `LNat` and `LList` respectively where the leading `L` in the module names
 stands for "logic".
 
