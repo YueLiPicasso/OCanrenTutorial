@@ -287,3 +287,20 @@ Level No. | Level Name
 As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure.
 The reader may follow this framework and apply the techniques to define any other types. 
 
+## Compiling the type definitions
+
+The types that we learnt in this lesson are put together
+in the file [digTypes.ml](digTypes.ml) which can be compilied
+successfully using the lightweight [Makefile](Makefile).
+
+Note that we defined
+the module `MyLogic`  for pedagogical purposes only, so that we do not
+have to refer to the OCanren source code. The reader is encouraged to find
+the corresponding definitions in the source code by himself. Moreover,
+the `Peano` and `MyList` types are provided by the OCanren standard libraries
+`LNat` and `LList` respectively where the leading `L` in the module names
+stands for "logic".
+
+Note also that 
+we need the `-rectypes` compiler option in the makefile to deal with
+the rather liberal recurisve types that appear in this lesson.
