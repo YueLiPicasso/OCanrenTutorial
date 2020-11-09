@@ -144,6 +144,9 @@ Value (S Var (1,[]));;              (* i.e., S(X) *)
 Value (S (Value O))                 (* i.e., S(O) *)
 Value (S (Value (S (Var (1,[])))))  (* i.e., S(S(X)) *)
 ```
+Similar to logic lists, a logic number is either 1) a pure logic number (e.g., `X`) or 2) a guarded logic number
+that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
+distinguished using constructors `Var` and `Value` respectively.
 
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
