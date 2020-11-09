@@ -147,6 +147,7 @@ Similar to logic lists, a logic number is either i) a pure logic number (e.g., `
 that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
 distinguished using constructors `Var` and `Value` respectively.
 <hr>
+
 **Example** Some inhabitants of the type `Peano.logic logic_list`:
 ```ocaml
 Value (Cons (Var (1,[]), Value Nil));;  (* case 2 *)
@@ -154,6 +155,7 @@ Value (Cons (Var (1,[]), Var (2,[])));; (* case 4 *)
 ```
 Therefore, when we talk about a list of numbers in relational programming, we are actually talking about a
 logic list of logic numbers. 
+<hr>
 
 ### More abstraction over logic types
 
