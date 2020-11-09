@@ -148,7 +148,11 @@ Similar to logic lists, a logic number is either 1) a pure logic number (e.g., `
 that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
 distinguished using constructors `Var` and `Value` respectively.
 
-**Example** some inhabitants of the type `Peano.logic logic_list`:
+**Example** Some inhabitants of the type `Peano.logic logic_list`:
+```ocaml
+Value (Cons (Var (1,[]), Value Nil));;  (* case 2 *)
+Value (Cons (Var (1,[]), Var (2,[])));; (* case 4 *)
+```
 
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
