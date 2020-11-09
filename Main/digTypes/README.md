@@ -106,9 +106,9 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
 ```ocaml
 Value Nil;;                    (** case 1: a guarded logic list *)
 Value (Cons (1, Value Nil));;  (** case 1: a guarded logic list which is an integer
-                                   cons'ed to another guarded logic list *)
+                                           cons'ed to another guarded logic list *)
 Value (Cons (1, Var (1,[])));; (** case 3: a  guarded logic list which is an integer
-                                   cons'ed to a pure logic list*)
+                                           cons'ed to a pure logic list*)
 Var (1,[]);;                   (** case 5: a pure logic list *)				  	  
 ```
 We could see that the inhabitants are logic lists where logic variables may only denote unknown sub-lists.
