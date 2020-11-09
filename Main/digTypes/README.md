@@ -197,7 +197,7 @@ end;;
 we could write:
 ```ocaml
 (** shorter logic type definition  *)
-module Something = strcut
+module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
   type ('a1, ..., 'an) logic =  ('a1, ..., 'an) guarded MyLogic.logic 
   and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
@@ -238,7 +238,7 @@ end;;
 More generally (and with ground type added):
 ```ocaml
 (** General and concise definitions of abstract, ground and logic types *)
-module Something = strcut
+module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
   type ('a1, ..., 'an) logic =  ('a1, ..., 'an, ('a1, ..., 'an) logic) t MyLogic.logic 
