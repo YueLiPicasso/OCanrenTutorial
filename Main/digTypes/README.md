@@ -248,6 +248,27 @@ end;;
 
 ## Injected Types
 
+The `injected` type constructor collects the corresponding ground and logic type constructors.
+to which we assign the name `groundi` (read "groun-dee"):
+```ocaml
+(** Complete definitions of injected types
+    for lists and Peano numbers *)
+
+module MyList = struct
+  type ('a, 'b) t = Nil | Cons of 'a * 'b
+  type 'a ground = ('a, 'a ground) t
+  type 'b logic   =  ('b, 'b logic) t MyLogic.logic
+  type ('a, 'b) groundi = ('a ground, 'b logic) injected
+end;;
+
+module Peano = struct
+  type 'a t   = O | S of 'a
+  type ground = ground t
+  type logic  =  logic t MyLogic.logic
+  type groundi = (ground, logic) injected
+end;;
+```
+
 
 Level No. | Level Name
 --        |--
