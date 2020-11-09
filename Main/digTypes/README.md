@@ -104,12 +104,12 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
 
 **Example.** Below are some inhabitants of the type `int logic_list`:
 ```ocaml
-Value Nil;;                    (* case 1: a guarded logic list *)
-Value (Cons (1, Value Nil));;  (* case 1: a guarded logic list which is an integer
-                                  cons'ed to another guarded logic list *)
-Value (Cons (1, Var (1,[])));; (* case 3: a  guarded logic list which is an integer
-                                  cons'ed to a pure logic list*)
-Var (1,[]);;                   (* case 5: a pure logic list *)				  	  
+Value Nil;;                    (** case 1: a guarded logic list *)
+Value (Cons (1, Value Nil));;  (** case 1: a guarded logic list which is an integer
+                                   cons'ed to another guarded logic list *)
+Value (Cons (1, Var (1,[])));; (** case 3: a  guarded logic list which is an integer
+                                   cons'ed to a pure logic list*)
+Var (1,[]);;                   (** case 5: a pure logic list *)				  	  
 ```
 We could see that the inhabitants are logic lists where logic variables may only denote unknown sub-lists.
 This is because the parameter of `logic_iist` is instantiated by a ground type (`int`).
@@ -146,13 +146,13 @@ end;;
 
 **Example.** Below are some inhabitants of the type `Peano.logic`:
 ```ocaml
-Var (1,[]);;                        (* a pure logic number *)
-Value O;;                           (* a guarded logic number *)
-Value (S (Var (1,[])));;            (* a guarded logic number which is the constructor [S] applied to
-                                       a (pure) logic number *)
-Value (S (Value O))                 (* a guarded logic number which is the constructor [S] applied to
-                                       a (guarded) logic number which is the constructor [O] *)
-Value (S (Value (S (Var (1,[])))))  (* a guarded logic number *)
+Var (1,[]);;                        (** a pure logic number *)
+Value O;;                           (** a guarded logic number which is the constructor [O] *)
+Value (S (Var (1,[])));;            (** a guarded logic number which is the constructor [S] applied to
+                                        a (pure) logic number *)
+Value (S (Value O))                 (** a guarded logic number which is the constructor [S] applied to
+                                        a (guarded) logic number which is the constructor [O] *)
+Value (S (Value (S (Var (1,[])))))  (** a guarded logic number *)
 ```
 Similar to logic lists, a logic number is either i) a pure logic number (e.g., `X`) or ii) a guarded logic number
 that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
