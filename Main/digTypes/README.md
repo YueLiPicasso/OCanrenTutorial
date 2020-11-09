@@ -99,9 +99,9 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
  second argument is a (possibly empty) list of logic lists that can be used to instantiate the pure
  logic list.
  
+**Example**
 <hr>
-
-**Example** Below are some inhabitants of the type `int logic_list`:
+Below are some inhabitants of the type `int logic_list`:
 ```ocaml
 Var (1,[]);;   (* case 5 *)
 Value Nil;;    (* case 1 *)
