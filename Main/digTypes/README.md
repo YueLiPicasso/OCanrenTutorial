@@ -187,7 +187,7 @@ end;;
 Next time when we what to define `('a1, ..., 'an) Something.logic`, instead of writing:
 ```ocaml
 (** longer logic type definition  *)
-module Something = strcut
+module Something = struct
   type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
   type ('a1, ..., 'an) logic = Value of ('a1, ..., 'an) guarded
                              | Var of int * ('a1, ..., 'an) logic list    
