@@ -287,7 +287,7 @@ Level No. | Level Name
 As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure.
 The reader may follow this framework and apply the techniques to define any other types. 
 
-## Compiling the type definitions
+### Compiling the type definitions
 
 The types that we learnt in this lesson are put together
 in the file [digTypes.ml](digTypes.ml) which can be compilied
