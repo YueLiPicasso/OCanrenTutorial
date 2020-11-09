@@ -118,12 +118,12 @@ as the type parameter instead of `int`, as follows.
  The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
  is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming,
  in cases like:
- 1. `O`, `S(O)` --- Ground (Peano) numbers.
- 1. `X`, `S(X)`, `S(S(X))` --- Numbers with a logic variable (`X`).
+ - `O`, `S(O)` --- Ground (Peano) numbers.
+ - `X`, `S(X)`, `S(S(X))` --- Numbers with a logic variable (`X`).
 
 Regarding all these as _logic numbers_, we distinguish:
-   1. `X` --- The pure logic number.
-   1. `O`, `S(O)`, `S(X)`, `S(S(X))` --- Guarded logic numbers.
+   - `X` --- The pure logic number.
+   - `O`, `S(O)`, `S(X)`, `S(S(X))` --- Guarded logic numbers.
 
 We can define abstarct, ground and logic Peano number types as well:
 ```ocaml
