@@ -152,13 +152,15 @@ Value (S (Value (S (Var (1,[])))))  (* i.e., S(S(X)) *)
 ```
 Similar to logic lists, a logic number is either i) a pure logic number (e.g., `X`) or ii) a guarded logic number
 that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
-distinguished using constructors `Var` and `Value` respectively.
-<hr>
-
-**Example.** Some inhabitants of the type `Peano.logic logic_list`:
+distinguished using constructors `Var` and `Value` respectively. Then the type `Peano.logic logic_list`
+has the following inhabitants:
 ```ocaml
-Value (Cons (Var (1,[]), Value Nil));;  (* case 2 *)
-Value (Cons (Var (1,[]), Var (2,[])));; (* case 4 *)
+Value Nil;;                                       (* case 1 *)
+Value (Cons (Value (S (Value O)) , Value Nil));;  (* case 1 *)
+Value (Cons (Var (1,[]), Value Nil));;            (* case 2 *)
+Value (Cons (Value (S (Value O)) , Var (1,[])));; (* case 3 *)
+Value (Cons (Var (1,[]), Var (2,[])));;           (* case 4 *)
+Var (1,[]);;                                      (* case 5 *)
 ```
 Therefore, when we talk about a list of numbers in relational programming, we are actually talking about a
 logic list of logic numbers. 
