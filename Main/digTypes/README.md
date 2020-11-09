@@ -188,7 +188,7 @@ Next time when we what to define `('a1, ..., 'an) Something.logic`, instead of w
 ```ocaml
 (** longer logic type definition  *)
 module Something = struct
-  type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
+  type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
   type ('a1, ..., 'an) logic = Value of ('a1, ..., 'an) guarded
                              | Var of int * ('a1, ..., 'an) logic list    
   and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
@@ -198,7 +198,7 @@ we could write:
 ```ocaml
 (** shorter logic type definition  *)
 module Something = strcut
-  type ('a1, ..., 'an, 'self) t  (* ... type information omitted *)
+  type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
   type ('a1, ..., 'an) logic =  ('a1, ..., 'an) guarded MyLogic.logic 
   and ('a1, ..., 'an) guarded = ('a1, ..., 'an, ('a1, ..., 'an) logic) t
 end;;
