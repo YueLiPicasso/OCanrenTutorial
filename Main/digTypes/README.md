@@ -101,6 +101,7 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
  
 **Example**
 <hr>
+
 Below are some inhabitants of the type `int logic_list`:
 ```ocaml
 Var (1,[]);;   (* case 5 *)
