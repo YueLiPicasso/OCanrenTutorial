@@ -136,6 +136,15 @@ module Peano = struct
   and  guarded = logic t                 (** ... and Guarded *)
 end;;
 ```
+**Example** Below are some inhabitants of the type `Peano.logic`:
+```ocaml
+Var (1,[]);;                        (* i.e., X *)
+Value O;;                           (* i.e., O *)
+Value (S Var (1,[]));;              (* i.e., S(X) *)
+Value (S (Value O))                 (* i.e., S(O) *)
+Value (S (Value (S (Var (1,[])))))  (* i.e., S(S(O)) *)
+```
+
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
 and the `Var` constructor's first argument is always `int` and second argument is always a `list` of the logic type
