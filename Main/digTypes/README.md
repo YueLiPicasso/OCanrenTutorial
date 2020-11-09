@@ -148,6 +148,8 @@ Similar to logic lists, a logic number is either 1) a pure logic number (e.g., `
 that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
 distinguished using constructors `Var` and `Value` respectively.
 
+**Example** some inhabitants of the type `Peano.logic logic_list`:
+
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
 and the `Var` constructor's first argument is always `int` and second argument is always a `list` of the logic type
