@@ -158,7 +158,7 @@ has the following inhabitants:
 Value Nil;;                                       (* case 1 *)
 Value (Cons (Value (S (Value O)) , Value Nil));;  (* case 1 *)
 Value (Cons (Var (1,[]), Value Nil));;            (* case 2 *)
-Value (Cons (Value (S (Value O)) , Var (1,[])));; (* case 3 *)
+Value (Cons (Value (S (Value O)) , Var (2,[])));; (* case 3 *)
 Value (Cons (Var (1,[]), Var (2,[])));;           (* case 4 *)
 Var (1,[]);;                                      (* case 5 *)
 ```
