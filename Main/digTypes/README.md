@@ -146,13 +146,13 @@ end;;
 
 **Example.** Below are some inhabitants of the type `Peano.logic`:
 ```ocaml
-Var (1,[]);;                        (** a pure logic number *)
+Var (1,[]);;                        (** a pure logic number X *)
 Value O;;                           (** a guarded logic number which is the constructor [O] *)
-Value (S (Var (1,[])));;            (** a guarded logic number which is the constructor [S] applied to
-                                        a (pure) logic number *)
-Value (S (Value O))                 (** a guarded logic number which is the constructor [S] applied to
+Value (S (Var (1,[])));;            (** a guarded logic number S(X) which is the constructor [S] applied to
+                                        a (pure) logic number X *)
+Value (S (Value O))                 (** a guarded logic number S(O) which is the constructor [S] applied to
                                         a (guarded) logic number which is the constructor [O] *)
-Value (S (Value (S (Var (1,[])))))  (** a guarded logic number *)
+Value (S (Value (S (Var (1,[])))))  (** a guarded logic number S(S(X)) *)
 ```
 Similar to logic lists, a logic number is either i) a pure logic number (e.g., `X`) or ii) a guarded logic number
 that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
