@@ -268,10 +268,13 @@ module Peano = struct
   type groundi = (ground, logic) injected
 end;;
 ```
+Injected types are abstract in the sense that their type information is hidden from the user. Therefore
+we do not concern ourselves as to what an inhabitant of an injected type looks like.  
+
 
 ## Summary
 
-OCanren works on injected types that are defined in via abstract, ground and logic types. The table below
+OCanren works on injected types that are defined via abstract, ground and logic types. The table below
 organizes these types into four levels by complexity and dependency.
 
 Level No. | Level Name
