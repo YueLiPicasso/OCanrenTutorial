@@ -98,6 +98,8 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
  logic list. Moreover,  The `Var` constructor's `int` argument uniquely identifies a pure logic list, and the
  second argument is a (possibly empty) list of logic lists that can be used to instantiate the pure
  logic list.
+ 
+<hr>
 
 **Example** Below are some inhabitants of the type `int logic_list`:
 ```ocaml
@@ -110,6 +112,7 @@ We could see that the inhabitants are logic lists where logic variables may only
 This is because the parameter of `logic_iist` is instantiated by a ground type (`int`).
 To allow logic variables as list members (as in cases 2 and 4), we need to define the type of _logic number_ and use it
 as the type parameter instead of `int`, as follows.    
+<hr>
 
  Let us see another example of logic types. We define the Peano
  numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
