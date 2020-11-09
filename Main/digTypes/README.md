@@ -153,6 +153,8 @@ distinguished using constructors `Var` and `Value` respectively.
 Value (Cons (Var (1,[]), Value Nil));;  (* case 2 *)
 Value (Cons (Var (1,[]), Var (2,[])));; (* case 4 *)
 ```
+Therefore, when we talk about a list of numbers in relational programming, we are actually talking about a
+logic list of logic numbers. 
 
 Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
