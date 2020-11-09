@@ -284,5 +284,6 @@ Level No. | Level Name
 3         | Logic
 4         | Injected
 
-As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure. 
+As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure.
+The reader may follow this framework and apply the techniques to define any other types. 
 
