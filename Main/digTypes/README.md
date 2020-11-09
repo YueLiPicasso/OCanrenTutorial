@@ -102,7 +102,7 @@ where the constructors `Value` and `Var` are used to distinguish a guarded logic
 
 <hr>
 
-**Example** Below are some inhabitants of the type `int logic_list`:
+**Example.** Below are some inhabitants of the type `int logic_list`:
 ```ocaml
 Var (1,[]);;   (* case 5 *)
 Value Nil;;    (* case 1 *)
@@ -139,10 +139,10 @@ module Peano = struct
 end;;
 ```
 
-**Example**
+
 <hr>
 
-Below are some inhabitants of the type `Peano.logic`:
+**Example.** Below are some inhabitants of the type `Peano.logic`:
 ```ocaml
 Var (1,[]);;                        (* i.e., X *)
 Value O;;                           (* i.e., O *)
@@ -155,10 +155,7 @@ that is either `O` or `S` applied recursively to a logic number. Pure and guarde
 distinguished using constructors `Var` and `Value` respectively.
 <hr>
 
-**Example**
-<hr>
-
-Some inhabitants of the type `Peano.logic logic_list`:
+**Example.** Some inhabitants of the type `Peano.logic logic_list`:
 ```ocaml
 Value (Cons (Var (1,[]), Value Nil));;  (* case 2 *)
 Value (Cons (Var (1,[]), Var (2,[])));; (* case 4 *)
