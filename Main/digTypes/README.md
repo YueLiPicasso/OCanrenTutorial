@@ -25,7 +25,7 @@ module MyList = struct
   type ('a, 'b) t = Nil | Cons of 'a * 'b 
 end;;
 ```
-The type constructor `MyList.t` is called an _abstract list type_ for it not only abstracts over the list memeber type
+The type constructor `MyList.t` is called an _abstract list type_ for it not only abstracts over the list member type
  by means of the type parameter `'a`,  but also (and more importantly) abstracts over the list tail type or
  in other words over the list type itself  by means of the type parameter `'b`. We can use the abstract list type
  to define other useful types of lists, as we shall see next.   
