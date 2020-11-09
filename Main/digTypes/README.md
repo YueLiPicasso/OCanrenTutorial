@@ -97,7 +97,17 @@ and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t
 where the constructors `Value` and `Var` are used to distinguish a guarded logic list from a pure
  logic list. Moreover,  The `Var` constructor's `int` argument uniquely identifies a pure logic list, and the
  second argument is a (possibly empty) list of logic lists that can be used to instantiate the pure
- logic list. 
+ logic list.
+
+**Example** Below are some inhabitants of the type `int logic_list`:
+```ocaml
+Var (1,[]);;   (* case 5 *)
+Value Nil;;    (* case 1 *)
+Value (Cons (1, Value Nil));;  (* case 1 *)
+Value (Cons (1, Var (1,[])));; (* case 3 *)
+```
+We could see that the inhabitants are logic lists where logic variables may only denote unknown sub-lists.
+To include logic variables for list members, we need to define, for example, logic numbers, as follows.    
 
 ### More abstraction over logic types
 
