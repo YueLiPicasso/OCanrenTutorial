@@ -248,7 +248,7 @@ end;;
 
 ## Injected Types
 
-The `injected` type constructor collects the corresponding ground and logic type constructors.
+The `injected` type constructor collects the corresponding ground and logic type constructors,
 to which we assign the name `groundi` (read "groun-dee"):
 ```ocaml
 (** Complete definitions of injected types
@@ -269,6 +269,10 @@ module Peano = struct
 end;;
 ```
 
+## Summary
+
+OCanren works on injected types that are defined in via abstract, ground and logic types. The table below
+organizes these types into four levels by complexity and dependency.
 
 Level No. | Level Name
 --        |--
@@ -277,5 +281,5 @@ Level No. | Level Name
 3         | Logic
 4         | Injected
 
-
+As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure. 
 
