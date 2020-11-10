@@ -1,5 +1,13 @@
-# "Hello World!" Revisited
+# Working with Base Types
 
+OCaml has four types of base values:
+- integer numbers
+- floating-point numbers
+- characters
+- character strings
+
+In OCanren, we usually do not work with floating point numbers, and integer numbers are
+conventially encoded as and directly, but  
 
 The [program](hello2.ml) that we study in this lesson is almost the
 same as [the one](../helloWorld/hello.ml) of the previous lesson, except that the line:
@@ -13,8 +21,6 @@ let str : String.groundi = !!("hello world!\n");;
 where we have added a type annotation`String.groundi`, and before that we have inserted a 
  `String` module of several type definitions:
 ```ocaml
-@type 'a logic' = 'a logic with show;;
-
 module String = struct
   @type t = GT.string with show;;
   @type ground = t with show;;
@@ -27,8 +33,7 @@ that shows how the type `String.groundi` of `str` is defined following the four-
 In the String
 module, the type `t` is at the abstract level, and the type `ground` is at the ground level,
 `logic` at the logic level, and `groundi` at the injected level. In our example the abstract level
-and the ground level coincide, but in general they are quite different, as we will see when working
-with non-constant constructors of variant types.  
+and the ground level coincide, but in general they are quite different.
 
 ## The @type Syntax
 
