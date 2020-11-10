@@ -10,8 +10,8 @@ now becomes:
 ```ocaml
 let str : String.groundi = !!("hello world!\n");;
 ```
-where we have added a type decoration `String.groundi`, and before that we have inserted a block
-of type definitions, notably the String module:
+where we have added a type annotation`String.groundi`, and before that we have inserted a 
+ `String` module of several type definitions:
 ```ocaml
 @type 'a logic' = 'a logic with show;;
 
