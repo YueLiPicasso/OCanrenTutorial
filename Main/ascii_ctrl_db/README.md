@@ -50,6 +50,11 @@ by GT into:
 1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
+THe effect of syntactic transformation, including what the `@type`
+definitions become after expansion, can be viewed by adding the "dump source" option
+in the Makefile as explained in a comment line there. 
+
+
 ## The Type Definitions
 
 The module `ASCII_Ctrl`  defines types following the four-level
