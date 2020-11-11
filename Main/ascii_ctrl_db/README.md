@@ -32,7 +32,7 @@ In OCanren, type constructors are often defined by :
 ```ebnf
 type definition = '@type', typedef, 'with', plugins
 
-plugins = plugin { , plugin }
+plugins = plugin { ',' , plugin }
 
 plugin  ::= 'show' | 'gmap' | etc
 ```
