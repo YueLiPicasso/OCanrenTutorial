@@ -73,8 +73,8 @@ the abstract type and ground type also coincide. Worth noting that
 the type constructor name `string` is qualified by the module name `GT`,
 for we need to use the GT version of the string type which provides the
 useful plugins and otherwise it is the same as the OCaml built-in string type.
-Plugins are created inductively: GT provides plugins for base types and
-rules for building plugins for compound types from the base types.  
+Plugins are (auto-)created inductively: GT provides plugins for base types and
+rules for building plugins for compound types from component types. 
 
 <hr>
 
