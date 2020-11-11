@@ -10,7 +10,7 @@ The [program](ASCII_Ctrl_DB.ml) is a bit long, but yet simple in the sense
 that:
 - The types defined therein are not recursive: there are just a base
   type (`string`) and a variant type admitting only constant constructors.
-- The relation defined therein is ot recursive: it is a straightforward
+- The relation defined therein is not recursive: it is a straightforward
   listing of the data base, which is the very basic form of relational
   programs.
 
