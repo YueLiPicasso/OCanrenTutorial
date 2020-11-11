@@ -76,6 +76,9 @@ useful plugins and otherwise it is the same as the OCaml built-in string type.
 Plugins are (auto-)created inductively: GT provides plugins for base types and
 rules for building plugins for compound types from component types. 
 
+## The injection functions
+
+
 <hr>
 
 OCaml has four types of base values:
