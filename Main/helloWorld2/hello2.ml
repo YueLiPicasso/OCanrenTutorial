@@ -82,51 +82,60 @@ module LString = struct
   type groundi = (ground, logic) injected;;
 end;;
 
-(* https://www.gnu.org/software/emacs/manual/html_node/emacs/Replace.html#Replace *)
-
+(** Rules of the relation is entered with Emacs regexp replacement: 
+    https://www.gnu.org/software/emacs/manual/html_node/emacs/Replace.html#Replace *)
 let ascii_ctrl :
       ASCII_Ctrl.groundi -> Std.Nat.groundi -> LString.groundi -> goal
   = fun c n s ->
   let open ASCII_Ctrl.Inj in
-  ocanren{ c == NUL & n == 0 & s == "Null"
-         | c == SOH & n == 1 & s == "Start of heading"
-         | c == STX (** Start of text *)
-         | c == ETX (** End of text *)
-         | c == EOT (** End of transmission *)
-         | c == ENQ (** Enquiry *)
-         | c == ACK (** Ackonwledge *)
-         | c == BEL (** Bell *)
-         | c == BS  (** Back space *)
-         | c == HT  (** Horizontal tab *)
-         | c == LF  (** Line Feed *)
-         | c == VT  (** Vertical tab *)
-         | c == FF  (** Form feed *)
-         | c == CR  (** Carriage return *)
-         | c == SO  (** Shift out *)
-         | c == SI  (** Shift in *)
-         | c == DLE (** Data line escape *)
-         | c == DC1 (** Device control 1 *)
-         | c == DC2 (** Device control 2 *)
-         | c == DC3 (** Device control 3 *)
-         | c == DC4 (** Device control 4 *)
-         | c == NAK (** Negative ack. *)
-         | c == SYN (** Synchronous idle *)
-         | c == ETB (** End of block *)
-         | c == CAN (** Cancel *)
-         | c == EM  (** End of medium *)
-         | c == SUB (** Substitute *)
-         | c == ESC (** Escape *)
-         | c == FS  (** File separator *)
-         | c == GS  (** Group separator *)
-         | c == RS  (** Record separator*)
-         | c == US  (** Unit separator *)};;
+  ocanren{ c == NUL  & n == 0  & s == "Null"
+         | c == SOH  & n == 1  & s == "Start of heading"
+         | c == STX  & n == 2  & s == "Start of text"
+         | c == ETX  & n == 3  & s == "End of text"
+         | c == EOT  & n == 4  & s == "End of transmission"
+         | c == ENQ  & n == 5  & s == "Enquiry"
+         | c == ACK  & n == 6  & s == "Ackonwledge"
+         | c == BEL  & n == 7  & s == "Bell"
+         | c == BS   & n == 8  & s == "Back space"
+         | c == HT   & n == 9  & s == "Horizontal tab"
+         | c == LF   & n == 10 & s == "Line Feed"
+         | c == VT   & n == 11 & s == "Vertical tab"
+         | c == FF   & n == 12 & s == "Form feed"
+         | c == CR   & n == 13 & s == "Carriage return"
+         | c == SO   & n == 14 & s == "Shift out"
+         | c == SI   & n == 15 & s == "Shift in"
+         | c == DLE  & n == 16 & s == "Data line escape"
+         | c == DC1  & n == 17 & s == "Device control 1"
+         | c == DC2  & n == 18 & s == "Device control 2"
+         | c == DC3  & n == 19 & s == "Device control 3"
+         | c == DC4  & n == 20 & s == "Device control 4"
+         | c == NAK  & n == 21 & s == "Negative ack."
+         | c == SYN  & n == 22 & s == "Synchronous idle"
+         | c == ETB  & n == 23 & s == "End of block"
+         | c == CAN  & n == 24 & s == "Cancel"
+         | c == EM   & n == 25 & s == "End of medium"
+         | c == SUB  & n == 26 & s == "Substitute"
+         | c == ESC  & n == 27 & s == "Escape"
+         | c == FS   & n == 28 & s == "File separator"
+         | c == GS   & n == 29 & s == "Group separator"
+         | c == RS   & n == 30 & s == "Record separator"
+         | c == US   & n == 31 & s == "Unit separator"};;
 
-(*
-Printf.printf "Session 1:\n\n";;
+
+    
 
 let _ =
   List.iter print_endline @@
-    Stream.take ~n:1 @@
-      run q (fun s -> phrase_code s c_g) project;;
+    Stream.take ~n:18 @@ 
+      run q (fun s ->
+          ocanren {fresh c,n in Std.Nat.(<=) 0 n
+                                & Std.Nat.(<=) n 10
+                                & ascii_ctrl c n s}) project;;
 
- *)
+@type p = ASCII_Ctrl.ground * LString.ground with show;;
+
+let _ =
+  List.iter (fun x -> print_endline @@ GT.show(p) x) @@
+    Stream.take ~n:1 @@ 
+      run qr (fun c s -> ocanren {ascii_ctrl c 23 s}) (fun c s -> project c, project s);;
+
