@@ -1,4 +1,19 @@
-# Working with Base Types
+# A Simple Data Base
+
+In this lesson we learn the basic form of relational programming:
+defining and querying a data base. In particular, we build a toy data
+base of the 32 control characters in the ASCII table, associating each
+character with its integer number and description, for example: `BS`
+with number 8 and description "Back space".
+
+The [program](ASCII_Ctrl_DB.ml) is a bit long, but yet simple in the sense
+that:
+- The types defined therein are not recursive: there are just a base
+  type (`string`) and a variant type admitting only constant constructors.
+- The relation defined therein is ot recursive: it is a straightforward
+  listing of the data base, which is the very basic form of relational
+  programs.
+
 
 OCaml has four types of base values:
 - integer numbers
