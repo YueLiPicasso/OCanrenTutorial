@@ -50,7 +50,7 @@ by GT into:
 1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
-## The Type definitions
+## The Type Definitions
 
 The module `ASCII_Ctrl`  defines types following the four-level
 framework: abstract, ground, logic and injected. Although
