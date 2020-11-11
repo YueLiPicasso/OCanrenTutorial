@@ -52,7 +52,7 @@ by GT into:
 
 ## The ASCII control characters type
 
-The module `ASCII_Ctrl` module defines types following the four-level
+The module `ASCII_Ctrl`  defines types following the four-level
 framwork of OCanren types: abstract, ground, logic and groundi. Although
 it takes about thirty lines to enumerate all the control character names,
 the mathematical nature of these definitions are simple: even simpler than
