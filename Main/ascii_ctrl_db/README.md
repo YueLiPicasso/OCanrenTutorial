@@ -50,6 +50,15 @@ by GT into:
 1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
 1) Several (auto-generated) plugin definitions.
 
+## The ASCII control characters type
+
+The module `ASCII_Ctrl` module defines types following the four-level
+framwork of OCanren types: abstract, ground, logic and groundi. Although
+it takes about thirty lines to enumerate all the control character names,
+the mathematical nature of these definitions are simple: even simpler than
+the types of logic lists and Peano numbers which we learnt previously.
+For instance, since the type is non-recursive and the constructors have
+no argument, the abstract form of the type coincides with the ground form. 
 
 <hr>
 
