@@ -2,12 +2,7 @@
 
 - [General Feelings](./helloWorld)
 - [Types for Relational Programs](./digTypes)
-- [Base Types](./helloWorld2)
-- Variant Types
-  - [Constant Constructors](./weekdays)  
-  - Non-constant Constructors
-    - Non-recursive
-    - Recusive 
-- Pairs and Tuples
+- [A Simple Data Base](./ascii_ctrl_db)
+- Recurive Relations
 - Semantics of Relations
 
