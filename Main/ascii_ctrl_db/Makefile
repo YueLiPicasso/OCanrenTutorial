@@ -1,5 +1,5 @@
-TOPFILE = hello2
-SOURCES = hello2.ml
+TOPFILE = test
+SOURCES = ASCII_Ctrl_DB.ml
 OCAMLC = ocamlfind c
 OCAMLOPT = ocamlfind opt
 OCAMLDEP = ocamlfind dep
