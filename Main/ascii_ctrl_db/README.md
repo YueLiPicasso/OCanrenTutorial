@@ -29,14 +29,14 @@ clear the one remaining hurdle.
 ## The @type Syntax
 
 In OCanren, type constructors are often defined by :
-```
-<type definition> ::= @type <typedef> with <plugins>
+```ebnf
+type definition = '@type', typedef, 'with', plugins
 
-<plugins> ::= <plugin> { , <plugin> }
+plugins = plugin { , plugin }
 
-<plugin>  ::= show | gmap | <etc>
+plugin  ::= 'show' | 'gmap' | etc
 ```
-where the syntactic category `<typedef>` is the same as
+where the syntactic category `typedef` is the same as
 [that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml. The most frequently used plugins
 in OCanren are _show_ and _gmap_, providing for the defined type a string converson function
 (like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
