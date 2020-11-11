@@ -123,7 +123,7 @@ let ascii_ctrl :
 
 
     
-
+(** Find the control characters in a given range *)
 let _ =
   List.iter print_endline @@
     Stream.take ~n:18 @@ 
@@ -132,8 +132,10 @@ let _ =
                                 & Std.Nat.(<=) n 10
                                 & ascii_ctrl c n s}) project;;
 
+(** ad-hoc type definition for use below *)
 @type p = ASCII_Ctrl.ground * LString.ground with show;;
 
+(** Given an integer id, print the control char's short and long names *)
 let _ =
   List.iter (fun x -> print_endline @@ GT.show(p) x) @@
     Stream.take ~n:1 @@ 
