@@ -39,7 +39,7 @@ module ASCII_Ctrl = struct
           | US  (** Unit separator *)
   with show;;
   @type ground = t with show;;
-  @type logic = t Logic.logic   with show;;
+  @type logic = t OCanren.logic   with show;;
   type groundi = (ground, logic) injected;;
 
   (** {3 Injection utilities} *)
@@ -83,7 +83,7 @@ end;;
 module LString = struct
   @type t = GT.string with show;;
   @type ground = t with show;;
-  @type logic = t Logic.logic with show;;
+  @type logic = t OCanren.logic with show;;
   type groundi = (ground, logic) injected;;
 end;;
 

@@ -23,6 +23,35 @@ The structure of the program is as follows:
 1. The data base as a relation
 1. Some queries on the data base
 
+We will use the above structure summary as the guideline of our narrative. But before that, let us
+clear the one remaining hurdle.
+
+## The @type Syntax
+
+In OCanren, type constructors are often defined by :
+```
+<type definition> ::= @type <typedef> with <plugins>
+
+<plugins> ::= <plugin> { , <plugin> }
+
+<plugin>  ::= show | gmap | <etc>
+```
+where the syntactic category `<typedef>` is the same as
+[that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml. The most frequently used plugins
+in OCanren are _show_ and _gmap_, providing for the defined type a string converson function
+(like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
+a structure preserving map function 
+(a generalization of  [List.map](https://ocaml.org/releases/4.11/htmlman/libref/List.html))  respectively.
+
+
+A type definition of the form `@type <typedef> with <plugins>` is expanded at the syntactic level
+by GT into:
+1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
+1) Several (auto-generated) plugin definitions.
+
+
+<hr>
+
 OCaml has four types of base values:
 - integer numbers
 - floating-point numbers
@@ -58,28 +87,7 @@ module, the type `t` is at the abstract level, and the type `ground` is at the g
 `logic` at the logic level, and `groundi` at the injected level. In our example the abstract level
 and the ground level coincide, but in general they are quite different.
 
-## The @type Syntax
 
-In OCanren, type constructors are often defined by :
-```
-<type definition> ::= @type <typedef> with <plugins>
-
-<plugins> ::= <plugin> { , <plugin> }
-
-<plugin>  ::= show | gmap | <etc>
-```
-where the syntactic category `<typedef>` is the same as
-[that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml. The most frequently used plugins
-in OCanren are _show_ and _gmap_, providing for the defined type a string converson function
-(like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
-a structure preserving map function 
-(a generalization of  [List.map](https://ocaml.org/releases/4.11/htmlman/libref/List.html))  respectively.
-
-
-A type definition of the form `@type <typedef> with <plugins>` is expanded at the syntactic level
-by GT into:
-1) A type definition of the usual form `type <typedef>`, where the value of `<typedef>` is preserved, and
-1) Several (auto-generated) plugin definitions.
 
 ## The `logic` Type
 
