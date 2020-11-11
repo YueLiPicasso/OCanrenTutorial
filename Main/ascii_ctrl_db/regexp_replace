@@ -1,2 +1,0 @@
-Replace: (\*\*[[:space:]]\([[:print:]]+\)[[:space:]]\*)
-With:    & n == 2 & s == "\1"

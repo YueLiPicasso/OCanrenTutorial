@@ -14,6 +14,14 @@ that:
   listing of the data base, which is the very basic form of relational
   programs.
 
+The structure of the program is as follows:
+1. The initial opening statement
+1. Type definitions and utilities
+   1. The ASCII control characters type
+      - Injection utilities
+   1. The logic string type
+1. The data base as a relation
+1. Some queries on the data base
 
 OCaml has four types of base values:
 - integer numbers

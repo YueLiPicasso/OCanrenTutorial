@@ -3,6 +3,7 @@ SOURCES = ASCII_Ctrl_DB.ml
 OCAMLC = ocamlfind c
 OCAMLOPT = ocamlfind opt
 OCAMLDEP = ocamlfind dep
+OCAMLDOC = ocamlfind doc
 OUTB = $(TOPFILE).byte
 OUTO = $(TOPFILE).opt
 CAMLP5 = -syntax camlp5o -package ocanren.syntax,GT.syntax.all 
@@ -11,9 +12,9 @@ PXFLAGS = $(CAMLP5)
 # add flag -dsource to BFLAG to dispaly in the terminal the source code after syntax expansion
 BFLAGS = -rectypes -g 
 OFLAGS = $(BFLAGS)
-CLEAN = $(wildcard *.cmi *.cmo *.cmx *.annot *.o *.opt *.byte *~ *depend)
+CLEAN = $(wildcard *.cmi *.cmo *.cmx *.annot *.o *.opt *.byte *~ *depend *.html *.css)
 
-.PHONY : all clean
+.PHONY : all clean doc
 
 all:.depend $(OUTO)
 
@@ -28,6 +29,9 @@ $(OUTB): $(SOURCES:.ml=.cmo)
 
 clean:
 	rm -Rf $(CLEAN)
+
+doc:
+	$(OCAMLDOC) -html -rectypes $(PXFLAGS) ASCII_Ctrl_DB.ml
 
 -include .depend
 # generic rules
