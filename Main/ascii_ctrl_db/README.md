@@ -96,7 +96,7 @@ In the `ocanren{...}` quotation,
 wherever a value constructor occurs, its corresponding
 injection function is implicitly called. Hence
 the `let open ASCII_Ctrl.Inj in` statement that preceeds the body of the `ascii_ctrl` relation.
-The quotation in the body of the `ascii_ctrl` is expanded as follows:
+The quotation in the body of `ascii_ctrl` is expanded as follows:
 
 ```ocaml
 let ascii_ctrl =
