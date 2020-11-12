@@ -183,4 +183,4 @@ mentioned exhibit the behaviour called "backtracking" that allows exploration of
 rules during the search for answers. We explain the operational semantics of OCanren in more
 detail below.
 
-### Goals and Logic connectives as Stream Processors 
+### Goals and Logic Sonnectives as Stream Processors 
