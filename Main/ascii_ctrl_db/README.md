@@ -23,8 +23,7 @@ The structure of the program is as follows:
 1. The data base as a relation
 1. Some queries on the data base
 
-We will use the above structure summary as the guideline of our narrative. But before that, let us
-clear the one remaining hurdle.
+We will use the above structure summary as the guideline of our narrative. 
 
 ## The @type Syntax
 
