@@ -115,4 +115,5 @@ let ascii_ctrl =
 ## The Relation
 
 Read the definition of `ascii_ctrl` as:
-> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff  
+> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff: _c_ is NUL and _n_ is 0 and _s_ is the
+string "Null", or _c_ is SOH and _n_ is 1 and _s_ is the string "Start of heading", or ...   
