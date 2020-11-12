@@ -52,7 +52,7 @@ by GT into:
 
 The effect of syntactic transformation, including what the `@type`
 definitions become after expansion, can be viewed by adding the "dump source" option
-in the Makefile as explained in a comment line there. 
+`-dsource` in the Makefile as explained in a comment line there. 
 
 
 ## The Type Definitions
@@ -67,7 +67,6 @@ no argument, the abstract form of the type coincides with the ground form.
 
 The sub-module `ASCII_Ctrl.Inj` is discussed in the next section.
 
-
 The `LString` module defines types of strings in four levels, where
 the abstract type and ground type also coincide. Worth noting that
 the type constructor name `string` is qualified by the module name `GT`,
@@ -79,3 +78,8 @@ rules for building plugins for compound types from component types.
 ## The Injection Functions
 
 
+The signature of the `ASCII_Ctrl.Inj` module shall explain itself. For every value constructor,
+ an accompanying  injection function shall be defined,  whose name is the same as
+the constructor name except that the first letter is set to lower case. These injection functions
+are implicitly called in the `ocanren{...}` quotation wherever a value constructor occurs. Hence
+the `let open ASCII_Ctrl.Inj in` statement that preceeds the body of the `ascii_ctrl` relation. 

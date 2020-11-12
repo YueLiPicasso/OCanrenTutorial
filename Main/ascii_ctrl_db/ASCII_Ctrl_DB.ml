@@ -42,8 +42,41 @@ module ASCII_Ctrl = struct
   @type logic = t OCanren.logic   with show;;
   type groundi = (ground, logic) injected;;
 
-  (** {3 Injection utilities} *)
-  module Inj = struct  
+  (** {3 Injection utilities} *)                                                       
+  module Inj : sig
+    val nUL : unit -> groundi
+    val sOH : unit -> groundi
+    val sTX : unit -> groundi
+    val eTX : unit -> groundi
+    val eOT : unit -> groundi
+    val eNQ : unit -> groundi
+    val aCK : unit -> groundi
+    val bEL : unit -> groundi
+    val bS  : unit -> groundi
+    val hT  : unit -> groundi
+    val lF  : unit -> groundi
+    val vT  : unit -> groundi
+    val fF  : unit -> groundi
+    val cR  : unit -> groundi
+    val sO  : unit -> groundi
+    val sI  : unit -> groundi
+    val dLE : unit -> groundi
+    val dC1 : unit -> groundi
+    val dC2 : unit -> groundi
+    val dC3 : unit -> groundi
+    val dC4 : unit -> groundi
+    val nAK : unit -> groundi
+    val sYN : unit -> groundi
+    val eTB : unit -> groundi
+    val cAN : unit -> groundi
+    val eM  : unit -> groundi
+    val sUB : unit -> groundi
+    val eSC : unit -> groundi
+    val fS  : unit -> groundi
+    val gS  : unit -> groundi
+    val rS  : unit -> groundi
+    val uS  : unit -> groundi
+  end = struct  
     let nUL () = !! NUL
     let sOH () = !! SOH
     let sTX () = !! STX
