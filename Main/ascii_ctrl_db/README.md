@@ -148,7 +148,7 @@ where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
 relation _ascii_ctrl_.
 
 OCanren will answer: _s_ could be any one of the following strings:
-```ocaml
+```
 Null
 Start of heading
 Start of text
