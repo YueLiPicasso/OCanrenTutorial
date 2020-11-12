@@ -64,7 +64,7 @@ end;;
 ```
 would be expanded into [this](lstring.ml), where we could see that besides the type
  constructor definitions a lot more codes have actually been auto-generated to
- support the  requested  `show` plugin. 
+ support the  requested  `show` plugins. 
 
 
 ## The Type Definitions
