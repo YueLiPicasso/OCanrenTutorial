@@ -52,9 +52,19 @@ by GT into:
 The effect of syntactic transformation, including what the `@type`
 definitions become after expansion, can be viewed by adding the "dump source" option
 `-dsource` in the Makefile as explained in a comment line there. For instance, the `LString`
- module after expansion is given [here](lstring.ml), where we could see that besides the type
+ module:
+```ocaml 
+ (** {2  The logic string type} *)
+module LString = struct
+  @type t = GT.string with show;;
+  @type ground = t with show;;
+  @type logic = t OCanren.logic with show;;
+  type groundi = (ground, logic) injected;;
+end;;
+```
+would be expanded into [this](lstring.ml), where we could see that besides the type
  constructor definitions a lot more codes have actually been auto-generated to
- support the  `show` plugin requested in the shorter version of the same module. 
+ support the  requested  `show` plugin. 
 
 
 ## The Type Definitions
