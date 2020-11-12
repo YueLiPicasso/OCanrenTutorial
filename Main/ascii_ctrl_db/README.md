@@ -131,3 +131,18 @@ Read the definition of `ascii_ctrl` as:
 string "Null", or  _c_ is SOH and _n_ is 1 and _s_ is the string "Start of heading", or ...,
 or _c_ is US and _n_ is 31 and _s_ is the string "Unit separator".
 
+Read the query:
+```ocaml
+(** Find the control characters in a given range *)
+let _ =
+  List.iter print_endline @@
+    Stream.take ~n:18 @@ 
+      run q (fun s ->
+          ocanren {fresh c,n in Std.Nat.(<=) 0 n
+                                & Std.Nat.(<=) n 10
+                                & ascii_ctrl c n s}) project;;
+```
+as:
+> Print at most 18 possible values of _s_, such that exist some _c_ and _n_
+where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
+relation _ascii_ctrl_. 
