@@ -55,7 +55,7 @@ definitions become after expansion, can be viewed by adding the "dump source" op
 `-dsource` in the Makefile as explained in a comment line there. For instance, the `LString`
  module after expansion is given [here](lstring.ml), where we could see that besides the type
  constructor definitions a lot more codes have actually been auto-generated to
- support the  `show` plugin requested in the shorter version of the same module.. 
+ support the  `show` plugin requested in the shorter version of the same module. 
 
 
 ## The Type Definitions
@@ -78,14 +78,16 @@ useful plugins and otherwise it is the same as the OCaml built-in string type.
 Plugins are (auto-)created inductively: GT provides plugins for base types and
 rules for building plugins for compound types from component types. 
 
-## The Injection Functions
+## The Injection Functions and the `ocanren{...}` Quotation
 
 The signature of the `ASCII_Ctrl.Inj` module shall explain itself. For every value constructor,
  an accompanying  injection function shall be defined,  whose name is the same as
 the constructor name except that the first letter is set to lower case.
-In the `ocanren{...}` quotation, wherever a value constructor occurs, its corresponding
+In the `ocanren{...}` quotation,
+wherever a value constructor occurs, its corresponding
 injection function is implicitly called. Hence
 the `let open ASCII_Ctrl.Inj in` statement that preceeds the body of the `ascii_ctrl` relation.
+The quotation in the body of the `ascii_ctrl` is expanded as follows:
 
 ```ocaml
 let ascii_ctrl =
@@ -107,5 +109,6 @@ let ascii_ctrl =
                       (OCanren.conj (OCanren.unify n (OCanren.Std.nat 2))
                          (OCanren.unify s
                             (OCanren.inj (OCanren.lift "Start of text")))))
+(* ... etc *)			    
 
 ```
