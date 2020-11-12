@@ -121,9 +121,15 @@ let ascii_ctrl =
 (* ... etc *)			    
 
 ```
+The above code excerpt is also from what is displayed on the terminal after
+compiling the source with the "dump source" option `-dsource`.
 
-## The Relation
+## The Relation and Queries
 
 Read the definition of `ascii_ctrl` as:
-> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff: _c_ is NUL and _n_ is 0 and _s_ is the
-string "Null", or _c_ is SOH and _n_ is 1 and _s_ is the string "Start of heading", or ...   
+> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff:
+1. _c_ is NUL and _n_ is 0 and _s_ is the
+string "Null", or
+1. _c_ is SOH and _n_ is 1 and _s_ is the string "Start of heading", or
+1. ...
+
