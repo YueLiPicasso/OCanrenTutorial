@@ -23,7 +23,51 @@ The structure of the program is as follows:
 1. The data base as a relation
 1. Some queries on the data base
 
-We will use the above structure summary as the guideline of our narrative. 
+We will use the above structure summary as the guideline of our narrative.
+
+## The Relation and Queries
+
+Read the definition of `ascii_ctrl` as:
+> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff  _c_ is NUL and _n_ is 0 and _s_ is the
+string "Null", or  _c_ is SOH and _n_ is 1 and _s_ is the string "Start of heading", or ...,
+or _c_ is US and _n_ is 31 and _s_ is the string "Unit separator".
+
+Read the query:
+```ocaml
+(** Find the control characters in a given range *)
+let _ =
+  List.iter print_endline @@
+    Stream.take ~n:18 @@ 
+      run q (fun s ->
+          ocanren {fresh c,n in Std.Nat.(<=) 0 n
+                                & Std.Nat.(<=) n 10
+                                & ascii_ctrl c n s}) project;;
+```
+as:
+> Print at most 18 possible values of _s_, such that exist some _c_ and _n_
+where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
+relation _ascii_ctrl_.
+
+OCanren will answer: "_s_ could be any one of the following strings,"
+```
+Null
+Start of heading
+Start of text
+End of text
+End of transmission
+Enquiry
+Ackonwledge
+Bell
+Back space
+Horizontal tab
+Line Feed
+```
+and "There are eleven of them and nothing else."
+
+We could see that the relational program specifies a relation, and it has been used to find
+missing elements of a tuple that is claimed to satisfy some constraint formulated with
+that relation.
+
 
 ## The @type Syntax
 
@@ -124,48 +168,6 @@ let ascii_ctrl =
 The above code excerpt is also from what is displayed on the terminal after
 compiling the source with the "dump source" option `-dsource`.
 
-## The Relation and Queries
-
-Read the definition of `ascii_ctrl` as:
-> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff  _c_ is NUL and _n_ is 0 and _s_ is the
-string "Null", or  _c_ is SOH and _n_ is 1 and _s_ is the string "Start of heading", or ...,
-or _c_ is US and _n_ is 31 and _s_ is the string "Unit separator".
-
-Read the query:
-```ocaml
-(** Find the control characters in a given range *)
-let _ =
-  List.iter print_endline @@
-    Stream.take ~n:18 @@ 
-      run q (fun s ->
-          ocanren {fresh c,n in Std.Nat.(<=) 0 n
-                                & Std.Nat.(<=) n 10
-                                & ascii_ctrl c n s}) project;;
-```
-as:
-> Print at most 18 possible values of _s_, such that exist some _c_ and _n_
-where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
-relation _ascii_ctrl_.
-
-OCanren will answer: "_s_ could be any one of the following strings,"
-```
-Null
-Start of heading
-Start of text
-End of text
-End of transmission
-Enquiry
-Ackonwledge
-Bell
-Back space
-Horizontal tab
-Line Feed
-```
-and "There are eleven of them and nothing else."
-
-We could see that the relational program specifies a relation, and it has been used to find
-missing elements of a tuple that is claimed to satisfy some constraint formulated with
-that relation.
 
 ## The Semantics of the Language
 
