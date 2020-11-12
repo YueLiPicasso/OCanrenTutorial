@@ -145,4 +145,24 @@ let _ =
 as:
 > Print at most 18 possible values of _s_, such that exist some _c_ and _n_
 where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
-relation _ascii_ctrl_. 
+relation _ascii_ctrl_.
+
+OCanren will answer: _s_ could be any one of the following strings:
+```ocaml
+Null
+Start of heading
+Start of text
+End of text
+End of transmission
+Enquiry
+Ackonwledge
+Bell
+Back space
+Horizontal tab
+Line Feed
+```
+There are eleven of them and nothing else.
+
+We could see that the relational program specifies a relation, and it has been used to find
+missing elements of a tuple that is claimed to satisfy some constraint formulated with
+that relation. 
