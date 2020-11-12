@@ -52,7 +52,10 @@ by GT into:
 
 The effect of syntactic transformation, including what the `@type`
 definitions become after expansion, can be viewed by adding the "dump source" option
-`-dsource` in the Makefile as explained in a comment line there. 
+`-dsource` in the Makefile as explained in a comment line there. For instance, the `LString`
+ module after expansion is given [here](lstring.ml), where we could see that besides the type
+ constructor definitions a lot more codes have actually been auto-generated to
+ support the  `show` plugin requested in the shorter version of the same module.. 
 
 
 ## The Type Definitions
@@ -77,10 +80,32 @@ rules for building plugins for compound types from component types.
 
 ## The Injection Functions
 
-
 The signature of the `ASCII_Ctrl.Inj` module shall explain itself. For every value constructor,
  an accompanying  injection function shall be defined,  whose name is the same as
-the constructor name except that the first letter is set to lower case. An injection function
-is implicitly called in the `ocanren{...}` quotation wherever its corresponding  value
-constructor occurs. Hence
-the `let open ASCII_Ctrl.Inj in` statement that preceeds the body of the `ascii_ctrl` relation. 
+the constructor name except that the first letter is set to lower case.
+In the `ocanren{...}` quotation, wherever a value constructor occurs, its corresponding
+injection function is implicitly called. Hence
+the `let open ASCII_Ctrl.Inj in` statement that preceeds the body of the `ascii_ctrl` relation.
+
+```ocaml
+let ascii_ctrl =
+  (fun c ->
+     fun n ->
+       fun s ->
+         let open ASCII_Ctrl.Inj in
+           OCanren.disj
+             (OCanren.conj (OCanren.unify c (nUL ()))
+                (OCanren.conj (OCanren.unify n (OCanren.Std.nat 0))
+                   (OCanren.unify s (OCanren.inj (OCanren.lift "Null")))))
+             (OCanren.disj
+                (OCanren.conj (OCanren.unify c (sOH ()))
+                   (OCanren.conj (OCanren.unify n (OCanren.Std.nat 1))
+                      (OCanren.unify s
+                         (OCanren.inj (OCanren.lift "Start of heading")))))
+                (OCanren.disj
+                   (OCanren.conj (OCanren.unify c (sTX ()))
+                      (OCanren.conj (OCanren.unify n (OCanren.Std.nat 2))
+                         (OCanren.unify s
+                            (OCanren.inj (OCanren.lift "Start of text")))))
+
+```
