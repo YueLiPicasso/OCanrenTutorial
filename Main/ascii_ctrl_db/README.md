@@ -147,7 +147,7 @@ as:
 where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
 relation _ascii_ctrl_.
 
-OCanren will answer: _s_ could be any one of the following strings:
+OCanren will answer: "_s_ could be any one of the following strings,"
 ```
 Null
 Start of heading
@@ -161,7 +161,7 @@ Back space
 Horizontal tab
 Line Feed
 ```
-There are eleven of them and nothing else.
+and "There are eleven of them and nothing else."
 
 We could see that the relational program specifies a relation, and it has been used to find
 missing elements of a tuple that is claimed to satisfy some constraint formulated with
