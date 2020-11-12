@@ -80,6 +80,7 @@ rules for building plugins for compound types from component types.
 
 The signature of the `ASCII_Ctrl.Inj` module shall explain itself. For every value constructor,
  an accompanying  injection function shall be defined,  whose name is the same as
-the constructor name except that the first letter is set to lower case. These injection functions
-are implicitly called in the `ocanren{...}` quotation wherever a value constructor occurs. Hence
+the constructor name except that the first letter is set to lower case. An injection function
+is implicitly called in the `ocanren{...}` quotation wherever its corresponding  value
+constructor occurs. Hence
 the `let open ASCII_Ctrl.Inj in` statement that preceeds the body of the `ascii_ctrl` relation. 
