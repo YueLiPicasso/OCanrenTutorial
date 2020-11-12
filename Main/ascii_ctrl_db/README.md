@@ -165,4 +165,11 @@ and "There are eleven of them and nothing else."
 
 We could see that the relational program specifies a relation, and it has been used to find
 missing elements of a tuple that is claimed to satisfy some constraint formulated with
-that relation. 
+that relation.
+
+## The Semantics of the Language
+
+Relational programming languages have two semantics: the _declarational semantics_ and the
+_operational semantics_. The way above in which the reader is advised to read the relation
+definition and the query is actually the declarational semantics. The operational semantics
+concerns how the answers shall be searched for (mechanically).
