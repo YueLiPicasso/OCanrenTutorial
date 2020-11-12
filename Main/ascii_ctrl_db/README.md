@@ -111,3 +111,8 @@ let ascii_ctrl =
 (* ... etc *)			    
 
 ```
+
+## The Relation
+
+Read the definition of `ascii_ctrl` as:
+> _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff  
