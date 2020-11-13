@@ -62,7 +62,7 @@ Back space
 Horizontal tab
 Line Feed
 ```
-and "There are eleven of them and nothing else."
+
 
 We could see that the relational program specifies a relation, and it has been used to find
 missing elements of a tuple that is claimed to satisfy some constraint formulated with
