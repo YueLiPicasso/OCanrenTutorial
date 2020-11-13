@@ -76,7 +76,7 @@ Relational programming languages have two semantics: the _declarational semantic
 _operational semantics_. The way above in which the reader is advised to read the relation
 definition and the query is actually part of the declarational semantics.
 The operational semantics concerns how the answers shall be searched for (mechanically), which
-may or may not be part of the implementation of the language. For example, the operational
+is part of the implementation of the language. For example, the operational
 semantics of the relational language [Prolog](https://www.swi-prolog.org/) is called
 _SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clauses with a 
 *S*election function". The operational semantics of OCanren is a set of stream manipulation
