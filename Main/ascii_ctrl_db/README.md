@@ -96,7 +96,8 @@ all integers `...-3 -2 -1 0 1 2 3...` or equivalently `0 1 -1 2 -2 3 -3 ...` is 
 
 The set of all streams can also be defined in the more technical,  _coinductive_ manner as follows:
 1. Let **FS** be an operator whose input is a set of sequences and whose output
-is also a set of sequences. A sequence is said to be composed of its members.
+is also a set of sequences. A sequence is said to be composed of its members drawn from a set of
+possible members.
 1. The output of **FS** is constructed by:
    1. Starting with an empty set, to add members to it incrementally;
    1. Adding the empty stream;
