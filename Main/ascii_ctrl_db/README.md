@@ -86,16 +86,25 @@ detail below.
 
 ### Goals and Logic Connectives as Stream Processors
 
-We present the ideas in an abstract form. Firstly the concept of a _stream_, or the
-set of all streams, which can be defined in the _coinductive_ manner as follows:
-1. Let **FS** be an operator (i.e., a function) whose input is a set of sequences and whose output
+We present the ideas in an abstract form. Firstly the concept of a _stream_.
+A stream is a generalization of a list: members of a list can be put on
+one-on-one correspondence with members of some _finite_  subset of the natural numbers, whilst
+members of a stream can be put on one-on-one correspondence with members of some
+possibly infinite subset of the natural numbers. 
+
+The set of all streams can also be defined in the more technical,  _coinductive_ manner as follows:
+1. Let **FS** be an operator whose input is a set of sequences and whose output
 is also a set of sequences. A sequence is said to be composed of its members.
 1. The output of **FS** is constructed by:
    1. Starting with an empty set;
    1. Adding the empty stream;
-   1. Prefixing each sequence of the input set with an arbitrary member, then adding the result. 
+   1. Prefixing each sequence of the input set with an arbitrary member, then adding the results. 
 1. The set St of all streams is the _largest_ set that is a fixed-point of **FS**, in other words,
    **FS**(St) = St and St is a superset of st for all **FS**(st) = st. 
+
+**Example** If we restrict sequence members to integers, and let the input be {1}, which is the
+singleton set whose only member is a sequence consisting on only one member which is 1. The output
+of **FS**
 
 Note that in a typical inductive specification we could require that the set being defined
 is the samllest set satisfying the specification. Here instead we ask for the _largest_ such set,
