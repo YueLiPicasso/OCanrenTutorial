@@ -90,7 +90,9 @@ We present the ideas in an abstract form. Firstly the concept of a _stream_.
 A stream is a generalization of a list: members of a list can be put on
 one-on-one correspondence with members of some _finite_  subset of the natural numbers, whilst
 members of a stream can be put on one-on-one correspondence with members of some
-possibly infinite subset of the natural numbers. 
+possibly infinite subset of the natural numbers. Intuitively, the imaginary, infinitely
+long sequence of all natural numbers itself is an example of a stream. The sequence of
+all integers `...-3 -2 -1 0 1 2 3...` or equivalently `0 1 -1 2 -2 3 -3 ...` is another. 
 
 The set of all streams can also be defined in the more technical,  _coinductive_ manner as follows:
 1. Let **FS** be an operator whose input is a set of sequences and whose output
