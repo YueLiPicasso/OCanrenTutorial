@@ -120,7 +120,7 @@ is the samllest fixed-point. Here instead we ask for the _largest_, hence the _c
 
 ### Disjunction as a Stream Zipper
 
-### Conjuction as a Stream
+### Conjuction as a Stream Map-Merger
 
 
 
