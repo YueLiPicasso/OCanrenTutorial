@@ -70,6 +70,24 @@ We could see that the relational program specifies a relation, and it has
  tell the program _how_ to find these missing elements. It was the semantics
  of the program that did this automatically.
 
+## The Semantics of the Language
+
+Relational programming languages have two semantics: the _declarational semantics_ and the
+_operational semantics_. The way above in which the reader is advised to read the relation
+definition and the query is actually part of the declarational semantics.
+The operational semantics concerns how the answers shall be searched for (mechanically), which
+may or may not be part of the implementation of the language. For example, the operational
+semantics of the relational language [Prolog](https://www.swi-prolog.org/) is called
+_SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clauses with a 
+*S*election function". The operational semantics of OCanren is a set of stream manipulation
+rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
+and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
+mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
+rules during the search for answers. We explain the operational semantics of OCanren in more
+detail below.
+
+### Goals and Logic Connectives as Stream Processors 
+
 
 ## The @type Syntax
 
@@ -171,20 +189,3 @@ The above code excerpt is also from what is displayed on the terminal after
 compiling the source with the "dump source" option `-dsource`.
 
 
-## The Semantics of the Language
-
-Relational programming languages have two semantics: the _declarational semantics_ and the
-_operational semantics_. The way above in which the reader is advised to read the relation
-definition and the query is actually part of the declarational semantics.
-The operational semantics concerns how the answers shall be searched for (mechanically), which
-may or may not be part of the implementation of the language. For example, the operational
-semantics of the relational language [Prolog](https://www.swi-prolog.org/) is called
-_SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clauses with a 
-*S*election function". The operational semantics of OCanren is a set of stream manipulation
-rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
-and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
-mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
-rules during the search for answers. We explain the operational semantics of OCanren in more
-detail below.
-
-### Goals and Logic Connectives as Stream Processors 
