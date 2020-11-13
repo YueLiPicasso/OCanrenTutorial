@@ -84,7 +84,7 @@ mentioned exhibit the behaviour called "backtracking" that allows exploration of
 rules during the search for answers. We explain the operational semantics of OCanren in more
 detail below.
 
-### Goals and Logic Connectives as Stream Processors
+###  Streams
 
 We present the ideas in an abstract form. Firstly the concept of a _stream_.
 A stream is a generalization of a list: members of a list can be put on
@@ -115,6 +115,12 @@ sequences of integers. They are both fixed-points of **FS**, known as the _least
 
 Note that in a typical inductive specification we could require that the set being defined
 is the samllest fixed-point. Here instead we ask for the _largest_, hence the _coinductive manner_.
+
+### Relation as a Stream Builder
+
+### Disjunction as a Stream Zipper
+
+### Conjuction as a Stream
 
 
 
