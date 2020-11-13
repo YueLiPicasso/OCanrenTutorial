@@ -23,8 +23,6 @@ The structure of the program is as follows:
 1. The data base as a relation
 1. Some queries on the data base
 
-We will use the above structure summary as the guideline of our narrative.
-
 ## The Relation and Queries
 
 Read the definition of `ascii_ctrl` as:
