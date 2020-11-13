@@ -98,27 +98,23 @@ The set of all streams can also be defined in the more technical,  _coinductive_
 1. Let **FS** be an operator whose input is a set of sequences and whose output
 is also a set of sequences. A sequence is said to be composed of its members.
 1. The output of **FS** is constructed by:
-   1. Starting with an empty set;
+   1. Starting with an empty set, to add members to it incrementally;
    1. Adding the empty stream;
    1. Prefixing each sequence of the input set with an arbitrary member, then adding the results. 
 1. The set St of all streams is the _largest_ set that is a fixed-point of **FS**, in other words,
    **FS**(St) = St and St is a superset of st for all **FS**(st) = st. 
 
-**Example** If we restrict sequence members to integers, and let the input be {1}, which is the
-singleton set whose only member is a sequence consisting on only one member which is 1. The output
-of **FS**
+**Example** If we restrict sequence members to integers, and let the input be `{123, 111}`,
+which is the set whose  members are the sequences `123` and `111`. One possible output of **FS** operating
+on the input is `{e, 0123, 5111}` where `e` is the empty stream. Another possible output is `{e,1123, 1111}`.
+In neither case the output equals the input, which is quite usual. The two notable exceptions are the set
+L<sub>min</sub> of all finite-length lists of integers, and the set L<sub>max</sub> of all finite and infinite
+sequences of integers. They are both fixed-points of **FS**, known as the _least fixpoint_ and the _greatest fixpoint_.
+ L<sub>max</sub> is also the set of all streams of integers.
 
 Note that in a typical inductive specification we could require that the set being defined
-is the samllest set satisfying the specification. Here instead we ask for the _largest_ such set,
-hence the _coinductive manner_.
+is the samllest fixed-point. Here instead we ask for the _largest_, hence the _coinductive manner_.
 
-**Example** The set of streams of integers contain the empty stream, all finite lists of integers,
-and all one-way infinite sequences of the form n<sub>1</sub>,n<sub>2</sub>,n<sub>3</sub>,... . 
-
-
-Imagine a function whose input is a
-(possibly empty) list and whose
-output is a stream of lists.
 
 
 ## The @type Syntax
