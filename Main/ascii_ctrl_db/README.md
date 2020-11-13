@@ -66,7 +66,7 @@ We could see that the relational program specifies a relation, and it has
  been used to find missing elements of a tuple that is claimed to satisfy
  some constraint of which the relation is a part. In so doing, we did not
  tell the program _how_ to find these missing elements. It was the semantics
- of the program that did this automatically.
+ of the programming language that did this automatically.
 
 ## The Semantics of the Language
 
