@@ -20,7 +20,7 @@ The structure of the program is as follows:
    1. The ASCII control characters type
       - Injection utilities
    1. The logic string type
-1. The data base as a relation
+1. The data base as a relation `ascii_ctrl`
 1. Some queries on the data base
 
 ## The Relation and Queries
