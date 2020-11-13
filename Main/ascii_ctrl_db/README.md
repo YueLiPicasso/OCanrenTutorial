@@ -89,7 +89,7 @@ detail below.
 We present the ideas in an abstract form. Firstly the concept of a _stream_, which can be defined
 in the _coinductive_ manner as follows:
 1. The empty stream is a stream.
-1. If _s_ is a stream, then prefixing _s_ with one more element, the result is also a stream.
+1. If _s_ is a stream, then prefixing _s_ by one more element, the result is also a stream.
 1. The set of all streams is the _largest_ set that satisfies the above two requirements. 
 
 Note that in a typical inductive specification we could require that the set being defined
