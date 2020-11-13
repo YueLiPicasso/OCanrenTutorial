@@ -84,7 +84,25 @@ mentioned exhibit the behaviour called "backtracking" that allows exploration of
 rules during the search for answers. We explain the operational semantics of OCanren in more
 detail below.
 
-### Goals and Logic Connectives as Stream Processors 
+### Goals and Logic Connectives as Stream Processors
+
+We present the ideas in an abstract form. Firstly the concept of a _stream_, which can be defined
+in the _coinductive_ manner as follows:
+1. The empty stream is a stream.
+1. If _s_ is a stream, then prefixing _s_ with one more element, the result is also a stream.
+1. The set of all streams is the _largest_ set that satisfies the above two requirements. 
+
+Note that in a typical inductive specification we could require that the set being defined
+is the samllest set satisfying the specification. Here instead we ask for the _largest_ such set,
+hence the _coinductive manner_.
+
+**Example** The set of streams of integers contain the empty stream, all finite lists of integers,
+and all one-way infinite sequences of the form n<sub>1</sub>,n<sub>2</sub>,n<sub>3</sub>,... . 
+
+
+Imagine a function whose input is a
+(possibly empty) list and whose
+output is a stream of lists.
 
 
 ## The @type Syntax
