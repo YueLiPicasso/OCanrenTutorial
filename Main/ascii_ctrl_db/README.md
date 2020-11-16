@@ -126,8 +126,8 @@ can be _applied_ to some value _value<sub>pre</sub>_, so that all occurrences
  result is another value _value<sub>post</sub>_.
 To apply a substitution is to apply one-by-one all of its components. 
 
-**Example** Applying [(x, Cons(1,y));(y, Cons(2,z));(z, Nil)] to Cons(0,x)
-results in: Cons(0,Cons(1,Cons(2,Nil))).
+**Example** Applying `[(x, Cons(1,y));(y, Cons(2,z));(z, Nil)]` to `Cons(0,x)`
+results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
 ### Relation as a Stream Builder
 
