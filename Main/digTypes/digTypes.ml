@@ -23,3 +23,10 @@ module MyPair = struct
   type ('b1, 'b2) logic =  ('b1, 'b2) t MyLogic.logic
   type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) MyLogic.injected
 end;;
+
+
+module PP = struct
+   type pg = (Peano.ground, Peano.ground) MyPair.ground;;
+   type pl = (Peano.logic, Peano.logic) MyPair.logic;;
+   type pi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
+end;;

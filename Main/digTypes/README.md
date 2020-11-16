@@ -293,6 +293,20 @@ module MyPair = struct
 end;;
 ```
 
+**Example** We can now talk about:
+- Ground pairs of ground Peano numbers
+   ```ocaml
+   type pg = (Peano.ground, Peano.ground) MyPair.ground;;
+   ```
+- Logic pairs of logic Peano numbers
+   ```ocaml
+   type pl = (Peano.logic, Peano.logic) MyPair.logic;;
+   ```
+- Injected pairs of Peano numbers
+   ```ocaml
+   type pi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
+   ```
+
 ### Injecting non-regular recursive types
 
 A non-regular recursve type is a parameterized type constructor in whose recurisve
