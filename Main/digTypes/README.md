@@ -186,7 +186,7 @@ type logic   = Value of guarded
                | Var of int * logic list
 and  guarded = logic t   
 ```
-we could see that they both involve the constructors
+We could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
 and the `Var` constructor's first argument is always `int` and second argument is always a `list` of the logic type
 itself. This imlpies that we can extract these common parts for reuse
