@@ -285,7 +285,6 @@ we do not concern ourselves as to what an inhabitant of an injected type looks l
  logic pairs:
  ```ocaml
 (** logic pair type *)
-
 module MyPair = struct
   type ('a1, 'a2) t = 'a1 * 'a2
   type ('a1, 'a2) ground = ('a1, 'a2) t
