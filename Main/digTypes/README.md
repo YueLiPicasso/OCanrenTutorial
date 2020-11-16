@@ -121,7 +121,7 @@ as the type parameter instead of `int`, as follows.
  numbers. A _Peano number_ is a natural number denoted with two symbols `O` and `S` with auxiliary parentheses `()`.
  The symbol `O` is interpreted as the number zero, and the symbol `S` a successor function. Then the number one
  is denoted `S(O)`, two `S(S(O))`, three `S(S(S(O)))` and so on. Peano numbers are frequently used in relational programming,
- in cases like:
+ where they appear like:
  - `O`, `S(O)` --- Ground (Peano) numbers.
  - `X`, `S(X)`, `S(S(X))` --- Numbers with a logic variable (`X`).
 
