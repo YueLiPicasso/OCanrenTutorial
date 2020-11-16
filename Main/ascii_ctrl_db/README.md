@@ -118,8 +118,8 @@ is the samllest fixed-point. Here instead we ask for the _largest_, hence the _c
 
 ### Relation as a Stream Builder
 
-A relation is either atomic (`==` and `=/=`), or is built from atomic relations using conjunction, disjunction and
-possibly existential quantification and recursion.
+A relation is either atomic (`==` and `=/=`), or is built from atomic relations using conjunction, disjunction, existential quantification and
+possibly  recursion. 
 
 ### Disjunction as a Stream Zipper
 
