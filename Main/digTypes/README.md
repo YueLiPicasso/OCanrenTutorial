@@ -298,8 +298,8 @@ open OCanren;;
 module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
-  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t Logic.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
+  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t OCanren.logic
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
 end;;
 ```
 The reader may apply this template to define his own (regular recursive) types. The template for defining non-recursive types
@@ -312,8 +312,8 @@ open OCanren;;
 module Something = struct
   type ('a1, ..., 'an) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
-  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t Logic.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
+  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t OCanren.logic
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
 end;;
 ```
 For example, logic pairs:
