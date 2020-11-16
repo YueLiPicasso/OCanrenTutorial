@@ -37,7 +37,7 @@ open Peano;;
    
 let _ = ( Value Nil                                       : Peano.logic MyList.logic );; 
 let _ = ( Value (Cons (Value (S (Value O)) , Value Nil))  : Peano.logic MyList.logic );;
-let _ = ( Value (Cons (Var (1,[]), Value Nil))            : Peano.logic MyList.logic);;
+let _ = ( Value (Cons (Var (1,[]), Value Nil))            : Peano.logic MyList.logic );;
 let _ = ( Value (Cons (Value (S (Value O)) , Var (2,[]))) : Peano.logic MyList.logic );;
 let _ = ( Value (Cons (Var (1,[]), Var (2,[])))           : Peano.logic MyList.logic );;
 let _ = ( Var (1,[])                                      : Peano.logic MyList.logic );;
