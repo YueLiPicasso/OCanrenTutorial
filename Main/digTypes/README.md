@@ -311,10 +311,6 @@ The reader may apply this template to define his own (regular recursive) types. 
  ```ocaml
 (** Template of an injeced, non-recursive type *)
 
-module MyLogic = struct
-  type 'a logic = Value of 'a | Var of int * 'a logic list
-end;;
-
 module Something = struct
   type ('a1, ..., 'an) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
@@ -322,7 +318,18 @@ module Something = struct
   type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 ```
- The template for non-regular recursive types is not discussed here.
+For example, logic pairs:
+ ```ocaml
+(** logic pair type *)
+
+module LPair = struct
+  type ('a1, 'a2) t = 'a1 * 'a2
+  type ('a1, 'a2) ground = ('a1, 'a2) t
+  type ('b1, 'b2) logic =  ('b1, 'b2) t MyLogic.logic
+  type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) injected
+end;;
+```
+Injection of non-regular recursive types is not discussed here.
 
 ### Compiling the type definitions
 
