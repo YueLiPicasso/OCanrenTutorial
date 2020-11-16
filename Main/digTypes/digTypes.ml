@@ -16,3 +16,10 @@ module Peano = struct
   type logic  =  logic t MyLogic.logic
   type groundi = (ground, logic) MyLogic.injected
 end;;
+
+module MyPair = struct
+  type ('a1, 'a2) t = 'a1 * 'a2
+  type ('a1, 'a2) ground = ('a1, 'a2) t
+  type ('b1, 'b2) logic =  ('b1, 'b2) t MyLogic.logic
+  type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) MyLogic.injected
+end;;

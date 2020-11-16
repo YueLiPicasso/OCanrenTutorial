@@ -296,13 +296,14 @@ We give the general form of definig the injected representation of a regular rec
 
 module MyLogic = struct
   type 'a logic = Value of 'a | Var of int * 'a logic list
+  type ('a, 'b) injected 
 end;;
 
 module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
   type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t MyLogic.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) MyLogic.injected
 end;;
 ```
 The reader may apply this template to define his own (regular recursive) types. The template for defining non-recursive types
@@ -315,18 +316,18 @@ module Something = struct
   type ('a1, ..., 'an) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
   type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t MyLogic.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) MyLogic.injected
 end;;
 ```
 For example, logic pairs:
  ```ocaml
 (** logic pair type *)
 
-module LPair = struct
+module MyPair = struct
   type ('a1, 'a2) t = 'a1 * 'a2
   type ('a1, 'a2) ground = ('a1, 'a2) t
   type ('b1, 'b2) logic =  ('b1, 'b2) t MyLogic.logic
-  type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) injected
+  type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) MyLogic.injected
 end;;
 ```
 Injection of non-regular recursive types is not discussed here.
@@ -340,9 +341,11 @@ successfully using the lightweight [Makefile](Makefile).
 Note that we defined
 the module `MyLogic`  for pedagogical purposes only, so that we do not
 have to refer to the OCanren source code. The reader is encouraged to find
-the corresponding definitions in the source code by himself. Moreover,
-the `Peano` and `MyList` modules correspond to the OCanren standard libraries
-`LNat` and `LList` respectively where the leading `L` in the module names
+the corresponding definitions in the source code
+(of module [Logic](../../Installation/ocanren/src/core/Logic.mli)) by himself. Moreover,
+the `Peano`,  `MyList` and `MyPair` modules correspond to the
+OCanren [standard libraries](../../Installation/ocanren/src/std)
+`LNat`, `LList` and `LPair` respectively where the leading `L` in the module names
 stands for "logic".
 
 Note also that 
