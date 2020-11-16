@@ -280,7 +280,7 @@ we do not concern ourselves as to what an inhabitant of an injected type looks l
 
 ### Injecting non-recursive types
 
- This is even simpler: no need to abstract over self, i.e.,  no need for the `'self` parameter.
+ This is even simpler: no need to abstract over self.
  The consequence is that the abstract type and the ground type coincide. For example,
  logic pairs:
  ```ocaml
