@@ -335,27 +335,27 @@ Level No. | Level Name
 
 We give the general form of definig the injected types:
 ```ocaml
+open OCanren;;
+
 (** Template of an injeced, regular recursive type *)
 
 module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
   type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t OCanren.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 
 (** Template of an injeced, non-recursive type *)
-open OCanren;;
 
 module Something = struct
   type ('a1, ..., 'an) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
   type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t OCanren.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 ```
-
-The reader may apply this template to define his own (regular recursive) types. 
+The reader may apply these templates to define his own types. 
 
 
 ### Allusion to OCanren standard libraries
