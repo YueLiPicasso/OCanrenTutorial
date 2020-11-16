@@ -297,8 +297,7 @@ We can now talk about:
    ```ocaml
    type pg = (Peano.ground, Peano.ground) MyPair.ground;;
    ```
-- Logic pairs of logic Peano numbers, like `(X, S(Y))`, `Y`(as in `Y == (O, S(X))`)
-  and  `(X, X)`.
+- Logic pairs of logic Peano numbers, like `(X, S(Y))`, `Y` and  `(X, X)`.
    ```ocaml
    type pl = (Peano.logic, Peano.logic) MyPair.logic;;
    ```
