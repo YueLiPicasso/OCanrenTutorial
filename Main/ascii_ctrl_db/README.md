@@ -109,17 +109,27 @@ possible members.
 which is the set whose  members are the sequences `123` and `111`. One possible output of **FS** operating
 on the input is `{e, 0123, 5111}` where `e` is the empty stream. Another possible output is `{e,1123, 1111}`.
 In neither case the output equals the input, which is quite usual. The two notable exceptions are the set
-L<sub>min</sub> of all finite-length lists of integers, and the set L<sub>max</sub> of all finite and infinite
+L<sub>min</sub> of all lists of integers, and the set L<sub>max</sub> of all finite and infinite
 sequences of integers. They are both fixed-points of **FS**, known as the _least fixpoint_ and the _greatest fixpoint_.
  L<sub>max</sub> is also the set of all streams of integers.
 
 Note that in a typical inductive specification we could require that the set being defined
 is the samllest fixed-point. Here instead we ask for the _largest_, hence the _coinductive manner_.
 
+### Substitution
+
+A _substitution_ is a list of substitution components.
+A _substitution component_ is a pair (_lvar_, _value_) where _lvar_ is a
+logic variable and _value_ is a value whose type is in the form
+`('a, 'b) injected`.   
+
 ### Relation as a Stream Builder
 
 A relation is either atomic (`==` and `=/=`), or is built from atomic relations using conjunction, disjunction, existential quantification and
-possibly  recursion. 
+possibly  recursion. Whatever the construction of a relation, it is always a
+stream builder as far as the operational semantics is concerned: it takes a
+substitution as input and returns a stream of substitutions as output.
+For each substitution in the returned stream, if we combine it  makes the relation hold 
 
 ### Disjunction as a Stream Zipper
 
