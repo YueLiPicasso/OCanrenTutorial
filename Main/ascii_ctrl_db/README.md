@@ -120,7 +120,7 @@ is the samllest fixed-point. Here instead we ask for the _largest_, hence the _c
 
 A _substitution_ is a list of substitution components.
 A _substitution component_ is a pair (_lvar_, _value_) where _lvar_ is a
-logic variable and _value_ is an OCaml value.  A substitution component (_lvar_, _value_)
+logic variable.  A substitution component (_lvar_, _value_)
 can be _applied_ to some value _value<sub>pre</sub>_, so that all occurrences
  of _lvar_ in _value<sub>pre</sub>_ are simultaneously replaced by _value_, and the
  result is another value _value<sub>post</sub>_.
