@@ -276,8 +276,11 @@ end;;
 ```
 The `injected` type constructor is abstract in the sense that its type information is hidden from the user. Therefore
 we do not concern ourselves as to what an inhabitant of an injected type looks like.
-Injecting non-recursive types
- is even simpler: no need to abstract over self, i.e.,  no need for the `'self` parameter.
+
+
+### Injecting non-recursive types
+
+ This is even simpler: no need to abstract over self, i.e.,  no need for the `'self` parameter.
  The consequence is that the abstract type and the ground type coincide. For example,
  logic pairs:
  ```ocaml
@@ -287,20 +290,27 @@ module MyPair = struct
   type ('a1, 'a2) t = 'a1 * 'a2
   type ('a1, 'a2) ground = ('a1, 'a2) t
   type ('b1, 'b2) logic =  ('b1, 'b2) t MyLogic.logic
-  type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) MyLogic.injected
+  type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) injected
 end;;
 ```
-### Compiling the type definitions
+## Compiling `digTypes.ml`
 
 The types that we learnt in this lesson are put together
 in the file [digTypes.ml](digTypes.ml) which can be compilied
 successfully using the lightweight [Makefile](Makefile).
 
+### `MyLogic.logic` and `MyLogic.injected` instead of (resp.)
+`OCanren.logic` and `OCanren.injected`
+
+
 Note that we defined
 the module `MyLogic`  for pedagogical purposes only, so that we do not
-have to refer to the OCanren source code. The reader is encouraged to find
-the corresponding definitions in the source code
-(of module [Logic](../../Installation/ocanren/src/core/Logic.mli)) by himself. Moreover,
+have to refer to the OCanren package during compilation.
+The reader is encouraged to find
+the corresponding definitions in the OCanren module
+[Logic](../../Installation/ocanren/src/core/Logic.mli) by himself.
+
+Moreover,
 the `Peano`,  `MyList` and `MyPair` modules correspond to the
 OCanren [standard libraries](../../Installation/ocanren/src/std)
 `LNat`, `LList` and `LPair` respectively where the leading `L` in the module names
