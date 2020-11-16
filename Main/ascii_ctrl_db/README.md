@@ -82,7 +82,7 @@ rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` fo
 and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
 mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
 paths during the search for answers. We explain the operational semantics of OCanren in more
-detail below. We present the ideas in an abstract form. Firstly the concept of a _stream_.
+detail below.  Firstly the concept of a _stream_.
 
 ###  Streams
 
