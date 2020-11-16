@@ -172,7 +172,21 @@ logic list of logic numbers.
 
 ### More abstraction over logic types
 
-Comparing the types of logic lists and logic numbers, we could see that they both involve the constructors
+Comparing the types of logic lists and logic numbers:
+```ocaml
+(* Comparing the types of logic lists and logic numbers *)
+
+(* The logic list type*)
+type 'b logic_list  =  Value of 'b guarded_logic_list
+                    |  Var   of int * 'b logic_list list
+and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t    
+
+(* logic number type. Excerpt from module Peano *)
+type logic   = Value of guarded       
+               | Var of int * logic list
+and  guarded = logic t   
+```
+we could see that they both involve the constructors
 `Value` and `Var` with  similar argument structures: the `Value` constructor's argument is always a guarded type,
 and the `Var` constructor's first argument is always `int` and second argument is always a `list` of the logic type
 itself. This imlpies that we can extract these common parts for reuse
