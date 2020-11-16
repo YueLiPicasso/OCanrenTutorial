@@ -275,48 +275,11 @@ module Peano = struct
 end;;
 ```
 The `injected` type constructor is abstract in the sense that its type information is hidden from the user. Therefore
-we do not concern ourselves as to what an inhabitant of an injected type looks like.  
-
-## Summary
-
-OCanren works on injected types that are defined via abstract, ground and logic types. The table below
-organizes these types into four levels by complexity and dependency.
-
-Level No. | Level Name
---        |--
-1         | Abstract
-2         | Ground
-3         | Logic
-4         | Injected
-
-As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure.
-We give the general form of definig the injected representation of a regular recursive type:
-```ocaml
-(** Template of an injeced, regular recursive type *)
-open OCanren;;
-
-module Something = struct
-  type ('a1, ..., 'an, 'self) t = (* ... add type information here *)
-  type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
-  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t OCanren.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
-end;;
-```
-The reader may apply this template to define his own (regular recursive) types. The template for defining non-recursive types
- is even simpler: no need to abstract over self, i.e.,  no need for the `'self` parameter. The consequence is that the abstract
- type and the ground type coincide:
- ```ocaml
-(** Template of an injeced, non-recursive type *)
-open OCanren;;
-
-module Something = struct
-  type ('a1, ..., 'an) t = (* ... add type information here *)
-  type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
-  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t OCanren.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
-end;;
-```
-For example, logic pairs:
+we do not concern ourselves as to what an inhabitant of an injected type looks like.
+Injecting non-recursive types
+ is even simpler: no need to abstract over self, i.e.,  no need for the `'self` parameter.
+ The consequence is that the abstract type and the ground type coincide. For example,
+ logic pairs:
  ```ocaml
 (** logic pair type *)
 
@@ -327,8 +290,6 @@ module MyPair = struct
   type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) MyLogic.injected
 end;;
 ```
-Injection of non-regular recursive types is not discussed here.
-
 ### Compiling the type definitions
 
 The types that we learnt in this lesson are put together
@@ -348,3 +309,44 @@ stands for "logic".
 Note also that 
 we need the `-rectypes` compiler option in the makefile to deal with
 the rather liberal recurisve types that appear in this lesson.
+
+
+## Conclusion
+
+OCanren works on injected types that are defined via abstract, ground and logic types. The table below
+organizes these types into four levels by complexity and dependency.
+
+Level No. | Level Name
+--        |--
+1         | Abstract
+2         | Ground
+3         | Logic
+4         | Injected
+
+As examples, we defined types of Peano numbers, and  polymorphic lists and pairs, each showing the four-level structure.
+We give the general form of definig the injected types:
+```ocaml
+(** Template of an injeced, regular recursive type *)
+
+module Something = struct
+  type ('a1, ..., 'an, 'self) t = (* ... add type information here *)
+  type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
+  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t OCanren.logic
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
+end;;
+
+(** Template of an injeced, non-recursive type *)
+open OCanren;;
+
+module Something = struct
+  type ('a1, ..., 'an) t = (* ... add type information here *)
+  type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
+  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t OCanren.logic
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
+end;;
+```
+Injection of non-regular recursive types is not discussed here.
+The reader may apply this template to define his own (regular recursive) types. 
+
+
+
