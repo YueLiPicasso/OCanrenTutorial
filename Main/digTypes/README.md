@@ -305,7 +305,7 @@ module PP = struct
      
   (** Injected pairs of Peano numbers (abstract type) *)
   type groundi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
-            (* = (pg, pl) injected *)
+            (* = (ground, logic) injected *)
 
 end;;
 ```
