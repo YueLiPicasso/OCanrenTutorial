@@ -293,19 +293,22 @@ module MyPair = struct
 end;;
 ```
 We can now talk about:
-- Ground pairs of ground Peano numbers, like `(O, O)`and `(O, S(O))`. 
-   ```ocaml
-   type pg = (Peano.ground, Peano.ground) MyPair.ground;;
-   ```
-- Logic pairs of logic Peano numbers, like `(X, S(Y))`, `Y` and  `(X, X)`.
-   ```ocaml
-   type pl = (Peano.logic, Peano.logic) MyPair.logic;;
-   ```
-- Injected pairs of Peano numbers (abstract type)
-   ```ocaml
-   type pi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
-        (* = (pg, pl) injected *)
-   ```
+```ocaml
+(** Peano number Pairs *)
+module PP = struct
+   
+  (** Ground pairs of ground Peano numbers, like (O, O) and (O, S(O)) *)
+  type ground = (Peano.ground, Peano.ground) MyPair.ground;;
+     
+  (** Logic pairs of logic Peano numbers, like (X, S(Y)), Y and (X, X).
+  type logic = (Peano.logic, Peano.logic) MyPair.logic;;
+     
+  (** Injected pairs of Peano numbers (abstract type) *)
+  type groundi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
+            (* = (pg, pl) injected *)
+
+end;;
+```
 
 ### Injecting non-regular recursive types
 
