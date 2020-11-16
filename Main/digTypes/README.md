@@ -305,7 +305,7 @@ module Something = struct
   type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 ```
-The reader may apply this to define his own types. 
+The reader may apply this to define his own (regular recursive) types. 
 
 ### Compiling the type definitions
 
