@@ -305,6 +305,7 @@ end;;
 - Injected pairs of Peano numbers
    ```ocaml
    type pi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
+        (* = (pg, pl) injected *)
    ```
 
 ### Injecting non-regular recursive types
