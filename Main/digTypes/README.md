@@ -293,7 +293,7 @@ module MyPair = struct
 end;;
 ```
 
-**Example** We can now talk about:
+**Example.** We can now talk about:
 - Ground pairs of ground Peano numbers
    ```ocaml
    type pg = (Peano.ground, Peano.ground) MyPair.ground;;
