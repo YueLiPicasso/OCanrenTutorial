@@ -292,6 +292,14 @@ module MyPair = struct
   type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) injected
 end;;
 ```
+
+### Injecting non-regular recursive types
+
+A non-regular recursve type is a parameterized type constructor in whose recurisve
+definition at least one of the type parameter is instantiated (See also
+[this](https://ocaml.org/releases/4.11/htmlman/polymorphism.html#s:polymorphic-recursion)).  
+Injection of non-regular recursive types is not discussed here.
+
 ## Compiling `digTypes.ml`
 
 The types that we learnt in this lesson are put together
@@ -333,7 +341,7 @@ Level No. | Level Name
 3         | Logic
 4         | Injected
 
-As examples, we defined types of Peano numbers, and  polymorphic lists and pairs, each showing the four-level structure.
+
 We give the general form of definig the injected types:
 ```ocaml
 (** Template of an injeced, regular recursive type *)
@@ -355,8 +363,8 @@ module Something = struct
   type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) OCanren.injected
 end;;
 ```
-Injection of non-regular recursive types is not discussed here.
+
 The reader may apply this template to define his own (regular recursive) types. 
 
 
-
+As examples, we defined types of Peano numbers, and  polymorphic lists and pairs, each showing the four-level structure.
