@@ -293,7 +293,7 @@ module MyPair = struct
 end;;
 ```
 We can now talk about:
-- Ground pairs of ground Peano numbers, like `(O,O)`, `(O,S(O))`, etc. 
+- Ground pairs of ground Peano numbers, like `(O, O)`, `(O, S(O))`, etc. 
    ```ocaml
    type pg = (Peano.ground, Peano.ground) MyPair.ground;;
    ```
