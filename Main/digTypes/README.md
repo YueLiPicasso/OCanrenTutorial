@@ -355,7 +355,9 @@ module Something = struct
   type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 ```
-The reader may apply these templates to define his own types. 
+The reader may apply these templates to define his own types. OCanren is for typed relational programming.Two points here: it is typed, and it is relational.
+We have now studied how to work with the types. This clears the way so that we
+can then focus on the relational part.
 
 
 ### Allusion to OCanren standard libraries
