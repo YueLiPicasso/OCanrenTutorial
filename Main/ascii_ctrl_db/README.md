@@ -123,7 +123,7 @@ possibly  recursion.
 
 ### Disjunction as a Stream Zipper
 
-### Conjuction as a Stream Map-Merger
+### Conjuction as a Stream Map-Zipper
 
 
 
