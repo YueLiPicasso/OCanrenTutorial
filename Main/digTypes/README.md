@@ -301,7 +301,7 @@ we need the `-rectypes` compiler option  to deal with
 the rather liberal recurisve types that appear in this lesson.
 
 
-### `MyLogic.logic` and `MyLogic.injected` instead of (resp.) `OCanren.logic` and `OCanren.injected`
+### The use of `MyLogic.logic` and `MyLogic.injected` instead of (resp.) `OCanren.logic` and `OCanren.injected`
 
 
 Note that we defined
