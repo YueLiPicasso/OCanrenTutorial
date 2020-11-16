@@ -296,10 +296,12 @@ end;;
 
 The types that we learnt in this lesson are put together
 in the file [digTypes.ml](digTypes.ml) which can be compilied
-successfully using the lightweight [Makefile](Makefile).
+successfully using the lightweight [Makefile](Makefile), where 
+we need the `-rectypes` compiler option  to deal with
+the rather liberal recurisve types that appear in this lesson.
 
-### `MyLogic.logic` and `MyLogic.injected` instead of (resp.)
-`OCanren.logic` and `OCanren.injected`
+
+### `MyLogic.logic` and `MyLogic.injected` instead of (resp.) `OCanren.logic` and `OCanren.injected`
 
 
 Note that we defined
@@ -309,15 +311,14 @@ The reader is encouraged to find
 the corresponding definitions in the OCanren module
 [Logic](../../Installation/ocanren/src/core/Logic.mli) by himself.
 
+### Allusion to OCanren standard libraries
+
 Moreover,
 the `Peano`,  `MyList` and `MyPair` modules correspond to the
 OCanren [standard libraries](../../Installation/ocanren/src/std)
 `LNat`, `LList` and `LPair` respectively where the leading `L` in the module names
 stands for "logic".
 
-Note also that 
-we need the `-rectypes` compiler option in the makefile to deal with
-the rather liberal recurisve types that appear in this lesson.
 
 
 ## Conclusion
