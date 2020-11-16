@@ -183,7 +183,7 @@ and  'b guarded_logic_list  = ('b, 'b logic_list) MyList.t
 
 (* logic number type. Excerpt from module Peano *)
 type logic   = Value of guarded       
-               | Var of int * logic list
+             | Var of int * logic list
 and  guarded = logic t   
 ```
 We could see that they both involve the constructors
