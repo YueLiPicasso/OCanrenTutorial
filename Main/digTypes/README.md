@@ -250,15 +250,7 @@ module Peano = struct
   type logic  =  logic t MyLogic.logic
 end;;
 ```
-More generally (and with ground type added):
-```ocaml
-(** General and concise definitions of abstract, ground and logic types *)
-module Something = struct
-  type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
-  type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
-  type ('a1, ..., 'an) logic =  ('a1, ..., 'an, ('a1, ..., 'an) logic) t MyLogic.logic 
-end;;
-```
+
 
 ## Injected Types
 
