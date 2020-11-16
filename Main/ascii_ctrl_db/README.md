@@ -81,7 +81,7 @@ _SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clau
 rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
 and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
 mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
-rules during the search for answers. We explain the operational semantics of OCanren in more
+paths during the search for answers. We explain the operational semantics of OCanren in more
 detail below.
 
 ###  Streams
