@@ -290,7 +290,7 @@ module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
   type ('a1, ..., 'an) logic =  ('a1, ..., 'an, ('a1, ..., 'an) logic) t MyLogic.logic
-  type ('a1, ..., 'an, 'b1, ..., 'bm) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bm) logic) injected
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 ```
 ## Summary
