@@ -292,17 +292,16 @@ module MyPair = struct
   type ('a1, 'a2, 'b1, 'b2) groundi = (('a1, 'a2) ground, ('b1, 'b2) logic) injected
 end;;
 ```
-
-**Example.** We can now talk about:
-- Ground pairs of ground Peano numbers
+We can now talk about:
+- Ground pairs of ground Peano numbers, like `(O,O)`, `(O,S(O))`, etc. 
    ```ocaml
    type pg = (Peano.ground, Peano.ground) MyPair.ground;;
    ```
-- Logic pairs of logic Peano numbers
+- Logic pairs of logic Peano numbers, like `(X, S(X))`, `X`, `(X,X)`, etc.
    ```ocaml
    type pl = (Peano.logic, Peano.logic) MyPair.logic;;
    ```
-- Injected pairs of Peano numbers
+- Injected pairs of Peano numbers (abstract type)
    ```ocaml
    type pi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
         (* = (pg, pl) injected *)
