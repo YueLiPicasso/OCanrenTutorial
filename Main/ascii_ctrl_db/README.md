@@ -43,7 +43,7 @@ let _ =
 ```
 as:
 > Print at most 18 possible values of _s_, such that exist some _c_ and _n_
-where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfy the
+where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfies the
 relation _ascii_ctrl_.
 
 OCanren will answer: "_s_ could be any one of the following strings,"
