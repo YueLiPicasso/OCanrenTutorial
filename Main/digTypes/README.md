@@ -172,7 +172,7 @@ logic list of logic numbers.
 
 ### More abstraction over logic types
 
-Comparing the types of logic lists and logic numbers (reproduced below):
+Compare the types of logic lists and logic numbers (reproduced below):
 ```ocaml
 (* Comparing the types of logic lists and logic numbers *)
 
