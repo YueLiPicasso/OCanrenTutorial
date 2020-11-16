@@ -299,7 +299,7 @@ A non-regular recursve type is a parameterized type constructor in whose recuris
 definition at least one of the type parameter is instantiated (See also
 [this](https://ocaml.org/releases/4.11/htmlman/polymorphism.html#s:polymorphic-recursion)). Injection of non-regular recursive types is not discussed here.
 
-## Compiling `digTypes.ml`
+## Compiling the Program
 
 The types that we learnt in this lesson are put together
 in the file [digTypes.ml](digTypes.ml) which can be compilied
@@ -317,14 +317,6 @@ have to refer to the OCanren package during compilation.
 The reader is encouraged to find
 the corresponding definitions in the OCanren module
 [Logic](../../Installation/ocanren/src/core/Logic.mli) by himself.
-
-### Allusion to OCanren standard libraries
-
-Moreover,
-the `Peano`,  `MyList` and `MyPair` modules correspond to the
-OCanren [standard libraries](../../Installation/ocanren/src/std)
-`LNat`, `LList` and `LPair` respectively where the leading `L` in the module names
-stands for "logic".
 
 
 
@@ -366,4 +358,10 @@ end;;
 The reader may apply this template to define his own (regular recursive) types. 
 
 
-As examples, we defined types of Peano numbers, and  polymorphic lists and pairs, each showing the four-level structure.
+### Allusion to OCanren standard libraries
+
+As examples, we defined types of Peano numbers, and  polymorphic lists and pairs, each showing the four-level structure. The `Peano`,  `MyList` and `MyPair` modules correspond to the
+OCanren [standard libraries](../../Installation/ocanren/src/std)
+`LNat`, `LList` and `LPair` respectively where the leading `L` in the module names
+stands for "logic".
+
