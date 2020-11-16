@@ -333,7 +333,7 @@ Level No. | Level Name
 4         | Injected
 
 
-We give the general form of definig the injected types:
+We give templates for definig injected types:
 ```ocaml
 open OCanren;;
 
