@@ -300,7 +300,7 @@ module PP = struct
   (** Ground pairs of ground Peano numbers, like (O, O) and (O, S(O)) *)
   type ground = (Peano.ground, Peano.ground) MyPair.ground;;
      
-  (** Logic pairs of logic Peano numbers, like (X, S(Y)), Y and (X, X).
+  (** Logic pairs of logic Peano numbers, like (X, S(Y)), Y and (X, X) *)
   type logic = (Peano.logic, Peano.logic) MyPair.logic;;
      
   (** Injected pairs of Peano numbers (abstract type) *)
