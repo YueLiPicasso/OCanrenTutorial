@@ -293,11 +293,12 @@ module MyPair = struct
 end;;
 ```
 We can now talk about:
-- Ground pairs of ground Peano numbers, like `(O, O)`, `(O, S(O))`, etc. 
+- Ground pairs of ground Peano numbers, like `(O, O)`and `(O, S(O))`. 
    ```ocaml
    type pg = (Peano.ground, Peano.ground) MyPair.ground;;
    ```
-- Logic pairs of logic Peano numbers, like `(X, S(X))`, `X`, `(X, X)`, etc.
+- Logic pairs of logic Peano numbers, like `(X, S(Y))`, `Y`(as in `Y == (O, S(X))`)
+  and  `(X, X)`.
    ```ocaml
    type pl = (Peano.logic, Peano.logic) MyPair.logic;;
    ```
