@@ -292,7 +292,7 @@ Level No. | Level Name
 As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure.
 We give the general form of definig the injected representation of a regular recursive type:
 ```ocaml
-(** General and concise definition of an injeced type *)
+(** Template of an injeced, regular recursive type *)
 
 module MyLogic = struct
   type 'a logic = Value of 'a | Var of int * 'a logic list
@@ -301,11 +301,28 @@ end;;
 module Something = struct
   type ('a1, ..., 'an, 'self) t = (* ... add type information here *)
   type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
-  type ('a1, ..., 'an) logic =  ('a1, ..., 'an, ('a1, ..., 'an) logic) t MyLogic.logic
+  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn, ('b1, ..., 'bn) logic) t MyLogic.logic
   type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
 end;;
 ```
-The reader may apply this to define his own (regular recursive) types. 
+The reader may apply this template to define his own (regular recursive) types. The template for defining non-recursive types
+ is even simpler: no need to abstract over self, i.e.,  no need for the `'self` parameter. The consequence is that the abstract
+ type and the ground type coincide:
+ ```ocaml
+(** Template of an injeced, non-recursive type *)
+
+module MyLogic = struct
+  type 'a logic = Value of 'a | Var of int * 'a logic list
+end;;
+
+module Something = struct
+  type ('a1, ..., 'an) t = (* ... add type information here *)
+  type ('a1, ..., 'an) ground = ('a1, ..., 'an) t
+  type ('b1, ..., 'bn) logic =  ('b1, ..., 'bn) t MyLogic.logic
+  type ('a1, ..., 'an, 'b1, ..., 'bn) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bn) logic) injected
+end;;
+```
+ The template for non-regular recursive types is not discussed here.
 
 ### Compiling the type definitions
 
