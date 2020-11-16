@@ -282,10 +282,17 @@ module Peano = struct
   type groundi = (ground, logic) injected
 end;;
 ```
-Injected types are abstract in the sense that their type information is hidden from the user. Therefore
-we do not concern ourselves as to what an inhabitant of an injected type looks like.  
-
-
+The `injected` type constructor is abstract in the sense that its type information is hidden from the user. Therefore
+we do not concern ourselves as to what an inhabitant of an injected type looks like.  In general:
+```ocaml
+(** General and concise definition of an injeced type *)
+module Something = struct
+  type ('a1, ..., 'an, 'self) t = (* ... type information omitted *)
+  type ('a1, ..., 'an) ground = ('a1, ..., 'an, ('a1, ..., 'an) ground) t
+  type ('a1, ..., 'an) logic =  ('a1, ..., 'an, ('a1, ..., 'an) logic) t MyLogic.logic
+  type ('a1, ..., 'an, 'b1, ..., 'bm) groundi = (('a1, ..., 'an) ground, ('b1, ..., 'bm) logic) injected
+end;;
+```
 ## Summary
 
 OCanren works on injected types that are defined via abstract, ground and logic types. The table below
@@ -299,7 +306,8 @@ Level No. | Level Name
 4         | Injected
 
 As examples, we defined types of Peano numbers and polymorphic lists , each showing the four-level structure.
-The reader may follow this framework and apply the techniques to define any other types. 
+We also gave the general form of definig the injected representation of a regular recursive type. 
+The reader may apply this to define his own types. 
 
 ### Compiling the type definitions
 
