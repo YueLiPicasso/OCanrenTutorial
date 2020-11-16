@@ -140,7 +140,9 @@ module Peano = struct
   and  guarded = logic t                 (** ... and Guarded *)
 end;;
 ```
-
+Similar to logic lists, a logic number is either i) a pure logic number (e.g., `X`) or ii) a guarded logic number
+that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
+distinguished using constructors `Var` and `Value` respectively. 
 
 <hr>
 
@@ -154,9 +156,7 @@ Value (S (Value O))                 (** a guarded logic number S(O) which is the
                                         a (guarded) logic number which is the constructor [O] *)
 Value (S (Value (S (Var (1,[])))))  (** a guarded logic number S(S(X)) *)
 ```
-Similar to logic lists, a logic number is either i) a pure logic number (e.g., `X`) or ii) a guarded logic number
-that is either `O` or `S` applied recursively to a logic number. Pure and guarded logic numbers are again
-distinguished using constructors `Var` and `Value` respectively. Then the type `Peano.logic logic_list`
+Then the type `Peano.logic logic_list`
 has the following inhabitants:
 ```ocaml
 Value Nil;;                                       (* case 1 *)
