@@ -138,7 +138,8 @@ substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions
 For each substitution _subst<sub>out</sub>_ in the returned stream, the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold.
 
 **Example** Given as input the stream that consists of the empty
-  substitution `[]` :
+  substitution `[]` (i.e., the length of the input stream is one, and the only
+   member is `[]`):
 - The relation `x == Cons(1,Nil)` returns the stream that consists of
   the substitution `[(x, Cons(1,Nil))]`.
 - The relation `x == Cons(1,Nil) & y == Cons(2,x)` returns the stream
