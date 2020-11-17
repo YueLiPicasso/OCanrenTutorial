@@ -97,7 +97,7 @@ But in relational programming, when we think about a relation _R_, the most impo
 is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is a function.
 In other words, we regard what is known by logicians as a formula, as a function.  View this way,
 a formula F is a also a function F, whose input is an initial variable substitution and whose output is
-the set of all possible variable substitutions where each member when combined with the initial substitution  
+the set of all possible variable substitutions where each member when combined with the initial substitution
 makes F true. In this sense, a formula with free variables defines a relation on these same variabes.
 
 Now the reader might say:  we cannot talk about the truth of a formula without mentioning interpretations
