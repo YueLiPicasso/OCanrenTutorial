@@ -115,7 +115,7 @@ is provided by the module Core). The braces `{}` could be used
 ## The Semantics of the Language
 
 Relational programming languages have two semantics: the _declarational semantics_ and the
-_operational semantics_. The way above in which the reader is advised to read the relation
+_operational semantics_. [The way](#the-relation-and-queries) in which the reader is advised to read the relation
 definition and the query is actually part of the declarational semantics.
 The operational semantics concerns how the answers shall be searched for (mechanically), which
 is part of the implementation of the language. For example, the operational
