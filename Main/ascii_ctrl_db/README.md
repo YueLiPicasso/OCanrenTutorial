@@ -133,8 +133,18 @@ results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
 ### Relation as a Stream Builder
 
-A relation is either atomic (`==` and `=/=`), or is built from atomic relations using conjunction, disjunction, existential quantification and
-possibly  recursion. Whatever the construction of a relation, it is always a
+A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
+possibly  recursion.
+
+**Example.**  Atomic, compound and recursive relations:
+- `x == y` and  `1 =/= 2` are two atomic relations.
+- `let foo x y = ocanren { x == 1 & y =/= 2 }` gives the compound
+   relation ` x == 1 & y =/= 2` the name `foo`.
+- `let rec is_nat x = ocanren { x == O | fresh y in x == S y & is_nat y }`
+   recursively defines a  relation named `is_nat`, whose declarative semantics
+   concerns the property of being a natural number.
+
+Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
 substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions as output.
 For each substitution _subst<sub>out</sub>_ in the returned stream, the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold (in the sense of the declarational semantics).
