@@ -163,7 +163,8 @@ relation name def = 'let', ['rec'], relation name, '=',
 lparams = param, {',' param};
 fparams = param, {' ' param};
 ```
-
+The scope of `fresh...in` extends as far as possible.
+`&` binds tighter than `|`.
 
 Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
