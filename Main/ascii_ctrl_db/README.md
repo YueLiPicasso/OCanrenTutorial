@@ -106,7 +106,7 @@ symbols `==` and `=/=`, and we only work with formulae that are built by these t
 and (non-predicate) constants and variables. These two predicate symbols are interpreted as "syntactic equality" and
 "syntactic disequality" resp. and all other symbols adopt the Herbrand interpretation: they just denote themselves.
 Note that such formulae might be infinte (yes, an infinitely long formula like `F1 & F2 | F3 & F4 | ...`), and
-for a finite representation of which we may need recursively define names for them, for example:
+for a finite representation of which we may need recursively defined names for them, for example:
  `is_nat x := x == O | fresh y in x == S y & is_nat y`, which expands into the infinite formula:
 ```
   x == O
