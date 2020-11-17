@@ -211,7 +211,7 @@ _R_<sub>1</sub>, _R_<sub>2</sub> is itself a relation on the top level, so it is
 
 ### Conjuction as a Stream Map-Zipper
 
-### A Recursive Relation builds a Lazy Stream 
+### A Recursive Relation Builds a Lazy Stream 
 
 ## The @type Syntax
 
