@@ -166,7 +166,7 @@ let-binding =  relation name, [':', typexpr, '->', 'goal' ], '=',
 
 lparams = param, {',', param};
 fparams = param, {' ', param};
-fparams = value, {' ', value};
+values = value, {' ', value};
 ```
 The scope of `fresh...in` extends as far as possible.
 `&` binds tighter than `|`. A named relation is well-formed if its `values`
