@@ -146,7 +146,10 @@ possibly  recursion.
 
 We formalize the syntax of a relation as follows:
 ```ebnf
-relation = atomic relation | compound relation | named relation;
+relation = atomic relation
+         | compound relation
+	 | named relation
+	 | '{', relation, '}';
 
 atomic relation = value, '==', value | value, '=/=', value;
 
