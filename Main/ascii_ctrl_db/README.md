@@ -139,6 +139,12 @@ For each substitution _subst<sub>out</sub>_ in the returned stream, the concaten
 
 ### Disjunction as a Stream Zipper
 
+To _zip_ two streams means to merge them by interleaving their members.
+
+**Example.** Let _s_<sub>1</sub> denote the stream of all positive intergers,
+and _s_<sub>2</sub> the stream of all negative intergers. Then
+zipping _s_<sub>1</sub> with _s_<sub>2</sub>, the result denoted _s_<sub>1</sub> `&` _s_<sub>2</sub>, is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`. 
+
 ### Conjuction as a Stream Map-Zipper
 
 
