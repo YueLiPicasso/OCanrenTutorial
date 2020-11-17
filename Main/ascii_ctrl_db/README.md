@@ -68,6 +68,49 @@ We could see that the relational program specifies a relation, and it has
  tell the program _how_ to find these missing elements. It was the semantics
  of the programming language that did this automatically.
 
+### Syntax of a Relation
+
+A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
+possibly  recursion.
+
+**Example.**  Atomic, compound and recursive relations:
+- `x == y` and  `1 =/= 2` are two atomic relations.
+- `let foo x y = ocanren { x == 1 & y =/= 2 }` gives the compound
+   relation ` x == 1 & y =/= 2` the name `foo`.
+- `let rec is_nat x = ocanren { x == O | fresh y in x == S y & is_nat y }`
+   recursively defines a  relation named `is_nat`, whose declarative semantics
+   concerns the property of being a natural number.
+
+We loosely formalize the syntax of a relation as follows:
+```ebnf
+relation = atomic relation
+         | compound relation
+	 | named relation
+	 | '{', relation, '}' ;
+
+atomic relation = value, '==', value | value, '=/=', value;
+
+compound relation = relation, '&', relation
+                  | relation, '|', relation
+		  | 'fresh', lparams, 'in',  relation;
+
+named relation = relation name, ' ', values; 
+
+relation name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
+
+let-binding =  relation name, [':', typexpr, '->', 'goal' ], '=',
+               'fun', fparams, '->', 'ocanren','{', relation, '}' ;
+
+lparams = param, {',', param};
+fparams = param, {' ', param};
+values = value, {' ', value};
+```
+The scope of `fresh...in` extends as far as possible.
+`&` binds tighter than `|`. A named relation is well-formed if its `values`
+ are as much as  the `lparams` in its definition. The braces `{}` could be used
+ for explicit grouping, as in  `{ R1 | R2 } & R3`. 
+
+
 ## The Semantics of the Language
 
 Relational programming languages have two semantics: the _declarational semantics_ and the
@@ -131,47 +174,7 @@ until none is applicable.
 **Example** Applying `[(x, Cons(1,y));(y, Cons(2,z));(z, Nil)]` to `Cons(0,x)`
 results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
-### Syntax of a Relation
 
-A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
-possibly  recursion.
-
-**Example.**  Atomic, compound and recursive relations:
-- `x == y` and  `1 =/= 2` are two atomic relations.
-- `let foo x y = ocanren { x == 1 & y =/= 2 }` gives the compound
-   relation ` x == 1 & y =/= 2` the name `foo`.
-- `let rec is_nat x = ocanren { x == O | fresh y in x == S y & is_nat y }`
-   recursively defines a  relation named `is_nat`, whose declarative semantics
-   concerns the property of being a natural number.
-
-We loosely formalize the syntax of a relation as follows:
-```ebnf
-relation = atomic relation
-         | compound relation
-	 | named relation
-	 | '{', relation, '}' ;
-
-atomic relation = value, '==', value | value, '=/=', value;
-
-compound relation = relation, '&', relation
-                  | relation, '|', relation
-		  | 'fresh', lparams, 'in',  relation;
-
-named relation = relation name, ' ', values; 
-
-relation name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
-
-let-binding =  relation name, [':', typexpr, '->', 'goal' ], '=',
-               'fun', fparams, '->', 'ocanren','{', relation, '}' ;
-
-lparams = param, {',', param};
-fparams = param, {' ', param};
-values = value, {' ', value};
-```
-The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`. A named relation is well-formed if its `values`
- are as much as  the `lparams` in its definition. The braces `{}` could be used
- for explicit grouping, as in  `{ R1 | R2 } & R3`. 
 
 
 ### Relation as a Stream Builder
