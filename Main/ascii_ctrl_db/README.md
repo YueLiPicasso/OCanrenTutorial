@@ -79,7 +79,7 @@ possibly  recursion.
 - `let foo x y = ocanren { x == 1 & y =/= 2 }` gives the compound
    relation ` x == 1 & y =/= 2` the name `foo`.
 - `let rec is_nat x = ocanren { x == O | fresh y in x == S y & is_nat y }`
-   recursively defines a  relation named `is_nat`, whose declarative semantics
+   recursively defines a  relation named `is_nat` which
    concerns the property of being a natural number.
 
 We loosely formalize the syntax of a relation as follows:
