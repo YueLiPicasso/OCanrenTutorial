@@ -7,7 +7,7 @@ can then focus on the relational part.
 We have seen that the OCanren internal representation of a string has a type of the form
 `('a, 'a logic) injected` and we have named it an _injected type_, referring to the injection
 of data from user level representation into the internal representation. This type expression
-involves several sutlties that are, when
+involves several subtleties that are, when
 combined together, not apparent. In this lesson we break down such type expressions into
 their very components, so that the reader can appreciate the construction of these internal types
 and can build his own. 
