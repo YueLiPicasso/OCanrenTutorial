@@ -212,7 +212,7 @@ _R_<sub>1</sub>, _R_<sub>2</sub> is itself a relation on the top level, so it is
 
 ### Conjuction as a Stream Map-Zipper
 
-
+### Recursion builds a Lazy Stream
 
 ## The @type Syntax
 
