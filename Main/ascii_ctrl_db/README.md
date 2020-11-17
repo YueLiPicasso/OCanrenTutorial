@@ -123,7 +123,7 @@ semantics of the relational language [Prolog](https://www.swi-prolog.org/) is ca
 _SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clauses with a 
 *S*election function". The operational semantics of OCanren is a set of stream manipulation
 rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
-and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
+and basic relation names (`==` for "unify", `=/=` for "not unify"). Both operational semantics
 mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
 paths during the search for answers. We explain the operational semantics of OCanren in more
 detail below.  Firstly the concept of a _stream_.
