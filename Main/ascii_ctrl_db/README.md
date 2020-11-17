@@ -102,7 +102,7 @@ makes F true. In this sense, a formula with free variables defines a relation on
 
 Now the reader might say:  we cannot talk about the truth of a formula without mentioning interpretations
 of the symbols in the formula. The solution is a restriction of the syntax so that there are only two predicate
-symbols `==` and `=/=`, and we only work with formulae that are built by these two predicates, logic connectives
+symbols `==` and `=/=`, and we only work with formulae that are built by these two predicate symbols, the logic connectives
 and (non-predicate) constants and variables. These two predicate symbols are interpreted as "syntactic equality" and
 "syntactic disequality" resp. and all other symbols adopt the Herbrand interpretation: they just denote themselves.
 Note that such formulae might be infinte (yes, an infinitely long formula like `F1 & F2 | F3 & F4 | ...`), and
