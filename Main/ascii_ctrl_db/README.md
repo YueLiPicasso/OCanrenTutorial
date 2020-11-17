@@ -69,6 +69,19 @@ We could see that the relational program specifies a relation, and it has
  of the programming language that did this automatically. We explain the syntax and
  semantics next.
 
+## A Note on the Term "Relation"
+
+In the language of set theory, a relation is essentially a function from the
+set of arguments to the set of booleans. For logicians, a relation symbol is
+known as a predicate symbol, and by supplying a relation symbol with (all of)
+its arguments we get an atomic formular. Furthermore, atomic formulae are used
+to build (compound) formulae with logic connectives. When it comes to logic programming
+, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
+inherited by the modern successor of logic programming, which is called _relational
+programming_. However, the semantics of a _goal_ nevertheless changes: it is no longer
+something that we want to refute, but something for which we want to find variable
+substitutions so that it is true.
+
 ## Syntax of a Relation
 
 A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
@@ -123,7 +136,7 @@ semantics of the relational language [Prolog](https://www.swi-prolog.org/) is ca
 _SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clauses with a 
 *S*election function". The operational semantics of OCanren is a set of stream manipulation
 rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
-and basic relation names (`==` for "unify", `=/=` for "not unify"). Both operational semantics
+and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
 mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
 paths during the search for answers. We explain the operational semantics of OCanren in more
 detail below.  Firstly the concept of a _stream_.
