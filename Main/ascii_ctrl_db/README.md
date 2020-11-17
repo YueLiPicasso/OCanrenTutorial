@@ -119,11 +119,11 @@ is the samllest fixed-point. Here instead we ask for the _largest_, hence the _c
 ### Substitution
 
 A _substitution_ is a list of substitution components.
-A _substitution component_ is a pair (_lvar_, _value_) where _lvar_ is a
+A _substitution component_ (for short: _component_) is a pair (_lvar_, _value_) where _lvar_ is a
 logic variable.  A substitution component (_lvar_, _value_)
 can be _applied_ to some value _value<sub>pre</sub>_, so that all occurrences
  of _lvar_ in _value<sub>pre</sub>_ are simultaneously replaced by _value_, and the
- result is another value _value<sub>post</sub>_. A component is applicable if
+ result is another value _value<sub>post</sub>_. A component is _applicable_ if
  applying it would make a difference. 
 To apply a substitution is to repeatedly apply its components
 until none is applicable. 
