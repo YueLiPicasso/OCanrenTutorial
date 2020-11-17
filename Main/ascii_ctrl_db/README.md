@@ -170,7 +170,8 @@ fparams = value, {' ', value};
 ```
 The scope of `fresh...in` extends as far as possible.
 `&` binds tighter than `|`. A named relation is well-formed if its `values`
- are as much as  the `lparams` in its definition
+ are as much as  the `lparams` in its definition. The braces `{}` could be used
+ for explicit grouping, as in  `{ R1 | R2 } & R3`. 
 
 Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
