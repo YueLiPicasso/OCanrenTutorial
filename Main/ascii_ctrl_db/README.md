@@ -94,7 +94,7 @@ As a consequence, the way we think about a relation changes as well. In logic
 _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
 
 But in relational programming, when we think about a relation _R_, the most important thing
-is not that _R_ is a function, but R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ in whole is a function.
+is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ in _whole_ is a function.
 
 ## Syntax of a Relation
 
