@@ -155,8 +155,8 @@ For each substitution _subst<sub>out</sub>_ in the returned stream, the concaten
 - The relation `x == Cons(1,Nil) & y == Cons(2,x)` returns the stream
   that consists of the substitution `[(x, Cons(1,Nil));(y, Cons(2,x))]`.
 - The relation `is_nat x`  returns the stream
-  that consists of the substitutions `[(x, O)]`, `[(x, S(O))]`,
-  `[(x, S(S(O)))]`, ...
+  that consists of the substitutions `[(x, O)]`, `[(x, S(y1));(y1, O)]`,
+  `[(x, S(y1));(y1, S(y2));(y2, O)]`, ...
 - The relation `1 == 1` returns the stream whose only member is `[]`.
 - The relation `1 == 2` returns the empty stream: there is no way to make the
   relation hold.
