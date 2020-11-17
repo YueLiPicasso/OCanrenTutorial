@@ -171,7 +171,7 @@ and _s_<sub>2</sub> the stream of all negative intergers. The result of
 zipping _s_<sub>1</sub> with _s_<sub>2</sub>,  denoted _s_<sub>1</sub> `|` _s_<sub>2</sub> , is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`. 
 
 The disjunction _R_<sub>1</sub> `|` _R_<sub>2</sub> of two relations
-_R_<sub>1</sub>, _R_<sub>2</sub> is a relation on the top level, so it is
+_R_<sub>1</sub>, _R_<sub>2</sub> is itself a relation on the top level, so it is
  a stream builder, taking a substitution as input and returns a stream of
  substitution. It builds the output stream by zipping the two streams built
  separately by _R_<sub>1</sub> and _R_<sub>2</sub>, both of which share the
