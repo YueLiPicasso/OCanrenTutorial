@@ -52,10 +52,14 @@ let _ = ( Value (Cons (Value (S (Value O)) , Var (2,[]))) : Peano.logic MyList.l
 let _ = ( Value (Cons (Var (1,[]), Var (2,[])))           : Peano.logic MyList.logic );;
 let _ = ( Var (1,[])                                      : Peano.logic MyList.logic );;
 
-
 let _ = ( Var (1,[])                                      : PP.logic );;
 let _ = ( Value (Var (1,[]), Value (S (Var (1, []))))     : PP.logic );;
 let _ = ( Value (Var (1,[]), Var (1, []))                 : PP.logic );;
 let _ = ( Value (Value O, Value (S (Value O)))            : PP.logic );;
+
+let _ = ( Var (1,[])                                                            : PPL.logic );;
+let _ = ( Value (Var (1,[]), Var (2, []))                                       : PPL.logic );;
+let _ = ( Value (Var (1,[]), Value (Cons (Value (S (Var (2, []))), Value Nil))) : PPL.logic );;
+
 
 
