@@ -32,6 +32,16 @@ module PP = struct
    type groundi = (Peano.ground, Peano.ground, Peano.logic, Peano.logic) MyPair.groundi;;
 end;;
 
+module PPL = struct
+  type ground = (Peano.ground, Peano.ground MyList.ground) MyPair.ground;;
+  type logic  = (Peano.logic,  Peano.logic MyList.logic) MyPair.logic;;
+  type groundi = (* = (ground, logic) injected *)
+    (Peano.ground,
+     Peano.ground MyList.ground,
+     Peano.logic,
+     Peano.logic MyList.logic) MyPair.groundi;;
+end;;
+
 open MyList;;
 open Peano;;
    

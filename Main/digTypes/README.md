@@ -310,6 +310,17 @@ module PP = struct
             (* = (ground, logic) injected *)
 
 end;;
+
+(** Peano number * Peano number list --- Pairs *)
+module PPL = struct
+  type ground = (Peano.ground, Peano.ground MyList.ground) MyPair.ground;;
+  type logic  = (Peano.logic,  Peano.logic MyList.logic) MyPair.logic;;
+  type groundi = (* = (ground, logic) injected *)
+    (Peano.ground,
+     Peano.ground MyList.ground,
+     Peano.logic,
+     Peano.logic MyList.logic) MyPair.groundi;;
+end;;
 ```
 
 ### Injecting non-regular recursive types
