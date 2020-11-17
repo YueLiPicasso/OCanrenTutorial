@@ -84,7 +84,7 @@ substitutions so that it is true. In other words:
 - Logic programming is proof by contradiction: we want to find variable substitutions
  so that a formula _F_ is true, but what we do is to find substitutions so that the
  negation of F is false.
-- Relational programming is proof by straightforward construction wihout the
+- Relational programming is proof by straightforward construction without the
   logical detour of "negation of negation".
 
 As a consequence, the way we think about a relation changes as well. In logic
