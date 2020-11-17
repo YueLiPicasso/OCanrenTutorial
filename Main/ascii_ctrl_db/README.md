@@ -150,7 +150,7 @@ substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions
 For each substitution _subst<sub>out</sub>_ in the returned stream,
 applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold (in the sense of the declarational semantics).
 
-**Example** Given as input the empty  substitution `[]`:
+**Example.** Given as input the empty  substitution `[]`:
 - The relation `x == Cons(1,Nil)` returns the stream that consists of
   the substitution `[(x, Cons(1,Nil))]`.
 - The relation `x == Cons(1,Nil) & y == Cons(2,x)` returns the stream
@@ -167,8 +167,8 @@ applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the
 To _zip_ two streams means to merge them by interleaving their members.
 
 **Example.** Let _s_<sub>1</sub> denote the stream of all positive intergers,
-and _s_<sub>2</sub> the stream of all negative intergers. Then
-zipping _s_<sub>1</sub> with _s_<sub>2</sub>, the result denoted _s_<sub>1</sub> `&` _s_<sub>2</sub>, is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`. 
+and _s_<sub>2</sub> the stream of all negative intergers. The result of
+zipping _s_<sub>1</sub> with _s_<sub>2</sub>,  denoted _s_<sub>1</sub> `&` _s_<sub>2</sub> , is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`. 
 
 ### Conjuction as a Stream Map-Zipper
 
