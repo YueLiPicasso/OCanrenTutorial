@@ -123,8 +123,10 @@ A _substitution component_ is a pair (_lvar_, _value_) where _lvar_ is a
 logic variable.  A substitution component (_lvar_, _value_)
 can be _applied_ to some value _value<sub>pre</sub>_, so that all occurrences
  of _lvar_ in _value<sub>pre</sub>_ are simultaneously replaced by _value_, and the
- result is another value _value<sub>post</sub>_.
-To apply a substitution is to apply one-by-one all of its components. 
+ result is another value _value<sub>post</sub>_. A component is applicable if
+ applying it would make a difference. 
+To apply a substitution is to repeatedly apply its components
+until none is applicable. 
 
 **Example** Applying `[(x, Cons(1,y));(y, Cons(2,z));(z, Nil)]` to `Cons(0,x)`
 results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
@@ -135,7 +137,7 @@ A relation is either atomic (`==` and `=/=`), or is built from atomic relations 
 possibly  recursion. Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
 substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions as output.
-For each substitution _subst<sub>out</sub>_ in the returned stream, the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold.
+For each substitution _subst<sub>out</sub>_ in the returned stream, the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold (in the sense of the declarational semantics).
 
 **Example** Given as input the empty  substitution `[]`:
 - The relation `x == Cons(1,Nil)` returns the stream that consists of
@@ -145,7 +147,7 @@ For each substitution _subst<sub>out</sub>_ in the returned stream, the concaten
 - The relation `is_nat x`  returns the stream
   that consists of the substitutions `[(x, O)]`, `[(x, S(O))]`,
   `[(x, S(S(O)))]`, ...
-- The relation `1 == 1` returns the input stream intact.
+- The relation `1 == 1` returns the stream whose only member is `[]`.
 - The relation `1 == 2` returns the empty stream: there is no way to make the
   relation hold.
 
