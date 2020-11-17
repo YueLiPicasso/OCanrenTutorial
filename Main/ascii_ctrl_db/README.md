@@ -195,7 +195,7 @@ In summary,  we take a functional view of a relation: _not_ as a function from t
 set of arguments to the set of booleans, but as a function
 from the set of substitutions to the set of streams of substitutions. Formally, not
 
-_R_(arg<sub>1</sub>, ..., arg<sub>n</sub>) = true | false
+_R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
 
  but
  
