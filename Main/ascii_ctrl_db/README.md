@@ -107,7 +107,8 @@ fparams = param, {' ', param};
 values = value, {' ', value};
 ```
 The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`. A relation always has type `goal`. The braces `{}` could be used
+`&` binds tighter than `|`. A relation always has type `goal` (this type constructor
+is provided by the module Core). The braces `{}` could be used
  for explicit grouping, as in  `{ R1 | R2 } & R3`. 
 
 
