@@ -74,7 +74,7 @@ We could see that the relational program specifies a relation, and it has
 In the language of set theory, a relation is essentially a function from the
 set of arguments to the set of booleans. For logicians, a relation symbol is
 known as a predicate symbol, and by supplying a relation symbol with (all of)
-its arguments we get an atomic formular. Furthermore, atomic formulae are used
+its arguments we get an atomic formula. Furthermore, atomic formulae are used
 to build (compound) formulae with logic connectives. When it comes to logic programming
 , we call the formula which we want to refute a _goal_. This term (i.e., goal) is
 inherited by the modern successor of logic programming, which is called _relational
@@ -84,7 +84,7 @@ substitutions so that it is true. In other words:
 - Logic programming is proof by contradiction: we want to find variable substitutions
  so that a formula _F_ is true, but what we do is to find substitutions so that the
  negation of F is false.
-- but relational programming is proof by construction.
+- Relational programming is proof by construction.
 
 ## Syntax of a Relation
 
