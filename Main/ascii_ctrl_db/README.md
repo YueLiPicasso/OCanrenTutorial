@@ -80,7 +80,11 @@ to build (compound) formulae with logic connectives. When it comes to logic prog
 inherited by the modern successor of logic programming, which is called _relational
 programming_. However, the semantics of a _goal_ nevertheless changes: it is no longer
 something that we want to refute, but something for which we want to find variable
-substitutions so that it is true.
+substitutions so that it is true. In other words:
+- Logic programming is proof by contradiction: we want to find variable substitutions
+ so that a formula _F_ is true, but what we do is to find substitutions so that the
+ negation of F is false.
+- but relational programming is proof by construction.
 
 ## Syntax of a Relation
 
