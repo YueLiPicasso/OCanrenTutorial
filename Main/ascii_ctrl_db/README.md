@@ -46,7 +46,7 @@ as:
 where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfies the
 relation _ascii_ctrl_.
 
-OCanren will print the following strings:
+OCanren will print the following (eleven) strings:
 ```
 Null
 Start of heading
