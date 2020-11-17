@@ -149,7 +149,7 @@ We loosely formalize the syntax of a relation as follows:
 relation = atomic relation
          | compound relation
 	 | named relation
-	 | '{', relation, '}' \\(\\* for disambiguation \\*\\);
+	 | '{', relation, '}' \(\* for disambiguation \*\);
 
 atomic relation = value, '==', value | value, '=/=', value;
 
