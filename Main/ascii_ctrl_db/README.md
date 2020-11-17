@@ -154,7 +154,7 @@ compound relation = relation, '&', relation
                   | relation, '|', relation
 		  | 'fresh', lparams, 'in',  relation;
 
-named relation = relation name, fparams 
+named relation = relation name, fparams; 
 
 relation name def = 'let', ['rec'], relation name, '=',
                     'fun', fparams, '->', 'ocanren','{',
