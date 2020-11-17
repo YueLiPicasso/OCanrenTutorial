@@ -131,7 +131,7 @@ until none is applicable.
 **Example** Applying `[(x, Cons(1,y));(y, Cons(2,z));(z, Nil)]` to `Cons(0,x)`
 results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
-### Relation as a Stream Builder
+### Syntax of a Relation
 
 A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
 possibly  recursion.
@@ -172,6 +172,10 @@ The scope of `fresh...in` extends as far as possible.
 `&` binds tighter than `|`. A named relation is well-formed if its `values`
  are as much as  the `lparams` in its definition. The braces `{}` could be used
  for explicit grouping, as in  `{ R1 | R2 } & R3`. 
+
+
+### Relation as a Stream Builder
+
 
 Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
