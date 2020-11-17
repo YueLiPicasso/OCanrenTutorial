@@ -322,7 +322,7 @@ module PPL = struct
      Peano.logic MyList.logic) MyPair.groundi;;
 end;;
 ```
-As an exercise, the reader may define the injected types for pairs of polymorphc lists, and lists
+As an exercise, the reader may define the injected types for pairs of polymorphic lists, and lists
  of polymorphic pairs. 
 
 ### Injecting non-regular recursive types
