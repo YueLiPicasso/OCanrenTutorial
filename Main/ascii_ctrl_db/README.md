@@ -84,7 +84,17 @@ substitutions so that it is true. In other words:
 - Logic programming is proof by contradiction: we want to find variable substitutions
  so that a formula _F_ is true, but what we do is to find substitutions so that the
  negation of F is false.
-- Relational programming is proof by construction.
+- Relational programming is proof by straightforward construction wihout the
+  logical detour of "negation of negation".
+
+As a consequence, the way we think about a relation changes as well. In logic
+ programing and set theory when we think about a relation, we are actually thinking about
+ a function _R_ that can be applied to its arguments and return either true or false, like this:
+
+_R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
+
+But in relational programming, when we think about a relation _R_, the most important thing
+is not that _R_ is a function, but R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ in whole is a function.
 
 ## Syntax of a Relation
 
@@ -220,7 +230,7 @@ In summary,  we take a functional view of a relation: _not_ as a function from t
 set of arguments to the set of booleans, but as a function
 from the set of substitutions to the set of streams of substitutions. Formally, not
 
-_R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
+
 
  but
  
