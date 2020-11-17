@@ -328,7 +328,7 @@ As an exercise, the reader may define the injected types for pairs of polymorphi
 ### Injecting non-regular recursive types
 
 A non-regular recursve type is a parameterized type constructor in whose recurisve
-definition at least one of the type parameter is instantiated (See also
+definition at least one  type parameter is instantiated (See also
 [this](https://ocaml.org/releases/4.11/htmlman/polymorphism.html#s:polymorphic-recursion)). Injection of non-regular recursive types is not discussed here.
 
 ## Compiling the Program
