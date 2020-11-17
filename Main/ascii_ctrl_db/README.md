@@ -192,10 +192,14 @@ applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the
   relation hold.
 
 In summary,  we take a functional view of a relation: _not_ as a function from the
-set of arguments to the set of booleans, but (when all arguments provided, possibly with logic variables) as a function
-from the set of substitutions to the set of streams of substitutions. Formally:
+set of arguments to the set of booleans, but as a function
+from the set of substitutions to the set of streams of substitutions. Formally, not
 
-_R_ subst<sub>in</sub> = subst<sub>out</sub>, subst<sub>out</sub>, subst<sub>out</sub>, ...
+_R_(arg<sub>1</sub>, ..., arg<sub>n</sub>) = true | false
+
+ but
+ 
+subst<sub>in</sub> ---> _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ --->  subst<sub>out</sub>, subst<sub>out</sub>, subst<sub>out</sub>, ...
 
 ### Disjunction as a Stream Zipper
 
