@@ -154,17 +154,18 @@ compound relation = relation, '&', relation
                   | relation, '|', relation
 		  | 'fresh', lparams, 'in',  relation;
 
-named relation = relation name, fparams; 
+named relation = relation name, ' ', fparams; 
 
-relation name def = 'let', ['rec'], relation name, '=',
-                    'fun', fparams, '->', 'ocanren','{',
-		    relation '}' ;
+relation name definition = 'let', ['rec'], relation name, '=',
+                           'fun', fparams, '->', 'ocanren','{',
+		           relation '}' ;
 
 lparams = param, {',' param};
 fparams = param, {' ' param};
 ```
 The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`.
+`&` binds tighter than `|`. A named relation is well-formed if its `fparams`
+ are as much as  the `lparams` in its definition
 
 Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
