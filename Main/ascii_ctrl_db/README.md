@@ -191,7 +191,6 @@ applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the
 - The relation `1 == 2` returns the empty stream: there is no way to make the
   relation hold.
 
-
 ### Disjunction as a Stream Zipper
 
 To _zip_ two streams means to merge them by interleaving their members.
@@ -212,7 +211,7 @@ _R_<sub>1</sub>, _R_<sub>2</sub> is itself a relation on the top level, so it is
 
 ### Conjuction as a Stream Map-Zipper
 
-### Recursion builds a Lazy Stream
+### A Recursive Relation builds a Lazy Stream 
 
 ## The @type Syntax
 
