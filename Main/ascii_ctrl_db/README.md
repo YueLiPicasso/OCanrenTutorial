@@ -147,7 +147,7 @@ possibly  recursion.
 Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
 substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions as output.
-For each substitution _subst<sub>out</sub>_ in the returned stream, the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold (in the sense of the declarational semantics).
+For each substitution _subst<sub>out</sub>_ in the returned stream, the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold (in the sense of the declarational semantics) upon application of it.
 
 **Example** Given as input the empty  substitution `[]`:
 - The relation `x == Cons(1,Nil)` returns the stream that consists of
