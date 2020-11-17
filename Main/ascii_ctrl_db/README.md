@@ -95,7 +95,30 @@ _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
 
 But in relational programming, when we think about a relation _R_, the most important thing
 is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is a function.
-But from what to what? Let's see.  
+In other words, we regard what is known by logicians as a formula, as a function.  View this way,
+a formula F is a also a function F, whose input is an initial variable substitution and whose output is
+the set of all possible variable substitutions where each member when combined with the initial substitution  
+makes F true. In this sense, a formula with free variables defines a relation on these same variabes.
+
+Now the reader might say:  we cannot talk about the truth of a formula without mentioning interpretations
+of the symbols in the formula. The solution is a restriction of the syntax so that there are only two predicate
+symbols `==` and `=/=`, and we only work with formulae that are built by these two predicates, logic connectives
+and (non-predicate) constants and variables. These two predicate symbols are interpreted as "syntactic equality" and
+"syntactic disequality" resp. and all other symbols adopt the Herbrand interpretation: they just denote themselves.
+Note that such formulae might be infinte (yes, an infinitely long formula like `F1 & F2 | F3 & F4 | ...`), and
+for a finite representation of which we may need recursively define names for them, for example:
+ `is_nat x := x == O | fresh y in x == S y & is_nat y`, which expands into the infinite formula:
+```
+  x == O
+| fresh y1 in x == S y1 & { y1 == O
+                        | fresh y2 in y1 == S y2 & { y2 == O | fresh y3 in y2 == S y3 & { ... }}}
+```
+
+For the above account, a formula with free variables defines a relation on these same variabes.
+This is the reason that we call such a formula, with the restricted syntax and the interpretation so required,
+a _relation_ and regard our new notion of a relation as a function that manipulates
+substitutions. A generalization would include formulae without free variables: for example:
+the formula `1 == 1 & 2 == 2` defines a relation that is true for any argument.  
 
 ## Syntax of a Relation
 
