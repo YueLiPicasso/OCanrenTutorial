@@ -191,6 +191,12 @@ applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the
 - The relation `1 == 2` returns the empty stream: there is no way to make the
   relation hold.
 
+In summary,  we take a functional view of a relation: _not_ as a function from the
+set of arguments to the set of booleans, but (when all arguments provided, possibly with logic variables) as a function
+from the set of substitutions to the set of streams of substitutions. Formally:
+
+_R_ subst<sub>in</sub> = subst<sub>out</sub>, subst<sub>out</sub>, subst<sub>out</sub>, ...
+
 ### Disjunction as a Stream Zipper
 
 To _zip_ two streams means to merge them by interleaving their members.
