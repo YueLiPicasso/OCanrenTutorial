@@ -144,6 +144,27 @@ possibly  recursion.
    recursively defines a  relation named `is_nat`, whose declarative semantics
    concerns the property of being a natural number.
 
+We formalize the syntax of a relation as follows:
+```ebnf
+relation = atomic relation | compound relation | named relation;
+
+atomic relation = value, '==', value | value, '=/=', value;
+
+compound relation = relation, '&', relation
+                  | relation, '|', relation
+		  | 'fresh', lparams, 'in',  relation;
+
+named relation = relation name, fparams 
+
+relation name def = 'let', ['rec'], relation name, '=',
+                    'fun', fparams, '->', 'ocanren','{',
+		    relation '}' ;
+
+lparams = param, {',' param};
+fparams = param, {' ' param};
+```
+
+
 Whatever the construction of a relation, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
 substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions as output.
@@ -161,6 +182,7 @@ applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the
 - The relation `1 == 1` returns the stream whose only member is `[]`.
 - The relation `1 == 2` returns the empty stream: there is no way to make the
   relation hold.
+
 
 ### Disjunction as a Stream Zipper
 
