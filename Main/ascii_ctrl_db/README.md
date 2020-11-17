@@ -111,7 +111,8 @@ for a finite representation of which we may need recursively defined names for t
 ```
   x == O
 | fresh y1 in x == S y1 & { y1 == O
-                        | fresh y2 in y1 == S y2 & { y2 == O | fresh y3 in y2 == S y3 & { ... }}}
+                          | fresh y2 in y1 == S y2 & { y2 == O
+			                             | fresh y3 in y2 == S y3 & { ... }}}
 ```
 
 For the above account, a formula with free variables defines a relation on these same variabes.
