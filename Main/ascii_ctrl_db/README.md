@@ -144,7 +144,7 @@ possibly  recursion.
    recursively defines a  relation named `is_nat`, whose declarative semantics
    concerns the property of being a natural number.
 
-We formalize the syntax of a relation as follows:
+We loosely formalize the syntax of a relation as follows:
 ```ebnf
 relation = atomic relation
          | compound relation
@@ -157,7 +157,7 @@ compound relation = relation, '&', relation
                   | relation, '|', relation
 		  | 'fresh', lparams, 'in',  relation;
 
-named relation = relation name, ' ', fparams; 
+named relation = relation name, ' ', args; 
 
 relation name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
 
@@ -168,7 +168,7 @@ lparams = param, {',' param};
 fparams = param, {' ' param};
 ```
 The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`. A named relation is well-formed if its `fparams`
+`&` binds tighter than `|`. A named relation is well-formed if its `args`
  are as much as  the `lparams` in its definition
 
 Whatever the construction of a relation, it is always a
