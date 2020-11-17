@@ -149,7 +149,7 @@ We loosely formalize the syntax of a relation as follows:
 relation = atomic relation
          | compound relation
 	 | named relation
-	 | '{', relation, '}' (* for disambiguation *);
+	 | '{', relation, '}' ;
 
 atomic relation = value, '==', value | value, '=/=', value;
 
@@ -157,18 +157,19 @@ compound relation = relation, '&', relation
                   | relation, '|', relation
 		  | 'fresh', lparams, 'in',  relation;
 
-named relation = relation name, ' ', args; 
+named relation = relation name, ' ', values; 
 
 relation name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
 
-let-binding =  relation name, '=',
+let-binding =  relation name, [':', typexpr, '->', 'goal' ], '=',
                'fun', fparams, '->', 'ocanren','{', relation, '}' ;
 
-lparams = param, {',' param};
-fparams = param, {' ' param};
+lparams = param, {',', param};
+fparams = param, {' ', param};
+fparams = value, {' ', value};
 ```
 The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`. A named relation is well-formed if its `args`
+`&` binds tighter than `|`. A named relation is well-formed if its `values`
  are as much as  the `lparams` in its definition
 
 Whatever the construction of a relation, it is always a
