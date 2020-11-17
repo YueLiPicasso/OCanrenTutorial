@@ -283,7 +283,7 @@ we do not concern ourselves as to what an inhabitant of an injected type looks l
 ### Injecting non-recursive types
 
  This is even simpler: no need to abstract over self.
- The consequence is that the abstract type and the ground type coincide (and the implicit guarded type as well). For example,
+ The consequence is that the abstract type and the ground type coincide (and the guarded type as well if made explicit). For example,
  logic pairs:
  ```ocaml
 (** logic pair type *)
