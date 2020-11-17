@@ -159,9 +159,11 @@ compound relation = relation, '&', relation
 
 named relation = relation name, ' ', fparams; 
 
-relation name definition = 'let', ['rec'], relation name, '=',
-                           'fun', fparams, '->', 'ocanren','{',
-		           relation '}' ;
+relation name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
+
+let-binding =  relation name, '=', rel name def body;
+
+rel name def body = 'fun', fparams, '->', 'ocanren','{', relation, '}' ;
 
 lparams = param, {',' param};
 fparams = param, {' ' param};
