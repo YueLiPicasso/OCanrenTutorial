@@ -68,7 +68,7 @@ We could see that the relational program specifies a relation, and it has
  tell the program _how_ to find these missing elements. It was the semantics
  of the programming language that did this automatically.
 
-### Syntax of a Relation
+## Syntax of a Relation
 
 A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
 possibly  recursion.
