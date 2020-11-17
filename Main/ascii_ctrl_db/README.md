@@ -139,7 +139,7 @@ For each substitution _subst<sub>out</sub>_ in the returned stream, the concaten
 
 **Example** Given as input the stream that consists of the empty
   substitution `[]` (i.e., the length of the input stream is one, and the only
-   member is `[]`):
+   member of which is `[]`):
 - The relation `x == Cons(1,Nil)` returns the stream that consists of
   the substitution `[(x, Cons(1,Nil))]`.
 - The relation `x == Cons(1,Nil) & y == Cons(2,x)` returns the stream
