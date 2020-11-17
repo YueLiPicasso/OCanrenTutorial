@@ -6,7 +6,7 @@ base of the 32 control characters in the ASCII table, associating each
 character with its integer number and description, for example: `BS`
 with number 8 and description "Back space".
 
-The [program](ASCII_Ctrl_DB.ml) is a bit long, but yet simple in the sense
+The [program](ASCII_Ctrl_DB.ml) is a bit long, yet simple in the sense
 that:
 - The types defined therein are not recursive: there are just a base
   type (`string`) and a variant type admitting only constant constructors.
