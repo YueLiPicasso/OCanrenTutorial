@@ -336,7 +336,7 @@ end;;
 ```
 would be expanded into [this](lstring.ml), where we could see that besides the type
  constructor definitions a lot more codes have actually been auto-generated to
- support the  requested  `show` plugins.
+ support any GT plugin that the user may request.   
 
 Note in the `LString` module that
 the type constructor name `string` is qualified by the module name `GT`,
