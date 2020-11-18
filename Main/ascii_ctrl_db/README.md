@@ -7,10 +7,7 @@ character with its integer number and description, for example: `BS`
 with number 8 and description "Back space".
 
 The [program](ASCII_Ctrl_DB.ml) is a bit long, yet simple in the sense
-that:
-- The types defined therein are not recursive: there are just a base
-  type (`string`) and a variant type admitting only constant constructors.
-- The relation defined therein is not recursive: it is a straightforward
+that the relation defined therein is not recursive: it is a straightforward
   listing of the data base, which is the very basic form of relational
   programs.
 
@@ -291,9 +288,16 @@ F<sub>1</sub> first, and then map-zips the output of F<sub>1</sub> with F<sub>2<
 Every substitution from the output stream (concatenated with the input) makes both of the
 two conjuncts true. 
 
-### A Recursively Defined  Relation Builds a Lazy Stream 
+## Working with GT and Camlp5
 
-## The @type Syntax
+We use packages GT and Camlp5 in OCanren programs.
+The influence of GT is that we can use the `@type` syntax to define types,
+which convenienty genertes useful functions for the defined type, for example, a _show_
+function that converts values of the defined type into a string, which we use to
+print the result of a query. Camlp5 expands the content of the `ocanren{}` quotation,
+allowing us to write readable code. 
+
+### The @type syntax
 
 In OCanren, type constructors are often defined by :
 ```ebnf
@@ -332,30 +336,16 @@ end;;
 ```
 would be expanded into [this](lstring.ml), where we could see that besides the type
  constructor definitions a lot more codes have actually been auto-generated to
- support the  requested  `show` plugins. 
+ support the  requested  `show` plugins.
 
-
-## The Type Definitions
-
-The module `ASCII_Ctrl`  defines types following the four-level
-framework: abstract, ground, logic and injected. Although
-it takes about thirty lines to enumerate all the control character names,
-the mathematical nature of these definitions are simple: even simpler than
-the types of logic lists and Peano numbers which we learnt previously.
-For instance, since the type is non-recursive and the constructors have
-no argument, the abstract form of the type coincides with the ground form.
-
-The sub-module `ASCII_Ctrl.Inj` is discussed in the next section.
-
-The `LString` module defines types of strings in four levels, where
-the abstract type and ground type also coincide. Worth noting that
+Note in the `LString` module that
 the type constructor name `string` is qualified by the module name `GT`,
 for we need to use the GT version of the string type which provides the
 useful plugins and otherwise it is the same as the OCaml built-in string type.
 Plugins are (auto-)created inductively: GT provides plugins for base types and
 rules for building plugins for compound types from component types. 
 
-## The Injection Functions and the `ocanren{...}` Quotation
+### The injection functions and the `ocanren{...}` quotation
 
 The signature of the `ASCII_Ctrl.Inj` module shall explain itself. For every value constructor,
  an accompanying  injection function shall be defined,  whose name is the same as
@@ -393,16 +383,11 @@ The above code excerpt is also from what is displayed on the terminal after
 compiling the source with the "dump source" option `-dsource`.
 
 
-## A Note on the Term "Relation"
+## Conclusion
 
-In the language of set theory, a relation is essentially a function from the
-set of arguments to the set of booleans. For logicians, a relation symbol is
-known as a predicate symbol, and by supplying a relation symbol with (all of)
-its arguments we get an atomic formula. Furthermore, atomic formulae are used
-to build (compound) formulae with logic connectives.
 
-As a consequence, the way we think about a relation changes as well. In logic
- programing and set theory when we think about a relation, we are actually thinking about
+
+In  set theory when we think about a relation, we are actually thinking about
  a function _R_ that can be applied to its arguments and return either true or false, like this:
 
 _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
@@ -412,13 +397,4 @@ is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _i
 In other words, we regard what is known by logicians as a formula, as a function.  View this way,
 a formula F is a also a function F, whose input is an initial variable substitution and whose output is
 the set of all possible variable substitutions where each member when combined with the initial substitution
-makes F true. In this sense, a formula with free variables defines a relation on these same variabes.
-
-Now the reader might say:  we cannot talk about the truth of a formula without mentioning interpretations
-of the symbols in the formula. 
-
-For the above account, a formula with free variables defines a relation on these same variabes.
-This is the reason that we call such a formula, with the restricted syntax and the interpretation so required,
-a _relation_ and regard our new notion of a relation as a function that manipulates
-substitutions. A generalization would include formulae without free variables: for example:
-the formula `1 == 1 & 2 == 2` defines a relation that is true for any argument.  
+makes F true. 
