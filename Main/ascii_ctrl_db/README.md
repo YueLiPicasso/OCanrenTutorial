@@ -109,8 +109,8 @@ formula  = atomic formula
 atomic formula = value, '==', value | value, '=/=', value;
 
 compound formula = formula, '&', formula
-                  | formula, '|', formula
-		  | 'fresh', lparams, 'in',  formula;
+                 | formula, '|', formula
+		 | 'fresh', lparams, 'in',  formula;
 
 named formula = formula name, ' ', values; 
 
@@ -121,27 +121,13 @@ let-binding =  formula name, [':', typexpr, '->', 'goal' ], '=',
 
 lparams = param, {',', param};
 fparams = param, {' ', param};
-values = value, {' ', value};
+values  = value, {' ', value};
 ```
 The scope of `fresh...in` extends as far as possible.
 `&` binds tighter than `|`. A formula always has type `goal` (this type constructor
 is provided by the module Core). The braces `{}` could be used
  for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
 
-
-The solution is a restriction of the syntax so that there are only  and we only work with formulae that are built by these two predicate symbols, the logic connectives
-and (non-predicate) constants and variables. 
-
-
-Note that such formulae might be infinte (yes, an infinitely long formula like `F1 & F2 | F3 & F4 | ...`), and
-for a finite representation of which we may need recursively defined names for them, for example:
- `is_nat x := x == O | fresh y in x == S y & is_nat y`, which expands into the infinite formula:
-```
-  x == O
-| fresh y1 in x == S y1 & { y1 == O
-                          | fresh y2 in y1 == S y2 & { y2 == O
-			                             | fresh y3 in y2 == S y3 & { ... }}}
-```
 
 
 ## The Semantics of the Language
@@ -157,8 +143,23 @@ _SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clau
 rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
 and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
 mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
-paths during the search for answers. We explain the operational semantics of OCanren in more
-detail below.  Firstly the concept of a _stream_.
+paths during the search for answers.
+
+In logic programming, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
+inherited by the modern successor of logic programming, which is called _relational
+programming_. However, the semantics of a _goal_ nevertheless changes: it is no longer
+something that we want to refute, but something for which we want to find variable
+substitutions so that it is true. In other words:
+- Logic programming is proof by contradiction: we want to find variable substitutions
+ so that a formula _F_ is true, but what we do is to find substitutions so that the
+ negation of F is false.
+- Relational programming is proof by straightforward construction without the
+  logical detour of "negation of negation".
+
+
+
+We explain the operational semantics of OCanren in more
+detail below. Firstly the concept of a _stream_.
 
 ###  Streams
 
@@ -369,17 +370,7 @@ In the language of set theory, a relation is essentially a function from the
 set of arguments to the set of booleans. For logicians, a relation symbol is
 known as a predicate symbol, and by supplying a relation symbol with (all of)
 its arguments we get an atomic formula. Furthermore, atomic formulae are used
-to build (compound) formulae with logic connectives. When it comes to logic programming
-, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
-inherited by the modern successor of logic programming, which is called _relational
-programming_. However, the semantics of a _goal_ nevertheless changes: it is no longer
-something that we want to refute, but something for which we want to find variable
-substitutions so that it is true. In other words:
-- Logic programming is proof by contradiction: we want to find variable substitutions
- so that a formula _F_ is true, but what we do is to find substitutions so that the
- negation of F is false.
-- Relational programming is proof by straightforward construction without the
-  logical detour of "negation of negation".
+to build (compound) formulae with logic connectives.
 
 As a consequence, the way we think about a relation changes as well. In logic
  programing and set theory when we think about a relation, we are actually thinking about
