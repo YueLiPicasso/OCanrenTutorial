@@ -250,6 +250,9 @@ _F_<sub>1</sub>, _F_<sub>2</sub> is itself a formula on the top level, so it is
 `(` _F_<sub>1</sub> `|` _F_<sub>2</sub> `)` subst<sub>in</sub> = 
 `(` _F_<sub>1</sub> subst<sub>in</sub> `)` |<sub>zip</sub> `(` _F_<sub>2</sub> subst<sub>in</sub> `)`  
 
+Every substitution from the output stream (concatenated with the input) makes either of the
+two disjuncts true. 
+
 ### Conjuction as a Stream Map-Zipper
 
 To _map-zip_ a stream builder _F_ with a stream _s_ := _m_<sub>1</sub>, _m_<sub>2</sub>,
@@ -280,11 +283,13 @@ _F_ &<sub>mzip</sub> 1,2,3
 = 1,2,1,3,1,2,1,3, ...
 
 A conjunction F<sub>1</sub> `&` F<sub>2</sub>  provides the input substitution to
-F<sub>1</sub> first, and then map-zip the output of F<sub>1</sub> with F<sub>2</sub>:
+F<sub>1</sub> first, and then map-zips the output of F<sub>1</sub> with F<sub>2</sub>:
 
 `(` _F_<sub>1</sub> `&` _F_<sub>2</sub> `)` subst<sub>in</sub> = 
  _F_<sub>2</sub>  &<sub>mzip</sub> `(` _F_<sub>1</sub> subst<sub>in</sub> `)`  
 
+Every substitution from the output stream (concatenated with the input) makes both of the
+two conjuncts true. 
 
 ### A Recursively Defined  Relation Builds a Lazy Stream 
 
