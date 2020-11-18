@@ -257,14 +257,16 @@ _m_<sub>3</sub>, ... (denoted _F_ &<sub>mz</sub> _s_ ), is to apply _F_ individu
 each member _m_<sub>k</sub> of the stream, resulting in streams _s_<sub>k</sub>, and
 then zip all _s_<sub>k</sub> together.
 
-**Example.** Let _F_ be a stream builder that works like this:
-```
-1 -> F -> 1,1,1,...
-2 -> F -> 2,2,2,...
-3 -> F -> 3,3,3,...
-```
-Then  _F_ &<sub>mz</sub> 1,2,3 = 1,1,1,... |<sub>zip</sub> (2,2,2,... |<sub>zip</sub> 3,3,3,...)
-= 1,1,1,... |<sub>zip</sub> 2,3,2,3,... = 1,2,1,3,1,2,1,3, ...
+**Example.** Let _F_ be a stream builder that works like this: _F(n) = n,n,n,..._
+Then  _F_ &<sub>mz</sub> 1,2,3
+
+= F(1) |<sub>zip</sub> (F(2) |<sub>zip</sub> F(3))
+
+=1,1,1,... |<sub>zip</sub> (2,2,2,... |<sub>zip</sub> 3,3,3,...)
+
+= 1,1,1,... |<sub>zip</sub> 2,3,2,3,...
+
+= 1,2,1,3,1,2,1,3, ...
 
 ### A Recursively Defined  Relation Builds a Lazy Stream 
 
