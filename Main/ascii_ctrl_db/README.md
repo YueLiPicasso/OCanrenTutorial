@@ -209,7 +209,7 @@ results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 ### Formulae as Stream Builders
 
 
-Whatever the construction of a formula, it is always a
+Whatever the syntactic construction of a formula, it is always a
 stream builder as far as the operational semantics is concerned.
 A formula takes a substitution _subst<sub>in</sub>_ as input and returns a stream of
 substitutions as output:
