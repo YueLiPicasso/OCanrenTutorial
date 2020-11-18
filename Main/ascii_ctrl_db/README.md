@@ -210,33 +210,28 @@ results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
 
 Whatever the construction of a formula, it is always a
-stream builder as far as the operational semantics is concerned: it takes a
-substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions as output.
+stream builder as far as the operational semantics is concerned.
+A formula takes a substitution _subst<sub>in</sub>_ as input and returns a stream of
+substitutions as output:
+
+subst<sub>in</sub> ---> Formula--->  subst<sub>out</sub>, subst<sub>out</sub>, subst<sub>out</sub>, ...
+
 For each substitution _subst<sub>out</sub>_ in the returned stream,
 applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the formula
- true in the sense of the declarational semantics.
+ true in the sense of the declarational semantics. 
 
 **Example.** Given as input the empty  substitution `[]`:
-- The relation `x == Cons(1,Nil)` returns the stream that consists of
+- The formula `x == Cons(1,Nil)` returns the stream that consists of
   the substitution `[(x, Cons(1,Nil))]`.
-- The relation `x == Cons(1,Nil) & y == Cons(2,x)` returns the stream
+- The formula `x == Cons(1,Nil) & y == Cons(2,x)` returns the stream
   that consists of the substitution `[(x, Cons(1,Nil));(y, Cons(2,x))]`.
-- The relation `is_nat x`  returns the stream
+- The formula `is_nat x`  returns the stream
   that consists of the substitutions `[(x, O)]`, `[(x, S(y1));(y1, O)]`,
   `[(x, S(y1));(y1, S(y2));(y2, O)]`, ...
-- The relation `1 == 1` returns the stream whose only member is `[]`.
-- The relation `1 == 2` returns the empty stream: there is no way to make the
-  relation hold.
+- The formula `1 == 1` returns the stream whose only member is `[]`.
+- The formula `1 == 2` returns the empty stream: there is no way to make the
+  formula true.
 
-In summary,  we take a functional view of a relation: _not_ as a function from the
-set of arguments to the set of booleans, but as a function
-from the set of substitutions to the set of streams of substitutions. Formally, not
-
-
-
- but
- 
-subst<sub>in</sub> ---> _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ --->  subst<sub>out</sub>, subst<sub>out</sub>, subst<sub>out</sub>, ...
 
 ### Disjunction as a Stream Zipper
 
