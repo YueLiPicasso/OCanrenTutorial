@@ -261,6 +261,9 @@ _F_ &<sub>mz</sub> _m_<sub>1</sub>, _m_<sub>2</sub>, _m_<sub>3</sub>, ...
 
 = _F_  _m_<sub>1</sub> |<sub>zip</sub> ( _F_ _m_<sub>2</sub> |<sub>zip</sub> ( _F_ _m_<sub>3</sub> |<sub>zip</sub> (...)))
 
+= _s_<sub>1</sub> |<sub>zip</sub> (_s_<sub>2</sub> |<sub>zip</sub> (_s_<sub>3</sub> |<sub>zip</sub> (...)))
+
+
 **Example.** Let _F_ be a stream builder that works like this: _F n = n,n,n,..._
 Then:
 
