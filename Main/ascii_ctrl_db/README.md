@@ -124,7 +124,7 @@ fparams = param, {' ', param};
 values  = value, {' ', value};
 ```
 The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`. A formula always has type `goal` (this type constructor
+`&` binds tighter than `|`. A formula always has the type `goal` (this type constructor
 is provided by the module Core). The braces `{}` could be used
  for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
 
