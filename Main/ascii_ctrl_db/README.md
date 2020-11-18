@@ -129,9 +129,9 @@ is provided by the module Core). The braces `{}` could be used
 
 
 The solution is a restriction of the syntax so that there are only  and we only work with formulae that are built by these two predicate symbols, the logic connectives
-and (non-predicate) constants and variables. The two predicate
-symbols `==` and `=/=` are interpreted as "syntactic equality" and
-"syntactic disequality" resp. and all other symbols adopt the Herbrand interpretation: they just denote themselves.
+and (non-predicate) constants and variables. 
+
+
 Note that such formulae might be infinte (yes, an infinitely long formula like `F1 & F2 | F3 & F4 | ...`), and
 for a finite representation of which we may need recursively defined names for them, for example:
  `is_nat x := x == O | fresh y in x == S y & is_nat y`, which expands into the infinite formula:
