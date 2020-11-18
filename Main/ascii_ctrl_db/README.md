@@ -206,16 +206,15 @@ until none is applicable.
 results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
 
-
-
 ### Formulae as Stream Builders
 
 
-Whatever the construction of a relation, it is always a
+Whatever the construction of a formula, it is always a
 stream builder as far as the operational semantics is concerned: it takes a
 substitution _subst<sub>in</sub>_ as input and returns a stream of substitutions as output.
 For each substitution _subst<sub>out</sub>_ in the returned stream,
-applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the relation hold (in the sense of the declarational semantics).
+applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the formula
+ true in the sense of the declarational semantics.
 
 **Example.** Given as input the empty  substitution `[]`:
 - The relation `x == Cons(1,Nil)` returns the stream that consists of
