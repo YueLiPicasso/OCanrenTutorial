@@ -23,7 +23,7 @@ The structure of the program is as follows:
 1. The data base as a relation `ascii_ctrl`
 1. Some queries on the data base
 
-## The Relation and Queries
+## Reading the Program
 
 Read the definition of `ascii_ctrl` as:
 > _c_, _n_ and _s_ form the relation _ascii_ctrl_ iff  _c_ is NUL and _n_ is 0 and _s_ is the
