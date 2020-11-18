@@ -279,7 +279,7 @@ _F_ &<sub>mzip</sub> 1,2,3
 
 = 1,2,1,3,1,2,1,3, ...
 
-A conjunction F<sub>1</sub> `&` F<sub>2</sub> receives a substitution and provide it to
+A conjunction F<sub>1</sub> `&` F<sub>2</sub>  provides the input substitution to
 F<sub>1</sub> first, and then map-zip the output of F<sub>1</sub> with F<sub>2</sub>:
 
 `(` _F_<sub>1</sub> `&` _F_<sub>2</sub> `)` subst<sub>in</sub> = 
