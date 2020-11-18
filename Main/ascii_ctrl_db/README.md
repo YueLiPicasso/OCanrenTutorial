@@ -94,7 +94,7 @@ number of free logic variabes.  Formulae can be abbreviated by (possibly recuris
   | fresh y1 in
     x == S y1 & { y1 == O
                 | fresh y2 in
-		  y1 == S y2 & { y2 == O
+                  y1 == S y2 & { y2 == O
 			       | fresh y3 in
 			         y2 == S y3 & { ... }}}
   ```
