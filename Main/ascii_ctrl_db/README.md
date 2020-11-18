@@ -128,7 +128,7 @@ The scope of `fresh...in` extends as far as possible.
 is provided by the module Core). The braces `{}` could be used
  for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
 
-### A note the the concept of a _goal_
+## A Note on the Concept of a _Goal_
 
 In logic programming, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
 inherited by the modern successor of logic programming, which is called _relational
