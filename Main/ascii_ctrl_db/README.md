@@ -81,8 +81,7 @@ using conjunction (`&`), disjunction (`|`) and existential quantification (`fres
 Atomic formulae are built from predicate  symbols followed by their arguments.
 There are only two predicate symbols `==` and `=/=`.  A formula 
 is allowed to be infinitely long but it shall always contain a finite
-number of free logic variabes.  Formulae can be abbreviated by
-(possibly recurisive) definitions.
+number of free logic variabes.  Formulae can be abbreviated by (possibly recurisive) definitions.
 
 **Example.**  Atomic, compound, named and infinite formulae:
 - `x == y` and  `1 =/= 2` are two atomic formulae.
