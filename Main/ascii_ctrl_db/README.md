@@ -257,7 +257,9 @@ _m_<sub>3</sub>, ... (denoted _F_ &<sub>mz</sub> _s_ ), is to apply _F_ individu
 each member _m_<sub>k</sub> of the stream, resulting in streams _s_<sub>k</sub>, and
 then zip all _s_<sub>k</sub> together.
 
-_F_ &<sub>mz</sub> _m_<sub>1</sub>, _m_<sub>2</sub>, _m_<sub>3</sub>, ...
+_F_ &<sub>mz</sub> _s_
+
+= _F_ &<sub>mz</sub> _m_<sub>1</sub>, _m_<sub>2</sub>, _m_<sub>3</sub>, ...
 
 = _F_  _m_<sub>1</sub> |<sub>zip</sub> ( _F_ _m_<sub>2</sub> |<sub>zip</sub> ( _F_ _m_<sub>3</sub> |<sub>zip</sub> (...)))
 
