@@ -240,15 +240,15 @@ To _zip_ two streams means to merge them by interleaving their members.
 and _s_<sub>2</sub> the stream of all negative intergers. The result of
 zipping _s_<sub>1</sub> with _s_<sub>2</sub>,  denoted _s_<sub>1</sub> |<sub>zip</sub> _s_<sub>2</sub> , is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`. 
 
-The disjunction _R_<sub>1</sub> `|` _R_<sub>2</sub> of two relations
-_R_<sub>1</sub>, _R_<sub>2</sub> is itself a relation on the top level, so it is
+The disjunction _F_<sub>1</sub> `|` _F_<sub>2</sub> of two relations
+_F_<sub>1</sub>, _F_<sub>2</sub> is itself a relation on the top level, so it is
  a stream builder, taking a substitution as input and returns a stream of
  substitutions. It builds the output stream by zipping the two streams built
- separately by _R_<sub>1</sub> and _R_<sub>2</sub>, both of which share the
+ separately by _F_<sub>1</sub> and _F_<sub>2</sub>, both of which share the
  same input as their immediate top level relation. In more formal terms:
 
-`(` _R_<sub>1</sub> `|` _R_<sub>2</sub> `)` subst<sub>in</sub> = 
-`(` _R_<sub>1</sub> subst<sub>in</sub> `)` |<sub>zip</sub> `(` _R_<sub>2</sub> subst<sub>in</sub> `)`  
+`(` _F_<sub>1</sub> `|` _F_<sub>2</sub> `)` subst<sub>in</sub> = 
+`(` _F_<sub>1</sub> subst<sub>in</sub> `)` |<sub>zip</sub> `(` _F_<sub>2</sub> subst<sub>in</sub> `)`  
 
 ### Conjuction as a Stream Map-Zipper
 
