@@ -69,41 +69,68 @@ We could see that the relational program specifies a relation, and it has
  of the programming language that did this automatically. We explain the syntax and
  semantics next.
 
-## A Note on the Term "Relation"
+## Syntax of a Formula
 
-In the language of set theory, a relation is essentially a function from the
-set of arguments to the set of booleans. For logicians, a relation symbol is
-known as a predicate symbol, and by supplying a relation symbol with (all of)
-its arguments we get an atomic formula. Furthermore, atomic formulae are used
-to build (compound) formulae with logic connectives. When it comes to logic programming
-, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
-inherited by the modern successor of logic programming, which is called _relational
-programming_. However, the semantics of a _goal_ nevertheless changes: it is no longer
-something that we want to refute, but something for which we want to find variable
-substitutions so that it is true. In other words:
-- Logic programming is proof by contradiction: we want to find variable substitutions
- so that a formula _F_ is true, but what we do is to find substitutions so that the
- negation of F is false.
-- Relational programming is proof by straightforward construction without the
-  logical detour of "negation of negation".
+The notion of a formula in OCanren is different from that in logic
+ programming, i.e., the Horn clause subset of first-order predicate logic.
+ Instead it belongs to the system
+ [μMALL](https://doi.org/10.1007/978-3-540-75560-9_9).
 
-As a consequence, the way we think about a relation changes as well. In logic
- programing and set theory when we think about a relation, we are actually thinking about
- a function _R_ that can be applied to its arguments and return either true or false, like this:
+A formula is either atomic, or is compound and built from atomic formulae
+using conjunction (`&`), disjunction (`|`) and existential quantification (`fresh`).
+Atomic formulae are built from predicate  symbols followed by their arguments.
+There are only two predicate symbols `==` and `=/=`.  A formula 
+is allowed to be infinitely long but it shall always contain a finite
+number of free logic variabes.  Formulae can be abbreviated by
+(possibly recurisive) definitions.
 
-_R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
+**Example.**  Atomic, compound, named and infinite formulae:
+- `x == y` and  `1 =/= 2` are two atomic formulae.
+- By the definition `foo x y :=  x == 1 & y =/= 2 `,  we can use `foo x y` to
+  abbreviate the compound  formula ` x == 1 & y =/= 2`.
+- By the recursive definition `is_nat x := x == O | fresh y in x == S y & is_nat y`
+  we can use `is_nat x` to abbreviate the infinitely long formula:
+  ```
+    x == O
+  | fresh y1 in x == S y1 & { y1 == O
+                            | fresh y2 in y1 == S y2 & { y2 == O
+			                               | fresh y3 in y2 == S y3 & { ... }}}
+  ```
 
-But in relational programming, when we think about a relation _R_, the most important thing
-is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is a function.
-In other words, we regard what is known by logicians as a formula, as a function.  View this way,
-a formula F is a also a function F, whose input is an initial variable substitution and whose output is
-the set of all possible variable substitutions where each member when combined with the initial substitution
-makes F true. In this sense, a formula with free variables defines a relation on these same variabes.
+We now give the concrete syntax of a formula in OCanren. 
 
-Now the reader might say:  we cannot talk about the truth of a formula without mentioning interpretations
-of the symbols in the formula. The solution is a restriction of the syntax so that there are only two predicate
-symbols `==` and `=/=`, and we only work with formulae that are built by these two predicate symbols, the logic connectives
-and (non-predicate) constants and variables. These two predicate symbols are interpreted as "syntactic equality" and
+```ebnf
+formula  = atomic formula
+         | compound formula
+	 | named formula
+	 | '{', formula, '}' ;
+
+atomic formula = value, '==', value | value, '=/=', value;
+
+compound formula = formula, '&', formula
+                  | formula, '|', formula
+		  | 'fresh', lparams, 'in',  formula;
+
+named formula = formula name, ' ', values; 
+
+formula name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
+
+let-binding =  formula name, [':', typexpr, '->', 'goal' ], '=',
+               'fun', fparams, '->', 'ocanren','{', formula, '}' ;
+
+lparams = param, {',', param};
+fparams = param, {' ', param};
+values = value, {' ', value};
+```
+The scope of `fresh...in` extends as far as possible.
+`&` binds tighter than `|`. A formula always has type `goal` (this type constructor
+is provided by the module Core). The braces `{}` could be used
+ for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
+
+
+The solution is a restriction of the syntax so that there are only  and we only work with formulae that are built by these two predicate symbols, the logic connectives
+and (non-predicate) constants and variables. The two predicate
+symbols `==` and `=/=` are interpreted as "syntactic equality" and
 "syntactic disequality" resp. and all other symbols adopt the Herbrand interpretation: they just denote themselves.
 Note that such formulae might be infinte (yes, an infinitely long formula like `F1 & F2 | F3 & F4 | ...`), and
 for a finite representation of which we may need recursively defined names for them, for example:
@@ -114,54 +141,6 @@ for a finite representation of which we may need recursively defined names for t
                           | fresh y2 in y1 == S y2 & { y2 == O
 			                             | fresh y3 in y2 == S y3 & { ... }}}
 ```
-
-For the above account, a formula with free variables defines a relation on these same variabes.
-This is the reason that we call such a formula, with the restricted syntax and the interpretation so required,
-a _relation_ and regard our new notion of a relation as a function that manipulates
-substitutions. A generalization would include formulae without free variables: for example:
-the formula `1 == 1 & 2 == 2` defines a relation that is true for any argument.  
-
-## Syntax of a Relation
-
-A relation is either atomic, or is compound and built from atomic relations using conjunction, disjunction, existential quantification and
-possibly  recursion.
-
-**Example.**  Atomic, compound and recursive relations:
-- `x == y` and  `1 =/= 2` are two atomic relations.
-- `let foo x y = ocanren { x == 1 & y =/= 2 }` gives the compound
-   relation ` x == 1 & y =/= 2` the name `foo`.
-- `let rec is_nat x = ocanren { x == O | fresh y in x == S y & is_nat y }`
-   recursively defines a  relation named `is_nat` which
-   concerns the property of being a natural number.
-
-We loosely formalize the syntax of a relation as follows:
-```ebnf
-relation = atomic relation
-         | compound relation
-	 | named relation
-	 | '{', relation, '}' ;
-
-atomic relation = value, '==', value | value, '=/=', value;
-
-compound relation = relation, '&', relation
-                  | relation, '|', relation
-		  | 'fresh', lparams, 'in',  relation;
-
-named relation = relation name, ' ', values; 
-
-relation name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
-
-let-binding =  relation name, [':', typexpr, '->', 'goal' ], '=',
-               'fun', fparams, '->', 'ocanren','{', relation, '}' ;
-
-lparams = param, {',', param};
-fparams = param, {' ', param};
-values = value, {' ', value};
-```
-The scope of `fresh...in` extends as far as possible.
-`&` binds tighter than `|`. A relation always has type `goal` (this type constructor
-is provided by the module Core). The braces `{}` could be used
- for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
 
 
 ## The Semantics of the Language
@@ -383,3 +362,42 @@ The above code excerpt is also from what is displayed on the terminal after
 compiling the source with the "dump source" option `-dsource`.
 
 
+## A Note on the Term "Relation"
+
+In the language of set theory, a relation is essentially a function from the
+set of arguments to the set of booleans. For logicians, a relation symbol is
+known as a predicate symbol, and by supplying a relation symbol with (all of)
+its arguments we get an atomic formula. Furthermore, atomic formulae are used
+to build (compound) formulae with logic connectives. When it comes to logic programming
+, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
+inherited by the modern successor of logic programming, which is called _relational
+programming_. However, the semantics of a _goal_ nevertheless changes: it is no longer
+something that we want to refute, but something for which we want to find variable
+substitutions so that it is true. In other words:
+- Logic programming is proof by contradiction: we want to find variable substitutions
+ so that a formula _F_ is true, but what we do is to find substitutions so that the
+ negation of F is false.
+- Relational programming is proof by straightforward construction without the
+  logical detour of "negation of negation".
+
+As a consequence, the way we think about a relation changes as well. In logic
+ programing and set theory when we think about a relation, we are actually thinking about
+ a function _R_ that can be applied to its arguments and return either true or false, like this:
+
+_R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
+
+But in relational programming, when we think about a relation _R_, the most important thing
+is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is a function.
+In other words, we regard what is known by logicians as a formula, as a function.  View this way,
+a formula F is a also a function F, whose input is an initial variable substitution and whose output is
+the set of all possible variable substitutions where each member when combined with the initial substitution
+makes F true. In this sense, a formula with free variables defines a relation on these same variabes.
+
+Now the reader might say:  we cannot talk about the truth of a formula without mentioning interpretations
+of the symbols in the formula. 
+
+For the above account, a formula with free variables defines a relation on these same variabes.
+This is the reason that we call such a formula, with the restricted syntax and the interpretation so required,
+a _relation_ and regard our new notion of a relation as a function that manipulates
+substitutions. A generalization would include formulae without free variables: for example:
+the formula `1 == 1 & 2 == 2` defines a relation that is true for any argument.  
