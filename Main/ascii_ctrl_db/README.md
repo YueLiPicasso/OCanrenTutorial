@@ -252,6 +252,20 @@ _F_<sub>1</sub>, _F_<sub>2</sub> is itself a formula on the top level, so it is
 
 ### Conjuction as a Stream Map-Zipper
 
+To _map-zip_ a stream builder _F_ with a stream _s_ := _m_<sub>1</sub>, _m_<sub>2</sub>,
+_m_<sub>3</sub>, ... (denoted _F_ &<sub>mz</sub> _s_ ), is to apply _F_ individually to
+each member _m_<sub>k</sub> of the stream, resulting in streams _s_<sub>k</sub>, and
+then zip all _s_<sub>k</sub> together.
+
+**Example.** Let _F_ be a stream builder that works like this:
+```
+1 -> F -> 1,1,1,...
+2 -> F -> 2,2,2,...
+3 -> F -> 3,3,3,...
+```
+Then  _F_ &<sub>mz</sub> 1,2,3 = 1,1,1,... |<sub>zip</sub> (2,2,2,... |<sub>zip</sub> 3,3,3,...)
+= 1,1,1,... |<sub>zip</sub> 2,3,2,3,... = 1,2,1,3,1,2,1,3, ...
+
 ### A Recursively Defined  Relation Builds a Lazy Stream 
 
 ## The @type Syntax
