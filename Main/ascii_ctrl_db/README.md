@@ -393,7 +393,7 @@ value constructors. We then define formulae in OCanren formula syntax, which are
 we are actually thinking about  a function _R_ that can be applied to its arguments and
 return either true or false, like this:
 
-_arg<sub>1</sub>, ..., arg<sub>n</sub>_  ---> _R_ ->  true | false
+_arg<sub>1</sub>, ..., arg<sub>n</sub>_  ---> _R_ --->  true | false
 
 But in relational programming, when we think about a relation _R_, the most important thing
 is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is
