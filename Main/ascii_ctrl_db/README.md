@@ -386,16 +386,18 @@ compiling the source with the "dump source" option `-dsource`.
 
 ## Conclusion
 
-
-
-In  set theory when we think about a relation, we are actually thinking about
- a function _R_ that can be applied to its arguments and return either true or false, like this:
+A program in OCanren is understood with respect to its syntax and semantics. We define types
+in four levels, using the `@type` syntax of GT. We define injection functions for
+value constructors. We then define formulae in OCanren formula syntax, which are put in the
+`ocanren{}` quotation powered by Camlp5.  In  set theory when we think about a relation,
+we are actually thinking about  a function _R_ that can be applied to its arguments and
+return either true or false, like this:
 
 _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
 
 But in relational programming, when we think about a relation _R_, the most important thing
-is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is a function.
-In other words, we regard what is known by logicians as a formula, as a function.  View this way,
-a formula F is a also a function F, whose input is an initial variable substitution and whose output is
-the set of all possible variable substitutions where each member when combined with the initial substitution
-makes F true. 
+is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is
+a function, i.e., we regard what is known by logicians as a formula, as a function whose
+input is an initial variable substitution and whose output is the set of all possible
+variable substitutions where each member when combined with the initial substitution
+makes the formula true. 
