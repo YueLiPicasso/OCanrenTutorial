@@ -90,7 +90,7 @@ number of free logic variabes.  Formulae can be abbreviated by (possibly recuris
 - By the recursive definition `is_nat x := x == O | fresh y in x == S y & is_nat y`
   we can use `is_nat x` to abbreviate the infinitely long formula:
   ```
-    x == O
+  x == O
   | fresh y1 in
     x == S y1 & { y1 == O
                 | fresh y2 in
