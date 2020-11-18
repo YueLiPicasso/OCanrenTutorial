@@ -261,7 +261,7 @@ _F_ &<sub>mzip</sub> _s_
 
 = _F_ &<sub>mzip</sub> _m_<sub>1</sub>, _m_<sub>2</sub>, _m_<sub>3</sub>, ...
 
-= _F_  _m_<sub>1</sub> |<sub>zip</sub> ( _F_ _m_<sub>2</sub> |<sub>zip</sub> ( _F_ _m_<sub>3</sub> |<sub>zip</sub> (...)))
+= _F_  _m_<sub>1</sub> |<sub>zip</sub> (_F_ _m_<sub>2</sub> |<sub>zip</sub> (_F_ _m_<sub>3</sub> |<sub>zip</sub> (...)))
 
 = _s_<sub>1</sub> |<sub>zip</sub> (_s_<sub>2</sub> |<sub>zip</sub> (_s_<sub>3</sub> |<sub>zip</sub> (...)))
 
@@ -271,7 +271,7 @@ Then:
 
 _F_ &<sub>mzip</sub> 1,2,3
 
-= F(1) |<sub>zip</sub> (F(2) |<sub>zip</sub> F(3))
+= F 1 |<sub>zip</sub> (F 2 |<sub>zip</sub> F 3)
 
 =1,1,1,... |<sub>zip</sub> (2,2,2,... |<sub>zip</sub> 3,3,3,...)
 
