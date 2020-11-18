@@ -128,22 +128,7 @@ The scope of `fresh...in` extends as far as possible.
 is provided by the module Core). The braces `{}` could be used
  for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
 
-
-
-## The Semantics of the Language
-
-Relational programming languages have two semantics: the _declarational semantics_ and the
-_operational semantics_. [The way](#the-relation-and-queries) in which the reader is advised to read the relation
-definition and the query is actually part of the declarational semantics.
-The operational semantics concerns how the answers shall be searched for (mechanically), which
-is part of the implementation of the language. For example, the operational
-semantics of the relational language [Prolog](https://www.swi-prolog.org/) is called
-_SLD-resolution_, or in the long form "*L*inear *resolution* for *D*efinite clauses with a 
-*S*election function". The operational semantics of OCanren is a set of stream manipulation
-rules attached to the logic connectives (`&` for "and", `|` for "or", `fresh` for "exist")
-and basic relations (`==` for "unify", `=/=` for "not unify"). Both operational semantics
-mentioned exhibit the behaviour called "backtracking" that allows exploration of alternative
-paths during the search for answers.
+### A note the the concept of a _goal_
 
 In logic programming, we call the formula which we want to refute a _goal_. This term (i.e., goal) is
 inherited by the modern successor of logic programming, which is called _relational
@@ -158,8 +143,20 @@ substitutions so that it is true. In other words:
 
 
 
-We explain the operational semantics of OCanren in more
-detail below. Firstly the concept of a _stream_.
+## The Semantics of a Formula
+
+A formula has two semantics: the _declarational semantics_ and the
+_operational semantics_. [The way](#the-relation-and-queries) in which the reader is advised to read the relation
+definition and the query is actually part of the declarational semantics.
+The operational semantics concerns how the answers shall be searched for (mechanically), which
+is part of the implementation of the language.
+
+Declaratively, the two predicate symbols `==` and `=/=` means respectively "syntactic equality"
+ and "syntactic disequality". The logic connectives mean as usual, and a value just denote
+ itself as a syntactic object. The operational semantics of OCanren is a set of stream
+ manipulation rules attached to the logic connectives and the predicate symbols, and formulae are
+ viewed as functions taking a stream member as input and returning a stream. We explain
+ the operational semantics of OCanren in more detail below. Firstly the concept of a _stream_.
 
 ###  Streams
 
@@ -211,7 +208,7 @@ results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
 
 
 
-### Relation as a Stream Builder
+### Formulae as Stream Builders
 
 
 Whatever the construction of a relation, it is always a
