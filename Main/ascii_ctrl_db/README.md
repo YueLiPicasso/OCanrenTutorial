@@ -393,11 +393,13 @@ value constructors. We then define formulae in OCanren formula syntax, which are
 we are actually thinking about  a function _R_ that can be applied to its arguments and
 return either true or false, like this:
 
-_R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ = true | false
+_arg<sub>1</sub>, ..., arg<sub>n</sub>_  ---> _R_ ->  true | false
 
 But in relational programming, when we think about a relation _R_, the most important thing
 is not that _R_ is a function, but _R(arg<sub>1</sub>, ..., arg<sub>n</sub>)_ _in whole_ is
 a function, i.e., we regard what is known by logicians as a formula, as a function whose
 input is an initial variable substitution and whose output is the set of all possible
 variable substitutions where each member when combined with the initial substitution
-makes the formula true. 
+makes the formula true, like this:
+
+subst<sub>in</sub> ---> Formula--->  subst<sub>out</sub>, subst<sub>out</sub>, subst<sub>out</sub>, ...
