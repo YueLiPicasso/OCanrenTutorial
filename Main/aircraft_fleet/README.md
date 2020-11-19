@@ -144,7 +144,7 @@ but its ok, we get the range of the two-aircraft fleet which is 7 units of dista
 
 ### Fleet state transition rules
 
-A state transition rule relates an pre-state, a single action and the post-state. We also chain
+A state transition rule relates a pre-state, a single action and the post-state. We also chain
 the state transition rules to obtain a multi-step state transition rule which relates a pre-state,
 a list of actions and the post-state. To avoid unnecessarily verbose travel plan, we require
 that a forward action must not be followed immediately by another forward action: if so, why not
