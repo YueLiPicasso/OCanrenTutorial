@@ -36,14 +36,21 @@ Action 2 : Abandoning one aircraft, whose fuel is shared by the rest of the flee
 Action 1 : Flying forward.
 Symbol X : An aircraft
 ```
-There are two problems of interest:
-1. Given a target distance, how could a fleet reach it if possible?
-1. Given a fleet travel plan, how far can the fleet go ?
 
-The second problem is relatively easy. For instance, if we know that the plan is to let the fleet
-fly forward until they all run out of fuel, then they can fly as far as a single aircraft can fly.
-However, the first problem is less straightforward, and it requires some trial-and-error and creativity
-to solve. We would do something like:  
+There are two problems of interest:
+1. Given a fleet travel plan (which specifies how far the fleet shall fly together after taking off or
+after some aircraft is abondoned, and how to distribute the fuel of the abandoned aircraft among the
+rest of the fleet), how far can the fleet fly ?
+1. Given a target distance, what shall the travel plan be for the fleet to reach the target, if possible?
+
+The first problem is relatively easy. For instance, if we know that the plan is to let the fleet
+fly forward until they all run out of fuel, then they can fly as far as a single aircraft.
+We can even write a computer program to do the calculation for us, given the size of the fleet, the
+fuel capacity and efficiency of the aircraft model, and the travel plan.
+
+
+However, the second problem is less straightforward, and it may require some trial-and-error and creativity
+to solve. We might do something like:  
 
 "Oh, I got a plan, let's try it !"
 
