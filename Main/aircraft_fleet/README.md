@@ -156,7 +156,7 @@ one aircraft, the fleet shall move forward before abandoning another.
 
 So far we have discussed about the design of an algorithm to compute the post-state from a
 pre-state and a list of actions. We indicated that this algorithm, written in OCanren, can be
-run "backward": given a pre-state and a post-state, find the list of actions that bridge them.
+run "backward": given a pre-state and a post-state, find the list of actions that bridges them.
 Below are some such results. 
 
 
