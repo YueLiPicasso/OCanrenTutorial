@@ -71,13 +71,13 @@ The gift of OCanren is that we can use it to write a program to solve the first 
  _steps(initial_state, travel_plan, where?)_ and to solve to the second problem we pose the query:
  _steps(initial_state, what_plan?, desired_state)_.
 
-## Abstraction
-
-We adopt the following abstractions in order to compute the sequence of actions needed by
-the fleet to accomplish its mission. 
 
 
-### Discrete Motion
+## The Design of the Program
+
+We adopt the following mathematical abstractions. 
+
+### Discrete motion
 
 For some arbitrary positive interger B, we take C/B liters as one unit of fuel
 and take (RC)/B miles as one unit of distance, and say that an aircraft has a
@@ -88,14 +88,14 @@ Moreover, we assume that an aircraft consumes fuel and covers distance in a disc
 (or unit-by-unit) and propotional manner, where one unit of fuel is consumed at
 a time,  resulting in one unit of distance flied.
 
-### Discrete Fuel Trasnfer 
+### Discrete fuel trasnfer 
 
 Transfer of fuel within the fleet is also discrete:  only whole units
 are allowed. For example, if an aircraft has 3 units of fuel left in the tank
 that has a capacity of 5 units, then it can only refuel for 1 unit or 2 units.
 
 
-### Remarks
+### Picking an abstract capacity
 
 Although the value of the abstract capacity B is arbitrarily picked, we must set it
 to at least 2. If we set B = 1 then it would be impossible for the fleet to reach
@@ -110,7 +110,17 @@ then there are  two possibilities:
 1. The fleet flies for 1 unit, then one aircraft is abandoned, transferring the fuel (1 unit) to the other, who
 then continues to fly for 2 units. Thus the fleet achieves the range of 3 units.
 
+### Defining the state of the fleet
 
+The state of the fleet consists of the position of the fleet and a list of the amount of fuel
+available for each aircraft in the fleet, called the _fuel profile_. Implicitly the fuel profile
+shows how many aircraft are currently in the fleet: this is the length of the list.
+
+**Example.** From the fuel profile `[5;5;5]` we can read that there are three aircraft
+in the fleet and each has five units of fuel. If this fleet fly together for 3 units
+of distance, the fuel profile would become `[2;2;2]`. Now if we abondon one aircraft (any one
+is ok, for the result is the same), and give its fuel to the rest of the fleet, the possible
+fuel profiles after the abandoning would be: `[2;4]`, `[3;3]` or `[4;2]`.  
 
 ## OCanren's Solution
 
