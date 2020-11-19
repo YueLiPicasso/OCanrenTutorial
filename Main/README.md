@@ -1,6 +1,6 @@
 ## Tutorial Outline
 
-We first take an _appertizer_ of OCanren, using it to solve a cool puzzle:
+We first take an _appetizer_ of OCanren, using it to solve a cool puzzle:
  managing a fleet of aircraft. Then we study a "hello world" program in OCanren,
  exposing various aspects of the technicalities of the language. In the third lesson, 
  we go deep down into the most important part of OCanren: understanding and defining 
