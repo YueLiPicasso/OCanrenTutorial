@@ -13,5 +13,5 @@ defined.
 
 [How to Install](Installation)
 
-[Table of Content](Main)
+[Table of Contents](Main)
 
