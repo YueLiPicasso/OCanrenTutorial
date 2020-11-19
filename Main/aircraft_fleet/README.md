@@ -148,19 +148,20 @@ A state transition rule relates a pre-state, a single action and the post-state.
 the state transition rules to obtain a multi-step state transition rule which relates a pre-state,
 a list of actions and the post-state. To avoid unnecessarily verbose travel plan, we require
 that a forward action must not be followed immediately by another forward action: if so, why not
-combine them into one? 
+combine them into one? Subject to reasonable alternatives, we also require that after abandoning
+one aircraft, the fleet shall move forward before abandoning another.
 
-## OCanren's Solution
+
+## OCanren at Work
+
+So far we have discussed about the design of an algorithm to compute the post-state from a
+pre-state and a list of actions. We indicated that this algorithm, written in OCanren, can be
+run "backward": given a pre-state and a post-state, find the list of actions that bridge them.
+Below are some such results. 
+
 
 Let B = 5 and OCanren suggested the following solutions
-for fleets of various sizes to achieve certain ranges. In the
-table, `Forward (x)` means that (all aircraft in) the fleet fly
-forward for x units of distance; `Abandon([a1,...,an])` means that
- after abondoning one aircraft, the new state of the fleet is
-`[a1,...,an]` where `a1,...,an` are fuel available for each aircraft
-in the fleet and this takes into account of fuel transfer from the
-single abandoned aircraft to the rest of the fleet. Without loss of generality, we always abandon the left
-most aircraft in the list. It took about 10 mins to compute for the
+for fleets of various sizes to achieve certain ranges.It took about 10 mins to compute for the
 6-aircraft fleet.
 
 Fleet Size | Range | Moves
@@ -171,9 +172,10 @@ Fleet Size | Range | Moves
 5          | 11    | [Forward (1); Abandon ([5; 5; 5; 4]); Forward (1); Abandon ([5; 5; 5]); Forward (2); Abandon ([4; 5]); Forward (2); Abandon ([5]); Forward (5)] 
 6          | 12    | [Forward (1); Abandon ([5; 5; 5; 5; 4]); Forward (1); Abandon ([5; 5; 5; 4]); Forward (1); Abandon ([5; 5; 5]); Forward (2); Abandon ([4; 5]); Forward (2); Abandon ([5]); Forward (5)]
 
+
 ## Reference
 
-J. N. Franklin _[The Range of a Fleet of Aircraft](https://doi.org/10.1137/0108039)_
+J. N. Franklin 1960 _[The Range of a Fleet of Aircraft](https://doi.org/10.1137/0108039)_
 Journal of the Society for Industrial and Applied Mathematics, 8(3), 541–548. (8 pages) 
 
 
