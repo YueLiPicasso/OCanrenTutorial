@@ -1,5 +1,13 @@
 # The Range of a Fleet of Aircraft 
 
+List of symbols
+
+- B : abstract capacity
+- C : fuel capacity
+- D : distance between target and airbase
+- N : fleet size
+- R : fuel efficiency
+
 
 ## Background
 
@@ -109,14 +117,6 @@ then there are  two possibilities:
 1. The fleet flies for 2 units of distance, and then run out of fuel before reaching the target;
 1. The fleet flies for 1 unit, then one aircraft is abandoned, transferring the fuel (1 unit) to the other, who
 then continues to fly for 2 units. Thus the fleet achieves the range of 3 units.
-
-### List of symbols
-
-- B : abstract capacity
-- C : fuel capacity
-- D : distance between target and airbase
-- N : fleet size
-- R : fuel efficiency
 
 ### States of the fleet
 
