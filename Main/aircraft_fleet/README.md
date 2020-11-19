@@ -2,11 +2,11 @@
 
 List of symbols
 
-- B : abstract capacity
-- C : fuel capacity
-- D : distance between target and airbase
-- N : fleet size
-- R : fuel efficiency
+- B : [abstract capacity](#discrete-motion)
+- C : [fuel capacity](#background)
+- D : [distance](#background) between target and airbase
+- N : [fleet size](#background)
+- R : [fuel efficiency](#background)
 
 
 ## Background
