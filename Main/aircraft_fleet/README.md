@@ -47,11 +47,11 @@ to solve. We would do something like:
 
 "Oh, I got a plan, let's try it !"
 
-"No it doesn't work."
+"No it won't work."
 
 "Then ... what about this modified plan?"
 
-"Sorry, doesn't work either !"
+"Sorry, this won't work either !"
 
 "Ok, let's see ... this one?"
 
