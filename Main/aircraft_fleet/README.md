@@ -180,6 +180,18 @@ Fleet Size | Range | Moves
 5          | 11    | [Forward (1); Abandon ([5; 5; 5; 4]); Forward (1); Abandon ([5; 5; 5]); Forward (2); Abandon ([4; 5]); Forward (2); Abandon ([5]); Forward (5)] 
 6          | 12    | [Forward (1); Abandon ([5; 5; 5; 5; 4]); Forward (1); Abandon ([5; 5; 5; 4]); Forward (1); Abandon ([5; 5; 5]); Forward (2); Abandon ([4; 5]); Forward (2); Abandon ([5]); Forward (5)]
 
+## Retrospective Comments
+
+This section contains technical information for readers who have finished with
+the whole tutorial and want to look back on this lesson equipped with what he
+just learnt. The [program](aircraft.ml) in this lesson is not trivial, to
+which the first time reader is advised to take a lighthearted approach.
+The following lessons in the tutorial will take the reader step by step from
+the very basics to the more advanced.
+
+> To do: add technical comments
+
+
 
 ## Reference
 
