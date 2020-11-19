@@ -125,7 +125,7 @@ fuel profiles after the abandoning would be: `[2;4]`, `[3;3]` or `[4;2]`.
 ### Fleet actions
 
 There are two possible actions of the fleet: flying forward (together), and abandoning
-(with fuel sharing). A travel plan should be a list of actions as informative as possible,
+(with fuel sharing at the same time). A travel plan should be a list of actions as informative as possible,
 for example, showing how far the fleet flies, and how the fuel is shared. Therefore we define
 two action labels: `Forward(n)` and `Abandon([n1;...;nk])`. A initial state and a list of
 action labels would allow us to compute the state when the actions have been executed.
