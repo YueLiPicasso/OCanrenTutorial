@@ -110,6 +110,14 @@ then there are  two possibilities:
 1. The fleet flies for 1 unit, then one aircraft is abandoned, transferring the fuel (1 unit) to the other, who
 then continues to fly for 2 units. Thus the fleet achieves the range of 3 units.
 
+### List of symbols
+
+- B : abstract capacity
+- C : fuel capacity
+- D : distance between target and airbase
+- N : fleet size
+- R : fuel efficiency
+
 ### States of the fleet
 
 A state of the fleet consists of the position of the fleet and a list of the amount of fuel
