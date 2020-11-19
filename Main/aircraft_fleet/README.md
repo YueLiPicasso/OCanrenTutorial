@@ -43,7 +43,21 @@ There are two problems of interest:
 The second problem is relatively easy. For instance, if we know that the plan is to let the fleet
 fly forward until they all run out of fuel, then they can fly as far as a single aircraft can fly.
 However, the first problem is less straightforward, and it requires some trial-and-error and creativity
-to solve: does this plan work? If not, what about this modified plan? --- We would do something like that.  
+to solve. We would do something like:  
+
+"Oh, I got a plan, let's try it !"
+
+"No it doesn't work."
+
+"Then ... what about this modified plan?"
+
+"Sorry, doesn't work either !"
+
+"Ok, let's see ... this one?"
+
+" ... "
+
+
 
 ## Abstraction
 
