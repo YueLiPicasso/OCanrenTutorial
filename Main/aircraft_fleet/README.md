@@ -69,7 +69,7 @@ The gift of OCanren is that we can use it to write a program to solve the first 
  relation: _steps(pre, acts, post)_ where _pre_ is a state of the fleet, _acts_ is a travel plan, and _post_ is
  the state of the fleet after executing the travel plan. To solve the first problem, we pose the query:
  _steps(initial_state, travel_plan, where?)_ and to solve to the second problem we pose the query:
- _steps(initial_state, what?, desired_state).
+ _steps(initial_state, what_plan?, desired_state)_.
 
 ## Abstraction
 
