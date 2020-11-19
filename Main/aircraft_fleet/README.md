@@ -4,7 +4,7 @@ List of symbols
 
 - B : [abstract capacity](#discrete-motion)
 - C : [fuel capacity](#background)
-- D : [distance](#background) between target and airbase
+- D : [distance](#background) (between target and airbase)
 - N : [fleet size](#background)
 - R : [fuel efficiency](#background)
 
