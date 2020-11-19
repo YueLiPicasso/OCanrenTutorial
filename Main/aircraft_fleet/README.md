@@ -9,7 +9,34 @@ at a distance D from the airbase, where CR < D < NCR. Once taking off, there
 is no more airbase along the way for the fleet to land and refuel. The fleet adopts such a  strategy that
 at any stage, any one aircraft could be abandoned, whose fuel is simultaneously transferred to some fellow
 aircraft. The mission is considered as successful if  at least
-one aircraft  finally reaches the target.
+one aircraft  finally reaches the target. The typical behaviour of the fleet is like (read bottom-up):
+
+```
+            X   : Reaching the target
+            ^
+            |   : Action 1
+          X X   : Action 2
+          ^ ^
+          | |   : Action 1
+        X X X   : Action 2
+        ^ ^ ^
+        | | |   : Action 1
+      X X X X   : Action 2
+      ^ ^ ^ ^
+      | | | |   : Action 1
+    X X X X X   : Action 2   
+    ^ ^ ^ ^ ^
+    | | | | |   : Action 1
+  X X X X X X   : Action 2
+  ^ ^ ^ ^ ^ ^
+  | | | | | |   : Action 1
+  X X X X X X   : Taking off from the airbase (initially six aircraft in the fleet).
+----------------------------------------------------------------------------------------
+Symbol X : An aircraft
+Action 1 : Flying forward.
+Action 2 : Abandoning one aircraft, whose fuel is shared by the rest of the fleet.
+```
+
 
 
 ## Abstraction
@@ -36,7 +63,7 @@ are allowed. For example, if an aircraft has 3 units of fuel left in the tank
 that has a capacity of 5 units, then it can only refuel for 1 unit or 2 units.
 
 
-## Remarks
+### Remarks
 
 Although the value of the abstract capacity B is arbitrarily picked, we must set it
 to at least 2. If we set B = 1 then it would be impossible for the fleet to reach
@@ -50,6 +77,7 @@ then there are  two possibilities:
 1. The fleet flies for 2 units of distance, and then run out of fuel before reaching the target;
 1. The fleet flies for 1 unit, then one aircraft is abandoned, transferring the fuel (1 unit) to the other, who
 then continues to fly for 2 units. Thus the fleet achieves the range of 3 units.
+
 
 
 ## OCanren's Solution
