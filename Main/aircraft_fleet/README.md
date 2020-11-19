@@ -32,9 +32,9 @@ one aircraft  finally reaches the target. The typical behaviour of the fleet is 
   | | | | | |   : Action 1
   X X X X X X   : Taking off from the airbase (initially six aircraft in the fleet).
 ----------------------------------------------------------------------------------------
-Symbol X : An aircraft
-Action 1 : Flying forward.
 Action 2 : Abandoning one aircraft, whose fuel is shared by the rest of the fleet.
+Action 1 : Flying forward.
+Symbol X : An aircraft
 ```
 There are two problems of interest:
 1. Given a target distance, how could a fleet reach it if possible?
