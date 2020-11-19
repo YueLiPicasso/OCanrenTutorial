@@ -136,6 +136,9 @@ and is at position 0. They would fly forward for 2 units of distance, then the s
 (we are calculating by hand now) `[3;3]`. The next action is `Abandon([5])`, which means
 that one aircraft is abandoned, and the new fuel profile of the fleet is `[5]`, which implies
 that 2 units of fuel from the abandoned aircraft has been transferred to the remaining aircraft.
+The final action is `Forward(5)` meaning the singleton fleet would fly forward for 5 units of
+distance. Now there are no more fuel and the last aircraft is dropped, and the range the fleet
+is collected from all `Forward` actions, that is 2 plus 5 equals 7.  
 
 ### Fleet state transition rules
 
