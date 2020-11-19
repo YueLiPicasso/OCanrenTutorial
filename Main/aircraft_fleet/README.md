@@ -110,9 +110,9 @@ then there are  two possibilities:
 1. The fleet flies for 1 unit, then one aircraft is abandoned, transferring the fuel (1 unit) to the other, who
 then continues to fly for 2 units. Thus the fleet achieves the range of 3 units.
 
-### Defining the state of the fleet
+### States of the fleet
 
-The state of the fleet consists of the position of the fleet and a list of the amount of fuel
+A state of the fleet consists of the position of the fleet and a list of the amount of fuel
 available for each aircraft in the fleet, called the _fuel profile_. Implicitly the fuel profile
 shows how many aircraft are currently in the fleet: this is the length of the list.
 
@@ -120,7 +120,24 @@ shows how many aircraft are currently in the fleet: this is the length of the li
 in the fleet and each has five units of fuel. If this fleet fly together for 3 units
 of distance, the fuel profile would become `[2;2;2]`. Now if we abondon one aircraft (any one
 is ok, for the result is the same), and give its fuel to the rest of the fleet, the possible
-fuel profiles after the abandoning would be: `[2;4]`, `[3;3]` or `[4;2]`.  
+fuel profiles after the abandoning would be: `[2;4]`, `[3;3]` or `[4;2]`.
+
+### Fleet actions
+
+There are two possible actions of the fleet: flying forward (together), and abandoning
+(with fuel sharing). A travel plan should be a list of actions as informative as possible,
+for example, showing how far the fleet flies, and how the fuel is shared. Therefore we define
+two action labels: `Forward(n)` and `Abandon([n1;...;nk])`. A initial state and a list of
+action labels would allow us to compute the state when the actions have been executed.
+
+**Example.** Let `(0, [5;5])` be the initial state, and `[Forward (2); Abandon ([5]);
+Forward (5)]` be a list of actions. We could read that initially the fleet has two aircraft
+and is at position 0. They would fly forward for 2 units of distance, then the state would be
+(we are calculating by hand now) `[3;3]`. The next action is `Abandon([5])`, which means
+that one aircraft is abandoned, and the new fuel profile of the fleet is `[5]`, which implies
+that 2 units of fuel from the abandoned aircraft has been transferred to the remaining aircraft.
+
+### Fleet state transition rules
 
 ## OCanren's Solution
 
