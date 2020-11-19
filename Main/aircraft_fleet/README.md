@@ -36,8 +36,14 @@ Symbol X : An aircraft
 Action 1 : Flying forward.
 Action 2 : Abandoning one aircraft, whose fuel is shared by the rest of the fleet.
 ```
+There are two problems of interest:
+1. Given a target distance, how could a fleet reach it if possible?
+1. Given a fleet travel plan, how far can the fleet go ?
 
-
+The second problem is relatively easy. For instance, if we know that the plan is to let the fleet
+fly forward until they all run out of fuel, then they can fly as far as a single aircraft can fly.
+However, the first problem is less straightforward, and it requires some trial-and-error and creativity
+to solve: does this plan work? If not, what about this modified plan? --- We would do something like that.  
 
 ## Abstraction
 
