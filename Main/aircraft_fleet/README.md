@@ -64,7 +64,12 @@ to solve. We might do something like:
 
 " ... "
 
-
+The gift of OCanren is that we can use it to write a program to solve the first problem, but that same piece of
+ program can also solve the second problem for us without any modification. It works likes this: we define a
+ relation: _steps(pre, acts, post)_ where _pre_ is a state of the fleet, _acts_ is a travel plan, and _post_ is
+ the state of the fleet after executing the travel plan. To solve the first problem, we pose the query:
+ _steps(initial_state, travel_plan, where?)_ and to solve to the second problem we pose the query:
+ _steps(initial_state, what?, desired_state).
 
 ## Abstraction
 
