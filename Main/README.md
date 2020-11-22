@@ -13,6 +13,6 @@ We first take an appetizer of OCanren, using it to solve a cool puzzle:
 - Lesson 2: [General Feelings](./helloWorld)
 - Lesson 3: [Types for Relational Programs](./digTypes)
 - Lesson 4: [A Simple Data Base](./ascii_ctrl_db)
-- Lesson 5: Peano Number Arithmetic
+- Lesson 5: [Peano Number Arithmetic](peano)
 
   
