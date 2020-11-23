@@ -1,18 +1,24 @@
 open OCanren;;
 
-@type 'a t = O | S of 'a with show, gmap;;
+(** types *)
 
-@type ground = ground t with show, gmap;;
+@type 'a t = O | S of 'a with show, gmap;;            (** The abstract type *)
 
-@type logic = logic t OCanren.logic with show, gmap;;
+@type ground = ground t with show, gmap;;             (** ground Peano  *)
 
-type groundi = (ground, logic) injected;;
+@type logic = logic t OCanren.logic with show, gmap;; (** logic Peano *)
 
-val o : unit -> groundi;;
+type groundi = (ground, logic) injected;;             (** injected Peano *)
 
-val s : groundi -> groundi;;
+(** Auxiliaries *)
 
-val reify : VarEnv.t -> groundi -> logic;;
+val o : unit -> groundi;;    (** injection function for O *)
+
+val s : groundi -> groundi;; (** injection function for S *)
+
+val reify : VarEnv.t -> groundi -> logic;; (** reifier *)
+
+(** Relations *)
 
 val lt : groundi -> groundi -> goal;;
 (** [lt a b] : a is less than b *)
@@ -32,4 +38,6 @@ val gcd : groundi -> groundi -> groundi -> goal;;
 val lcm : groundi -> groundi -> groundi -> goal;;
 (** [lcm a b c] : if the least common multiple of a and b is c, where a is no less than  b *)
 
+val simplify : groundi -> groundi -> groundi -> groundi -> goal;;
+(** [simplify a b a' b'] : if the simplest form of the ratio a/b is a'/b' *)
 
