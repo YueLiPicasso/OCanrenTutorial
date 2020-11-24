@@ -149,8 +149,10 @@ has been transferred to the remaining aircraft. Now the state is `(2, [5])`: we 
 abondoning and fuel transfer happen simultaneously and take no time.
 The final action is `Forward(5)` meaning the singleton fleet would
 fly forward for 5 units of distance.  The last state is `(7, [0])`:  there is one aircraft
-remaining in the fleet; it is 7 units of distance away from the airbase and it has no fuel ---
-but its ok, we get the range of the two-aircraft fleet which is 7 units of distance.
+remaining in the fleet; it is 7 units of distance away from the airbase and it has no fuel.
+We have given an example of computing the final state given an initial state and a list of
+actions. It is interesting to note that  the range (or maximum reach) of the two-aircraft
+fleet (each aircraft has an abstract capacity of 5 units) is 7 units.
 
 ### Fleet state transition rules
 
