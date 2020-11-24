@@ -70,7 +70,7 @@ We could see that the relational program specifies a relation, and it has
 
 The notion of a formula in OCanren is different from that in logic
  programming, i.e., the Horn clause subset of first-order predicate logic.
- Instead it belongs to the system
+ Instead it is quite close to formulae in the system
  [μMALL](https://doi.org/10.1007/978-3-540-75560-9_9).
 
 A formula is either atomic, or is compound and built from atomic formulae
