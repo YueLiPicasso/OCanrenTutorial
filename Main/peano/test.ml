@@ -144,13 +144,11 @@ let _ =
 let _ =
   let ans_no = 10 in
   printf "\n What adds what equals to what ? (Give %d answers) \n\n" ans_no;
-  let printer =
-    fun x,y,z -> print_endline @@
-                   ("(" ^ GT.show(ground) x ^ " , "
-                    ^ GT.show(logic) y ^ " , "
-                    ^ GT.show(logic) z ^ ")")
-  in List.iter printer
-     @@ take ~n:ans_no
-     @@ run three (fun a b c -> ocanren { add a b c })
-          (fun a b c -> a#prj, b#reify reify, c#reify reify);;
+  let module M = struct @type t = ground * logic * logic with show end in
+  let printer = fun t3 -> print_endline @@ GT.show(M.t) t3  in
+  List.iter printer
+  @@ take ~n:ans_no
+  @@ run three
+       (fun a b c -> ocanren { add a b c })
+       (fun a b c -> a#prj, b#reify reify, c#reify reify);;
 
