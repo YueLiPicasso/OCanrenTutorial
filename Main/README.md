@@ -2,7 +2,7 @@
 
 We begin with studying a "hello world" program,
  exposing various aspects of the technicalities of the language. After that, 
- we go deep down into the most important: understanding and defining 
+ we go deep down into one of the most important: understanding and defining 
  user types. We will then be ready to write non-trivial relational programs.
  we define a simple relational data base, followed by a library for Peano numbers. 
  In the last lesson we use OCanren to solve an arithmetic puzzle. The last three
