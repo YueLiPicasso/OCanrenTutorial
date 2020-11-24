@@ -142,10 +142,12 @@ action labels would allow us to compute the state when the actions have been exe
 Forward (5)]` be a list of actions. We could read that initially the fleet has two aircraft
 and is at position 0. They would fly forward for 2 units of distance, then the state would be
 (we are calculating by hand now) `(2, [3;3])`. The next action is `Abandon([5])`, which means
-that one aircraft is abandoned, and the new fuel profile of the fleet is `[5]`, which implies
-that 2 units of fuel from the abandoned aircraft has been transferred to the remaining aircraft.
-Now the state is `(2, [5])`: we assume that abondoning and fuel transfer happen simultaneously
-and take no time. The final action is `Forward(5)` meaning the singleton fleet would
+that one aircraft is abandoned, and the new fuel profile of the fleet is the parameter of the
+`Abandon` label: `[5]`. The change of the fleet fuel profile from `[3;3]` (before abandoning an aircraft)
+to `[5]` (after abandoning the aircraft) implies that 2 units of fuel from the abandoned aircraft
+has been transferred to the remaining aircraft. Now the state is `(2, [5])`: we assume that
+abondoning and fuel transfer happen simultaneously and take no time.
+The final action is `Forward(5)` meaning the singleton fleet would
 fly forward for 5 units of distance.  The last state is `(7, [0])`:  there is one aircraft
 remaining in the fleet; it is 7 units of distance away from the airbase and it has no fuel ---
 but its ok, we get the range of the two-aircraft fleet which is 7 units of distance.
