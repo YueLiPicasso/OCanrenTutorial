@@ -88,3 +88,21 @@ let simplify a b a' b'=
                        & div a c a' O
                        & div b c b' O
                        & gcd a b c } };;
+
+(* redefine the "show" function for the logic Peano number type *)
+let logic = {
+  logic with
+  GT.plugins =
+    object(this)
+      method gmap = logic.GT.plugins#gmap
+      method show = fun ln ->
+        try string_of_int @@ int_of_logic ln
+        with Not_a_value ->
+              let rec omit_var = function
+                | Var _ -> 0
+                | Value (S n) -> 1 + omit_var n
+                | Value O -> assert false
+              in
+              let cn = omit_var ln in
+              if cn  = 0 then "n" else string_of_int cn ^ "+n"
+    end}
