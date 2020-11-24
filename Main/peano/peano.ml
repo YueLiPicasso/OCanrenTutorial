@@ -20,6 +20,15 @@ module F = Fmap(Ty);;
 let o = fun () -> inj @@ F.distrib O;;
 let s = fun n  -> inj @@ F.distrib (S n);;
 
+let rec groundi_of_int =
+  function 0 -> o ()
+         | n when n > 0 -> s (groundi_of_int (n - 1))
+         | _ -> raise (Invalid_argument "groundi_of_int");;
+
+let rec int_of_ground =
+  function O -> 0
+         | S n -> 1 + int_of_ground n;;
+
 let rec reify = fun env n -> F.reify reify env n;;
 
 (* relations *)

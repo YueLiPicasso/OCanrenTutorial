@@ -16,6 +16,10 @@ val o : unit -> groundi;;    (** injection function for O *)
 
 val s : groundi -> groundi;; (** injection function for S *)
 
+val groundi_of_int : int -> groundi;; (** type conversion *)
+
+val int_of_ground : ground -> int;; (** type conversion *)
+
 val reify : VarEnv.t -> groundi -> logic;; (** reifier *)
 
 (** Relations *)
