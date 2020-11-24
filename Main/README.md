@@ -6,7 +6,7 @@ We begin with studying a "hello world" program,
  user types. We will then be ready to write non-trivial relational programs.
  we define a simple relational data base, followed by a library for Peano numbers. 
  In the last lesson we use OCanren to solve an arithmetic puzzle. The last three
- lessons are so ordered that the complexity of the examples increases gentally. 
+ lessons are so ordered that the complexity of the examples increases gently. 
 
 - Lesson 1: [General Feelings](./helloWorld)
 - Lesson 2: [Types for Relational Programs](./digTypes)
