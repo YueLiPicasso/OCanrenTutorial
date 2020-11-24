@@ -161,7 +161,8 @@ the state transition rules to obtain a multi-step state transition rule which re
 a list of actions and the post-state. To avoid unnecessarily verbose travel plan, we require
 that a forward action must not be followed immediately by another forward action: if so, why not
 combine them into one? Subject to reasonable alternatives, we also require that after abandoning
-one aircraft, the fleet shall move forward before abandoning another.
+one aircraft, the fleet shall move forward before abandoning another. In the example above we
+ have actually executed the multi-step state transition rule by hand.
 
 
 ## OCanren at Work
