@@ -18,7 +18,10 @@ val s : groundi -> groundi;; (** injection function for S *)
 
 val groundi_of_int : int -> groundi;; (** type conversion *)
 
-val int_of_ground : ground -> int;; (** type conversion *)
+val int_of_ground : ground -> int;;    (** type conversion *)
+
+val int_of_logic : logic -> int;;
+(** type conversion: raises exception Not_a_value if there is a free logic variable *)
 
 val reify : VarEnv.t -> groundi -> logic;; (** reifier *)
 

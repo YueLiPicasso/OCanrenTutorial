@@ -271,9 +271,27 @@ let _ =
   List.iter printer @@ take ~n:ans_no @@
     run three (fun a b c -> ocanren { div a b (S(S(S O))) c })
       (fun a b c-> a#prj, b#prj, c#prj);
-
-printf "\n What divided by what equals what with remainder 2? \n\n";;
-
-(* four unknowns *)
-
-printf "\n What divided by what equals what with remainder what? \n\n";;
+  printf "\n What divided by what equals what with remainder 2? (Give %d answers)\n\n" ans_no;
+  let printer = fun t3 -> print_endline @@ GT.show(M.t) t3 in
+  List.iter printer @@ take ~n:1 @@
+    run three (fun a b c -> ocanren { div a b c (S(S O)) })
+      (fun a b c-> a#reify reify, b#reify reify, c#reify reify);
+  let printer = fun x,y,z -> print_endline @@
+                             ((string_of_int @@ int_of_logic x)
+                              ^ ", "
+                              ^ (string_of_int @@ int_of_logic y)
+                              ^ ", "
+                              ^ (string_of_int @@ int_of_logic z))
+  in
+  List.iter printer @@ List.tl @@ take ~n:ans_no @@
+    run three (fun a b c -> ocanren { div a b c (S(S O)) })
+       (fun a b c-> a#reify reify, b#reify reify, c#reify reify);
+  (* four unknowns *)
+  printf "\n What divided by what equals what with remainder what? \n\n";
+  let module M = struct @type t = logic * logic * logic * logic with show end in
+  let printer = fun t4 -> print_endline @@ GT.show(M.t) t4 in
+  List.iter printer @@ take ~n:ans_no @@
+    run four (fun a b c d -> ocanren { div a b c d })
+      (fun a b c d -> a#reify reify, b#reify reify, c#reify reify, d#reify reify);;
+  
+  

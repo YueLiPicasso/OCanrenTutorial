@@ -29,6 +29,15 @@ let rec int_of_ground =
   function O -> 0
          | S n -> 1 + int_of_ground n;;
 
+let rec int_of_logic =
+  function Var _ -> raise Not_a_value
+         | Value n ->
+            begin
+              match n with
+                O -> 0
+              | S m -> 1 + int_of_logic m
+            end;;
+
 let rec reify = fun env n -> F.reify reify env n;;
 
 (* relations *)
