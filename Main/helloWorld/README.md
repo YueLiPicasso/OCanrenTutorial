@@ -1,6 +1,6 @@
 # Say "Hello World!" in OCanren
 
-
+We first execute the program, and then we read and explain through the source code line by line. 
 ##  Executing the Program
 
 The source code has to be compiled and linked, for which you would need the [Makefile](Makefile).
@@ -14,7 +14,7 @@ This would produce a native-code file `hello.opt`, execution of which by:
 ```
 shall print `hello world!` in your terminal.
 
-## Understanding the Program
+## Reading the Program
 
 The first line:
 ```ocaml
