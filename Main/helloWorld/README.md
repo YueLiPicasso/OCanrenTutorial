@@ -80,9 +80,16 @@ operator `@@` that is provided by OCaml's core library
  ```ocaml
  run q (fun q -> ocanren { q == str }) project
  ```
-whose most important part is: `q == str`. 
+whose most important part is: `q == str`.
 
-### Syntactic Identity and  Unification
+Next we start with explaining the inner most and the most important part `q == str`,
+followed by its immediate enclosing environment which is the _run_ statement:
+```ocaml
+run q (fun q -> ocanren { q == str }) project
+```
+and finally the top most expression for taking and printing answers. 
+
+#### Syntactic Identity and  Unification
 
 Syntactic identity between two expressions _expr_<sub>1</sub> and _expr_<sub>2</sub>
 (of the same type) is  denoted _expr_<sub>1</sub> `==` _expr_<sub>2</sub>. Usually we
@@ -101,7 +108,7 @@ expression `2 + 1` or `Node (2,1)` respectively. We now unified `( x + 1)` with
 Trivial:  replacing  `z` with the constant `"hello world!"`. This is essentially what
 our program does: solving a unification problem. 
 
-### The OCanren Top Level: the _run_ statement
+#### The OCanren Top Level: the _run_ statement
 
 We can parse the `run ...` expression following the syntax below,
  which is given in [EBNF](https://github.com/YueLiPicasso/language-grammars)
@@ -151,7 +158,7 @@ some other handler shall be used.
 The `run` function and the size indicators are provided by Core.
 Basic answer handlers are provided by Logic.
 
-### Taking and Displaying Aswers  
+#### Taking and Displaying Aswers  
 
 
 The top level constructs a lazy stream out of which an arbitrary number of
