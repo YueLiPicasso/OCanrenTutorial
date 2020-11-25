@@ -43,7 +43,7 @@ associates the value name `str` with the expression that
 is the prefix operator `!!` (named _primitive injection_)
 applied to the string literal `"hello world!\n"`.
 
-### Injecting to the OCanren Internal Representation
+### Injecting (or Type Casting) to the OCanren Internal Representation
 
 The operator `!!`, provided by the module Logic, makes type conversion to the OCanren
 internal representation, something like what a calculator program
