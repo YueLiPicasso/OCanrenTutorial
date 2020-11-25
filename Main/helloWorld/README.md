@@ -82,7 +82,7 @@ operator `@@` that is provided by OCaml's core library
  ```
 whose most important part is: `q == str`.
 
-Next we start with explaining the inner most and the most important part `q == str`,
+Next we start with explaining the inner most and the most important part: `q == str`,
 followed by its immediate enclosing environment which is the _run_ statement:
 ```ocaml
 run q (fun q -> ocanren { q == str }) project
