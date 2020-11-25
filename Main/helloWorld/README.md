@@ -160,7 +160,7 @@ some other handler shall be used.
 The `run` function and the size indicators are provided by Core.
 Basic answer handlers are provided by Logic.
 
-### Taking and Displaying Aswers  
+### Taking and Displaying Answers  
 
 
 The top level constructs a lazy stream out of which an arbitrary number of
