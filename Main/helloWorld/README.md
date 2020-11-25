@@ -66,7 +66,7 @@ over/of the parameter type, in the sense that wrt. the arithmetic expression `1 
 say that `x` is a logic variable over the integer type and `1` is a concrete value of
 the integer type. 
 
-### Makiing a Query
+### Making a Query
 
 The 3rd line:
 ```ocaml
