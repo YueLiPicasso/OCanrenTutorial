@@ -150,3 +150,33 @@ let _ =
   ocrun4 ~n:ans_no (fun a b c d -> ocanren { div a b c d });;
   
   
+printf "\n###### test gcd ######\n\n";;
+
+let _ =
+  let p7  = groundi_of_int 7
+  and p14 = groundi_of_int 14
+  and p21 = groundi_of_int 21 in
+  (* checking *)
+  printf "\n Checking \n\n";
+  ocrun1 (fun q -> ocanren { gcd p21 p14 p7 & gcd p14 p7 p7 });
+  printf "%d answer(s) found.\n" @@ List.length @@ take @@
+    run1  (fun q -> ocanren { gcd p21 p7 p14 | add p7 p7 (S O) });
+  (* one unknown *)
+  printf "\n The gcd of 21 and 14 is what ? \n\n";
+  ocrun1 (fun q -> ocanren { gcd p21 p14 q });
+  printf "\n  The gcd of 21 and what is 7 ? \n\n";
+  ocrun1 (fun q -> ocanren { gcd p21 q p7 });
+  let ans_no = 60 in
+  printf "\n The gcd of what and 14 is 7 ? (give %d answers) \n\n" ans_no;
+  ocrun1 ~n:ans_no (fun q -> ocanren { gcd q p14 p7 });
+  (* two unknowns *)
+  printf "\n The gcd of what and what is 7 ?  (give %d answers) \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun q r -> ocanren { gcd' q r p7 })
+  (*let ans_no = 10 in
+  printf "\n What adds 4 equals to what ? (Give %d answers) \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun q r -> ocanren { add q  (S(S(S(S O)))) r });
+  printf "\n 3 adds what equals to what ? \n\n";
+  ocrun2 (fun q r -> ocanren { add (S(S(S O))) q r });
+  (* three unknowns *)
+  printf "\n What adds what equals to what ? (Give %d answers) \n\n" ans_no;
+  ocrun3 ~n:ans_no (fun a b c -> ocanren { add a b c })*);;

@@ -68,12 +68,24 @@ let rec div a b q r =
                 & add (S O) q' q
                 & div c b q' r }};;
 
-let rec gcd a b c = (* by Euclidean algorithm *)
+let rec gcd a b c = (* the Euclidean algorithm *)
   ocanren { { lte b a & fresh q in
               div a b q O & c == b }
-          | lt b a & fresh q, n in
-            div a b q (S n)
+          | fresh q, n in
+            lt b a
+            & div a b q (S n)
             & gcd b (S n) c };;
+
+let rec gcd' a b c = (* the Euclidean algorithm *)
+  ocanren { { c == b
+              & fresh q in
+              div a b q O
+              & lte b a }
+          | fresh q, n in
+            gcd' b (S n) c 
+            & div a b q (S n)
+            & lt b a };;
+
 
 let lcm a b c =
   ocanren { fresh ab, g in

@@ -101,7 +101,7 @@ expression `2 + 1` or `Node (2,1)` respectively. We now unified `( x + 1)` with
 Trivial:  replacing  `z` with the constant `"hello world!"`. This is essentially what
 our program does: solving a unification problem. 
 
-### The OCanren Top Level: Run !
+### The OCanren Top Level: the _run_ statement
 
 We can parse the `run ...` expression following the syntax below,
  which is given in [EBNF](https://github.com/YueLiPicasso/language-grammars)
