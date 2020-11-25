@@ -55,7 +55,7 @@ val (!!) : 'a -> ('a, 'a logic) injected
 The `injected` type constructor is provided by the module Logic as an abstract type
  (so we do not concern ourselves with its implementation).
 
-### Logic Variables
+#### Logic Variables
 
 The `logic` type constructor which appears in the type of `!!` above is also
 provided by the module Logic. 
@@ -65,6 +65,8 @@ see from the module interface that it has two constructors
 over/of the parameter type, in the sense that wrt. the arithmetic expression `1 + x` we
 say that `x` is a logic variable over the integer type and `1` is a concrete value of
 the integer type. 
+
+### Makiing a Query
 
 The 3rd line:
 ```ocaml
