@@ -22,4 +22,6 @@ There are several things which we want the reader to learn in this lesson:
   of unknowns. 
 - Analyzing how, in the context of a query, a relation searches for answers.
   - Reordering the conjuncts and disjuncts within the body of a relation definition
-    to modify the way in which the relation searches for answers in a given query. 
+    to modify the way in which the relation searches for answers in a given query.
+- The way in which the `ocanren {}` quotation converts its content (which is a formula) into
+  an expression built with names  provided by the module [Core](../../Installation/ocanren/src/core/Core.mli). 
