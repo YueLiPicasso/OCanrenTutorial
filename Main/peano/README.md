@@ -19,7 +19,7 @@ There are several things which we want the reader to learn in this lesson:
     to allow for more concise and human readable printing of them.
 - Defining (possibly recursive) relations, e.g.,  on Peano numbers.
 - Making queries to the defined relations in various ways, i.e., with various numbers
-  of unknowns. 
+  of unknown arguments. 
 - Analyzing how, in the context of a query, a relation searches for answers.
   - Reordering the conjuncts and disjuncts within the body of a relation definition
     to modify the way in which the relation searches for answers in a given query.
