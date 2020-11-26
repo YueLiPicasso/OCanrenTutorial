@@ -25,5 +25,6 @@ There are several things which we want the reader to learn in this lesson:
     to modify the way in which the relation searches for answers in a given query.
 - Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
   an expression built with names  provided by the module [Core](../../Installation/ocanren/src/core/Core.mli).
-     - Optionally, observing how the quotation replaces the value constructors by corresponding
-  injection functions to build injected values.
+     - Additionally, observing how the `ocanren {}` quotation replaces  value constructors
+     of variant types by the corresponding injection functions, and primitive values by their
+     injected versions.
