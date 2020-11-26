@@ -1,3 +1,5 @@
+We parse the [OCanren formulae parser](../../Installation/ocanren/camlp5/pa_ocanren.ml) according to the [extensible grammar](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) of camlp5.  
+
 This is an _entry_:
 ```
 ocanren_expr: [
