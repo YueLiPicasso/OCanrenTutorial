@@ -54,9 +54,8 @@ val gcd : groundi -> groundi -> groundi -> goal;;
 val gcd' : groundi -> groundi -> groundi -> goal;;
 (** declaratively the same as [gcd], but has a different search strategy  *)
 
-val lcm : groundi -> groundi -> groundi -> goal;;
-(** [lcm a b c] : the least common multiple of a and b is c, where a is no less than  b *)
-
 val simplify : groundi -> groundi -> groundi -> groundi -> goal;;
 (** [simplify a b a' b'] : if the simplest form of the ratio a/b is a'/b' *)
 
+val coprime : groundi -> groundi -> goal;;
+(** [coprime a b] : a and b are coprime *)

@@ -36,6 +36,8 @@ and ocrun2 = fun ?n g -> iterp2 ?n @@ run2 g
 and ocrun3 = fun ?n g -> iterp3 ?n @@ run3 g
 and ocrun4 = fun ?n g -> iterp4 ?n @@ run4 g;;
 
+(* how many answers you want if the answer set is infinitely large ? *)
+let ans_no = 20;;
   
 printf "###### test lt ######\n\n";;
 
@@ -51,8 +53,8 @@ let _ =
   printf "\n What is less than 5 ? \n\n";
   ocrun1 (fun q -> ocanren { lt q (S(S(S(S(S O))))) });
   (* two unknowns *)
-  printf "\n What is less than what ? \n\n";
-  ocrun2 ~n:10 (fun q r -> ocanren { lt q r });;
+  printf "\n What is less than what ? (give %d answers) \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun q r -> ocanren { lt q r });;
 
 printf "\n###### test lte ######\n\n";;
 
@@ -68,8 +70,8 @@ let _ =
   printf "\n What is less than or equal to 5 ? \n\n";
   ocrun1 (fun q -> ocanren { lte q (S(S(S(S(S O))))) });
   (* two unknowns *)
-  printf "\n What is less than or equal to what ? \n\n";
-  ocrun2 ~n:10 (fun q r -> ocanren { lte q r });;
+  printf "\n What is less than or equal to what ? (give %d answers) \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun q r -> ocanren { lte q r });;
 
 printf "\n###### test add ######\n\n";;
 
@@ -89,13 +91,12 @@ let _ =
   (* two unknowns *)
   printf "\n What adds what equals to 7 ? \n\n";
   ocrun2 (fun q r -> ocanren { add q r (S(S(S(S(S(S(S O))))))) });
-  let ans_no = 10 in
-  printf "\n What adds 4 equals to what ? (Give %d answers) \n\n" ans_no;
+  printf "\n What adds 4 equals to what ? (give %d answers) \n\n" ans_no;
   ocrun2 ~n:ans_no (fun q r -> ocanren { add q  (S(S(S(S O)))) r });
   printf "\n 3 adds what equals to what ? \n\n";
   ocrun2 (fun q r -> ocanren { add (S(S(S O))) q r });
   (* three unknowns *)
-  printf "\n What adds what equals to what ? (Give %d answers) \n\n" ans_no;
+  printf "\n What adds what equals to what ? (give %d answers) \n\n" ans_no;
   ocrun3 ~n:ans_no (fun a b c -> ocanren { add a b c });;
 
 
@@ -122,31 +123,29 @@ let _ =
   printf "\n What divided by 5 equals 3 with remainder 0 ? \n\n";
   ocrun1 (fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O });
   (* two unknowns *)  
-  let ans_no = 10 in
-  printf "\n What divided by what equals 3 with remainder 2 ? (Give %d answers) \n\n" ans_no;
+  printf "\n What divided by what equals 3 with remainder 2 ? (give %d answers) \n\n" ans_no;
   ocrun2 ~n:ans_no (fun q r-> ocanren { div q r (S(S(S O))) (S(S O)) });
-  printf "\n What divided by 5 equals what with remainder 2 ? (Give %d answers)\n\n" ans_no;
+  printf "\n What divided by 5 equals what with remainder 2 ? (give %d answers)\n\n" ans_no;
   ocrun2 ~n:ans_no (fun q r-> ocanren { div q (S(S(S(S(S O))))) r (S(S O)) });
-  printf "\n What divided by 5 equals 3 with remainder what ? (Give all answers)\n\n";
+  printf "\n What divided by 5 equals 3 with remainder what ? \n\n";
   ocrun2 (fun q r-> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) r });
-  printf "\n 17 divided by what equals what with remainder 2 ? (Give all answers) \n\n";
+  printf "\n 17 divided by what equals what with remainder 2 ?  \n\n";
   ocrun2 (fun q r-> ocanren { div p17 q r (S(S O)) });
-  printf "\n 17 divided by what equals 3 with remainder what ? (Give all answers)\n\n";
+  printf "\n 17 divided by what equals 3 with remainder what ? \n\n";
   ocrun2 (fun q r-> ocanren { div p17 q (S(S(S O))) r });
   printf "\n 17 divided by 5 equals what with remainder what ? \n\n";
   ocrun2 (fun q r-> ocanren { div p17 (S(S(S(S(S O))))) q  r });
   (* three unknowns *)
-  printf "\n 17 divided by what equals what with remainder what? (Give all answers)\n\n" ;
+  printf "\n 17 divided by what equals what with remainder what? \n\n" ;
   ocrun3 (fun a b c -> ocanren { div p17 a b c });
-  let ans_no = 60 in
-  printf "\n What divided by 5 equals what with remainder what? (Give %d answers)\n\n" ans_no;
+  printf "\n What divided by 5 equals what with remainder what? (give %d answers)\n\n" ans_no;
   ocrun3 ~n:ans_no (fun a b c -> ocanren { div a (S(S(S(S(S O))))) b c });
-  printf "\n What divided by what equals 3 with remainder what? (Give %d answers)\n\n" ans_no;
+  printf "\n What divided by what equals 3 with remainder what? (give %d answers)\n\n" ans_no;
   ocrun3 ~n:ans_no (fun a b c -> ocanren { div a b (S(S(S O))) c });
-  printf "\n What divided by what equals what with remainder 2? (Give %d answers)\n\n" ans_no;
+  printf "\n What divided by what equals what with remainder 2? (give %d answers)\n\n" ans_no;
   ocrun3 ~n:ans_no (fun a b c -> ocanren { div a b c (S(S O)) });
   (* four unknowns *)
-  printf "\n What divided by what equals what with remainder what? \n\n";
+  printf "\n What divided by what equals what with remainder what? (give %d answers)\n\n" ans_no;
   ocrun4 ~n:ans_no (fun a b c d -> ocanren { div a b c d });;
   
   
@@ -158,25 +157,35 @@ let _ =
   and p21 = groundi_of_int 21 in
   (* checking *)
   printf "\n Checking \n\n";
-  ocrun1 (fun q -> ocanren { gcd p21 p14 p7 & gcd p14 p7 p7 });
+  ocrun1 (fun q -> ocanren { gcd p21 p14 p7 & gcd p14 p7 p7} );
   printf "%d answer(s) found.\n" @@ List.length @@ take @@
     run1  (fun q -> ocanren { gcd p21 p7 p14 | add p7 p7 (S O) });
   (* one unknown *)
   printf "\n The gcd of 21 and 14 is what ? \n\n";
-  ocrun1 (fun q -> ocanren { gcd p21 p14 q });
+  ocrun1 (fun q -> gcd p21 p14 q);
   printf "\n  The gcd of 21 and what is 7 ? \n\n";
-  ocrun1 (fun q -> ocanren { gcd p21 q p7 });
-  let ans_no = 60 in
+  ocrun1 (fun q -> gcd p21 q p7);
   printf "\n The gcd of what and 14 is 7 ? (give %d answers) \n\n" ans_no;
-  ocrun1 ~n:ans_no (fun q -> ocanren { gcd q p14 p7 });
+  ocrun1 ~n:ans_no (fun q -> gcd q p14 p7);
   (* two unknowns *)
   printf "\n The gcd of what and what is 7 ?  (give %d answers) \n\n" ans_no;
-  ocrun2 ~n:ans_no (fun q r -> ocanren { gcd' q r p7 })
-  (*let ans_no = 10 in
-  printf "\n What adds 4 equals to what ? (Give %d answers) \n\n" ans_no;
-  ocrun2 ~n:ans_no (fun q r -> ocanren { add q  (S(S(S(S O)))) r });
-  printf "\n 3 adds what equals to what ? \n\n";
-  ocrun2 (fun q r -> ocanren { add (S(S(S O))) q r });
+  ocrun2 ~n:ans_no (fun q r -> gcd' q r p7);
+  (* printf "\n with another search strategy ... \n\n";
+  ocrun2 ~n:ans_no (fun q r -> gcd q r p7); *)
+  printf "\n The gcd of what and 14 is what ? (give %d answers) \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun q r -> gcd q p14 r);
+  printf "\n with another search strategy ... \n\n";
+  ocrun2 ~n:ans_no (fun q r -> gcd' q p14 r);
+  printf "\n The gcd of 21 and what is what ? \n\n";
+  ocrun2 (fun q r -> gcd p21 q r);
   (* three unknowns *)
-  printf "\n What adds what equals to what ? (Give %d answers) \n\n" ans_no;
-  ocrun3 ~n:ans_no (fun a b c -> ocanren { add a b c })*);;
+  printf "\n The gcd of what and what is what ? (give %d answers) \n\n" ans_no;
+  ocrun3 ~n:ans_no (fun a b c -> gcd a b c);
+  printf "\n with another search strategy ... \n\n";
+  ocrun3 ~n:ans_no (fun a b c -> gcd' a b c);;
+
+printf "\n###### test coprime ######\n\n";;
+
+let _ =
+  printf "\n Give %d pairs of coprime numbers. \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun q r -> coprime q r);;

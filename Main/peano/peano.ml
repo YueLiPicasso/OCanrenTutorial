@@ -86,20 +86,15 @@ let rec gcd' a b c = (* the Euclidean algorithm *)
             & div a b q (S n)
             & lt b a };;
 
-
-let lcm a b c =
-  ocanren { fresh ab, g in
-            div ab a b O
-            & gcd a b g
-            & div ab c g O };;
-
-let simplify a b a' b'= 
+let simplify a b a' b' = 
       ocanren {  fresh n in b == S n &
       {  a == O  & a' == O & b' == S O
       |  fresh c, m in a == S m
                        & div a c a' O
                        & div b c b' O
                        & gcd a b c } };;
+
+let coprime a b = simplify a b a b;;
 
 (* redefine the "show" function for the logic Peano number type *)
 let logic = {
