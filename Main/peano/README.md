@@ -1,7 +1,6 @@
 # A Library for Peano Arithmetic
 
 _Contents_
-
 - The library
   - [implementation](peano.ml)
   - [interface](peano.mli)
