@@ -16,4 +16,10 @@ There are several things which we want the reader to learn in this lesson:
 - Defining reifiers to convert data from the injected level to the logic level,
   again with help from the module functors  `Fmap`, `Fmap2`, `Fmap3`, etc.
   - Overwriting, or redefining the "show" function for values of a logic type,
-    to allow for more concise and human readable printing of them. 
+    to allow for more concise and human readable printing of them.
+- Defining (possibly recursive) relations on Peano numbers.
+- Making queries to the defined relations in various ways, i.e., with various numbers
+  of unknowns. 
+- Analyzing how, in the context of a query, a relation searches for answers.
+  - Reordering the conjuncts and disjuncts within the body of a relation definition
+    to modify the way in which the relation searches for answers in a given query. 
