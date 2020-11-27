@@ -26,6 +26,14 @@ An extra section concludes the lesson.
 
 ## Advanced Injection Functions
 
+The primary injection operator is `!!` which is used to cast primitive values (such as characters and strings)
+and constant constructors of variant types (particularly whose type constructors do not have a type parameter)
+from the ground level to the injected level. For those variant types  whose type constructors have
+one or more type parameters, the primitive injection operator is inadequate. We use instead _advanced injection
+functions_ to build injected values,  which are defined using distribution functions provided
+by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
+module Logic. 
+
 ## Reification and Reifiers
 
 ## Overwriting the _show_ Function
