@@ -44,7 +44,19 @@ module Logic. The general workflow of defining advanced injection functions is a
    a parameter to the chosen Fmap family module functor. The result is a module `F` with three functions one of which
    is `distrib`, the distribution function.
 1. For each value constructor of type `t`, we define a function whose name is the same as the value constructor except
-   that the initial letter is set to lower case. For example, `Cons`, `S` and `NUL` become respectively `cons`, `s` and `nUL`. 
+   that the initial letter is set to lower case. For example, `Cons`, `S` and `NUL` become respectively `cons`, `s` and `nUL`.
+   - For each value constructor `Constr0` of no argument, define:
+     ```ocaml
+     let constr0 = fun () -> Logic.inj @@ F.distrib Constr0
+     ```
+   - For each value constructor `Constr1` of one argument, define:
+     ```ocaml
+     let constr1 = fun x -> Logic.inj @@ F.distrib (Constr1 x)
+     ```
+   - For each value constructor `Constru` of _u_ (> 1) arguments, define:
+     ```ocaml
+     let constru = fun x1 ... xu -> Logic.inj @@ F.distrib @@ Constru (x1, ..., xu)
+     ```
 
 ## Reification and Reifiers
 
