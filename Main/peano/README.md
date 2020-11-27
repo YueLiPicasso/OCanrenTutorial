@@ -32,7 +32,13 @@ from the ground level to the injected level. For those variant types  whose type
 one or more type parameters, the primitive injection operator is inadequate. We use instead _advanced injection
 functions_ to build injected values,  which are defined using distribution functions provided
 by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
-module Logic. 
+module Logic. The general workflow of defining advanced injection functions is as follows:  
+
+- We begin with a variant type whose type constructor has one or more type parameters. This is always an
+  OCanren abstract type, such as the abstract Peano number type or the abstract list type.
+- We count the number of type parameters of the type constructor in order to choose the suitable module functor
+  from the Fmap family: for 1 type parameter, use `Fmap`; 2 type parameters, `Fmap2`; 3 type parameters, `Fmap3`
+   and so on. 
 
 ## Reification and Reifiers
 
