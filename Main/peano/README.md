@@ -76,7 +76,8 @@ The general workflow of defining advanced injection functions is as follows:
 In the definition of a typical advanced injection function, the value constructor takes arguments which are at the injected level, and the combination
 of `inj` and `distrib` serves to inject the top level value while preserving the structure of constructor application. If we explain by a schematic
 where a pair of enclosing square brackets `[]` signifies the injected status of the enclosed data, we would say that an advanced injection
-function converts a value of the form  `Constr ([arg1], ..., [argn])` to a value of the form `[Constr (arg1, ..., argn)]`.  We advise the reader
+function `constr` converts a value of the form  `Constr ([arg1], ..., [argn])` to a value of the form `[Constr (arg1, ..., argn)]`. In other words,
+`constr` takes arguments `[arg1], ..., [argn]` and builds a value of the form `[Constr (arg1, ..., argn)]`.  We advise the reader
 to find in the interface of the Logic module the Fmap module functor family
 and the module types of arguments of members of this family: that would provide a more formal explanation of what advanced injection functions do and
 why they are defined in the given manner.
