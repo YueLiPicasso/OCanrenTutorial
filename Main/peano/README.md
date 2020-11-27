@@ -28,7 +28,7 @@ An extra section concludes the lesson.
 
 ## Reification and Reifiers
 
-### Overwriting the _show_ function
+## Overwriting the _show_ Function
 
 ## Relations on Peano Numbers
 
@@ -36,10 +36,10 @@ An extra section concludes the lesson.
 
 ## Analyzing the Search Behaviour
 
-### Modifying the search behaviour
+## Modifying the Search Behaviour
 
 ## The Formula Parser
 
-### OCanren Terms
+## OCanren Terms
 
 ## Building a Library
