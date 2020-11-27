@@ -32,7 +32,22 @@ from the ground level to the injected level. For those variant types  whose type
 one or more type parameters, the primitive injection operator is inadequate. We use instead _advanced injection
 functions_ to build injected values,  which are defined using distribution functions provided
 by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
-module Logic. The general workflow of defining advanced injection functions is as follows:  
+module Logic. In our Peano Arithmetic library implementation, the following block of code defines advanced injection
+functions for the abstract Peano number type:
+```ocaml
+module Ty = struct
+  @type 'a t = O | S of 'a with show, gmap;;
+  let fmap = fun f d -> GT.gmap(t) f d;;
+end;;
+  
+include Ty;;
+
+module F = Fmap(Ty);;
+
+let o = fun () -> inj @@ F.distrib O;;
+let s = fun n  -> inj @@ F.distrib (S n);;
+```
+The general workflow of defining advanced injection functions is as follows:  
 
 1. We begin with a variant type whose type constructor `t` has one or more type parameters. This is always an
   OCanren abstract type, such as the abstract Peano number type or the abstract list type.
