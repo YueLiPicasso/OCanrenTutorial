@@ -2,10 +2,11 @@
 
 
 We hope the reader will learn the following techniques (labeled as **T.1**, **T.2**, etc) from this lesson:
-- [**T.1**](#advanced-injection-functions) Defining injection functions for value constructors of  variant types, using module functors
+- [**T.1**](#advanced-injection-functions) Defining injection functions for value constructors of  variant types, using
+  the Fmap family of module functors
   `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).
 - [**T.2**](#reification-and-reifiers) Defining reifiers to convert data from the injected level to the logic level,
-  again with help from the module functors  `Fmap`, `Fmap2`, `Fmap3`, etc.
+  again with help from the Fmap family of module functors.
   - [**T.2.1**](#overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
     to allow for more concise and human readable printing of them.
 - [**T.3**](#relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
@@ -31,7 +32,7 @@ and constant constructors of variant types (particularly whose type constructors
 from the ground level to the injected level. For those variant types  whose type constructors have
 one or more type parameters, the primitive injection operator is inadequate. We use instead _advanced injection
 functions_ to build injected values,  which are defined using distribution functions provided
-by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
+by the Fmap family of module functors together with the injection helper `inj` from
 module Logic. In our Peano Arithmetic [library implementation](peano.ml), the following block of code defines advanced injection
 functions `o` and `s` for the abstract Peano number type `Ty.t`, which correspond respectively to the value constructors `O` and `S`:
 ```ocaml
