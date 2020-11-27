@@ -33,7 +33,7 @@ one or more type parameters, the primitive injection operator is inadequate. We 
 functions_ to build injected values,  which are defined using distribution functions provided
 by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
 module Logic. In our Peano Arithmetic [library implementation](peano.ml), the following block of code defines advanced injection
-functions `o` and `s` for the abstract Peano number type `Ty.t`, corresponding respectively to the value constructors `O` and `S`:
+functions `o` and `s` for the abstract Peano number type `Ty.t`, which correspond respectively to the value constructors `O` and `S`:
 ```ocaml
 module Ty = struct
   @type 'a t = O | S of 'a with show, gmap;;
@@ -74,8 +74,9 @@ The general workflow of defining advanced injection functions is as follows:
      ```
 In the definition of a typical advanced injection function, the value constructor takes arguments which are at the injected level, and the combination
 of `inj` and `distrib` serves to inject the top level value while preserving the structure of constructor application. If we explain by a schematic
-where a pair of enclosing square brackets `[]` signifies the injected status of the enclosed data, we would say that an advanced injection function converts a value of the form  `Constr ([arg1], ..., [argn])` to
-a value of the form `[Constr (arg1, ..., argn)]`.  We advise the reader to find in the interface of the Logic module the Fmap module functor family
+where a pair of enclosing square brackets `[]` signifies the injected status of the enclosed data, we would say that an advanced injection
+function converts a value of the form  `Constr ([arg1], ..., [argn])` to a value of the form `[Constr (arg1, ..., argn)]`.  We advise the reader
+to find in the interface of the Logic module the Fmap module functor family
 and the module types of arguments of members of this family: that would provide a more formal explanation of what advanced injection functions do and
 why they are defined in the given manner.
 
