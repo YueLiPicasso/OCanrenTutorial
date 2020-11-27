@@ -32,7 +32,7 @@ and constant constructors of variant types (particularly whose type constructors
 from the ground level to the injected level. For those variant types  whose type constructors have
 one or more type parameters, the primitive injection operator is inadequate. We use instead _advanced injection
 functions_ to build injected values,  which are defined using distribution functions provided
-by the Fmap family of module functors together with the injection helper `inj` from
+by the Fmap family of module functors together with the injection helper `inj`, all from the
 module Logic. In our Peano Arithmetic [library implementation](peano.ml), the following block of code defines advanced injection
 functions `o` and `s` for the abstract Peano number type `Ty.t`, which correspond respectively to the value constructors `O` and `S`:
 ```ocaml
