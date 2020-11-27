@@ -34,15 +34,17 @@ functions_ to build injected values,  which are defined using distribution funct
 by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
 module Logic. The general workflow of defining advanced injection functions is as follows:  
 
-1. We begin with a variant type whose type constructor has one or more type parameters. This is always an
+1. We begin with a variant type whose type constructor `t` has one or more type parameters. This is always an
   OCanren abstract type, such as the abstract Peano number type or the abstract list type.
 1. We count the number of type parameters of the type constructor in order to choose the suitable module functor
   from the Fmap family: for one type parameter, use `Fmap`; for two type parameters, use `Fmap2`; three type parameters, `Fmap3`
    and so on.
-1. We request the `gmap` plugin for the type constructor, and use it to define a function named `fmap`.
-1. We put the definition of the type constructor and the `fmap` function in one module, and suppy that module as
-   a parameter to the chosen Fmap family module functor. The result is a module with three functions one of which
-   is `distrib`, the distribution function. 
+1. We request the `gmap` plugin for the type constructor, and use it to define a function named `fmap` simply by renaming.
+1. We put the definitions of the type constructor `t` and the `fmap` function in one module, and suppy that module as
+   a parameter to the chosen Fmap family module functor. The result is a module `F` with three functions one of which
+   is `distrib`, the distribution function.
+1. For each value constructor of type `t`, we define a function whose name is the same as the value constructor except
+   that the initial letter is set to lower case. For example, `Cons`, `S` and `NUL` become respectively `cons`, `s` and `nUL`. 
 
 ## Reification and Reifiers
 
