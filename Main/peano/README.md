@@ -1,14 +1,5 @@
 # A Library for Peano Arithmetic
 
-The files involved in this lesson are organized as follows:
-
-- The library
-  - [implementation](peano.ml)
-  - [interface](peano.mli)
-- [Test file](test.ml)
-- Makefile
-- [Result of test](answers.txt)
-- [Parsing the formulae parser](ocanren_expr.md) 
 
 We hope the reader will learn the following techniques from this lesson:
 - Defining injection functions for value constructors of user variant types, using module functors
