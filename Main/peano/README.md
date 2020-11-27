@@ -2,8 +2,8 @@
 
 
 We hope the reader will learn the following techniques from this lesson:
-- **T.1.** Defining injection functions for value constructors of user variant types, using module functors
-  `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli). (#advanced-injection-functions)
+- [**T.1.**](#advanced-injection-functions) Defining injection functions for value constructors of user variant types, using module functors
+  `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).
 - **T.2.** Defining reifiers to convert data from the injected level to the logic level,
   again with help from the module functors  `Fmap`, `Fmap2`, `Fmap3`, etc.
   - **T.2.1.** Overwriting, or redefining the "show" function for values of a logic type,
@@ -21,7 +21,7 @@ We hope the reader will learn the following techniques from this lesson:
      injected versions.
 - **T.7.** Writing and testing a library in OCanren.
 
-The techniques are presented in detail in sections below, to which the labels (T.1., T.2., etc) are linked.
+The techniques are presented in detail in sections below, to which the labels (**T.1.**, **T.2.**, etc) are linked.
 An extra section concludes the lesson. 
 
 ## Advanced Injection Functions
