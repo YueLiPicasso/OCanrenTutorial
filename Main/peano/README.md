@@ -12,7 +12,7 @@ The files involved in this lesson are organized as follows:
 
 We hope the reader will learn the following techniques from this lesson:
 - Defining injection functions for value constructors of user variant types, using module functors
-  `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).   
+  `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).  [Go to section](#advanced-injection-functions)
 - Defining reifiers to convert data from the injected level to the logic level,
   again with help from the module functors  `Fmap`, `Fmap2`, `Fmap3`, etc.
   - Overwriting, or redefining the "show" function for values of a logic type,
@@ -28,3 +28,23 @@ We hope the reader will learn the following techniques from this lesson:
      - Additionally, observing how the `ocanren {}` quotation replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
+
+The above techniques are presented in detail in the following sections, followed by a conclusion.
+
+## Advanced Injection Functions
+
+## Reification and Reifiers
+
+### Overwriting the _show_ function
+
+## Relations on Peano Numbers
+
+## Scrutinizing Relations
+
+## Analyzing the Search Behavour
+
+### Modifying the search behaviour
+
+## The Formula Parser
+
+### OCanren Terms
