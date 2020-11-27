@@ -33,7 +33,7 @@ one or more type parameters, the primitive injection operator is inadequate. We 
 functions_ to build injected values,  which are defined using distribution functions provided
 by the family of module functors `Fmap`, `Fmap2`, `Fmap3` etc., together with the injection helper `inj` from
 module Logic. In our Peano Arithmetic [library implementation](peano.ml), the following block of code defines advanced injection
-functions for the abstract Peano number type:
+functions for the abstract Peano number type `Ty.t`:
 ```ocaml
 module Ty = struct
   @type 'a t = O | S of 'a with show, gmap;;
