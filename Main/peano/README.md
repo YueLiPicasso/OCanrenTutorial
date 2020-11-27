@@ -10,7 +10,7 @@ The files involved in this lesson are organized as follows:
 - [Result of test](answers.txt)
 - [Parsing the formulae parser](ocanren_expr.md) 
 
-We hope the reader to learn the following techniques from this lesson:
+We hope the reader will learn the following techniques from this lesson:
 - Defining injection functions for value constructors of user variant types, using module functors
   `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).   
 - Defining reifiers to convert data from the injected level to the logic level,
