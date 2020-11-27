@@ -4,9 +4,9 @@
 We hope the reader will learn the following techniques from this lesson:
 - [**T.1.**](#advanced-injection-functions) Defining injection functions for value constructors of user variant types, using module functors
   `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).
-- **T.2.** Defining reifiers to convert data from the injected level to the logic level,
+- [**T.2.**](#reification-and-reifiers) Defining reifiers to convert data from the injected level to the logic level,
   again with help from the module functors  `Fmap`, `Fmap2`, `Fmap3`, etc.
-  - **T.2.1.** Overwriting, or redefining the "show" function for values of a logic type,
+  - [**T.2.1.**](#overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
     to allow for more concise and human readable printing of them.
 - **T.3.** Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
 - **T.4.** Making queries to the defined relations in various ways, i.e., with various numbers
