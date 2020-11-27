@@ -19,7 +19,7 @@ We hope the reader will learn the following techniques (which are labeled as **T
      - [**T.6.1**](#ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
-- **T.7** Writing and testing a library in OCanren.
+- [**T.7**](#building-a-library) Writing and testing a library in OCanren.
 
 The techniques are presented in detail in sections below, to which the labels are linked.
 An extra section concludes the lesson. 
@@ -41,3 +41,5 @@ An extra section concludes the lesson.
 ## The Formula Parser
 
 ### OCanren Terms
+
+## Building a Library
