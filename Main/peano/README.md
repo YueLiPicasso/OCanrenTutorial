@@ -1,7 +1,7 @@
 # A Library for Peano Arithmetic
 
 
-We hope the reader will learn the following techniques (which are labeled as **T.1**, **T.2**, etc) from this lesson:
+We hope the reader will learn the following techniques (labeled as **T.1**, **T.2**, etc) from this lesson:
 - [**T.1**](#advanced-injection-functions) Defining injection functions for value constructors of user variant types, using module functors
   `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).
 - [**T.2**](#reification-and-reifiers) Defining reifiers to convert data from the injected level to the logic level,
