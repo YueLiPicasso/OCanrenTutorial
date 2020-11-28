@@ -111,7 +111,8 @@ for the same type.  The result of applying the correct Fmap module functor is a 
 `F.reify` in the case of our library. Note there is an abuse of names: the name `reify` has been used for both reifiers and reifier builders.  We need to provide to the
 reifier builder as arguments predefined or recursively defined reifiers. If a type is built from other types, then
 the refier for the top level type consists of (or, is defined in terms of) reifiers of the component types. In other words, we build "larger" reifiers from "smaller" reifiers, and
-the interrelation among reifiers correspond excatly to the interrelation of types which they reify.
+the interrelation among reifiers correspond excatly to the interrelation of types which they reify. Since OCanren is embedded in a typed functional language,  type
+annotations would provide formal and precise clue for defining reifiers.   
 
 ## Overwriting the _show_ Function
 
