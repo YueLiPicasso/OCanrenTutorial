@@ -108,7 +108,8 @@ returned from a function, of which the Peano type reifier is a typical example, 
 Advanced reifiers are defined using
 the Fmap module functor family. The correct Fmap module functor for defining the reifier for a type is the same as that selected for defining advanced injection functions
 for the same type.  The result of applying the correct Fmap module functor is a module that provides, besides a distribution function, a reifier builder named `reify`, e.g.,
-`F.reify` in the case of our library. We need to provide the reifier builder as arguments predefined or recursively defined reifiers. If a type is built from other types, then
+`F.reify` in the case of our library. Note there is an abuse of names: the name `reify` has been used for both reifiers and reifier builders.  We need to provide to the
+reifier builder as arguments predefined or recursively defined reifiers. If a type is built from other types, then
 the refier for the top level type consists of (or, is defined in terms of) reifiers of the component types. In other words, we build "larger" reifiers from "smaller" reifiers, and
 the hierarchy of reifiers correspond excatly to the hierarchy of types which they reify.
 
