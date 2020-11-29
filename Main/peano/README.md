@@ -102,18 +102,12 @@ Peano number type:
 ```ocaml
 let rec reify = fun env n -> F.reify reify env n;;
 ```
-What makes it particularly interesting is that it is recursive. The abstract level Peano number type constructor has one type parameter, so we need one (sub-)reifier for this
-parameter type in the definition of the (super-)reifier for the top level type. In OCanren, reifiers are always used as first-class objects, i.e., being passed as arguments and
-returned from a function, of which the Peano type reifier is a typical example, and users rarely need to provide arguments to reifiers.
+Advanced reifiers are defined using the Fmap module functor family. The correct Fmap module functor for defining the reifier for a type is the same as that selected for
+defining advanced injection functions for the same type.  The result of applying the correct Fmap module functor is a module that provides, besides a distribution
+function, a reifier builder named `reify`, e.g., `F.reify` in the case of our library. Note there is an abuse of names: the name `reify` has been used for both reifiers
+and reifier builders. If a type constructor takes other types are parameters, then the refier for the top level type is built from reifiers for the parameter types:
+we build "larger" reifiers from "smaller" reifiers. The Peano number reifier is recursive because the Peano number type is recusive. 
 
-Advanced reifiers are defined using
-the Fmap module functor family. The correct Fmap module functor for defining the reifier for a type is the same as that selected for defining advanced injection functions
-for the same type.  The result of applying the correct Fmap module functor is a module that provides, besides a distribution function, a reifier builder named `reify`, e.g.,
-`F.reify` in the case of our library. Note there is an abuse of names: the name `reify` has been used for both reifiers and reifier builders.  We need to provide to the
-reifier builder as arguments predefined or recursively defined reifiers. If a type is built from other types, then
-the refier for the top level type consists of (or, is defined in terms of) reifiers of the component types. In other words, we build "larger" reifiers from "smaller" reifiers, and
-the interrelation among reifiers correspond excatly to the interrelation of types which they reify. Since OCanren is embedded in a typed functional language,  type
-annotations would provide formal and precise clue for defining reifiers.   
 
 ## Overwriting the _show_ Function
 
