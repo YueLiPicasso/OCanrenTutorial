@@ -96,7 +96,8 @@ variable `x`: we instantiate it as much as possible, but allowing unbound logic 
 
 We know that there are primary and advanced injection functions. Similarly there are primary and advanced reifiers: the primary reifier `Logic.reify` reifies logic
 variables over base types (like character and string) and simple variant types (i.e., those that have only constant constructors). Advanced reifiers
-are for logic variables over variant types whose type constructors do have one or more type parameters. The Peano Arithmetic library defines an advanced reifier for the
+are for logic variables over variant types whose type constructors have one or more type parameters and there exist non-constant (value) constructors.
+The Peano Arithmetic library defines an advanced reifier for the
 Peano number type:
 ```ocaml
 let rec reify = fun env n -> F.reify reify env n;;
