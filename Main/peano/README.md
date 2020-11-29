@@ -102,7 +102,7 @@ Peano number type:
 ```ocaml
 let rec reify = fun env n -> F.reify reify env n;;
 ```
-What makes it particularly interesting is that it is recursive. The abstract level Peano number type constructor has one type parameter, so we need one reifier for this
+What makes it particularly interesting is that it is recursive. The abstract level Peano number type constructor has one type parameter, so we need one (sub-)reifier for this
 parameter type in the definition of the reifier for the top level type. In OCanren, reifiers are always used as first-class objects, i.e., being passed as arguments and
 returned from a function, of which the Peano type reifier is a typical example, and users rarely need to provide arguments to reifiers.
 
