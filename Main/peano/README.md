@@ -94,7 +94,7 @@ Say we have a logic variable `x` and a substitution `[(x, Lam(z,y));(y, App(a,b)
 variable `x`: we instantiate it as much as possible, but allowing unbound logic variables to occur in the result. A _reifier_ is a function that reifies logic variables.
 
 
-We know that there are primary and advanced injection functions. Correspondingly there are primary and advanced reifiers: the primary reifier `Logic.reify` reifies logic
+We know that there are primary and advanced injection functions. Similarly there are primary and advanced reifiers: the primary reifier `Logic.reify` reifies logic
 variables over base types (like character and string) and constant constructors of variant types whose type constructors do not have any type parameter. Advanced reifiers
 are for logic variables over variant types whose type constructors do have one or more type parameters. The Peano Arithmetic library defines an advanced reifier for the
 Peano number type:
