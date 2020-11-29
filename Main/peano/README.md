@@ -106,8 +106,9 @@ Advanced reifiers are defined using the Fmap module functor family. The correct 
 defining advanced injection functions for the same type.  The result of applying the correct Fmap module functor is a module that provides, besides a distribution
 function, a reifier builder named `reify`, e.g., `F.reify` in the case of our library. Note there is an abuse of names: the name `reify` has been used for both reifiers
 and reifier builders. If a type constructor takes other types are parameters, then the refier for the top level type is built from reifiers for the parameter types:
-we build "larger" reifiers from "smaller" reifiers. The Peano number reifier is recursive because the Peano number type is recusive, and this is particularly clear from
-the [signature](../../Installation/ocanren/src/core/Logic.mli#L136) of `F.reify`. 
+we build "larger" reifiers from "smaller" reifiers. The Peano number reifier is recursive because the Peano number type is recusive. The reader should refer to
+the [signature](../../Installation/ocanren/src/core/Logic.mli#L136) of `F.reify` and see how the types of the reifier and the reifier
+ builder fit together.
 
 
 ## Overwriting the _show_ Function
