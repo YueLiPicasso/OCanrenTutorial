@@ -13,4 +13,6 @@ We begin with studying a "hello world" program,
 - Lesson 3: [A Simple Data Base](./ascii_ctrl_db)
 - Lesson 4: [Peano Number Arithmetic](peano)
 - Lesson 5: [Puzzle: Aircraft Fleet Range](aircraft_fleet)
+- Lesson 6: Tabling
+
   
