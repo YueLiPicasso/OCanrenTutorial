@@ -138,6 +138,7 @@ In like manner, the reader may:
 - Redefine the _show_ function to behave in other ways, or
 - Redefine other plugins by modifying the `GT.plugins` field, or
 - Redefine plugins for other types.
+
 Some additional remarks on the last point: the `@type` definition of a type constructor `typeconstr-name` generates a record value also named `typeconstr-name`.
 This could be viewed by adding the `-i` option as indicated in the [Makefile](Makefile#L10):
 ```
