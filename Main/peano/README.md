@@ -128,11 +128,21 @@ severa methods, one of which is `show` whose default definition is, like other p
 ```ocaml
 method show = logic.GT.plugins#show
 ```
-and whose default behaviour is the starightforward string conversion mentioned above. However, when there are too many repetitions of the constructor `S`, the
+and whose default behaviour is the starightforward string conversion mentioned above.
+
+However, when there are too many repetitions of the constructor `S`, the
 _show_ function as redefined in the Logic module is no longer suitable. Our Peano Arithmetic library therefore offers a further customized redefinition
 just for displaying logic Peano numbers, converting
-those values without free variables directly to Arabic numbers and those with free variables a sum between an Arabic number and the symbol `n`. The reader may
-redefine the _show_ function to behave in other ways, or to redefine other plugins by modifying the `GT.plugins` field.  
+those values without free variables directly to Arabic numbers and those with free variables a sum between an Arabic number and the symbol `n`.
+In like manner, the reader may:
+- Redefine the _show_ function to behave in other ways, or
+- Redefine other plugins by modifying the `GT.plugins` field, or
+- Redefine plugins for other types.
+Some additional remarks on the last point: the `@type` definition of a type constructor `typeconstr-name` generates a record value also named `typeconstr-name`.
+This could be viewed by adding the `-i` option as indicated in the [Makefile](Makefile#L10):
+```
+BFLAGS = -rectypes -g -i
+``` 
 
 
 
