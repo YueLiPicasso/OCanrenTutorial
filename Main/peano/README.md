@@ -117,7 +117,7 @@ The default _show_ function for a variant type converts values of that type
 to strings in a straightforward way, e.g., a logic Peano number
 representation of the integer 1 would be converted to the string `"Value(S(Value O))"`
 whilst "the successor of some unknown number" could be  `"Value(S(Var(1,[])))"`. These
-are not too readble.
+are not too readable.
 
 The Logic module has already [redefined](../../Installation/ocanren/src/core/Logic.ml#L35) the _show_ function for the
 type `Logic.logic` so that the above values would be converted to strings `"S(O)"` and `"S(_.1)"`
