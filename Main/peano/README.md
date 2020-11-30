@@ -141,12 +141,12 @@ In like manner, the reader may:
 - Redefine other plugins by modifying the `GT.plugins` field, or
 - Redefine plugins for other types.
 
-Some additional remarks on the last point: the `@type` definition of a type constructor `typeconstr-name` generates a record value also named `typeconstr-name`.
+Some additional remarks on the last point: the `@type` definition of a type constructor `typeconstr-name` generates a record value also named `typeconstr-name` of the type `GT.t`.
 This could be viewed by adding the `-i` option as indicated in the [Makefile](Makefile#L10):
 ```
 BFLAGS = -rectypes -g -i
 ``` 
-
+See also the [GT source](https://github.com/JetBrains-Research/GT/blob/039193385e6cb1a67bc8a9d00c662d9d1dc5478b/src/GT.ml4#L37).
 
 
 
