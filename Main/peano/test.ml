@@ -169,7 +169,9 @@ let _ =
   ocrun1 ~n:ans_no (fun q -> gcd q p14 p7);
   (* two unknowns *)
   printf "\n The gcd of what and what is 7 ?  (give %d answers) \n\n" ans_no;
-  ocrun2 ~n:ans_no (fun q r -> gcd' q r p7);
+  (* acceptable search *)
+  ocrun2 ~n:ans_no (fun q r -> gcd' q r p7);     
+  (* bad search, non-terminating *)
   (* printf "\n with another search strategy ... \n\n";
   ocrun2 ~n:ans_no (fun q r -> gcd q r p7); *)
   printf "\n The gcd of what and 14 is what ? (give %d answers) \n\n" ans_no;

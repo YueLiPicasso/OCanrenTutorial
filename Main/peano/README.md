@@ -245,6 +245,29 @@ It amounts to the multiplication `3 * 5`.
 
 ## Analyzing the Search Behaviour
 
+When using the `gcd` relation to find two numbers whose greatest common divisor is 7, the goal below (where `p7` has been defined as the Peano number 7) does not seem to terminate, leaving
+the computer to run indefinitely without producing an answer:
+```ocaml
+fun q r -> gcd q r p7
+```
+We investigate the problem in this section.
+
+The `gcd` relation below implements the famous Euclidean algorithm, whichsays: `c` is the gcd of `a` and
+`b`, iff:
+- `b` is less than or equal to `a`, and `b` divides `a`, and `c` equals `b`, or
+- `b` is less than `a`, and `b` does not divide `a`, but `c` the gcd of `b`  and the remainder
+of `a` divided by `b`.
+
+```ocaml
+let rec gcd a b c = (* the Euclidean algorithm *)
+  ocanren { { lte b a & fresh q in
+              div a b q O & c == b }
+          | fresh q, n in
+            lt b a
+            & div a b q (S n)
+            & gcd b (S n) c };;
+```
+
 ## Modifying the Search Behaviour
 
 ## The Formula Parser
