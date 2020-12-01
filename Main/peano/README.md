@@ -190,7 +190,7 @@ let rec lt a b =
                a == S n'
                & lt n' n }};;
 ```
-It says that `a` less than `b` if there exist `n`, such that `b` equals `S n`, and either `a` equals `O` or there exist `n'`
+It says that `a` is less than `b` if there exist `n`, such that `b` equals `S n`, and either `a` equals `O` or there exist `n'`
 such that `a` equals `S n'` and `n'` is less than `n`.
 
 Other relations in the library shall be
