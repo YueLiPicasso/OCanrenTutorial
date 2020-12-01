@@ -7,7 +7,7 @@ We begin with studying a "hello world" program,
  we define a simple relational data base, followed by a library for Peano numbers. 
  In the last lesson we use OCanren to solve an arithmetic puzzle. The last three
  lessons are so ordered that the complexity of the examples increases gently. The
- appendix gives an example of using the tabling to avoid infinite search path.   
+ appendix gives an example of using tabling to avoid infinite search path.   
 
 - Lesson 1: [General Feelings](./helloWorld)
 - Lesson 2: [Types for Relational Programs](./digTypes)
