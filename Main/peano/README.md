@@ -236,10 +236,12 @@ asks "What adds 4 equals to 7 ?" and whose answer is "3":
 ```ocaml
 fun q -> ocanren { add q (S(S(S(S O)))) (S(S(S(S(S(S(S O))))))) }
 ```
-The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answer is "15":
+This amounts to performing the subtraction `7 - 4`.  The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answer is "15":
 ```ocaml
 fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
 ```
+It amounts to the multiplication `3 * 5`.
+
 
 ## Analyzing the Search Behaviour
 
