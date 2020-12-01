@@ -36,6 +36,9 @@ val reify : VarEnv.t -> groundi -> logic;;
 
 (** Relations *)
 
+val isp : groundi -> goal;;
+(** [isp n] : n is a Peano number *)
+
 val lt : groundi -> groundi -> goal;;
 (** [lt a b] : a is less than b *)
 
@@ -59,3 +62,6 @@ val simplify : groundi -> groundi -> groundi -> groundi -> goal;;
 
 val coprime : groundi -> groundi -> goal;;
 (** [coprime a b] : a and b are coprime *)
+
+val coprime' : groundi -> groundi -> goal;;
+(** declaratively the same as [coprime], but has a different search strategy  *)

@@ -42,6 +42,8 @@ let rec reify = fun env n -> F.reify reify env n;;
 
 (* relations *)
 
+let rec isp n = ocanren { n == O | fresh m in n == S m};; 
+
 let rec lt a b =
   ocanren{ fresh n in
            b == S n &
@@ -71,20 +73,16 @@ let rec div a b q r =
 let rec gcd a b c = (* the Euclidean algorithm *)
   ocanren { { lte b a & fresh q in
               div a b q O & c == b }
-          | fresh q, n in
-            lt b a
-            & div a b q (S n)
-            & gcd b (S n) c };;
+          | { fresh q, n in
+              lt b a
+              & div a b q (S n)
+              & gcd b (S n) c } }
 
-let rec gcd' a b c = (* the Euclidean algorithm *)
-  ocanren { { c == b
-              & fresh q in
-              div a b q O
-              & lte b a }
-          | fresh q, n in
-            gcd' b (S n) c 
-            & div a b q (S n)
-            & lt b a };;
+let gcd' a b c = 
+  ocanren { fresh bnd in
+            isp bnd
+            & add a b bnd
+            & gcd a b c };;
 
 let simplify a b a' b' = 
       ocanren {  fresh n in b == S n &
@@ -95,6 +93,8 @@ let simplify a b a' b' =
                        & gcd a b c } };;
 
 let coprime a b = simplify a b a b;;
+
+let coprime' a b = ocanren { gcd' a b (S O) };;
 
 (* redefine the "show" function for the logic Peano number type *)
 let logic = {

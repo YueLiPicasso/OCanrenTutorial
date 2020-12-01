@@ -37,7 +37,7 @@ and ocrun3 = fun ?n g -> iterp3 ?n @@ run3 g
 and ocrun4 = fun ?n g -> iterp4 ?n @@ run4 g;;
 
 (* how many answers you want if the answer set is infinitely large ? *)
-let ans_no = 20;;
+let ans_no = 80;;
   
 printf "###### test lt ######\n\n";;
 
@@ -169,11 +169,9 @@ let _ =
   ocrun1 ~n:ans_no (fun q -> gcd q p14 p7);
   (* two unknowns *)
   printf "\n The gcd of what and what is 7 ?  (give %d answers) \n\n" ans_no;
-  (* acceptable search *)
-  ocrun2 ~n:ans_no (fun q r -> gcd' q r p7);     
-  (* bad search, non-terminating *)
-  (* printf "\n with another search strategy ... \n\n";
-  ocrun2 ~n:ans_no (fun q r -> gcd q r p7); *)
+  ocrun2 ~n:ans_no (fun q r -> gcd q r p7); 
+  printf "\n with another search strategy ... \n\n";
+  ocrun2 ~n:ans_no (fun q r -> gcd' q r p7);
   printf "\n The gcd of what and 14 is what ? (give %d answers) \n\n" ans_no;
   ocrun2 ~n:ans_no (fun q r -> gcd q p14 r);
   printf "\n with another search strategy ... \n\n";
@@ -190,4 +188,7 @@ printf "\n###### test coprime ######\n\n";;
 
 let _ =
   printf "\n Give %d pairs of coprime numbers. \n\n" ans_no;
-  ocrun2 ~n:ans_no (fun q r -> coprime q r);;
+  ocrun2 ~n:ans_no (fun q r -> coprime' q r); 
+  printf "\n with another search strategy ... \n\n" ;
+  ocrun2 ~n:ans_no (fun q r -> coprime q r) ;;
+ 

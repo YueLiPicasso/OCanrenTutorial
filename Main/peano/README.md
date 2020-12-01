@@ -245,28 +245,20 @@ It amounts to the multiplication `3 * 5`.
 
 ## Analyzing the Search Behaviour
 
-When using the `gcd` relation to find two numbers whose greatest common divisor is 7, the goal below (where `p7` has been defined as the Peano number 7) does not seem to terminate, leaving
-the computer to run indefinitely without producing an answer:
+When asking the `lt` relation "what is less than 5" using the goal:
 ```ocaml
-fun q r -> gcd q r p7
+fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
-We investigate the problem in this section.
+OCanren returns 0,...,5. We see how it does so.
 
-The `gcd` relation below implements the famous Euclidean algorithm, whichsays: `c` is the gcd of `a` and
-`b`, iff:
-- `b` is less than or equal to `a`, and `b` divides `a`, and `c` equals `b`, or
-- `b` is less than `a`, and `b` does not divide `a`, but `c` the gcd of `b`  and the remainder
-of `a` divided by `b`.
+let rec lt a b =
+  ocanren{ fresh n in
+           b == S n &
+             { a == O
+             | fresh n' in
+               a == S n'
+               & lt n' n }};;
 
-```ocaml
-let rec gcd a b c = (* the Euclidean algorithm *)
-  ocanren { { lte b a & fresh q in
-              div a b q O & c == b }
-          | fresh q, n in
-            lt b a
-            & div a b q (S n)
-            & gcd b (S n) c };;
-```
 
 ## Modifying the Search Behaviour
 
