@@ -198,7 +198,7 @@ such that `a` equals `S n'` and `n'` is less than `n`.
 Taking the "less than" relation as an example, we can ask questions like:
 - Is zero less than one ? Is one less than two ? Is one less than zero ? Is two less than one?
 - What is less than five ? Five is less than what ?
-- What is less tha what ?
+- What is less than what ?
 
 Since "less than" relates two numbers, the questions can be posed systematically
 according to how many unknows are involved. The first set of questions above is for _checking_:
