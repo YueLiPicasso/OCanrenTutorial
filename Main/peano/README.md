@@ -314,9 +314,32 @@ Restructure the right hand side of `(Eq.8)` we have:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
-		       | fresh n'  in  a == S n'
+		       |  fresh n'  in  a == S n'
 		          &  fresh n'' in  n' == S n'' & lt n'' (S(S(S O)))  (Eq.9)
 ```
+The one but the state of such transformation is:
+```
+lt a (S(S(S(S(S O))))) =  a == O
+                       |  a == S O
+		       |  a == S (S O)
+		       |  a == S (S (S O))
+		       |  a == S (S (S (S O)))
+		       |  fresh n'    in a == S n'
+		          &  fresh n'' in n' == S n''
+			  &  fresh n''' in n'' == S n'''
+			  &  fresh n'''' in n''' == S n''''
+			  &  fresh n''''' in n'''' == S n''''' & lt n''''' O (Eq.10)
+```
+Note that `lt n''''' O` expands to `fresh n in O == S n & ...` which is false, therefore the
+last state of the transformation is:
+```
+lt a (S(S(S(S(S O))))) =  a == O
+                       |  a == S O
+		       |  a == S (S O)
+		       |  a == S (S (S O))
+		       |  a == S (S (S (S O)))
+```
+
 
 
 ## Modifying the Search Behaviour
