@@ -12,7 +12,7 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 - [**T.3**](#relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
 - [**T.4**](#scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
   of unknown arguments. 
-- [**T.5**](#analyzing-the-search-behaviour) Analyzing how, in the context of a query, a relation searches for answers.
+- [**T.5**](#analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
   - [**T.5.1**](#modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within the body of a relation definition
     to modify the way in which the relation searches for answers in a given query.
 - [**T.6**](#the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
