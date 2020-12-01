@@ -178,27 +178,7 @@ let rec add a b c =
 It says nothing about how to compute the sum `c` of two numbers `a` and `b`, instead it only says what conditions must be
 satisfied so that the addition relation exists among the three numbers `a`, `b` and `c` --- if `a` equals
 `O` and `b`  equals `c`, or, if `a` equals `S n` and `c` equals `S m` and the numbers `n,b,m` also satisfy the addition
-relation, for some `n,m`.
-
-
-
-### less than
-
-
-
-### less than or equal
-
-### addition
-
-### division
-
-### greatest common divisor
-
-### greatest common divisor (variant of)
-
-### ratio simplification
-
-### coprime numbers
+relation, for some `n,m`.  No other way is given in which we can establish the addition relation among three numbers.  
 
 ## Scrutinizing Relations
 
