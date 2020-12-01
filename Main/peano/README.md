@@ -178,9 +178,24 @@ let rec add a b c =
 It says nothing about how to compute the sum `c` of two numbers `a` and `b`, instead it only says what conditions must be
 satisfied so that the addition relation exists among the three numbers `a`, `b` and `c` --- if `a` equals
 `O` and `b`  equals `c`, or, if `a` equals `S n` and `c` equals `S m` and the numbers `n,b,m` also satisfy the addition
-relation, for some `n,m`.  No other way is given in which we can establish the addition relation among three numbers.  
+relation, for some `n,m`.  No other way is given in which we can establish the addition relation among three numbers.
+
+Another example is the "less than" relation:
+```ocaml
+let rec lt a b =
+  ocanren{ fresh n in
+           b == S n &
+             { a == O
+             | fresh n' in
+               a == S n'
+               & lt n' n }};;
+```
+It says that `a` less than `b` is there exist `n`, such that `b` equals `S n`, and either `a` equals `O` or there exist `n'`
+such that `a` equals `S n'` and `n'` is less than `n`.
 
 ## Scrutinizing Relations
+
+With a relation defined, we can ask a variaty of questions to it. For example, 
 
 ## Analyzing the Search Behaviour
 
