@@ -22,7 +22,7 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
      injected versions.
 - [**T.7**](#building-a-library) Writing and testing a library in OCanren.
 
-The techniques are presented in detail in sections below, to which the labels are linked. Each
+The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
 
 ## Advanced Injection Functions
