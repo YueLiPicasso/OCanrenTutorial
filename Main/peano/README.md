@@ -161,32 +161,26 @@ that produces the output from the input.
 
 In OCanren, a relation is a function only at the language implementation level, and as users our experience with functions
 do not transfer well when it comes to reading and writing relations. That's why relational programming claims the status of
- being a unique programming paradigm distinct from imperative programming and functional programming.
+ being a unique programming paradigm distinct from imperative programming and functional programming. Working with  relations requires
+learning a new way of thinking: _declarative_ thinking.
 
 
-Relation definitions are _declarative_, meaning that it first of all states a proposition. The emphsize is on "what" rather
-than "how". 
+Relation definitions are declarative, meaning that it first of all states a proposition. The emphsize is on "what" rather
+than "how". It is the language implementation that takes care of "how", but the user of the language should foucs on "what".
+For example,
+look at the addition relation:
+```ocaml
+let rec add a b c =
+  ocanren{ a == O & b == c
+         | fresh n, m in
+           a == S n & c == S m & add n b m};;
+```
+It says nothing about how to compute the sum `c` of two numbers `a` and `b`, instead it only says what conditions must be
+satisfied so that the addition relation exists among the three numbers `a`, `b` and `c` --- if `a` equals
+`O` and `b`  equals `c`, or, if `a` equals `S n` and `c` equals `S m` and the numbers `n,b,m` also satisfies the addition
+relation, for some `n,m`.
 
 
-
-The library provides eight relations on Peano numbers:
-1. [less than](peano.ml#L45)
-1. [less than or equal](peano.ml#L53)
-1. [addition](peano.ml#L55)
-1. [division](peano.ml#L60)
-1. [greatest common divisor](peano.ml#L71)
-1. [greatest common divisor (variant of)](peano.ml#L79)
-1. [ratio simplification](peano.ml#L89)
-1. [coprime numbers](peano.ml#L97)
-
-There seem to be some missing basic relations such as subtraction and multiplication: we will later see that the addition
-relation can perform subtraction, and the division relation can do multiplication.  
-
-we focus on declarative
-reading of the relation definitions, or thinking in terms of relations, which is the distinctive feature of relational programming
-compared with functional programming where we instead think in terms of functions. In the following sub-sections, we give the
-source code of each relation, followed by the decalarative reading. The reader should learn not only how to read relations,
-but also how to define relations himself. 
 
 ### less than
 
