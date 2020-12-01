@@ -208,7 +208,7 @@ questions are for _searching_: looking for numbers that satisfy the relation. Ru
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
 asks about what is `q` so that  zero is less than one and  one is less than two, and the answer
-is just `n` meaning that `q` could be any number and the relation always hold among the given
+is just `n` meaning that `q` could be any number and the relation always holds among the given
 numbers.
 
 ## Analyzing the Search Behaviour
