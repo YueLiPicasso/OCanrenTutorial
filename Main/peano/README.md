@@ -203,7 +203,7 @@ Taking the "less than" relation as an example, we can ask questions like:
 Since "less than" relates two numbers, the questions can be posed systematically
 according to how many unknows are involved. The first set of questions above is for _checking_:
 we provide concrete numbers and ask if they satisfy the relation. The remaining two sets of
-questions are for _searching_: looking for numbers that satisfy the relation. Running the [test](test.ml#L44)  shows that OCanren answers all these questions well, for example, the goal:
+questions are for _searching_: looking for numbers that satisfy the relation. Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
 ```
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
