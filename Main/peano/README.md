@@ -193,7 +193,7 @@ let rec lt a b =
 It says that `a` less than `b` is there exist `n`, such that `b` equals `S n`, and either `a` equals `O` or there exist `n'`
 such that `a` equals `S n'` and `n'` is less than `n`.
 
-With relations define, we can pose questions to them. 
+With relations defined, we can pose questions to them. 
 
 ## Scrutinizing Relations
 
