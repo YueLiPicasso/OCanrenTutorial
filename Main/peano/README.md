@@ -207,7 +207,7 @@ Taking the "less than" relation as an example, we can ask questions like:
 - What is less than five ? Five is less than what ?
 - What is less than what ?
 
-Since "less than" relates two numbers, the questions can be posed systematically
+Since "less than" relates two numbers, questions on the relation can be posed systematically
 according to how many unknows are involved. The first set of questions above is for _checking_:
 we provide concrete numbers and ask if they satisfy the relation. The remaining two sets of
 questions are for _searching_: looking for numbers that satisfy the relation. Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
@@ -228,7 +228,10 @@ fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
 For this goal the answers `0,1,2,3,4` are found, which is quite satisfactory.
 
-The relations `lte, add, div, gcd` are also tested systematically. For instance, the goal below
+The relations `lte, add, div, gcd` are also questioned systematically.
+
+Note that the addition relation can perform subtraction, and the division
+relation can do multiplication. For instance, the goal below
 asks "What adds 4 equals to 7 ?" and whose answer is "3":
 ```ocaml
 fun q -> ocanren { add q (S(S(S(S O)))) (S(S(S(S(S(S(S O))))))) }
@@ -237,8 +240,6 @@ The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answe
 ```ocaml
 fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
 ```
-We have seen that the addition relation has been used to perform subtraction, and division used
- for multiplication. This is what makes relational programming attractive. 
 
 ## Analyzing the Search Behaviour
 
