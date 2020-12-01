@@ -337,9 +337,9 @@ lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
 		       |  a == S (S O)
 		       |  a == S (S (S O))
-		       |  a == S (S (S (S O)))
+		       |  a == S (S (S (S O)))                               (Eq.11)
 ```
-
+From `(Eq.11)` we read off the answers to the query.
 
 
 ## Modifying the Search Behaviour
