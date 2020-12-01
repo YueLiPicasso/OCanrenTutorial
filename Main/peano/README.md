@@ -164,6 +164,10 @@ do not transfer well when it comes to reading and writing relations. That's why 
  being a unique programming paradigm distinct from imperative programming and functional programming.
 
 
+Relation definitions are _declarative_, meaning that it first of all states a proposition. The emphsize is on "what" rather
+than "how". 
+
+
 
 The library provides eight relations on Peano numbers:
 1. [less than](peano.ml#L45)
