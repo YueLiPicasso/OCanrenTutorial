@@ -219,7 +219,7 @@ The goal below asks what is less than five:
 ```ocaml
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
-For this goal the answers `1,2,3,4` are found, which is quite satisfactory. The relations
+For this goal the answers `0,1,2,3,4` are found, which is quite satisfactory. The relations
 `lte, add, div, gcd` are also tested systematically.
 
 ## Analyzing the Search Behaviour
