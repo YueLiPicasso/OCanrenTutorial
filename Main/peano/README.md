@@ -195,7 +195,7 @@ such that `a` equals `S n'` and `n'` is less than `n`.
 
 Other relations in the library shall be
 read in this way, and they are all written with the declarative reading in mind. The reader is
-encouraged to write a relation for subsraction: `sub a b c` iff `a - b = c`, or,
+encouraged to write a relation for subtraction: `sub a b c` iff `a - b = c`, or,
 put in another way: iff `b` is `O` and `a` is `c`, or `b` is `S n` and `a` is `S n'`
 and `sub n' n c`.  
 
