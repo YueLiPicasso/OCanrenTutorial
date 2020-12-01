@@ -209,7 +209,18 @@ fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) }
 ```
 asks about what is `q` so that  zero is less than one and  one is less than two, and the answer
 is just `n` meaning that `q` could be any number and the relation always holds among the given
-numbers.
+numbers. The similar goal:
+```ocaml
+fun q -> ocanren { lt (S O) O | lt (S(S O)) (S O) }
+```
+asks about what is `q` so that one is less than zero and two is less than one, and there is
+no answer, meaning that there is no `q` to make the relation hold among the given numbers.
+The goal below asks what is less than five:
+```ocaml
+fun q -> ocanren { lt q (S(S(S(S(S O))))) }
+```
+For this goal the answers `1,2,3,4` are found, which is quite satisfactory. The relations
+`lte, add, div, gcd` are also tested systematically.
 
 ## Analyzing the Search Behaviour
 
