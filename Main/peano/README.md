@@ -199,7 +199,6 @@ encouraged to write a relation for subtraction: `sub a b c` iff `a - b = c`, or,
 put in another way: iff `b` is `O` and `a` is `c`, or `b` is `S n` and `a` is `S n'`
 and `sub n' n c`.  
 
-With relations defined, we can pose questions to them. 
 
 ## Scrutinizing Relations
 
@@ -239,8 +238,7 @@ The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answe
 fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
 ```
 We have seen that the addition relation has been used to perform subtraction, and division used
- for multiplication. This is what makes relational programming attractive. Next we explain how
- this is done.
+ for multiplication. This is what makes relational programming attractive. 
 
 ## Analyzing the Search Behaviour
 
