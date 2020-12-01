@@ -191,7 +191,9 @@ let rec lt a b =
                & lt n' n }};;
 ```
 It says that `a` less than `b` is there exist `n`, such that `b` equals `S n`, and either `a` equals `O` or there exist `n'`
-such that `a` equals `S n'` and `n'` is less than `n`. Other relations in the library shall be
+such that `a` equals `S n'` and `n'` is less than `n`.
+
+Other relations in the library shall be
 read in this way, and they are all written with the declarative reading in mind. The reader is
 encouraged to write a relation for subsraction: `sub a b c` iff `a - b = c`, or,
 put in another way: iff `b` is `O` and `a` is `c`, or `b` is `S n` and `a` is `S n'`
