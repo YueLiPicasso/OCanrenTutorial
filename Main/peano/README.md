@@ -204,7 +204,7 @@ Since "less than" relates two numbers, the questions can be posed systematically
 according to how many unknows are involved. The first set of questions above is for _checking_:
 we provide concrete numbers and ask if they satisfy the relation. The remaining two sets of
 questions are for _searching_: looking for numbers that satisfy the relation. Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
-```
+```ocaml
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
 asks about what is `q` so that  zero is less than one and  one is less than two, and the answer
