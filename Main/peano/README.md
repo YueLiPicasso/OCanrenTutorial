@@ -219,8 +219,19 @@ The goal below asks what is less than five:
 ```ocaml
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
-For this goal the answers `0,1,2,3,4` are found, which is quite satisfactory. The relations
-`lte, add, div, gcd` are also tested systematically.
+For this goal the answers `0,1,2,3,4` are found, which is quite satisfactory.
+
+The relations `lte, add, div, gcd` are also tested systematically. For instance, the goal below
+asks "What adds 4 equals to 7 ?" and whose answer is "3":
+```ocaml
+fun q -> ocanren { add q (S(S(S(S O)))) (S(S(S(S(S(S(S O))))))) }
+```
+The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answer is "15":
+```ocaml
+fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
+```
+We have seen that the addition relation has been used to perform subtraction, and division used
+ for multiplication. This is what makes relational programming attractive. 
 
 ## Analyzing the Search Behaviour
 
