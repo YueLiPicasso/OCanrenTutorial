@@ -249,7 +249,7 @@ When asking the `lt` relation "what is less than 5" using the goal:
 ```ocaml
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
-OCanren returns 0,...,4. We see how it does so. We reproduce the definition of `lt`
+OCanren returns 0,...,4. Let's see why. We reproduce the definition of `lt`
 in the followinig simplified form:
 ```
 lt a b = fresh n in b == S n & { a == O | fresh n' in a == S n' & lt n' n } (Eq.1)
