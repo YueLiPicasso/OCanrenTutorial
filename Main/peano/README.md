@@ -317,7 +317,7 @@ lt a (S(S(S(S(S O))))) =  a == O
 		       |  fresh n'  in  a == S n'
 		          &  fresh n'' in  n' == S n'' & lt n'' (S(S(S O)))  (Eq.9)
 ```
-The one but the state of such transformation is:
+The last but one state of such transformation is:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
