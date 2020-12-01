@@ -156,7 +156,7 @@ and write relation definitions.
 
 The reader is already familiar with reading and writing functions in OCaml. To read a function, just look at the type annotation (if any)
 to determine what are the input types and what is the output type, and then inspect the function body to see how the inputs are
-processed to produce the output. To write a function, first decide the type of the functions, and then design the internal procedure
+processed to produce the output. To write a function, first decide the type of the function, and then design the internal procedure
 that produces the output from the input.
 
 In OCanren, a relation is a function only at the language implementation level, and as users our experience with functions
