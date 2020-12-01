@@ -165,7 +165,7 @@ do not transfer well when it comes to reading and writing relations. That's why 
 learning a new way of thinking: _declarative_ thinking.
 
 
-Relation definitions are declarative, meaning that it first of all states a proposition. The emphsize is on "what" rather
+Relation definitions are declarative, meaning that it first of all states a proposition. The emphasize is on "what" rather
 than "how". It is the language implementation that takes care of "how", but the user of the language should foucs on "what".
 For example,
 look at the addition relation:
