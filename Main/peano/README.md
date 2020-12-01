@@ -228,7 +228,7 @@ fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
 For this goal the answers `0,1,2,3,4` are found, which is quite satisfactory.
 
-The relations `lte, add, div, gcd` are also questioned systematically.
+The relations `lte, add, div, gcd` are also questioned systematically in the test file.
 
 Note that the addition relation can perform subtraction, and the division
 relation can do multiplication. For instance, the goal below
