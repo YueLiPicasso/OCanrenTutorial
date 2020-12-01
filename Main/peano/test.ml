@@ -37,7 +37,7 @@ and ocrun3 = fun ?n g -> iterp3 ?n @@ run3 g
 and ocrun4 = fun ?n g -> iterp4 ?n @@ run4 g;;
 
 (* how many answers you want if the answer set is infinitely large ? *)
-let ans_no = 80;;
+let ans_no = 20;;
   
 printf "###### test lt ######\n\n";;
 

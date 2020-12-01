@@ -249,16 +249,28 @@ When asking the `lt` relation "what is less than 5" using the goal:
 ```ocaml
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
-OCanren returns 0,...,4. We see how it does so.
-
-let rec lt a b =
-  ocanren{ fresh n in
-           b == S n &
-             { a == O
-             | fresh n' in
-               a == S n'
-               & lt n' n }};;
-
+OCanren returns 0,...,4. We see how it does so. We reproduce the definition of `lt`
+in the followinig simplified form:
+```
+lt a b = fresh n in b == S n & { a == O | fresh n' in a == S n' & lt n' n } (Eq.1)
+```
+Now replace `b` by `(S(S(S(S(S O)))))` in `(Eq.1)`, we get:
+```
+lt a (S(S(S(S(S O))))) = fresh n in (S(S(S(S(S O))))) == S n
+        & { a == O | fresh n' in a == S n' & lt n' n }                      (Eq.2)
+```
+Replace `(S(S(S(S(S O))))) == S n` by `(S(S(S(S O)))) == n`  in `(Eq.2)`, we get:
+```
+lt a (S(S(S(S(S O))))) = fresh n in (S(S(S(S O)))) == n
+        & { a == O | fresh n' in a == S n' & lt n' n }                      (Eq.3)
+```
+In `(Eq.3)`, remove `fresh n in (S(S(S(S O)))) == n`, then replace all occurences of `n`
+by `(S(S(S(S O))))`. The top level `&` and the braces are no longer needed, so also being
+removed. We get:
+```
+lt a (S(S(S(S(S O))))) =  a == O
+                       |  fresh n' in a == S n' & lt n' (S(S(S(S O))))      (Eq.4)
+```
 
 ## Modifying the Search Behaviour
 
