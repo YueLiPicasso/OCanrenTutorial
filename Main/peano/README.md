@@ -213,7 +213,7 @@ numbers. The similar goal:
 ```ocaml
 fun q -> ocanren { lt (S O) O | lt (S(S O)) (S O) }
 ```
-asks about what is `q` so that one is less than zero and two is less than one, and there is
+asks about what is `q` so that one is less than zero or two is less than one. There is
 no answer, meaning that there is no `q` to make the relation hold among the given numbers.
 The goal below asks what is less than five:
 ```ocaml
