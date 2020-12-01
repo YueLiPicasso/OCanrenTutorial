@@ -193,6 +193,8 @@ let rec lt a b =
 It says that `a` less than `b` is there exist `n`, such that `b` equals `S n`, and either `a` equals `O` or there exist `n'`
 such that `a` equals `S n'` and `n'` is less than `n`.
 
+With relations define, we can pose questions to them. 
+
 ## Scrutinizing Relations
 
 Taking the "less than" relation as an example, we can ask questions like:
@@ -231,7 +233,8 @@ The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answe
 fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
 ```
 We have seen that the addition relation has been used to perform subtraction, and division used
- for multiplication. This is what makes relational programming attractive. 
+ for multiplication. This is what makes relational programming attractive. Next we explain how
+ this is done.
 
 ## Analyzing the Search Behaviour
 
