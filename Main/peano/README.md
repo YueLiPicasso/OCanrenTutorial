@@ -328,7 +328,8 @@ lt a (S(S(S(S(S O))))) =  a == O
 		          &  fresh n'' in n' == S n''
 			  &  fresh n''' in n'' == S n'''
 			  &  fresh n'''' in n''' == S n''''
-			  &  fresh n''''' in n'''' == S n''''' & lt n''''' O (Eq.10)
+			  &  fresh n''''' in n'''' == S n''''' & lt n''''' O
+			                                                     (Eq.10)
 ```
 Note that `lt n''''' O` expands to `fresh n in O == S n & ...` which is false, therefore the
 last state of the transformation is:
