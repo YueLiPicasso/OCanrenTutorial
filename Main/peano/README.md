@@ -303,8 +303,8 @@ lt a (S(S(S(S(S O))))) =  a == O
                        |  fresh n'  in
 		          a == S n' &
 			    { n' == O
-                            |  fresh n'' in
-			       n' == S n'' & lt n'' (S(S(S O))) }
+                            | fresh n'' in
+			      n' == S n'' & lt n'' (S(S(S O))) }
 
                                                                              (Eq.7)
 ```
@@ -313,8 +313,8 @@ In `(Eq.7)`, distribute `a == S n'` we get:
 lt a (S(S(S(S(S O))))) =  a == O
                        |  fresh n'  in
 		          a == S n' &  n' == O
-                          |  a == S n' &  fresh n'' in
-				           n' == S n'' & lt n'' (S(S(S O)))
+                          | a == S n' & fresh n'' in
+				        n' == S n'' & lt n'' (S(S(S O)))
 						     
 						                             (Eq.8)
 ```
@@ -324,7 +324,7 @@ lt a (S(S(S(S(S O))))) =  a == O
                        |  fresh n'  in
 		          a == S O 
                           |  a == S n'
-		             &  fresh n'' in  n' == S n''
+		             & fresh n'' in  n' == S n''
 			     & lt n'' (S(S(S O)))                            (Eq.8)
 ```
 Restructure the right hand side of `(Eq.8)` we have:
