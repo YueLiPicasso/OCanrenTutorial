@@ -292,7 +292,7 @@ by `n'` in `(Eq.1)` in a capture-avoiding manner, we get:
 lt n' (S(S(S(S O)))) = fresh n in (S(S(S(S O)))) == S n
                     & { n' == O | fresh n'' in n' == S n'' & lt n'' n }     (Eq.5)
 ```
-Similar to the way `(Eq.2)` is transformed into `(Eq.4)`, we can transform `(Eq.5)` into:
+Similar to the way `(Eq.2)` is simplified into `(Eq.4)`, we can transform `(Eq.5)` into:
 ```
 lt n' (S(S(S(S O)))) =  n' == O
                      |  fresh n'' in n' == S n'' & lt n'' (S(S(S O)))       (Eq.6)
