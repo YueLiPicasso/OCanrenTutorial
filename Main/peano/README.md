@@ -213,7 +213,7 @@ questions are for _searching_: looking for numbers that satisfy the relation. No
 the questions are organized: there coud be no unknown, 
 one unknown or two unknowns, and each argument position of the relation might be an unknown.
 In general, for a relation of N arguments, the total number of kinds of questions we can ask is
-( _r_ is the number of unknowns in <sub>N</sub>C<sub>r</sub>):
+( R is the number of unknowns in <sub>N</sub>C<sub>R</sub>):
 
 <sub>N</sub>C<sub>0</sub> + <sub>N</sub>C<sub>1</sub> + <sub>N</sub>C<sub>2</sub> + ... + <sub>N</sub>C<sub>N-1</sub> + <sub>N</sub>C<sub>N</sub>
 
