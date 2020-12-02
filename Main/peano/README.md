@@ -258,7 +258,13 @@ When asking the `lt` relation "what is less than 5" using the goal:
 ```ocaml
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
-OCanren returns 0,1,2,3,4. Let's see why. We reproduce the definition of `lt`
+OCanren returns 0,1,2,3,4. Let's see why. It really is a matter of definition:
+we defined `lt a b` to be a certain formula and now we substitute 5 for  `b` in the
+formula `lt a b` followed by several steps of simplification then
+we get the a formula that literally says `a` shall be 0, 1, 2, 3 or 4. Below are the
+details.
+
+We reproduce the definition of `lt`
 in the followinig simplified form:
 ```
 lt a b = fresh n in b == S n & { a == O | fresh n' in a == S n' & lt n' n } (Eq.1)
