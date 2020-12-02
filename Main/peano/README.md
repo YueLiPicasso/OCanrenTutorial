@@ -282,7 +282,7 @@ lt a (S(S(S(S(S O))))) = fresh n in (S(S(S(S O)))) == n
                          & { a == O | fresh n' in a == S n' & lt n' n }
 			                                                     (Eq.3)
 ```
-In `(Eq.3)`, remove `fresh n in (S(S(S(S O)))) == n`, then replace all occurences of `n`
+In `(Eq.3)`, remove `fresh n in (S(S(S(S O)))) == n`, then replace all free occurences of `n`
 by `(S(S(S(S O))))`. The top level `&` and the braces are no longer needed, so also being
 removed. We get:
 ```
