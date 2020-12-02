@@ -218,13 +218,13 @@ In general, for a relation of N arguments, the total number of kinds of question
 <sub>N</sub>C<sub>0</sub> + <sub>N</sub>C<sub>1</sub> + <sub>N</sub>C<sub>2</sub> + ... + <sub>N</sub>C<sub>N-1</sub> + <sub>N</sub>C<sub>N</sub>
 
 Running the [test](test.ml#L44)  shows that OCanren answers all the questions well. For example, the goal:
-```ocaml
+```
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
 asks about what is `q` so that  zero is less than one and  one is less than two, and the answer
 is just `n` meaning that `q` could be any number and the relation always holds among the given
 numbers. The similar goal:
-```ocaml
+```
 fun q -> ocanren { lt (S O) O | lt (S(S O)) (S O) }
 ```
 asks about what is `q` so that one is less than zero or two is less than one. There is
@@ -232,7 +232,7 @@ no answer, meaning that there is no `q` to make the relation hold among the give
 
 
 The goal below asks what is less than five:
-```ocaml
+```
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }
 ```
 For this goal the answers `0,1,2,3,4` are found, which is quite satisfactory.
@@ -242,11 +242,11 @@ The relations `lte, add, div, gcd` are also questioned systematically in the tes
 Note that the addition relation can perform subtraction, and the division
 relation can do multiplication. For instance, the goal below
 asks "What adds 4 equals to 7 ?" and whose answer is "3":
-```ocaml
+```
 fun q -> ocanren { add q (S(S(S(S O)))) (S(S(S(S(S(S(S O))))))) }
 ```
 This amounts to performing the subtraction `7 - 4`.  The next goal asks "What divided by 5 equals 3 with remainder 0 ?" and the answer is "15":
-```ocaml
+```
 fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
 ```
 It amounts to the multiplication `3 * 5`.
@@ -255,7 +255,7 @@ It amounts to the multiplication `3 * 5`.
 ## Analyzing the Search Behaviour
 
 When asking the `lt` relation "what is less than 5" using the goal:
-```ocaml
+```
 fun q -> ocanren { lt q (S(S(S(S(S O))))) }                                  (G.1)
 ```
 OCanren returns 0,1,2,3,4. Let's see why. It really is a matter of definition:
