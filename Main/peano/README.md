@@ -231,7 +231,7 @@ asks about what is `q` so that one is less than zero or two is less than one. Th
 no answer, meaning that there is no `q` to make the relation hold among the given numbers.
 The two goals above may sound weird but logically since the quantified variable `q` does
  not occur within the scope of the quantification, we can simply omit the quantification and derive
- that the formulae enclosed by `ocanren{}` are true or false on its own.
+ the truth value of the formulae enclosed by `ocanren{}`.
 
 The goal below asks what is less than five:
 ```ocaml
