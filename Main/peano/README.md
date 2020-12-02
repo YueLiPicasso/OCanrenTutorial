@@ -267,74 +267,78 @@ details.
 We reproduce the definition of `lt`
 in the followinig simplified form:
 ```
-lt a b = fresh n in b == S n & { a == O | fresh n' in a == S n' & lt n' n } (Eq.1)
+lt a b = fresh n in b == S n & { a == O | fresh n' in a == S n' & lt n' n }
+                                                                             (Eq.1)
 ```
 Now replace `b` by `(S(S(S(S(S O)))))` in `(Eq.1)`, we get:
 ```
 lt a (S(S(S(S(S O))))) = fresh n in (S(S(S(S(S O))))) == S n
-        & { a == O | fresh n' in a == S n' & lt n' n }                      (Eq.2)
+                         & { a == O | fresh n' in a == S n' & lt n' n }
+			                                                     (Eq.2)
 ```
 Replace `(S(S(S(S(S O))))) == S n` by `(S(S(S(S O)))) == n`  in `(Eq.2)`, we get:
 ```
 lt a (S(S(S(S(S O))))) = fresh n in (S(S(S(S O)))) == n
-        & { a == O | fresh n' in a == S n' & lt n' n }                      (Eq.3)
+                         & { a == O | fresh n' in a == S n' & lt n' n }
+			                                                     (Eq.3)
 ```
 In `(Eq.3)`, remove `fresh n in (S(S(S(S O)))) == n`, then replace all occurences of `n`
 by `(S(S(S(S O))))`. The top level `&` and the braces are no longer needed, so also being
 removed. We get:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
-                       |  fresh n' in a == S n' & lt n' (S(S(S(S O))))      (Eq.4)
+                       |  fresh n' in a == S n'
+		          & lt n' (S(S(S(S O))))                             (Eq.4)
 ```
 Now replace `b` by `(S(S(S(S O))))` and`a`
 by `n'` in `(Eq.1)` in a capture-avoiding manner, we get:
 ```
 lt n' (S(S(S(S O)))) = fresh n in (S(S(S(S O)))) == S n
-                    & { n' == O | fresh n'' in n' == S n'' & lt n'' n }     (Eq.5)
+                       & { n' == O | fresh n'' in n' == S n'' & lt n'' n }
+		                                                             (Eq.5)
 ```
 Similar to the way `(Eq.2)` is simplified into `(Eq.4)`, we can transform `(Eq.5)` into:
 ```
 lt n' (S(S(S(S O)))) =  n' == O
-                     |  fresh n'' in n' == S n'' & lt n'' (S(S(S O)))       (Eq.6)
+                     |  fresh n'' in n' == S n'' & lt n'' (S(S(S O)))        (Eq.6)
 ```
 Now in `(Eq.4)` replace `lt n' (S(S(S(S O))))` by the right hand side of `(Eq.6)`:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
-                       |  fresh n'  in
-		          a == S n' &
-			    { n' == O
-                            | fresh n'' in
-			      n' == S n'' & lt n'' (S(S(S O))) }
+                       |  fresh n' in a == S n'
+		       &  { n' == O
+                          | fresh n'' in n' == S n'' & lt n'' (S(S(S O))) }
 
                                                                              (Eq.7)
 ```
 In `(Eq.7)`, distribute `a == S n'` we get:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
-                       |  fresh n'  in
+                       |  fresh n' in
 		          a == S n' &  n' == O
-                          | a == S n' & fresh n'' in
-				        n' == S n'' & lt n'' (S(S(S O)))
+                          | a == S n' & fresh n'' in n' == S n'' & lt n'' (S(S(S O)))
 						     
 						                             (Eq.8)
 ```
-Replace `n'` by `O` and remove all parts rendered unnecessary by this move in `(Eq.8)`, we get:
+Replace `a == S n' &  n' == O` by `a == S O` in `(Eq.8)`, we get:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
-                       |  fresh n'  in
+                       |  fresh n' in
 		          a == S O 
-                          |  a == S n'
-		             & fresh n'' in  n' == S n''
-			     & lt n'' (S(S(S O)))                            (Eq.8)
+                          | a == S n' & fresh n'' in  n' == S n'' & lt n'' (S(S(S O)))
+			  
+                                                                             (Eq.8)
 ```
-Restructure the right hand side of `(Eq.8)` we have:
+In the right hand side of `(Eq.8)` move `a == S O` out of the scope of the `fresh n' in`,  we have:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
-		       |  fresh n'  in  a == S n'
-		          &  fresh n'' in  n' == S n'' & lt n'' (S(S(S O)))  (Eq.9)
+		       |  fresh n' in
+		          a == S n' & fresh n'' in n' == S n'' & lt n'' (S(S(S O)))
+
+                                                                             (Eq.9)
 ```
-The last but one state of such transformation is:
+Continue to simplifiy the formula, and The last but one state of such transformation is:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
