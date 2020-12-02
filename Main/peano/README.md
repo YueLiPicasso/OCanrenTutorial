@@ -324,7 +324,8 @@ lt a (S(S(S(S(S O))))) =  a == O
                        |  fresh n'  in
 		          a == S O 
                           |  a == S n'
-		          &  fresh n'' in  n' == S n'' & lt n'' (S(S(S O)))  (Eq.8)
+		             &  fresh n'' in  n' == S n''
+			     & lt n'' (S(S(S O)))                            (Eq.8)
 ```
 Restructure the right hand side of `(Eq.8)` we have:
 ```
