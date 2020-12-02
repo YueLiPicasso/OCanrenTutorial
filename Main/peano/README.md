@@ -315,7 +315,7 @@ In `(Eq.7)`, distribute `a == S n'` we get:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  fresh n' in
-		          a == S n' &  n' == O
+		            a == S n' &  n' == O
                           | a == S n' & fresh n'' in n' == S n'' & lt n'' (S(S(S O)))
 						     
 						                             (Eq.8)
