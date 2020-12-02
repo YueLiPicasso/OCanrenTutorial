@@ -229,7 +229,7 @@ fun q -> ocanren { lt (S O) O | lt (S(S O)) (S O) }
 ```
 asks about what is `q` so that one is less than zero or two is less than one. There is
 no answer, meaning that there is no `q` to make the relation hold among the given numbers.
-The two goals above may sound weird but logically since the quantified variable `q` does
+The above two goals  and their answers may sound weird but logically since the quantified variable `q` does
  not occur within the scope of the quantification, we can simply omit the quantification and derive
  the truth value of the formulae enclosed by `ocanren{}`.
 
