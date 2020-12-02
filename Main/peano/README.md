@@ -292,9 +292,12 @@ lt a (S(S(S(S(S O))))) = a == O
 ```
 From `(Eq.1)` to `(Eq.4)` what we have done is to provide a concrete value (the Peano number
  5) as the second argument of `lt` and use the result of unification to simplify the equation.
-The recursive call of `lt` in the right hand side of `(Eq.4)` can be treated similarly, as follows.
+The recursive call of `lt` in the right hand side of `(Eq.4)` can be treated similarly:
+we provide a concrete value (the Peano number  4) as the second argument of `lt`  `(Eq.5)` and
+use the result of unification to simplify the equation `(Eq.6)`,  which is then used to substitute
+for the recursive call of `lt` in `(Eq.4)`, as follows.
 
-Now replace `b` by `(S(S(S(S O))))` and`a`
+Replace `b` by `(S(S(S(S O))))` and`a`
 by `n'` in `(Eq.1)` in a capture-avoiding manner, we get:
 ```
 lt n' (S(S(S(S O)))) = fresh n in (S(S(S(S O)))) == S n
@@ -307,6 +310,8 @@ lt n' (S(S(S(S O)))) = n' == O
                      | fresh n'' in n' == S n''
 		       & lt n'' (S(S(S O)))                                  (Eq.6)
 ```
+
+
 Now in `(Eq.4)` replace `lt n' (S(S(S(S O))))` by the right hand side of `(Eq.6)`:
 ```
 lt a (S(S(S(S(S O))))) = a == O
@@ -315,6 +320,7 @@ lt a (S(S(S(S(S O))))) = a == O
                             | fresh n'' in n' == S n''
 			      & lt n'' (S(S(S O))) }                         (Eq.7)
 ```
+The right hand side of `(Eq.7)` produces another value of `a` which is `S O`, as follows.
 In `(Eq.7)`, distribute `a == S n'` we get:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
@@ -331,16 +337,16 @@ lt a (S(S(S(S(S O))))) =  a == O
 		            a == S O 
                           | a == S n' & fresh n'' in  n' == S n'' & lt n'' (S(S(S O)))
 			  
-                                                                             (Eq.8)
+                                                                             (Eq.9)
 ```
-In the right hand side of `(Eq.8)` move `a == S O` out of the scope of the `fresh n' in`,  we have:
+In the right hand side of `(Eq.9)` move `a == S O` out of the scope of the `fresh n' in`,  we have:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
 		       |  fresh n' in
 		          a == S n' & fresh n'' in n' == S n'' & lt n'' (S(S(S O)))
 
-                                                                             (Eq.9)
+                                                                             (Eq.10)
 ```
 Continue to simplifiy the formula. The last but one state of such transformation is:
 ```
@@ -354,7 +360,7 @@ lt a (S(S(S(S(S O))))) =  a == O
 		       &  fresh n''' in n'' == S n'''
 		       &  fresh n'''' in n''' == S n''''
 		       &  fresh n''''' in n'''' == S n''''' & lt n''''' O
-			                                                     (Eq.10)
+			                                                     (Eq.11)
 ```
 Note that `lt n''''' O` expands to `fresh n in O == S n & ...` which is false, therefore the
 last state of the transformation is:
@@ -363,7 +369,7 @@ lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
 		       |  a == S (S O)
 		       |  a == S (S (S O))
-		       |  a == S (S (S (S O)))                               (Eq.11)
+		       |  a == S (S (S (S O)))                               (Eq.12)
 ```
 From `(Eq.11)` we read off the answers to the query.
 
