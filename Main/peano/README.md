@@ -207,7 +207,7 @@ Taking the "less than" relation as an example, we can ask questions like:
 - What is less than five ? Five is less than what ?
 - What is less than what ?
 
-Since "less than" relates two numbers, questions on the relation can be posed systematically
+Questions on a relation can be posed systematically
 according to how many unknows are involved. The first set of questions above is for _checking_:
 we provide concrete numbers and ask if they satisfy the relation. The remaining two sets of
 questions are for _searching_: looking for numbers that satisfy the relation. Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
