@@ -27,6 +27,8 @@ section is self-contained and could be read independent of other sections.
 
 ## Advanced Injection Functions
 
+(T.1)
+
 The primary injection operator is `!!` which is used to cast primitive values (such as characters and strings)
 and constant constructors of variant types (particularly whose type constructors do not have a type parameter)
 from the ground level to the injected level. For those variant types  whose type constructors have
@@ -87,6 +89,8 @@ why they are defined in the given manner.
 
 ## Reification and Reifiers
 
+(T.2)
+
 Say we have a logic variable `x` and a substitution `[(x, Lam(z,y));(y, App(a,b))]` that associates `x` with the term `Lam(z,y)` and `y` with `App(a,b)` where
 `y, z` are also logic variables. We would like to know what `x` is with respect to the substitution. It is straightforward to replace `x` by `Lam(z,y)` but since
 `y` is associated with `App(a,b)` we can further replace `y` in `Lam(z,y)`, and finally we get the term `Lam(z,App(a,b))`. Although there is still an unbound part
@@ -112,6 +116,8 @@ the [signature](../../Installation/ocanren/src/core/Logic.mli#L136) of `F.reify`
 
 
 ## Overwriting the _show_ Function
+
+(T.3)
 
 The default _show_ function for a variant type converts values of that type
 to strings in a straightforward way, e.g., a logic Peano number
@@ -150,6 +156,8 @@ See also the [GT source](https://github.com/JetBrains-Research/GT/blob/039193385
 
 
 ## Relations on Peano Numbers
+
+(T.4)
 
 This section teaches the reader how to read
 and write relation definitions.
@@ -202,6 +210,8 @@ and `sub n' n c`.
 
 ## Scrutinizing Relations
 
+(T.5)
+
 Taking the "less than" relation as an example, we can ask questions like:
 - Is zero less than one ? Is one less than two ? Is one less than zero ? Is two less than one?
 - What is less than five ? Five is less than what ?
@@ -253,6 +263,8 @@ It amounts to the multiplication `3 * 5`.
 
 
 ## Analyzing the Search Behaviour
+
+(T.6)
 
 When asking the `lt` relation "what is less than 5" using the goal:
 ```
@@ -382,10 +394,19 @@ The reader may take an exercise to show that one plus one equals two by simplify
 
 ## Modifying the Search Behaviour
 
+(T.7)
+
 ## The Formula Parser
+
+(T.8)
 
 ## OCanren Terms
 
+(T.9)
+
 ## Building a Library
 
+(T.10)
+
 ## Conclusion
+
