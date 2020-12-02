@@ -7,20 +7,20 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
   `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).
 - [**T.2**](#reification-and-reifiers) Defining reifiers to convert data from the injected level to the logic level,
   again with help from the Fmap family of module functors.
-  - [**T.2.1**](#overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
+- [**T.3**](#overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
     to allow for more concise and human readable printing of them.
-- [**T.3**](#relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
-- [**T.4**](#scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
+- [**T.4**](#relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
+- [**T.5**](#scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
   of unknown arguments. 
-- [**T.5**](#analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
-  - [**T.5.1**](#modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within the body of a relation definition
+- [**T.6**](#analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
+- [**T.7**](#modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within the body of a relation definition
     to modify the way in which the relation searches for answers in a given query.
-- [**T.6**](#the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
+- [**T.8**](#the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
   an expression built with names  provided by the module [Core](../../Installation/ocanren/src/core/Core.mli).
-     - [**T.6.1**](#ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
+- [**T.9**](#ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
-- [**T.7**](#building-a-library) Writing and testing a library in OCanren.
+- [**T.10**](#building-a-library) Writing and testing a library in OCanren.
 
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
