@@ -256,7 +256,7 @@ It amounts to the multiplication `3 * 5`.
 
 When asking the `lt` relation "what is less than 5" using the goal:
 ```ocaml
-fun q -> ocanren { lt q (S(S(S(S(S O))))) }
+fun q -> ocanren { lt q (S(S(S(S(S O))))) }                                  (G.1)
 ```
 OCanren returns 0,1,2,3,4. Let's see why. It really is a matter of definition:
 we defined `lt a b` to be a certain formula and now we substitute 5 for  `b` in the
@@ -374,6 +374,9 @@ lt a (S(S(S(S(S O))))) =  a == O
 		       |  a == S (S (S (S O)))                               (Eq.12)
 ```
 From `(Eq.11)` we read off the answers to the query.
+
+The derivation from `(Eq.1)` to `(Eq.12)`, combined with the operational semantics of OCanren in terms of
+stream manipulation,  explains why we get the answer that `a` equals 0,1,2,3 or 4 from the goal `(G.1)`.  
 
 
 ## Modifying the Search Behaviour
