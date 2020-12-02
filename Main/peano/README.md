@@ -348,7 +348,9 @@ lt a (S(S(S(S(S O))))) =  a == O
 
                                                                              (Eq.10)
 ```
-Continue to simplifiy the formula. The last but one state of such transformation is:
+From `(Eq.1)` to `(Eq.10)` are steps of substitution, unification and simplification.  Recursive calls
+are expanded and then reduced, and the initial formula `lt a (S(S(S(S(S O)))))` is gradually unfolded
+so that values of `a` are revealed one by one.  Continue this way, the last but one equation would be:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
@@ -363,7 +365,7 @@ lt a (S(S(S(S(S O))))) =  a == O
 			                                                     (Eq.11)
 ```
 Note that `lt n''''' O` expands to `fresh n in O == S n & ...` which is false, therefore the
-last state of the transformation is:
+last equation is:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
