@@ -212,11 +212,11 @@ we provide concrete numbers and ask if they satisfy the relation. The remaining 
 questions are for _searching_: looking for numbers that satisfy the relation. Note that
 the questions are organized: there coud be no unknown, 
 one unknown or two unknowns, and each argument position of the relation might be an unknown.
-In general, for a relation of N arguments, the total number of knids of questions we can ask is:
+In general, for a relation of N arguments, the total number of kinds of questions we can ask is:
 
-C<sub>N</sub><sup>0</sup> + C<sub>N</sub><sup>1</sup> + C<sub>N</sub><sup>2</sup> + ... + C<sub>N</sub><sup>N-1</sup> + C<sub>N</sub><sup>N</sup>
+<sub>N</sub>C<sub>0</sub> + <sub>N</sub>C<sub>1</sub> + <sub>N</sub>C<sub>2</sub> + ... + <sub>N</sub>C<sub>N-1</sub> + <sub>N</sub>C<sub>N</sub>
 
-Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
+Running the [test](test.ml#L44)  shows that OCanren answers all the questions well. For example, the goal:
 ```ocaml
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
