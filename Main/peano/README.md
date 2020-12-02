@@ -214,7 +214,8 @@ the questions are organized: there coud be no unknown,
 one unknown or two unknowns, and each argument position of the relation might be an unknown.
 In general, for a relation of N arguments, the total number of knids of questions we can ask is:
 
-2*C<sub>N</sub><super>0</super> + C<sub>N</sub><super>1</super> + C<sub>N</sub><super>2</super> + ... + C<sub>N</sub><super>N-1</super> + C<sub>N</sub><super>N</super>
+C<sub>N</sub><sup>0</sup> + C<sub>N</sub><sup>1</sup> + C<sub>N</sub><sup>2</sup> + ... + C<sub>N</sub><sup>N-1</sup> + C<sub>N</sub><sup>N</sup>
+
 Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
 ```ocaml
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
