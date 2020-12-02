@@ -210,8 +210,11 @@ Taking the "less than" relation as an example, we can ask questions like:
  The first set of questions above is for _checking_:
 we provide concrete numbers and ask if they satisfy the relation. The remaining two sets of
 questions are for _searching_: looking for numbers that satisfy the relation. Note that
-the questions are organized: there coud be zero, 
-one or two unknowns, and each argument position of the relation might be an unknown. 
+the questions are organized: there coud be no unknown, 
+one unknown or two unknowns, and each argument position of the relation might be an unknown.
+In general, for a relation of N arguments, the total number of knids of questions we can ask is:
+
+2*C<sub>N</sub><super>0</super> + C<sub>N</sub><super>1</super> + C<sub>N</sub><super>2</super> + ... + C<sub>N</sub><super>N-1</super> + C<sub>N</sub><super>N</super>
 Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
 ```ocaml
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
