@@ -2,25 +2,25 @@
 
 
 We hope the reader will learn the following techniques (labeled as **T.1**, **T.2**, etc) from this lesson:
-- [**T.1**](#advanced-injection-functions) Defining injection functions for value constructors of  variant types, using
+- [**T.1**](#t1-advanced-injection-functions) Defining injection functions for value constructors of  variant types, using
   the Fmap family of module functors
   `Fmap`, `Fmap2`, `Fmap3`, etc., which are provided by the module [Logic](../../Installation/ocanren/src/core/Logic.mli).
-- [**T.2**](#reification-and-reifiers) Defining reifiers to convert data from the injected level to the logic level,
+- [**T.2**](#t2-reification-and-reifiers) Defining reifiers to convert data from the injected level to the logic level,
   again with help from the Fmap family of module functors.
-- [**T.3**](#overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
+- [**T.3**](#t3-overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
     to allow for more concise and human readable printing of them.
-- [**T.4**](#relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
-- [**T.5**](#scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
+- [**T.4**](#t4-relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
+- [**T.5**](#t5-scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
   of unknown arguments. 
-- [**T.6**](#analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
-- [**T.7**](#modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within the body of a relation definition
+- [**T.6**](#t6-analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
+- [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within the body of a relation definition
     to modify the way in which the relation searches for answers in a given query.
-- [**T.8**](#the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
+- [**T.8**](#t8-the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
   an expression built with names  provided by the module [Core](../../Installation/ocanren/src/core/Core.mli).
-- [**T.9**](#ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
+- [**T.9**](#t9-ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
-- [**T.10**](#building-a-library) Writing and testing a library in OCanren.
+- [**T.10**](#t10-building-a-library) Writing and testing a library in OCanren.
 
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
@@ -85,9 +85,8 @@ to find in the [interface](../../Installation/ocanren/src/core/Logic.mli) of the
 and the module types of arguments of members of this family: that would provide a more formal explanation of what advanced injection functions do and
 why they are defined in the given manner.
 
-## Reification and Reifiers
+## (T.2) Reification and Reifiers
 
-(T.2)
 
 Say we have a logic variable `x` and a substitution `[(x, Lam(z,y));(y, App(a,b))]` that associates `x` with the term `Lam(z,y)` and `y` with `App(a,b)` where
 `y, z` are also logic variables. We would like to know what `x` is with respect to the substitution. It is straightforward to replace `x` by `Lam(z,y)` but since
@@ -113,9 +112,8 @@ the [signature](../../Installation/ocanren/src/core/Logic.mli#L136) of `F.reify`
  builder fit together.
 
 
-## Overwriting the _show_ Function
+## (T.3) Overwriting the _show_ Function
 
-(T.3)
 
 The default _show_ function for a variant type converts values of that type
 to strings in a straightforward way, e.g., a logic Peano number
@@ -153,9 +151,8 @@ BFLAGS = -rectypes -g -i
 See also the [GT source](https://github.com/JetBrains-Research/GT/blob/039193385e6cb1a67bc8a9d00c662d9d1dc5478b/src/GT.ml4#L37).
 
 
-## Relations on Peano Numbers
+## (T.4) Relations on Peano Numbers
 
-(T.4)
 
 This section teaches the reader how to read
 and write relation definitions.
@@ -206,9 +203,8 @@ put in another way: iff `b` is `O` and `a` is `c`, or `b` is `S n` and `a` is `S
 and `sub n' n c`.  
 
 
-## Scrutinizing Relations
+## (T.5) Scrutinizing Relations
 
-(T.5)
 
 Taking the "less than" relation as an example, we can ask questions like:
 - Is zero less than one ? Is one less than two ? Is one less than zero ? Is two less than one?
@@ -260,9 +256,9 @@ fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O }
 It amounts to the multiplication `3 * 5`.
 
 
-## Analyzing the Search Behaviour
+## (T.6) Analyzing the Search Behaviour
 
-(T.6)
+
 
 When asking the `lt` relation "what is less than 5" using the goal:
 ```
@@ -390,21 +386,13 @@ stream manipulation,  explains why we get the answer that `a` equals 0,1,2,3 or 
 
 The reader may take an exercise to show that one plus one equals two by simplifying the formula `add (S O) (S O) c`.
 
-## Modifying the Search Behaviour
+## (T.7) Modifying the Search Behaviour
 
-(T.7)
+## (T.8) The Formula Parser
 
-## The Formula Parser
+## (T.9) OCanren Terms
 
-(T.8)
-
-## OCanren Terms
-
-(T.9)
-
-## Building a Library
-
-(T.10)
+## (T.10) Building a Library
 
 ## Conclusion
 
