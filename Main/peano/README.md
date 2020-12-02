@@ -212,7 +212,8 @@ we provide concrete numbers and ask if they satisfy the relation. The remaining 
 questions are for _searching_: looking for numbers that satisfy the relation. Note that
 the questions are organized: there coud be no unknown, 
 one unknown or two unknowns, and each argument position of the relation might be an unknown.
-In general, for a relation of N arguments, the total number of kinds of questions we can ask is:
+In general, for a relation of N arguments, the total number of kinds of questions we can ask is
+( _r_ is the number of unknowns in <sub>N</sub>C<sub>r</sub>):
 
 <sub>N</sub>C<sub>0</sub> + <sub>N</sub>C<sub>1</sub> + <sub>N</sub>C<sub>2</sub> + ... + <sub>N</sub>C<sub>N-1</sub> + <sub>N</sub>C<sub>N</sub>
 
