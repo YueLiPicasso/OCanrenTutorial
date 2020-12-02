@@ -207,10 +207,12 @@ Taking the "less than" relation as an example, we can ask questions like:
 - What is less than five ? Five is less than what ?
 - What is less than what ?
 
-Questions on a relation can be posed systematically
-according to how many unknows are involved. The first set of questions above is for _checking_:
+ The first set of questions above is for _checking_:
 we provide concrete numbers and ask if they satisfy the relation. The remaining two sets of
-questions are for _searching_: looking for numbers that satisfy the relation. Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
+questions are for _searching_: looking for numbers that satisfy the relation. There coud be either
+one unknown or two unknowns, and each argument position of the relation might be an unknown.
+Therefore we can systematically scrutinize a relation.  
+Running the [test](test.ml#L44)  shows that OCanren answers all these questions well. For example, the goal:
 ```ocaml
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
