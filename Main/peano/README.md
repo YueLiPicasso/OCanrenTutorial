@@ -338,7 +338,7 @@ lt a (S(S(S(S(S O))))) =  a == O
 
                                                                              (Eq.9)
 ```
-Continue to simplifiy the formula, and The last but one state of such transformation is:
+Continue to simplifiy the formula. The last but one state of such transformation is:
 ```
 lt a (S(S(S(S(S O))))) =  a == O
                        |  a == S O
