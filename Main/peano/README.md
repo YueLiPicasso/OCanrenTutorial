@@ -291,7 +291,7 @@ lt a (S(S(S(S(S O))))) =  a == O
 		          & lt n' (S(S(S(S O))))                             (Eq.4)
 ```
 From `(Eq.1)` to `(Eq.4)` what we have done is to provide a concrete value (the Peano number
- 5) as the second argument of `lt` and use the result of unification to simplify the formula.
+ 5) as the second argument of `lt` and use the result of unification to simplify the equation.
 The recursive call of `lt` in the right hand side of `(Eq.4)` can be treated similarly, as follows.
 
 Now replace `b` by `(S(S(S(S O))))` and`a`
