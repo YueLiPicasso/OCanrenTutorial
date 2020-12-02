@@ -345,11 +345,11 @@ lt a (S(S(S(S(S O))))) =  a == O
 		       |  a == S (S O)
 		       |  a == S (S (S O))
 		       |  a == S (S (S (S O)))
-		       |  fresh n'    in a == S n'
-		          &  fresh n'' in n' == S n''
-			  &  fresh n''' in n'' == S n'''
-			  &  fresh n'''' in n''' == S n''''
-			  &  fresh n''''' in n'''' == S n''''' & lt n''''' O
+		       |  fresh n' in a == S n'
+		       &  fresh n'' in n' == S n''
+		       &  fresh n''' in n'' == S n'''
+		       &  fresh n'''' in n''' == S n''''
+		       &  fresh n''''' in n'''' == S n''''' & lt n''''' O
 			                                                     (Eq.10)
 ```
 Note that `lt n''''' O` expands to `fresh n in O == S n & ...` which is false, therefore the
