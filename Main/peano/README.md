@@ -286,9 +286,9 @@ In `(Eq.3)`, remove `fresh n in (S(S(S(S O)))) == n`, then replace all free occu
 by `(S(S(S(S O))))`. The top level `&` and the braces are no longer needed, so also being
 removed. We get:
 ```
-lt a (S(S(S(S(S O))))) =  a == O
-                       |  fresh n' in a == S n'
-		          & lt n' (S(S(S(S O))))                             (Eq.4)
+lt a (S(S(S(S(S O))))) = a == O
+                       | fresh n' in a == S n'
+		         & lt n' (S(S(S(S O))))                             (Eq.4)
 ```
 From `(Eq.1)` to `(Eq.4)` what we have done is to provide a concrete value (the Peano number
  5) as the second argument of `lt` and use the result of unification to simplify the equation.
@@ -303,15 +303,17 @@ lt n' (S(S(S(S O)))) = fresh n in (S(S(S(S O)))) == S n
 ```
 Similar to the way `(Eq.2)` is simplified into `(Eq.4)`, we can transform `(Eq.5)` into:
 ```
-lt n' (S(S(S(S O)))) =  n' == O
-                     |  fresh n'' in n' == S n'' & lt n'' (S(S(S O)))        (Eq.6)
+lt n' (S(S(S(S O)))) = n' == O
+                     | fresh n'' in n' == S n''
+		       & lt n'' (S(S(S O)))                                 (Eq.6)
 ```
 Now in `(Eq.4)` replace `lt n' (S(S(S(S O))))` by the right hand side of `(Eq.6)`:
 ```
-lt a (S(S(S(S(S O))))) =  a == O
-                       |  fresh n' in a == S n'
-		       &  { n' == O
-                          | fresh n'' in n' == S n'' & lt n'' (S(S(S O))) }
+lt a (S(S(S(S(S O))))) = a == O
+                       | fresh n' in a == S n'
+		         & { n' == O
+                            | fresh n'' in n' == S n''
+			      & lt n'' (S(S(S O))) }
 
                                                                              (Eq.7)
 ```
