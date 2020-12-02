@@ -25,7 +25,7 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
 
-## Advanced Injection Functions (T.1)
+## (T.1) Advanced Injection Functions
 
 The primary injection operator is `!!` which is used to cast primitive values (such as characters and strings)
 and constant constructors of variant types (particularly whose type constructors do not have a type parameter)
