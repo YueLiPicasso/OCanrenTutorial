@@ -457,7 +457,8 @@ unknown:
 - `gcd a b c & div a c a' O & div b c b' O` is read as  
 
 
-
+What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
+respectively, i.e., a ratio not in the simplest form? Why?    
 
 
 ## (T.8) The Trick of Generate-and-test 
