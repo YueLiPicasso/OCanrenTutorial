@@ -13,7 +13,7 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 - [**T.5**](#t5-scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
   of unknown arguments. 
 - [**T.6**](#t6-analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
-- [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within
+- [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts  within
 the body of a relation definition to modify the way in which the relation searches for answers in a given query.
 - [**T.8**](#t8-the-trick-of-generate-and-test) Programming a relation so that answers to certain queries are found by brute-force. 
 - [**T.9**](#t9-the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
