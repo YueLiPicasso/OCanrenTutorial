@@ -389,8 +389,22 @@ The reader may take an exercise to show that one plus one equals two by simplify
 
 ## (T.7) Modifying the Search Behaviour
 
-We compare two versions of the `simplify` relation, differing from each
-other only by a swap of conjuncts:
+We compare two versions of the _simplify_ relation, differing from each
+other only by a swap of conjuncts.
+
+Both versions share the logic that the simplest form of
+`a/b` is `a'/b'` where `a'` (`b'`) is `a`(resp. `b`) divided by the greatest common divisor
+of `a` and `b`, provided `b` is non-zero. There is a short cut for the case where `a` is zero,
+then `b'` is set to one directly.
+
+The difference is that:
+- In `simplify` we say "`a` (`b`) divided by `c` equals `a'` (resp. `b'`),  and `c` is
+the gcd of `a` and `b`".
+- Whilst in `simplify'` we say "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
+ `c` equals `a'` (resp. `b'`)".
+ 
+In OCanren:
+
 ```ocaml
 let simplify a b a' b' = 
       ocanren {  fresh n in b == S n &
