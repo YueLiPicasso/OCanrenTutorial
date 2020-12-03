@@ -437,10 +437,10 @@ sub-relations in the context.
 
 In the
 backward search problem, the second branch of the disjunction which is `fresh c, m in ...` is
-applicable in both versions, but the declarative reading of the conjuctions is not the same. Below
-we highlight the difference.
+applicable in both versions, but the imperative meanings of the conjuctions are
+not the same. Below we highlight the difference.
 
-- `div a c a' O  & div b c b' O & gcd a b c` is  read as, "Find `a` and `c` such that 
+- `div a c a' O  & div b c b' O & gcd a b c` is read as, "Find `a` and `c` such that 
 `a` divided by `c` equals `a'`. Then find `b` such that `b` divided by
  `c` equals `b'`. Now check that the gcd of `a` and `b` is `c`." In the first conjunct both
   `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first
