@@ -437,7 +437,7 @@ sub-relations in the context.
 
 In the
 backward search problem, the second branch of the disjunction which is `fresh c, m in ...` is
-applicable in both versions, but the imperative meanings of the conjuctions are
+applicable in both versions, but the operational semantics of the conjuctions are
 not the same. Below we highlight the difference. With `a', b'` being known and `a,b,c` being
 unknown:
 
