@@ -398,10 +398,10 @@ of `a` and `b`, provided `b` is non-zero. There is a short cut for the case wher
 then `b'` is set to one directly.
 
 The difference is that:
-- In  one version we say "`a` (`b`) divided by `c` equals `a'` (resp. `b'`),  and `c` is
-the gcd of `a` and `b`".
-- In the other version  we say "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
- `c` equals `a'` (resp. `b'`)".
+- In  one version we say, "`a` (`b`) divided by `c` equals `a'` (resp. `b'`),  and `c` is
+the gcd of `a` and `b`."
+- In the other version  we say, "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
+ `c` equals `a'` (resp. `b'`)."
  
 In OCanren:
 
@@ -428,7 +428,24 @@ simplest form, e.g., 18/12 is simplified to 3/2. By _backward search_ we mean gi
 in the simplest form, find its equal ratios, e.g., 3/2 could be simplified from 6/4, 9/6,
 12/8, etc. The test shows that the versions work equally well for forward search, but when
 it comes to backward search,  `simplify` returns answers quickly but `simplify'` took ages
-without returning anything. 
+without returning anything.
+
+This is cause exactly by the order of the conjuncts. In the
+backward search problem, the second branch of the disjunction which is `fresh c, m in ...` is
+applicable in both versions, but the declarative reading of the conjucts is not the same. Below
+we highlight the difference.
+
+- `div a c a' O  & div b c b' O & gcd a b c` is  read as, "Find `a` and `c` such that 
+`a` divided by `c` equals `a'`. Then find `b` such that `b` divided by
+ `c` equals `b'`. Now check that the gcd of `a` and `b` is `c`." In the first conjunct both
+  `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first
+  conjunct, only `b` is the unknown, and in the thrid conjunct all `a,b,c` have been found
+  so only a check is due.
+- `gcd a b c & div a c a' O & div b c b' O` is read as  
+
+
+
+
 
 ## (T.8) The Trick of Generate-and-test 
 
