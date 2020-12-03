@@ -389,6 +389,33 @@ The reader may take an exercise to show that one plus one equals two by simplify
 
 ## (T.7) Modifying the Search Behaviour
 
+We compare two versions of the `simplify` relation, differing from each
+other only by a swap of conjuncts:
+```ocaml
+let simplify a b a' b' = 
+      ocanren {  fresh n in b == S n &
+      { a == O & a' == O & b' == S O
+      | fresh c, m in a == S m
+                      & div a c a' O             (* div first, then gcd *)
+                      & div b c b' O
+                      & gcd a b c } };;
+
+let simplify' a b a' b' = 
+      ocanren {  fresh n in b == S n &
+      { a == O & a' == O & b' == S O
+      | fresh c, m in a == S m
+                      & gcd a b c                (* gcd first, then div *)
+                      & div a c a' O
+                      & div b c b' O  } };;
+```
+The test file offers a [comparison](test.ml#L199) of these two versions over their forward and
+backward search behaviours. By _forward search_ we mean that given a ratio _a/b_ find its
+simplest form, e.g., 18/12 is simplified to 3/2. By _backward search_ we mean given a ratio
+in the simplest form, find its equal ratios, e.g., 3/2 could be simplified from 6/4, 9/6,
+12/8, etc.
+
+sering 
+
 ## (T.8) The Trick of Generate-and-test 
 
 ## (T.9) The Formula Parser
