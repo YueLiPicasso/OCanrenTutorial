@@ -439,7 +439,7 @@ In the
 backward search problem, the second branch of the disjunction which is `fresh c, m in ...` is
 applicable in both versions, but the imperative meanings of the conjuctions are
 not the same. Below we highlight the difference. With `a', b'` being known and `a,b,c` being
-unbnown:
+unknown:
 
 - `div a c a' O  & div b c b' O & gcd a b c` is read as, "Find `a` and `c` such that 
 `a` divided by `c` equals `a'`. Then find `b` such that `b` divided by
