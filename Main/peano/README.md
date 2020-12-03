@@ -430,9 +430,14 @@ in the simplest form, find its equal ratios, e.g., 3/2 could be simplified from 
 it comes to backward search,  `simplify` returns answers quickly but `simplify'` took ages
 without returning anything.
 
-This is cause exactly by the order of the conjuncts. In the
+This is cause by the order of the conjuncts, in combination with the state of
+the logic varaibles (of being free or already instantiated) and the search behaviour of the 
+sub-relations in the context.
+
+
+In the
 backward search problem, the second branch of the disjunction which is `fresh c, m in ...` is
-applicable in both versions, but the declarative reading of the conjucts is not the same. Below
+applicable in both versions, but the declarative reading of the conjuctions is not the same. Below
 we highlight the difference.
 
 - `div a c a' O  & div b c b' O & gcd a b c` is  read as, "Find `a` and `c` such that 
