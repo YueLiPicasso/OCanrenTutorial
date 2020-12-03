@@ -448,7 +448,8 @@ unknown:
   `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first
   conjunct, only `b` is the unknown, and in the thrid conjunct all `a,b,c` have been found
   so only a check is due. This analysis requires knowledge of the search behaviour of
-  `div arg1 arg2 arg3 arg4` in the following two cases, which is provided by tests on `div`:
+  `div arg1 arg2 arg3 arg4` in the following two cases, which is provided by
+  [tests](test.ml#L114) on `div`:
    1. Both `arg1, arg2` are unknowns, but `arg3, arg4` are known.
    1. Only `arg1` is unknown, the other three are known.
  
