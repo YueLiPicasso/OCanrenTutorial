@@ -398,9 +398,9 @@ of `a` and `b`, provided `b` is non-zero. There is a short cut for the case wher
 then `b'` is set to one directly.
 
 The difference is that:
-- In `simplify` we say "`a` (`b`) divided by `c` equals `a'` (resp. `b'`),  and `c` is
+- In  one version we say "`a` (`b`) divided by `c` equals `a'` (resp. `b'`),  and `c` is
 the gcd of `a` and `b`".
-- Whilst in `simplify'` we say "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
+- Whilst in the other version  we say "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
  `c` equals `a'` (resp. `b'`)".
  
 In OCanren:
