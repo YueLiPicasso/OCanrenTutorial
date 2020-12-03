@@ -400,7 +400,7 @@ then `b'` is set to one directly.
 The difference is that:
 - In  one version we say "`a` (`b`) divided by `c` equals `a'` (resp. `b'`),  and `c` is
 the gcd of `a` and `b`".
-- Whilst in the other version  we say "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
+- In the other version  we say "`c` is the gcd of `a` and `b`, and `a` (`b`) divided by
  `c` equals `a'` (resp. `b'`)".
  
 In OCanren:
