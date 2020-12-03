@@ -38,7 +38,18 @@ and ocrun4 = fun ?n g -> iterp4 ?n @@ run4 g;;
 
 (* how many answers you want if the answer set is infinitely large ? *)
 let ans_no = 20;;
-  
+
+(* shortcuts to some Peano numbers *)
+let p4  = groundi_of_int 4 
+and p5  = groundi_of_int 5
+and p7  = groundi_of_int 7
+and p8  = groundi_of_int 8
+and p12 = groundi_of_int 12 
+and p14 = groundi_of_int 14
+and p17 = groundi_of_int 17
+and p18 = groundi_of_int 18
+and p21 = groundi_of_int 21;;
+              
 printf "###### test lt ######\n\n";;
 
 let _ =
@@ -103,7 +114,6 @@ let _ =
 printf "\n###### test div ######\n\n";;
 
 let _ =
-  let p17 = groundi_of_int 17 in
   (* checking *)
   printf "\n Checking \n\n";
   ocrun1 (fun q -> ocanren { div p17 (S(S(S O))) (S(S(S(S(S O))))) (S(S O))});
@@ -119,6 +129,9 @@ let _ =
   ocrun1 (fun q -> ocanren { div p17 q (S(S(S O))) (S(S O)) });
   printf "\n What divided by 5 equals 3 with remainder 2? \n\n";
   ocrun1 (fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) (S(S O)) });
+  printf "\n 18 divided by 4 equals what with remainder 0? \n\n";
+  printf "%d answer(s) found.\n" @@ List.length @@ take @@
+    run1 (fun q -> ocanren { div p18 p4 q O });
   (* use div for multiplication *)
   printf "\n What divided by 5 equals 3 with remainder 0 ? \n\n";
   ocrun1 (fun q -> ocanren { div q (S(S(S(S(S O))))) (S(S(S O))) O });
@@ -135,6 +148,8 @@ let _ =
   ocrun2 (fun q r-> ocanren { div p17 q (S(S(S O))) r });
   printf "\n 17 divided by 5 equals what with remainder what ? \n\n";
   ocrun2 (fun q r-> ocanren { div p17 (S(S(S(S(S O))))) q  r });
+  printf "\n 12 divided by what equals what with remainder 0 ? \n\n";
+  ocrun2 (fun q r-> ocanren { div p12 q  r O });
   (* three unknowns *)
   printf "\n 17 divided by what equals what with remainder what? \n\n" ;
   ocrun3 (fun a b c -> ocanren { div p17 a b c });
@@ -152,9 +167,6 @@ let _ =
 printf "\n###### test gcd ######\n\n";;
 
 let _ =
-  let p7  = groundi_of_int 7
-  and p14 = groundi_of_int 14
-  and p21 = groundi_of_int 21 in
   (* checking *)
   printf "\n Checking \n\n";
   ocrun1 (fun q -> ocanren { gcd p21 p14 p7 & gcd p14 p7 p7} );
@@ -183,6 +195,19 @@ let _ =
   ocrun3 ~n:ans_no (fun a b c -> gcd a b c);
   printf "\n with another search strategy ... \n\n";
   ocrun3 ~n:ans_no (fun a b c -> gcd' a b c);;
+
+printf "\n###### test simplify ######\n\n";;
+
+let _ =
+  printf "\n The ratio 18/12 simplifies to what ? \n\n";
+  ocrun2 (fun a b -> simplify p18 p12 a b);
+  printf "\n with another search strategy ... \n\n";
+  ocrun2 (fun a b -> simplify' p18 p12 a b);
+  printf "\n What simplifies to the ratio 8/5 ?  (give %d answers) \n\n" ans_no;
+  ocrun2 ~n:ans_no (fun a b -> simplify a b p8 p5);
+  (* printf "\n with another search strategy ... \n\n";
+  ocrun2 ~n:ans_no (fun a b -> simplify' a b p8 p5);; *)
+  
 
 printf "\n###### test coprime ######\n\n";;
 

@@ -13,14 +13,15 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 - [**T.5**](#t5-scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
   of unknown arguments. 
 - [**T.6**](#t6-analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
-- [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within the body of a relation definition
-    to modify the way in which the relation searches for answers in a given query.
-- [**T.8**](#t8-the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
+- [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts and disjuncts within
+the body of a relation definition to modify the way in which the relation searches for answers in a given query.
+- [**T.8**](#t8-the-trick-of-generate-and-test) Programming a relation so that answers to certain queries are found by brute-force. 
+- [**T.9**](#t9-the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
   an expression built with names  provided by the module [Core](../../Installation/ocanren/src/core/Core.mli).
-- [**T.9**](#t9-ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
+- [**T.10**](#t10-ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
-- [**T.10**](#t10-building-a-library) Writing and testing a library in OCanren.
+- [**T.11**](#t11-building-a-library) Writing and testing a library in OCanren.
 
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
@@ -388,11 +389,13 @@ The reader may take an exercise to show that one plus one equals two by simplify
 
 ## (T.7) Modifying the Search Behaviour
 
-## (T.8) The Formula Parser
+## (T.8) The Trick of Generate-and-test 
 
-## (T.9) OCanren Terms
+## (T.9) The Formula Parser
 
-## (T.10) Building a Library
+## (T.10) OCanren Terms
+
+## (T.11) Building a Library
 
 ## Conclusion
 

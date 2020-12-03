@@ -55,13 +55,16 @@ val gcd : groundi -> groundi -> groundi -> goal;;
 (** [gcd a b c] : the greatest common divisor of a and b is c, where a is no less than  b *)
 
 val gcd' : groundi -> groundi -> groundi -> goal;;
-(** declaratively the same as [gcd], but has a different search strategy  *)
+(** similar to [gcd], but has a different search strategy  *)
 
 val simplify : groundi -> groundi -> groundi -> groundi -> goal;;
-(** [simplify a b a' b'] : if the simplest form of the ratio a/b is a'/b' *)
+(** [simplify a b a' b'] : if the simplest form of the ratio a/b is a'/b', assuming [lte b a] *)
+
+val simplify' : groundi -> groundi -> groundi -> groundi -> goal;;
+(** similar to [simplify], but has a different search strategy  *)
 
 val coprime : groundi -> groundi -> goal;;
 (** [coprime a b] : a and b are coprime *)
 
 val coprime' : groundi -> groundi -> goal;;
-(** declaratively the same as [coprime], but has a different search strategy  *)
+(** similar [coprime], but has a different search strategy  *)

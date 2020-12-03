@@ -76,7 +76,7 @@ let rec gcd a b c = (* the Euclidean algorithm *)
           | { fresh q, n in
               lt b a
               & div a b q (S n)
-              & gcd b (S n) c } }
+              & gcd b (S n) c } };;
 
 let gcd' a b c = 
   ocanren { fresh bnd in
@@ -86,11 +86,19 @@ let gcd' a b c =
 
 let simplify a b a' b' = 
       ocanren {  fresh n in b == S n &
-      {  a == O  & a' == O & b' == S O
-      |  fresh c, m in a == S m
-                       & div a c a' O
-                       & div b c b' O
-                       & gcd a b c } };;
+      { a == O & a' == O & b' == S O
+      | fresh c, m in a == S m
+                      & div a c a' O
+                      & div b c b' O
+                      & gcd a b c } };;
+
+let simplify' a b a' b' = 
+      ocanren {  fresh n in b == S n &
+      { a == O & a' == O & b' == S O
+      | fresh c, m in a == S m
+                      & gcd a b c
+                      & div a c a' O
+                      & div b c b' O  } };;
 
 let coprime a b = simplify a b a b;;
 
