@@ -494,7 +494,7 @@ for backward search, and they only differ by a swap of conjuncts.
 
 Note worthy is that the advantage of `simplify` over `simplify'` in backward search 
 is at the cost of some efficiency in forward search, where `simplify'` smartly finds the
-gcd of the numerator and the denominator first and then divide to get the result, but `simplify`
+gcd of the numerator and the denominator first and then divides to get the result, but `simplify`
 enumerates through all divisors of `a` to find the one that is also a  divisor of `b` and the
 gcd of `a,b` --- less efficient but still acceptable for small numbers.
 
