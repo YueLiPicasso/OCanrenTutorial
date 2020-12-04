@@ -430,17 +430,10 @@ in the simplest form, find its equal ratios, e.g., 3/2 could be simplified from 
 it comes to backward search,  `simplify` returns answers quickly but `simplify'` took ages
 without returning anything.
 
-This is caused by the order of the conjuncts, in combination with the state of
-the logic varaibles (of being free or already instantiated) and the search behaviour of the 
-sub-relations.
-
-
-In the
-backward search problem, the second branch of the disjunction which is `fresh c, m in ...` is
-applicable in both versions, but the operational semantics of the conjuctions are
-not the same. Below we highlight the difference. With `a', b'` being known and `a,b,c` being
-unknown:
-
+The ordering of the conjuncts, together with the state of the logic varaibles (of being
+free or already instantiated) and the search behaviour of the sub-relations, results in
+apparently different operational meaning of the conjunctions, as follows:
+-  `a', b'` are known but `a,b,c` are unknown:
 - `div a c a' O  & div b c b' O & gcd a b c` is read as, "Find `a` and `c` such that 
 `a` divided by `c` equals `a'` exactly. Then find `b` such that `b` divided by
  `c` equals `b'` exactly. Now check that the gcd of `a` and `b` is `c`."
@@ -452,8 +445,6 @@ unknown:
   [tests](test.ml#L114) on `div`:
    1. Both `arg1, arg2` are unknowns, but `arg3, arg4` are known.
    1. Only `arg1` is unknown, the other three are known.
- 
-  
 - `gcd a b c & div a c a' O & div b c b' O` is read as  
 
 
