@@ -482,9 +482,7 @@ The answer is:
 We could see that the `div` relation is enumerating all possible divisors in ascending
 order, starting with the least possible divisor which is 3 (the divisor must be greater
 than the remainder 2), together with the corresponding dividends. Importantly, all answers
-are concrete: no free logic variable in any answer. This explains the state of variables
-after the execution of the conjunct `div a c a' O` in `simplify` where the (previously) free
-variables `a,c` are instantiated with concrete values. 
+are concrete: no free logic variable in any answer.  
 
 Similarly, the search behaviour of `gcd` when all arguments are free variables can be observed
 from the query:
