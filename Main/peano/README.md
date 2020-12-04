@@ -483,12 +483,12 @@ We could see that the `div` relation is enumerating all possible divisors in asc
 order, starting with the least possible divisor which is 3 (the divisor must be greater
 than the remainder 2), together with the corresponding dividends.
 
-In backward search, therefore, the `simplify` relation first find a `c`-multiple of `a'` for
-some `c`, and then find a `c`-multiple of `b'` for the same `c`, and final step checking of
+In backward search, therefore, the `simplify` relation first finds a `c`-multiple of `a'` for
+some `c`, and then finds a `c`-multiple of `b'` for the same `c`, and final step checking of
 the gcd relation is starighforward if `a'/b'` is already in the simplest form.
 This all sounds like logical manners to find integral multiples of a ratio. However,
-what `simplify'` does is to first guess an arbitrary ratio together with the gcd of the
-numerator and the denominator, and then check if the ratio happens to reduce to `a'/b'`. This
+what `simplify'` does is firstly guessing an arbitrary ratio together with the gcd of the
+numerator and the denominator, and then it checks if the ratio happens to reduce to `a'/b'`. This
 obviously has a bad chance to hit the target. That's why `simplify` works better than `simplify'`
 for backward search, and they only differ by a swap of conjuncts.
 
