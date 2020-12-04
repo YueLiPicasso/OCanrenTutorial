@@ -489,8 +489,7 @@ the gcd relation as the last step is starighforward if `a'/b'` is  already in th
 Note that the programmer provides `a'` and `b'` so practically `a'/b'` does not have to be in the
  simplest form, in which case the `gcd` check would fail.   
 This all sounds like logical manners to find integral multiples of a ratio that in
-the simplest form. However,
-what `simplify'` does is firstly guessing an arbitrary ratio together with the gcd of the
+the simplest form. However, the way in which `simplify'` approaches the problem is firstly guessing an arbitrary ratio together with the gcd of the
 numerator and the denominator, and then it checks if the ratio happens to reduce to `a'/b'`. This
 obviously has a bad chance to hit the target. That's why `simplify` works better than `simplify'`
 for backward search, and they only differ by a swap of conjuncts.
