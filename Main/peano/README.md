@@ -26,8 +26,8 @@ the body of a relation definition to modify the way in which the relation search
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
 
-The library has a systematic test file, which can be compiled (and linked) and executed by running the following shell commands in the
-lesson directory:
+The library has a systematic test file, which can be compiled (and linked) and executed by running the following shell commands
+in (your local copy of) the lesson directory:
 ```
 make && ./peano.opt
 ```
