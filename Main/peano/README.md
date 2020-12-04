@@ -506,8 +506,6 @@ but give `a'` and `b'` as 4 and 2 respectively, i.e., a ratio not in the simples
 
 ## (T.8) The Trick of Generate-and-test
 
-The relevant search behaviour of the sub-relations can be observed by running the test file. For example, we 
-
 ## (T.9) The Formula Parser
 
 ## (T.10) OCanren Terms
