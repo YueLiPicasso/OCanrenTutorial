@@ -454,7 +454,7 @@ make the specific query:
 printf "\n What divided by what equals 3 with remainder 2 ? (give %d answers) \n\n" ans_no;
 ocrun2 ~n:ans_no (fun q r-> ocanren { div q r (S(S(S O))) (S(S O)) })
 ```
-The answer is:
+The answers are:
 ```
  What divided by what equals 3 with remainder 2 ? (give 20 answers) 
 
@@ -481,40 +481,20 @@ The answer is:
 ```
 We could see that the `div` relation is enumerating all possible divisors in ascending
 order, starting with the least possible divisor which is 3 (the divisor must be greater
-than the remainder 2), together with the corresponding dividends. Importantly, all answers
-are concrete: no free logic variable in any answer.  
+than the remainder 2), together with the corresponding dividends.
 
-Similarly, the search behaviour of `gcd` when all arguments are free variables can be observed
-from the query:
-```ocaml
-printf "\n The gcd of what and what is what ? (give %d answers) \n\n" ans_no;
-ocrun3 ~n:ans_no (fun a b c -> gcd a b c)
-```
-The answer is:
-```
-The gcd of what and what is what ? (give 20 answers) 
+In backward search, therefore, the `simplify` relation first find a `c`-multiple of `a'` for
+some `c`, and then find a `c`-multiple of `b'` for the same `c`, and final step checking of
+the gcd relation is starighforward if `a'/b'` is already in the simplest form.
+This all sounds like logical manners to find integral multiples of a ratio. However,
+what `simplify'` does is to first guess an arbitrary ratio together with the gcd of the
+numerator and the denominator, and then check if the ratio happens to reduce to `a'/b'`. This
+obviously has a bad chance to hit the target. That's why `simplify` works better than `simplify'`
+for backward search, and they only differ by a swap of conjuncts.
 
-(1+n, 1+n, 1+n)
-(2, 1, 1)
-(3, 1, 1)
-(4, 1, 1)
-(4, 2, 2)
-(5, 1, 1)
-(6, 1, 1)
-(6, 2, 2)
-(7, 1, 1)
-(8, 1, 1)
-(3, 2, 1)
-(6, 3, 3)
-(9, 1, 1)
-(8, 2, 2)
-(10, 1, 1)
-(11, 1, 1)
-(10, 2, 2)
-(12, 1, 1)
-(13, 1, 1)
-(5, 2, 1)
-```
+
+
+
 
 What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
 respectively, i.e., a ratio not in the simplest form? Why?    
