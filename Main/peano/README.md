@@ -431,7 +431,7 @@ it comes to backward search,  `simplify` returns answers quickly but `simplify'`
 without returning anything.
 
 The ordering of the conjuncts, together with the state of the logic varaibles
-(initially assume that `a', b'` are known but `a,b,c` are unknown) and the search behaviour of the sub-relations, results in
+and the search behaviour of the sub-relations, results in
 apparently different operational meaning of the conjunctions, as follows:
 
 | Ordering of Conjuncts | Operational Meaning | State of Variables  | Knowledge on Sub-relations |
