@@ -447,7 +447,68 @@ apparently different operational meaning of the conjunctions, as follows:
 | <code>gcd&nbsp;a&nbsp;b&nbsp;c &&nbsp;div&nbsp;a&nbsp;c&nbsp;a'&nbsp;O &&nbsp;div&nbsp;b&nbsp;c&nbsp;b'&nbsp;O </code>  | Find three unknowns`a,b,c` such  that the relation `gcd a b c` holds, then check that `a` (`b`) is exactly dividable by  `c` with quotient `a'` (resp. `b'`).    | When the first conjunct is executed, all `a,b,c` are  unknown, but when the second and third conjuncts are executed, the variables `a,b,c` are  already computed by the first conjunct, therefore the last two conjuncts merely checks  the results. | This analysis requires knowledge of the search behaviour of `gcd` when provided  with three free logic variables for its three arguments.|
 
 
-The relevant search behaviour of the sub-relations can be observed by running the test file. For example, when asking 
+The relevant search behaviours of the sub-relations mentioned in the table can be observed by running the test file or found in [answers.txt](answers.txt). For instance, to
+know the search behaviour of `div` when only its fisrt two arguments are unknown, can be observed by making the specific query:
+```ocaml
+printf "\n What divided by what equals 3 with remainder 2 ? (give %d answers) \n\n" ans_no;
+ocrun2 ~n:ans_no (fun q r-> ocanren { div q r (S(S(S O))) (S(S O)) })
+```
+The answer is:
+```
+ What divided by what equals 3 with remainder 2 ? (give 20 answers) 
+
+(11, 3)
+(14, 4)
+(17, 5)
+(20, 6)
+(23, 7)
+(26, 8)
+(29, 9)
+(32, 10)
+(35, 11)
+(38, 12)
+(41, 13)
+(44, 14)
+(47, 15)
+(50, 16)
+(53, 17)
+(56, 18)
+(59, 19)
+(62, 20)
+(65, 21)
+(68, 22)
+```
+Similarly, the search behaviour of `gcd` when all arguments are free variables can be observed
+from the query:
+```ocaml
+printf "\n The gcd of what and what is what ? (give %d answers) \n\n" ans_no;
+ocrun3 ~n:ans_no (fun a b c -> gcd a b c)
+```
+The answer is:
+```
+The gcd of what and what is what ? (give 20 answers) 
+
+(1+n, 1+n, 1+n)
+(2, 1, 1)
+(3, 1, 1)
+(4, 1, 1)
+(4, 2, 2)
+(5, 1, 1)
+(6, 1, 1)
+(6, 2, 2)
+(7, 1, 1)
+(8, 1, 1)
+(3, 2, 1)
+(6, 3, 3)
+(9, 1, 1)
+(8, 2, 2)
+(10, 1, 1)
+(11, 1, 1)
+(10, 2, 2)
+(12, 1, 1)
+(13, 1, 1)
+(5, 2, 1)
+```
 
 What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
 respectively, i.e., a ratio not in the simplest form? Why?    
