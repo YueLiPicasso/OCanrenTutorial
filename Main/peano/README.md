@@ -455,8 +455,8 @@ apparently different operational meaning of the conjunctions, as follows:
 
 | Ordering of Conjuncts | Operational Meaning | State of Variables  | Knowledge on Sub-relations |
 | --------------- | ------------------- | --------------------|-------------------------   |
-| `div a c a' O`<br /> `& div b c b' O` <br /> `& gcd a b c`  | Find `a` and `c`such that  `a` divided by `c` equals `a'` exactly. Then find `b` such that `b` divided by  `c` equals `b'` exactly. Now check that the gcd of `a` and `b` is `c`. | In the first conjunct both `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first  conjunct, only `b` is the unknown, and in the thrid conjunct all `a,b,c` have been found  so only a check is due. | This analysis requires knowledge of the search behaviour of `div arg1 arg2 arg3 arg4` in the following two cases: i. Both `arg1, arg2` are unknowns, but `arg3, arg4` are known. ii. Only `arg1` is unknown, the other three are known. |
-| `gcd a b c` <br /> `& div a c a' O` <br /> `& div b c b' O`   | centered      |   $12 | |
+| <nobr>`div a c a' O`</nobr><br> <nobr>`& div b c b' O`</nobr> <br> <nobr>`& gcd a b c`</nobr>  | Find `a` and `c`such that  `a` divided by `c` equals `a'` exactly. Then find `b` such that `b` divided by  `c` equals `b'` exactly. Now check that the gcd of `a` and `b` is `c`. | In the first conjunct both `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first  conjunct, only `b` is the unknown, and in the thrid conjunct all `a,b,c` have been found  so only a check is due. | This analysis requires knowledge of the search behaviour of `div arg1 arg2 arg3 arg4` in the following two cases: i. Both `arg1, arg2` are unknowns, but `arg3, arg4` are known. ii. Only `arg1` is unknown, the other three are known. |
+| `gcd a b c` <br> `& div a c a' O` <br> `& div b c b' O`   | centered      |   $12 | |
 
 
 What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
