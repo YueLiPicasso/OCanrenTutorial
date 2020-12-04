@@ -434,7 +434,7 @@ The ordering of the conjuncts, together with the state of the logic varaibles (o
 free or already instantiated) and the search behaviour of the sub-relations, results in
 apparently different operational meaning of the conjunctions, as follows:
 - Initially assume that `a', b'` are known but `a,b,c` are unknown.
-- `div a c a' O  & div b c b' O & gcd a b c` is read as, "Find `a` and `c` such that 
+- `div a c a' O  & div b c b' O & gcd a b c` is read as, "___Find `a` and `c`___ such that 
 `a` divided by `c` equals `a'` exactly. Then find `b` such that `b` divided by
  `c` equals `b'` exactly. Now check that the gcd of `a` and `b` is `c`."
  In the first conjunct both
