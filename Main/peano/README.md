@@ -31,7 +31,7 @@ in (your local copy of) the lesson directory:
 ```
 make && ./peano.opt
 ```
-The output of the test file is stored in [answers.txt](answers.txt) using the shell command `./peano.opt > answers.txt`.    
+A copy of the result of the test is [answers.txt](answers.txt) that is obtained using the shell command `./peano.opt > answers.txt`.    
 
 ## (T.1) Advanced Injection Functions
 
