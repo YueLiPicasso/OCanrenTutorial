@@ -484,8 +484,8 @@ order, starting with the least possible divisor which is 3 (the divisor must be 
 than the remainder 2), together with the corresponding dividends.
 
 In backward search, therefore, the `simplify` relation first finds a `c`-multiple of `a'` for
-some `c`, and then finds a `c`-multiple of `b'` for the same `c`. Its final checking of
-the gcd relation is starighforward if `a'/b'` is already in the simplest form.
+some `c`, and then finds a `c`-multiple of `b'` for the same `c`. Its check of
+the gcd relation as the last step is starighforward if `a'/b'` is already in the simplest form.
 This all sounds like logical manners to find integral multiples of a ratio. However,
 what `simplify'` does is firstly guessing an arbitrary ratio together with the gcd of the
 numerator and the denominator, and then it checks if the ratio happens to reduce to `a'/b'`. This
