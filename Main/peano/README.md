@@ -453,6 +453,16 @@ apparently different operational meaning of the conjunctions, as follows:
    with three free logic variables for its three arguments.
 
 
+| Ordering of Conjuncts | Operational Meaning | State of Variables  | Knowledge on Sub-relations |
+| --------------------- | ------------------- | --------------------|-------------------------   |
+|  ```
+    div a c a' O
+    & div b c b' O
+    & gcd a b c`
+    ```                 |       right-aligned |               $1600 |  |
+| col 2 is      | centered      |   $12 | |
+
+
 What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
 respectively, i.e., a ratio not in the simplest form? Why?    
 
