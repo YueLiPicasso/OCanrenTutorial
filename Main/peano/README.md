@@ -441,11 +441,16 @@ apparently different operational meaning of the conjunctions, as follows:
   `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first
   conjunct, only `b` is the unknown, and in the thrid conjunct all `a,b,c` have been found
   so only a check is due. This analysis requires knowledge of the search behaviour of
-  `div arg1 arg2 arg3 arg4` in the following two cases, which is provided by
-  [tests](test.ml#L114) on `div`:
+  `div arg1 arg2 arg3 arg4` in the following two cases:
    1. Both `arg1, arg2` are unknowns, but `arg3, arg4` are known.
    1. Only `arg1` is unknown, the other three are known.
-- `gcd a b c & div a c a' O & div b c b' O` is read as  
+- `gcd a b c & div a c a' O & div b c b' O` is read as, "Find three unknowns`a,b,c` such 
+  that the relation `gcd a b c` holds, then check that `a` (`b`) is exactly dividable by
+  `c` with quotient `a'` (resp. `b'`)" When the first conjunct is executed, all `a,b,c` are
+   unknown, but when the second and third conjuncts are executed, the variables `a,b,c` are
+   already computed by the first conjunct, therefore the last two conjuncts merely checks
+   the results. This analysis requires knowledge of the search behaviour of `gcd` when provided
+   with three free logic variables for its three arguments.
 
 
 What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
