@@ -430,28 +430,9 @@ in the simplest form, find its equal ratios, e.g., 3/2 could be simplified from 
 it comes to backward search,  `simplify` returns answers quickly but `simplify'` took ages
 without returning anything.
 
-The ordering of the conjuncts, together with the state of the logic varaibles (of being
-free or already instantiated) and the search behaviour of the sub-relations, results in
+The ordering of the conjuncts, together with the state of the logic varaibles
+(initially assume that `a', b'` are known but `a,b,c` are unknown) and the search behaviour of the sub-relations, results in
 apparently different operational meaning of the conjunctions, as follows:
-- Initially assume that `a', b'` are known but `a,b,c` are unknown.
-- `div a c a' O  & div b c b' O & gcd a b c` is read as, "Find `a` and `c`such that 
-`a` divided by `c` equals `a'` exactly. Then find `b` such that `b` divided by
- `c` equals `b'` exactly. Now check that the gcd of `a` and `b` is `c`."
- In the first conjunct both
-  `a,c` are unknowns, but in the second conjunct since `c` has already been found by the first
-  conjunct, only `b` is the unknown, and in the thrid conjunct all `a,b,c` have been found
-  so only a check is due. This analysis requires knowledge of the search behaviour of
-  `div arg1 arg2 arg3 arg4` in the following two cases:
-   1. Both `arg1, arg2` are unknowns, but `arg3, arg4` are known.
-   1. Only `arg1` is unknown, the other three are known.
-- `gcd a b c & div a c a' O & div b c b' O` is read as, "Find three unknowns`a,b,c` such 
-  that the relation `gcd a b c` holds, then check that `a` (`b`) is exactly dividable by
-  `c` with quotient `a'` (resp. `b'`)." When the first conjunct is executed, all `a,b,c` are
-   unknown, but when the second and third conjuncts are executed, the variables `a,b,c` are
-   already computed by the first conjunct, therefore the last two conjuncts merely checks
-   the results. This analysis requires knowledge of the search behaviour of `gcd` when provided
-   with three free logic variables for its three arguments.
-
 
 | Ordering of Conjuncts | Operational Meaning | State of Variables  | Knowledge on Sub-relations |
 | --------------- | ------------------- | --------------------|-------------------------   |
