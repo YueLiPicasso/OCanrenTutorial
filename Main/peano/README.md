@@ -432,7 +432,7 @@ without returning anything.
 
 This is caused by the order of the conjuncts, in combination with the state of
 the logic varaibles (of being free or already instantiated) and the search behaviour of the 
-sub-relations in the context.
+sub-relations.
 
 
 In the
