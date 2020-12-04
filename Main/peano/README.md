@@ -448,7 +448,8 @@ apparently different operational meaning of the conjunctions, as follows:
 
 
 The relevant search behaviours of the sub-relations mentioned in the table can be observed by running the test file or found in [answers.txt](answers.txt). For instance, to
-know the search behaviour of `div` when only its fisrt two arguments are unknown, can be observed by making the specific query:
+know the search behaviour of `div` when only its first and second argument are unknown, we can
+make the specific query:
 ```ocaml
 printf "\n What divided by what equals 3 with remainder 2 ? (give %d answers) \n\n" ans_no;
 ocrun2 ~n:ans_no (fun q r-> ocanren { div q r (S(S(S O))) (S(S O)) })
