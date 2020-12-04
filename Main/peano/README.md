@@ -26,6 +26,13 @@ the body of a relation definition to modify the way in which the relation search
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
 section is self-contained and could be read independent of other sections.
 
+The library has a systematic test file, which can be compiled (and linked) and executed by running the following shell commands in the
+lesson directory:
+```
+make && ./peano.opt
+```
+The output of the test file is stored in [answers.txt](answers.txt) using the shell command `./peano.opt > answers.txt`.    
+
 ## (T.1) Advanced Injection Functions
 
 The primary injection operator is `!!` which is used to cast primitive values (such as characters and strings)
@@ -440,11 +447,15 @@ apparently different operational meaning of the conjunctions, as follows:
 | <code>gcd&nbsp;a&nbsp;b&nbsp;c &&nbsp;div&nbsp;a&nbsp;c&nbsp;a'&nbsp;O &&nbsp;div&nbsp;b&nbsp;c&nbsp;b'&nbsp;O </code>  | Find three unknowns`a,b,c` such  that the relation `gcd a b c` holds, then check that `a` (`b`) is exactly dividable by  `c` with quotient `a'` (resp. `b'`).    | When the first conjunct is executed, all `a,b,c` are  unknown, but when the second and third conjuncts are executed, the variables `a,b,c` are  already computed by the first conjunct, therefore the last two conjuncts merely checks  the results. | This analysis requires knowledge of the search behaviour of `gcd` when provided  with three free logic variables for its three arguments.|
 
 
+The relevant search behaviour of the sub-relations can be observed by running the test file. For example, when asking 
+
 What will happen if we use `simply` to find `a` and `b`, but give `a'` and `b'` as 4 and 2
 respectively, i.e., a ratio not in the simplest form? Why?    
 
 
-## (T.8) The Trick of Generate-and-test 
+## (T.8) The Trick of Generate-and-test
+
+The relevant search behaviour of the sub-relations can be observed by running the test file. For example, we 
 
 ## (T.9) The Formula Parser
 
