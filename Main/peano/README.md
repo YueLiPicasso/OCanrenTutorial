@@ -500,8 +500,7 @@ gcd of `a,b` --- less efficient but still acceptable for small numbers.
 
 
 As an exercise, the reader could experiment with reordering the conjuncts so that `gcd` is
-placed in between the two `div`s. How would forward and backward search be influenced?  
-A second question: what will happen and why, if we use `simplify` to find `a` and `b`,
+placed in between the two `div`s. How would forward and backward search be influenced? A second question: what will happen and why, if we use `simplify` to find `a` and `b`,
 but give `a'` and `b'` as 4 and 2 respectively, i.e., a ratio not in the simplest form?     
 
 
