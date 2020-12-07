@@ -510,7 +510,7 @@ When using the `gcd` relation to answer the question: "What and what have gcd 7 
 distribution of [the answers](answers.txt#L432) does not look balanced: the second number
 is 7 most of the time, while the first number is growing. In comparison,
 [the answers](answers.txt#L455) given by the `gcd'` relation has a more satisfactory
- distribution: the first number increases and the for each possible first number,
+ distribution: the first number increases and for each possible first number,
  all possible second numbers are enumerated before the first number is increased.  
 
 ## (T.9) The Formula Parser
