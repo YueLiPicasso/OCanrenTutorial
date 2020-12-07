@@ -576,7 +576,7 @@ sub-categories one of which is named _extend_:
 extend = "EXTEND", extend-body, "END"
 ```
 
-The implementation has only [one]((../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)) _extend_ expression, above which there are
+The implementation has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend_ expression, above which there are
 auxiliary functions and below which there is nothing else.
 
 
