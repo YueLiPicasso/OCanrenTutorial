@@ -560,8 +560,18 @@ programs search for answers even if the programmer does not intentionally apply 
 In the library implementation and the test file, we often see formulae enclosed
 by the `ocanren{}` quotation which takes care of, among others, precedence
 and associativity of the logic connectives. We take a look at the
-[implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of the `ocanren{}` quotation, which is part of the OCanren
-distribution. 
+[implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of
+the `ocanren{}` quotation, which is part of the OCanren distribution.
+
+The first line is:
+```ocaml
+#load "pa_extend.cmo";;
+```
+By the Camlp5 [manual](https://camlp5.github.io/doc/htmlc/grammars.html),
+loading the syntax extension kit `pa_extend.cmo` amounts
+to extending the OCaml syntactic category
+[_expresion_](https://ocaml.org/releases/4.11/htmlman/expr.html) with one more
+sub-category named _extend_. 
 
 ## (T.10) OCanren Terms
 
