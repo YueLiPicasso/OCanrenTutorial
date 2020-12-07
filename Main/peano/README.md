@@ -516,7 +516,7 @@ is 7 most of the time, while the first number is growing. In comparison,
  we explain now. 
 
  Browsing the library [source](peano.ml#L81) we could see that `gcd'` is defined in terms
-  of `gcd` together with the addition relation and the Peano number predicate `isp`.
+  of `gcd` together with the addition relation and the Peano number predicate `isp` (read "is P" or "is a Peano Number").
   
  Provided a free variable as the argument, `isp` enumerates all Peano numbers, in other words,
 we can obtain the following equation from the definition of `isp`, where the right hand side is
