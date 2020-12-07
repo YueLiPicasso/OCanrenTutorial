@@ -574,7 +574,7 @@ to extending the OCaml syntactic category
 sub-categories one of which is named _extend_:
 ```ebnf
 expr = ... | extend ; 
-extend = "EXTEND", extend-body, "END";
+extend = "EXTEND", extend-body, "END" ;
 ```
 
 The implementation has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend_ expression, above which there are
