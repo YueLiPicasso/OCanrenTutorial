@@ -24,7 +24,8 @@ the body of a relation definition to modify the way in which the relation search
 - [**T.11**](#t11-building-a-library) Writing and testing a library in OCanren.
 
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
-section is self-contained and could be read independent of other sections.
+section is self-contained and could be read independent of other sections,
+except for T.10 which is based on T.9 .
 
 The library has a systematic test file, which can be compiled (and linked) and executed by running the following shell commands
 in (your local copy of) the lesson directory:
@@ -561,7 +562,7 @@ In the library implementation and the test file, we often see formulae enclosed
 by the `ocanren{}` quotation which takes care of, among others, precedence
 and associativity of the logic connectives. We take a look at the
 [implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of
-the `ocanren{}` quotation which we will call the formula parser in the
+the `ocanren{}` quotation which we will call _the formula parser_ in the
 rest of this lesson and which is part of the OCanren distribution. 
 
 
