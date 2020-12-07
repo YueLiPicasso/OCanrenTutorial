@@ -511,7 +511,25 @@ distribution of [the answers](answers.txt#L432) does not look balanced: the seco
 is 7 most of the time, while the first number is growing. In comparison,
 [the answers](answers.txt#L455) given by the `gcd'` relation has a more satisfactory
  distribution: the first number increases and for each possible first number,
- all possible second numbers are enumerated before the first number is increased.  
+ all possible second numbers are enumerated before the first number is increased. The
+ `gcd'` relation in this case exhibits the famous behaviour known as `generate-and-test`, which
+ we explain now. 
+
+ Browsing the library [source](peano.ml#L81) we could see that `gcd'` is defined in terms
+  of `gcd` together with the addition relation and the Peano number predicate `isp`.
+ Provided a free variable as the argument, `isp` enumerates all Peano numbers, in other words,
+we can obtain the following equation from the definition of `isp`, where the right hand side is
+an infinite formula:
+```
+isp n = n == O | n == S O | n == S (S O) | n == S (S (S O)) | ...
+```
+Therefore, `isp` could be a Peano number _generator_ . Moreover, when the third argument of
+`add` is concrete but the first and second argument are free variables, the `add` relation
+can find all ways to break up the third argument into two addends. The sequence of `isp` and
+`add` in the body of `gcd'` can then be a Peano number pair generator, enumerating all possible
+pairs of Peano numbers (in the same way Georg Cantor shows that the set of rational numbers
+ is enumerable).
+
 
 ## (T.9) The Formula Parser
 
