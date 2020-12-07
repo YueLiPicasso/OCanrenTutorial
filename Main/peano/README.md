@@ -582,9 +582,13 @@ extend = "EXTEND", extend-body, "END" ;
 The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend_ expression, before which there are
 auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
 
-Camlp5 also provides predefined syntactic categories of OCaml, which can be
-extended by the _extend_ expressions. Names of these predefined categories are
-provided by the Camlp5 module Pcaml that is opened by the implementation.   
+Camlp5 also provides predefined values representing
+standard syntactic categories of OCaml.  The names of such
+predefined values are provided by the Camlp5 module _Pcaml_ that
+is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
+by the formula parser. Some of these names: `expr` and `ctyp` are
+referred to by the _extend_  expression which needs to extend the
+corresponding standard syntactic categories.
 
 
 ## (T.10) OCanren Terms
