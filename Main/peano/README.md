@@ -512,7 +512,7 @@ is 7 most of the time, while the first number is growing. In comparison,
 [the answers](answers.txt#L455) given by the `gcd'` relation has a more satisfactory
  distribution: the first number increases and for each possible first number,
  all possible second numbers are enumerated before the first number is increased. The
- `gcd'` relation in this case exhibits the famous behaviour known as `generate-and-test`, which
+ `gcd'` relation in this case exhibits the famous behaviour known as _generate-and-test_, which
  we explain now. 
 
  Browsing the library [source](peano.ml#L81) we could see that `gcd'` is defined in terms
