@@ -561,9 +561,12 @@ In the library implementation and the test file, we often see formulae enclosed
 by the `ocanren{}` quotation which takes care of, among others, precedence
 and associativity of the logic connectives. We take a look at the
 [implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of
-the `ocanren{}` quotation, which is part of the OCanren distribution.
+the `ocanren{}` quotation which we will call the formula parser in the
+rest of this lesson and which is part of the OCanren distribution. 
 
-The first line loads the syntax extension kit `pa_extend.cmo`:
+
+The first line loads the syntax extension kit `pa_extend.cmo` provided
+by Camlp5:
 ```ocaml
 #load "pa_extend.cmo";;
 ```
@@ -576,9 +579,12 @@ sub-categories one of which is named _extend_:
 expr = ... | extend ; 
 extend = "EXTEND", extend-body, "END" ;
 ```
+The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend_ expression, before which there are
+auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
 
-The implementation has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend_ expression, above which there are
-auxiliary functions and below which there is nothing else.
+Camlp5 also provides predefined syntactic categories of OCaml, which can be
+extended by the _extend_ expressions. Names of these predefined categories are
+provided by the Camlp5 module Pcaml that is opened by the implementation.   
 
 
 ## (T.10) OCanren Terms
