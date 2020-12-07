@@ -557,6 +557,12 @@ programs search for answers even if the programmer does not intentionally apply 
 
 ## (T.9) The Formula Parser
 
+In the library implementation and the test file, we often see formulae enclosed
+by the `ocanren{}` quotation which takes care of, among others, precedence
+and associativity of the logic connectives. We take a look at the
+[implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of the `ocanren{}` quotation, which is part of the OCanren
+distribution. 
+
 ## (T.10) OCanren Terms
 
 ## (T.11) Building a Library
