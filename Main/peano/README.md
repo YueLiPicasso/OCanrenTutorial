@@ -538,8 +538,9 @@ pairs of Peano numbers (in the same way Georg Cantor shows that the set of ratio
  generated systematically , the final answers are also organized in the manner we saw.
 
 
-Another example of generate-and-test is the `simplify a b a' b'` relation. When `a,b` are
-given but `a',b'` are left unknown, [the first `div`](peano.ml#L91) generates all possible divisor-quotient
+Another example of generate-and-test is the `simplify a b a' b'` relation:
+- When `a,b` are given but `a',b'` are left unknown, [the first `div`](peano.ml#L91)
+generates all possible divisor-quotient
 pairs for `a`, and for each such pair the second `div` tests if the divisor also divides
 `b` and if so generates the quotient. The sequence of two `div`'s then play of role of
 a generator of all common divisors of `a,b` together with the corresponding pairs of numbers
