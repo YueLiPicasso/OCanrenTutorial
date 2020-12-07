@@ -570,14 +570,14 @@ The first line is:
 By the Camlp5 [manual](https://camlp5.github.io/doc/htmlc/grammars.html),
 loading the syntax extension kit `pa_extend.cmo` amounts
 to extending the OCaml syntactic category
-[_expresion_](https://ocaml.org/releases/4.11/htmlman/expr.html) with one more
-sub-category named _extend_:
+[_expresion_](https://ocaml.org/releases/4.11/htmlman/expr.html) with several
+sub-categories one of which is named _extend_:
 ```ebnf
 extend = "EXTEND", extend-body, "END"
 ```
 
-The implementation has only one _extend_ expression, above which there are
-auxiliary functions.
+The implementation has only [one]((../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)) _extend_ expression, above which there are
+auxiliary functions and below which there is nothing else.
 
 
 ## (T.10) OCanren Terms
