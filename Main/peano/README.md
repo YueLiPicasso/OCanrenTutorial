@@ -563,12 +563,12 @@ and associativity of the logic connectives. We take a look at the
 [implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of
 the `ocanren{}` quotation, which is part of the OCanren distribution.
 
-The first line is:
+The first line loads the syntax extension kit `pa_extend.cmo`:
 ```ocaml
 #load "pa_extend.cmo";;
 ```
 By the Camlp5 [manual](https://camlp5.github.io/doc/htmlc/grammars.html),
-loading the syntax extension kit `pa_extend.cmo` amounts
+loading `pa_extend.cmo` amounts
 to extending the OCaml syntactic category
 [_expresion_](https://ocaml.org/releases/4.11/htmlman/expr.html) with several
 sub-categories one of which is named _extend_:
