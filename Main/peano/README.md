@@ -535,7 +535,7 @@ The sequence of `isp` and
 pairs of Peano numbers (in the same way Georg Cantor shows that the set of rational numbers
  is enumerable). Now the way `gcd'` works is clear: it enumerates  through (i.e., _generates_)
  all possible pairs and then _tests_ which pairs have the gcd 7. Since the pairs are
- generated systematically , the final answers are also organized in the manner we saw.
+ generated systematically , the final answers are organized in the way we saw.
 
 
 Another example of generate-and-test is the `simplify a b a' b'` relation.
