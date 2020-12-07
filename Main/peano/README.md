@@ -543,7 +543,7 @@ Another example of generate-and-test is the `simplify a b a' b'` relation:
 generates all possible divisor-quotient
 pairs for `a`, and for each such pair [the second `div`](peano.ml#L92)
 tests if the divisor also divides
-`b` and if so generates the quotient. The sequence of two `div`'s then play of role of
+`b` and if so generates the quotient. The sequence of two `div`'s then plays of role of
 a generator of all common divisors of `a,b` together with the corresponding pairs of numbers
 which are `a,b` divided by their common divisors.
 
