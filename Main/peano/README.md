@@ -533,7 +533,17 @@ can find all ways to break up the third argument into two addends.
 The sequence of `isp` and
 `add` in the body of `gcd'` can then be a Peano number pair generator, enumerating all possible
 pairs of Peano numbers (in the same way Georg Cantor shows that the set of rational numbers
- is enumerable).
+ is enumerable). Now the way `gcd'` works is clear: it enumerates  through (i.e., _generates_)
+ all possible pairs and then _tests_ which pairs have the gcd 7. Since the pairs are
+ generated systematically , the final answers are also organized in the manner we saw.
+
+
+Another example of generate-and-test is the `simplify a b a' b'` relation. When `a,b` are
+given but `a',b'` are left unknown, the first `div` generates all possible divisor-quotient
+pairs for `a`, and for each such pair the second `div` tests if the divisor also divides
+`b` and if so generates the quotient. The sequence of two `div`'s then play of role of
+a generator of all common divisors of `a,b` together with the corresponding pairs of numbers
+which are `a,b` divided by their common divisors.
 
 
 ## (T.9) The Formula Parser
