@@ -538,14 +538,21 @@ pairs of Peano numbers (in the same way Georg Cantor shows that the set of ratio
  generated systematically , the final answers are also organized in the manner we saw.
 
 
-Another example of generate-and-test is the `simplify a b a' b'` relation:
-- When `a,b` are given but `a',b'` are left unknown, [the first `div`](peano.ml#L91)
+Another example of generate-and-test is the `simplify a b a' b'` relation.
+When `a,b` are given but `a',b'` are left unknown, [the first `div`](peano.ml#L91)
 generates all possible divisor-quotient
 pairs for `a`, and for each such pair [the second `div`](peano.ml#L92)
 tests if the divisor also divides
 `b` and if so generates the quotient. The sequence of two `div`'s then plays the role of
 a generator of all common divisors of `a,b` together with the corresponding pairs of numbers
-which are `a,b` divided by their common divisors.
+which are `a,b` divided by their common divisors. The `gcd` sub-relation finally checks
+for the greatest common divisor, and the corresponding pair of quotients is the answer
+for `a',b'`.
+
+In summary, generate-and-test is both a technique that the programmer applies
+to solve certain problems (e.g., the `gcd'` case), and a usual way in which relational
+programs search for answers even if the programmer does not intentionally apply it (e.g., the
+`simplify` case). 
 
 
 ## (T.9) The Formula Parser
