@@ -586,7 +586,7 @@ Camlp5 also provides predefined values representing
 standard syntactic categories of OCaml.  The names of such
 predefined values are provided by the Camlp5 module _Pcaml_ that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser. Some of these names: `expr` and `ctyp` are
+by the formula parser. Two of these names: `expr` and `ctyp` are
 referred to by the _extend_  expression of the formula parser
 where the corresponding standard syntactic categories need to be extended.
 
