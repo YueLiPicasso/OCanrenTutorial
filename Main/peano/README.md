@@ -579,9 +579,9 @@ sub-categories one of which is named _extend_:
 expr = ... | extend ; 
 extend = "EXTEND", extend-body, "END" ;
 ```
-Then an expression that belongs to the category "extend" would be called an _extend expression_.
+Then an expression that belongs to the category "extend" would be called an _EXTEND statement_.
 The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
-extend expression, before which there are
+EXTEND statement, before which there are
 auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
 
 Camlp5 also provides predefined values representing
@@ -589,7 +589,7 @@ standard syntactic categories of OCaml.  The names of such
 predefined values are provided by the Camlp5 module _Pcaml_ that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser. Two of these names: `expr` and `ctyp` are
-referred to by the extend expression 
+referred to by the EXTEND statement 
 where the corresponding standard syntactic categories are extended.
 
 The extend-body starts with a
@@ -600,15 +600,15 @@ are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
 
 The entry names `expr` and `ctyp` are declared in
 the global indicator to tell Camlp5 that they are already
-defined in the context of the extend expression, and other entry names
-shall be treated as locally defined within the extend expression. Camlp5
+defined in the context of the EXTEND statement, and other entry names
+shall be treated as locally defined within the EXTEND statement. Camlp5
 would then expect to find existing definitions of the names `expr` and `ctyp`
-outside the extend expression, which is exactly provided by the opened Pcaml
+outside the EXTEND statement, which is exactly provided by the opened Pcaml
 module. If the optional global indicator was missing, then Camlp5 would
 expect all entry names in the extend-body as predefined and would fail with
 the error "unbound value"  at the first entry  name `long_ident` since it
-is not already defined outside the extend expression. Therefore, if you only
-extend existing syntactic categories in the extend expression you would
+is not already defined outside the EXTEND statement. Therefore, if you only
+extend existing syntactic categories in the EXTEND statement you would
 not need an explicit global indicator : its default value would do,
 but if you intend to define custom syntactic categories (or entries)
 in addition to extending existing syntactic categories then you need to
