@@ -612,7 +612,7 @@ The `ocanren_expr` entry has four levels separated by vertical bars:
 parses a disjunction.
 - [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction.
 - [The third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
-a fresh variable introfuction (i.e., existential quantification).
+a fresh variable introduction (i.e., existential quantification).
 - [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic formulae.
 
  
