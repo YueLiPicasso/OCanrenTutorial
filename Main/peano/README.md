@@ -579,7 +579,7 @@ sub-categories one of which is named _extend_:
 expr = ... | extend ; 
 extend = "EXTEND", extend-body, "END" ;
 ```
-The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend_ expression, before which there are
+The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend expression_, before which there are
 auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
 
 Camlp5 also provides predefined values representing
@@ -587,20 +587,27 @@ standard syntactic categories of OCaml.  The names of such
 predefined values are provided by the Camlp5 module _Pcaml_ that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser. Two of these names: `expr` and `ctyp` are
-referred to by the _extend_  expression of the formula parser
-where the corresponding standard syntactic categories need to be extended.
+referred to by the extend expression 
+where the corresponding standard syntactic categories are extended.
 
-The _extend-body_ category starts with an optional
+The extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
 followed by a semicolon separated list of _entries_ whose names
 are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
-`ocanren_term'` and `ctyp`. The entry names `expr` and `ctyp` are listed by
+`ocanren_term'` and `ctyp`.
+
+The entry names `expr` and `ctyp` are declared in
 the global indicator to tell Camlp5 that they are already
-defined in the context of the _extend_ expression, and other entry names
-shall be treated as locally defined within the _extend_ expression.
+defined in the context of the extend expression, and other entry names
+shall be treated as locally defined within the extend expression. Camlp5
+would then expect to find existing definitions of the names `expr` and `ctyp`
+outside the extend expression, which is exactly provided by the opened Pcaml
+module. If the optional global indicator was missing, then Camlp5 would
+expect all entry names in the extend-body as predefined and would fail with
+the error "unbound value"  at the first entry  name `long_ident` since it
+is not already defined outside the extend expression. 
 
-
-default value is a list of all  
+ 
 ## (T.10) OCanren Terms
 
 ## (T.11) Building a Library
