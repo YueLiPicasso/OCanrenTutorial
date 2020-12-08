@@ -581,7 +581,9 @@ extend = "EXTEND", extend-body, "END" ;
 Then an expression that belongs to the category "extend" would be called an _EXTEND statement_.
 The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
 EXTEND statement, before which there are
-auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
+auxiliary functions (such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
+[`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
+[`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc.) and after which there is nothing else.
 
 The extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
