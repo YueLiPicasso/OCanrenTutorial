@@ -590,7 +590,17 @@ by the formula parser. Some of these names: `expr` and `ctyp` are
 referred to by the _extend_  expression of the formula parser
 where the corresponding standard syntactic categories need to be extended.
 
+The _extend-body_ category starts with an optional
+[_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
+followed by a semicolon separated list of _entries_ whose names
+are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
+`ocanren_term'` and `ctyp`. The entry names `expr` and `ctyp` are listed by
+the global indicator to tell Camlp5 that they are already
+defined in the context of the _extend_ expression, and other entry names
+shall be treated as locally defined within in the _extend_ expression.
 
+
+default value is a list of all  
 ## (T.10) OCanren Terms
 
 ## (T.11) Building a Library
