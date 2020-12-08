@@ -16,9 +16,9 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 - [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts  within
 the body of a relation definition to modify the way in which the relation searches for answers in a given query.
 - [**T.8**](#t8-the-trick-of-generate-and-test) Programming a relation so that answers to certain queries are found by brute-force. 
-- [**T.9**](#t9-the-formula-parser) Observing, how the `ocanren {}` quotation converts its content (which is a formula) into
-  an expression built with names  provided by the module [Core](../../Installation/ocanren/src/core/Core.mli).
-- [**T.10**](#t10-ocanren-terms) Additionally, observing how the `ocanren {}` quotation replaces  value constructors
+- [**T.9**](#t9-the-formula-parser) Observing that the `ocanren {}` quotation  implements the precedence, associativity and/or scope
+of the logic connectives.
+- [**T.10**](#t10-ocanren-terms) Observing that the `ocanren {}` quotation replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
 - [**T.11**](#t11-building-a-library) Writing and testing a library in OCanren.
@@ -619,7 +619,9 @@ The relative order of the levels determine the precedence of the logic
 connectives: the formula parser first sees if the formula is a
 disjunction at the top level, if not, sees if it is conjunction, and so on.
 The first and second level also have (optional) associativity indicators `RIGHTA`, requiring that the conjunction and disjunction connectives
-associate to the right.
+associate to the right. The third level refers back to the first level when
+parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
+implying that the scope of `fresh` extends to the right as far as possible. 
 
 
  
