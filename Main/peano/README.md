@@ -615,7 +615,11 @@ parses a disjunction.
 a fresh variable introduction (i.e., existential quantification).
 - [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae.
 
- 
+The relative order of the levels determine the precedence of the logic
+connectives: the formula parser first sees if the formula is a
+disjunction at the top level, if not, sees if it is conjunction, and so on.
+The first and second level also have (optional) associativity indicators `RIGHTA`, requiring that the conjunction and disjunction connectives
+associate to the right.
 
 
  
