@@ -591,7 +591,7 @@ are [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
 [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186),
 [`ocanren_embedding`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L222),
 [`ocanren_expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L226),
-[`ocanren_term](../../Installation/ocanren/camlp5/pa_ocanren.ml#L255)`,
+[`ocanren_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L255),
 [`ocanren_term'`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L259) and
 [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290). The entries are syntactic categories some of which are
 predefined and are to be extended by the EXTEND statement (like `expr` and `ctyp`), and
