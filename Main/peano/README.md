@@ -602,9 +602,9 @@ is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser.
 
 
-The entry [`ocanren_embedding`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L222) directly
+The entry `ocanren_embedding` directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
-calls the entry [`ocanren_expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L226) to parse
+calls the entry `ocanren_expr` to parse
 the content between the braces of a quotation.
 
 The `ocanren_expr` entry has four levels separated by vertical bars:
