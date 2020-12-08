@@ -584,34 +584,20 @@ The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.m
 EXTEND statement, before which there are
 auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
 
-Camlp5 also provides predefined values representing
-standard syntactic categories of OCaml.  The names of such
-predefined values are provided by the Camlp5 module _Pcaml_ that
-is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser. Two of these names: `expr` and `ctyp` are
-referred to by the formula parser in the extend-body.
-
 The extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
 followed by a semicolon separated list of _entries_ whose names
 are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
-`ocanren_term'` and `ctyp`.
+`ocanren_term'` and `ctyp`. The entries are syntactic categories some of which are
+predefined and are to be extended by EXTEND statement (like `expr` and `ctyp`), and
+others are  locally defined syntactic categories. The global indicator declares all
+predefined syntactic categories.
 
-The entry names `expr` and `ctyp` are declared in
-the global indicator to tell Camlp5 that they are already
-defined in the context of the EXTEND statement, and other entry names
-shall be treated as locally defined within the EXTEND statement. Camlp5
-would then expect to find existing definitions of the names `expr` and `ctyp`
-outside the EXTEND statement, which is exactly provided by the opened Pcaml
-module. If the optional global indicator was missing, then Camlp5 would
-expect all entry names in the extend-body as predefined and would fail with
-the error "unbound value"  at the first entry  name `long_ident` since it
-is not already defined outside the EXTEND statement. Therefore, if you only
-extend existing syntactic categories in the EXTEND statement you would
-not need an explicit global indicator : its default value would do,
-but if you intend to define custom syntactic categories (or entries)
-in addition to extending existing syntactic categories then you need to
-declare the names of the existing categories as global.
+Predefined syntactic categories are provided by the Camlp5 module _Pcaml_ that
+is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
+by the formula parser,  representing the standard syntax of Ocaml. 
+
+ 
 
 
  
