@@ -613,7 +613,7 @@ parses a disjunction.
 - [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction.
 - [The third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
 a fresh variable introduction (i.e., existential quantification).
-- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic formulae.
+- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae.
 
  
 
