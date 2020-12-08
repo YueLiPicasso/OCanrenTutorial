@@ -605,7 +605,13 @@ outside the extend expression, which is exactly provided by the opened Pcaml
 module. If the optional global indicator was missing, then Camlp5 would
 expect all entry names in the extend-body as predefined and would fail with
 the error "unbound value"  at the first entry  name `long_ident` since it
-is not already defined outside the extend expression. 
+is not already defined outside the extend expression. Therefore, if you only
+extend existing syntactic categories in the extend expression you would
+not need an explicit global indicator : its default value would do,
+but if you intend to define custom syntactic categories (or entries)
+in addition to extending existing syntactic categories then you need to
+declare the names of the existing categories as global.
+
 
  
 ## (T.10) OCanren Terms
