@@ -589,8 +589,7 @@ standard syntactic categories of OCaml.  The names of such
 predefined values are provided by the Camlp5 module _Pcaml_ that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser. Two of these names: `expr` and `ctyp` are
-referred to by the EXTEND statement 
-where the corresponding standard syntactic categories are extended.
+referred to by the formula parser in the extend-body.
 
 The extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
