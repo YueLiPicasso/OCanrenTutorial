@@ -597,7 +597,7 @@ are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
 `ocanren_term'` and `ctyp`. The entry names `expr` and `ctyp` are listed by
 the global indicator to tell Camlp5 that they are already
 defined in the context of the _extend_ expression, and other entry names
-shall be treated as locally defined within in the _extend_ expression.
+shall be treated as locally defined within the _extend_ expression.
 
 
 default value is a list of all  
