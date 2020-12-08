@@ -579,7 +579,9 @@ sub-categories one of which is named _extend_:
 expr = ... | extend ; 
 extend = "EXTEND", extend-body, "END" ;
 ```
-The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168) _extend expression_, before which there are
+Then an expression that belongs to the category "extend" would be called an _extend expression_.
+The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
+extend expression, before which there are
 auxiliary functions (such as `decapitalize`, `ctor` and `fix_term` etc.) and after which there is nothing else.
 
 Camlp5 also provides predefined values representing
