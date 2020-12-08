@@ -607,6 +607,14 @@ corresponds to the `ocanren{}` quotations we saw in the library implementation, 
 calls the entry [`ocanren_expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L226) to parse
 the content between the braces of a quotation.
 
+The `ocanren_expr` entry has four levels separated by vertical bars:
+- [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
+parses a disjunction.
+- [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction.
+- [The third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
+a fresh variable introfuction (i.e., existential quantification).
+- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic formulae.
+
  
 
 
