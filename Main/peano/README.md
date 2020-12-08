@@ -589,7 +589,7 @@ The extend-body starts with a
 followed by a semicolon separated list of _entries_ whose names
 are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
 `ocanren_term'` and `ctyp`. The entries are syntactic categories some of which are
-predefined and are to be extended by EXTEND statement (like `expr` and `ctyp`), and
+predefined and are to be extended by the EXTEND statement (like `expr` and `ctyp`), and
 others are  locally defined syntactic categories. The global indicator declares all
 predefined syntactic categories.
 
