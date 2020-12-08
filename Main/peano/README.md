@@ -591,11 +591,12 @@ are `long_ident`, `expr`, `ocanren_embedding`, `ocanren_expr`, `ocanren_term`,
 `ocanren_term'` and `ctyp`. The entries are syntactic categories some of which are
 predefined and are to be extended by the EXTEND statement (like `expr` and `ctyp`), and
 others are  locally defined. The global indicator declares all and only
-predefined syntactic categories within the extend-body.
-
-Predefined syntactic categories are provided by the Camlp5 module _Pcaml_ that
+predefined syntactic categories within the extend-body. Predefined syntactic categories
+are provided by the Camlp5 module _Pcaml_ that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser,  representing the standard syntax of Ocaml. 
+by the formula parser.
+
+
 
  
 
