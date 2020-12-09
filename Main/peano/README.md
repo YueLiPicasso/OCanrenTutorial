@@ -647,7 +647,8 @@ The relative order of the levels determines the precedence of the logic
 connectives: the formula parser first sees if the formula is a
 disjunction at the top level, if not, sees if it is conjunction, and so on,
 implying that disjunction has the least precedence, above which is conjunction, then 
-existential quantification, and finally  syntactic equality and disequality among others have
+existential quantification, and finally  syntactic equality,  disequality and braced groups
+(among others) enjoy
 the highest precedence. 
 The first and second level also have (optional) associativity indicators `RIGHTA`, requiring that the conjunction and disjunction connectives
 associate to the right. The third level refers back to the first level when
