@@ -673,12 +673,13 @@ The `ocanren_term'` parser has  four levels, namely:
    The quotation `<:expr< $l$ $r$ >>` is expanded by Camlp5 into the abstract syntax tree (AST) `MLast.ExApp loc l r` --- quotations of the form `<:name< ... >>` are
    just short hands for writing (otherwise verbose) AST's. The rules for expanding quotations are given in the [Syntax tree - strict mode](https://camlp5.github.io/doc/htmlc/ast_strict.html#a:Nodes-and-Quotations) section of the Camlp5 Manual. 
    
-1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
-by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
-for the constructor [`OCanren.Std.List.Cons`](../../Installation/ocanren/src/std/LList.mli#L27):
+1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. 
    ```ocaml
    "list" RIGHTA [ l=SELF; "::"; r=SELF -> <:expr< OCanren.Std.List.cons $l$ $r$ >> ] 
    ```
+   The constructor `::` is replaced
+  by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
+  for the constructor [`OCanren.Std.List.Cons`](../../Installation/ocanren/src/std/LList.mli#L27).
 1. ["primary"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262),
 which has rules for:
    - [anti-quotations](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262)
