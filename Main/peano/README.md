@@ -628,7 +628,7 @@ a fresh variable introduction (i.e., existential quantification):
    ] 
    ```
 - [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae:
-   ```
+   ```ocaml
    "primary" [
         p=prefix; t=ocanren_term                      -> let p = <:expr< $lid:p$ >> in <:expr< $p$ $t$ >> 
       | l=ocanren_term; "==" ; r=ocanren_term         -> <:expr< OCanren.unify $l$ $r$ >>
