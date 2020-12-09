@@ -625,11 +625,13 @@ a fresh variable introduction (i.e., existential quantification):
        List.fold_right
          (fun x b -> let p = <:patt< $lid:x$ >> in <:expr< OCanren.call_fresh ( fun $p$ -> $b$ ) >>) vars b  ] 
    ```
-- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic formulae and grouped formulae (and else):
+- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic, named
+and grouped formulae (and else):
    ```ocaml
    "primary" [
       | l=ocanren_term; "==" ; r=ocanren_term         -> <:expr< OCanren.unify $l$ $r$ >>
       | l=ocanren_term; "=/="; r=ocanren_term         -> <:expr< OCanren.diseq $l$ $r$ >>
+      | x=ocanren_term                                -> x
       | "{"; e=ocanren_expr; "}"                      -> e 
       (* other rules omitted *)  ]
   ```
