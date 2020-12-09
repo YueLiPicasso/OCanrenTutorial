@@ -643,7 +643,7 @@ a fresh variable introduction (i.e., existential quantification):
          <:expr< $id$ $list_of_list es$ >>  ]
   ```
 
-The relative order of the levels determine the precedence of the logic
+The relative order of the levels determines the precedence of the logic
 connectives: the formula parser first sees if the formula is a
 disjunction at the top level, if not, sees if it is conjunction, and so on.
 The first and second level also have (optional) associativity indicators `RIGHTA`, requiring that the conjunction and disjunction connectives
