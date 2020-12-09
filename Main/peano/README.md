@@ -681,8 +681,8 @@ which has rules for:
      ```ocaml
      "!"; "("; e=expr; ")" -> e
      ```
-     So that the `ocanren{}` quotation would take any `<value>` from `!(<value>)` as is without further processing, or formally, in
-     other words, parsing `<value>` using the entry `expr`. 
+     So that the `ocanren{}` quotation would take any `<value>` from `!(<value>)` as is without further processing. In
+     other words, the `<value>` will be parsed using the entry `expr`. 
    - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
    - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
    - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
