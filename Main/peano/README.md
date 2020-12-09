@@ -652,8 +652,8 @@ implying that the scope of `fresh` extends to the right as far as possible.
 The `ocanren_term` parser (or entry)  is responsible for,
 for example, converting the expression `S (S O)` into `s (s (o ()))`
 --- an application of constructors is converted into the application
-of injection functions, so that values at the
-ground level become corresponding values at the injected level:
+of injection functions, so that a value at the
+ground level becomes the  corresponding value at the injected level:
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
