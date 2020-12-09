@@ -654,6 +654,12 @@ immediately and then passes the result from `ocanren_term'` to the auxiliary fun
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
+The `ocanren_term'` entry has four levels, namely:
+1. "app" (for applications)
+1. "list" (for non-empty
+lists with `::` as the top level constructor)
+1. "primary" (for integers, characters, strings, booleans, lists delimited by `[]` and `;`, operators, and possibly empty tuples)
+1. long identifiers
 
 ## (T.10) Building a Library
 
