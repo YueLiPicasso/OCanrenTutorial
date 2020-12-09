@@ -614,20 +614,37 @@ parses a disjunction:
    ```ocaml
     "top" RIGHTA [ l=SELF; "|"; r=SELF -> <:expr< OCanren.disj $l$ $r$ >> ]
     ```
-- [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction.
-   ```
+- [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction:
+   ```ocaml
    RIGHTA [ l=SELF; "&"; r=SELF -> <:expr< OCanren.conj $l$ $r$ >> ]
    ```
 - [The third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
-a fresh variable introduction (i.e., existential quantification).
-   ```
+a fresh variable introduction (i.e., existential quantification):
+   ```ocaml
    [ "fresh"; vars=LIST1 LIDENT SEP ","; "in"; b=ocanren_expr LEVEL "top" ->
        List.fold_right
          (fun x b -> let p = <:patt< $lid:x$ >> in
 	 <:expr< OCanren.call_fresh ( fun $p$ -> $b$ ) >>) vars b                                 
    ] 
    ```
-- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae.
+- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae:
+   ```
+   ```
+   "primary" [
+        p=prefix; t=ocanren_term                      -> let p = <:expr< $lid:p$ >> in <:expr< $p$ $t$ >> 
+      | l=ocanren_term; "==" ; r=ocanren_term         -> <:expr< OCanren.unify $l$ $r$ >>
+      | l=ocanren_term; "=/="; r=ocanren_term         -> <:expr< OCanren.diseq $l$ $r$ >>
+      | l=ocanren_term; op=operator; r=ocanren_term   -> let p = <:expr< $lid:op$ >> in
+                                                         let a = <:expr< $p$ $l$ >> in
+                                                         <:expr< $a$ $r$ >>
+      | x=ocanren_term                                -> x
+      | "{"; e=ocanren_expr; "}"                      -> e 
+      | "||"; "("; es=LIST1 ocanren_expr SEP ";"; ")" -> <:expr< OCanren.conde $list_of_list es$ >> 
+      | "&&"; "("; es=LIST1 ocanren_expr SEP ";"; ")" ->
+         let op = <:expr< $lid:"?&"$ >> in
+         let id = <:expr< OCanren . $op$ >> in
+         <:expr< $id$ $list_of_list es$ >>  ]
+  ```
 
 The relative order of the levels determine the precedence of the logic
 connectives: the formula parser first sees if the formula is a
