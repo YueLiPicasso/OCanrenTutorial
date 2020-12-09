@@ -653,7 +653,7 @@ The `ocanren_term` parser (or entry)  is responsible for,
 for example, converting the expression `S (S O)` into `s (s (o ()))`
 --- an application of constructors is converted into the application
 of injection functions, so that a value at the
-ground level becomes the  corresponding value at the injected level:
+ground level becomes the  corresponding value at the injected level.
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
