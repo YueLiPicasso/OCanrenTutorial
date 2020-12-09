@@ -562,11 +562,10 @@ by the `ocanren{}` quotation which takes care of, among others, precedence
 and associativity of the logic connectives. We take a look at the
 [implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of
 the `ocanren{}` quotation which we will call _the formula parser_ in the
-rest of this lesson and which is part of the OCanren distribution. 
+rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://camlp5.github.io/).
 
 
-The first line loads the syntax extension kit `pa_extend.cmo` provided
-by [Camlp5](https://camlp5.github.io/):
+The first line loads the Camlp5 syntax extension kit `pa_extend.cmo`:
 ```ocaml
 #load "pa_extend.cmo";;
 ```
@@ -579,7 +578,7 @@ expr = ... | extend ;
 extend = "EXTEND", extend-body, "END" ;
 ```
 Then an expression that belongs to the category "extend" would be called an _EXTEND statement_.
-The formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
+Our formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
 EXTEND statement, before which there are
 auxiliary functions (such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 [`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
@@ -600,7 +599,9 @@ others are  locally defined. The global indicator declares all and only
 predefined syntactic categories within the extend-body. Predefined syntactic categories
 are provided by the Camlp5 module _Pcaml_ that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser.
+by the formula parser. The formal syntax of an EXTEND statement can be found in the
+[Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
+of the Camlp5 Manual.
 
 
 The entry `ocanren_embedding` directly
@@ -663,11 +664,17 @@ immediately to process expressions like `S (S O)` and the intermediate result
 (bound to the pattern variable `t`) is then passed to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`. We shall give a detailed follow-through concerning how exactly the
 transition from `S (S O)` to  `s (s (o ()))` happens but before that let's have an overview of the  `ocanren_term'` entry which is responsible for half of the way of such transitions in general. 
 
- four levels, namely:
-1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications. Applications are treated as being left associative.
+The `ocanren_term'` parser has  four levels, namely:
+1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications. Applications are treated as being left associative as indicated by `LEFTA`:
+   ```ocaml
+   "app"  LEFTA  [ l=SELF; r=SELF -> <:expr< $l$ $r$ >> ] 
+   ```
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
 by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
-for the constructor [`OCanren.Std.List.Cons`](../../Installation/ocanren/src/std/LList.mli#L27).
+for the constructor [`OCanren.Std.List.Cons`](../../Installation/ocanren/src/std/LList.mli#L27):
+   ```
+   "list" RIGHTA [ l=SELF; "::"; r=SELF -> <:expr< OCanren.Std.List.cons $l$ $r$ >> ] 
+   ```
 1. ["primary"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262),
 which has rules for:
    - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
