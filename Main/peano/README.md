@@ -608,7 +608,7 @@ corresponds to the `ocanren{}` quotations we saw in the library implementation, 
 calls the entry `ocanren_expr` to parse
 the content between the braces.
 
-The `ocanren_expr` entry has four levels separated by vertical bars:
+The `ocanren_expr` entry has four levels:
 - [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
 parses a disjunction.
 - [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction.
