@@ -649,7 +649,7 @@ parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
 implying that the scope of `fresh` extends to the right as far as possible. 
 
 
-The `ocanren_term` parser (i.e., entry) calls the `ocanren_term'` parser
+The `ocanren_term` parser (or entry) calls the `ocanren_term'` parser
 immediately and then passes the result from `ocanren_term'` to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`:
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
