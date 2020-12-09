@@ -649,11 +649,20 @@ parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
 implying that the scope of `fresh` extends to the right as far as possible. 
 
 
-The `ocanren_term` parser (or entry) calls the `ocanren_term'` parser
-immediately and then passes the result from `ocanren_term'` to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`:
+The `ocanren_term` parser (or entry)  is responsible for,
+for example, converting the expression `S (S O)` into `s (s (o ()))`
+--- an application of constructors is converted into the application
+of injection functions, so that values at the
+ground level become corresponding values at the injected level:
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
+The `ocanren_term'` parser is called 
+immediately to process expressions like `S (S O)` and the intermediate result
+(bound to the pattern variable `t`) is then passed to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`.
+
+The consequence
+
 The `ocanren_term'` entry has four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications. Applications are treated as being left associative.
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
