@@ -688,7 +688,12 @@ which has rules for:
      ```
      So that the `ocanren{}` quotation would take any `<value>` from `!(<value>)` as is without further processing. In
      other words, the `<value>` will be parsed using the entry `expr`. 
-   - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
+   - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263).
+     ```ocaml
+     c=INT -> let n = <:expr< $int:c$ >> in <:expr< OCanren.Std.nat $n$ >>
+     ```
+     Thus, occurrences of integers like `0,1,2,3,...` within the `ocanren{}` quotation would be converted to
+     values of the Peano number type that is provided by the OCanren standard library [OCanren.Std.Nat](../../Installation/ocanren/src/std/LNat.mli). 
    - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
    - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
    - [booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272),
