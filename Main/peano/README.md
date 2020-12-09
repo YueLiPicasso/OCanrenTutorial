@@ -658,13 +658,14 @@ The `ocanren_term'` entry has four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor.
 1. ["primary"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262),
-for [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
-[characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
-[strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
-[booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272),
-[lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274),
-[operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279) and
-[(possibly empty) tuples](../../Installation/ocanren/camlp5/pa_ocanren.ml#L280).
+for:
+   - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
+   - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
+   - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
+   - [booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272),
+   - [lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274),
+   - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279) and
+   - [(possibly empty) tuples](../../Installation/ocanren/camlp5/pa_ocanren.ml#L280).
 1. [Long identifiers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L287).
 
 ## (T.10) Building a Library
