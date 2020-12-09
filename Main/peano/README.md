@@ -655,8 +655,10 @@ immediately and then passes the result from `ocanren_term'` to the auxiliary fun
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
 The `ocanren_term'` entry has four levels, namely:
-1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
-1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor.
+1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications. Applications are treated as being left associative.
+1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
+by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
+for the constructor [`OCanren.Std.List.Cons`]((../../Installation/ocanren/src/std/LList.mli#L27)).
 1. ["primary"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262),
 which has rules for:
    - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
