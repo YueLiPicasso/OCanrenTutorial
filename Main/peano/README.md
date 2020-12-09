@@ -610,10 +610,23 @@ the content between the braces.
 
 The `ocanren_expr` entry has four levels:
 - [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
-parses a disjunction.
+parses a disjunction:
+   ```ocaml
+    "top" RIGHTA [ l=SELF; "|"; r=SELF -> <:expr< OCanren.disj $l$ $r$ >> ]
+    ```
 - [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction.
+   ```
+   RIGHTA [ l=SELF; "&"; r=SELF -> <:expr< OCanren.conj $l$ $r$ >> ]
+   ```
 - [The third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
 a fresh variable introduction (i.e., existential quantification).
+   ```
+   [ "fresh"; vars=LIST1 LIDENT SEP ","; "in"; b=ocanren_expr LEVEL "top" ->
+       List.fold_right
+         (fun x b -> let p = <:patt< $lid:x$ >> in
+	 <:expr< OCanren.call_fresh ( fun $p$ -> $b$ ) >>) vars b                                 
+   ] 
+   ```
 - [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae.
 
 The relative order of the levels determine the precedence of the logic
