@@ -675,9 +675,10 @@ Below is the definition of the entry:
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
 where the `ocanren_term'` parser is called 
-immediately to process expressions like `S (S O)` and the intermediate result
-(bound to the pattern variable `t`) is then passed to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`. We shall give a detailed follow-through concerning how exactly the
-transition from `S (S O)` to  `s (s (o ()))` happens but before that let's have an overview of the  `ocanren_term'` entry which is responsible for half of the way of such transitions in general. 
+immediately to process expressions like `S (S O)` and the intermediate result (an AST)
+is bound to the pattern variable `t` and then passed to the auxiliary function `fix_term`. The AST returned by `fix_term` is returned by the parser `ocanren_term`.
+We shall give a detailed follow-through concerning how exactly the
+transition from `S (S O)` to  `s (s (o ()))` happens but before that let's have an overview of the  `ocanren_term'` entry.
 
 The `ocanren_term'` parser has  four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
