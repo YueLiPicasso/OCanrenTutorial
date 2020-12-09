@@ -660,11 +660,11 @@ ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
 where the `ocanren_term'` parser is called 
 immediately to process expressions like `S (S O)` and the intermediate result
-(bound to the pattern variable `t`) is then passed to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`.
+(bound to the pattern variable `t`) is then passed to the auxiliary function `fix_term`. The value returned by `fix_term` is returned by the parser `ocanren_term`. We shall give a detailed follow-through concerning how exactly `S (S O)`
+becomes `s (s (o ()))` but before that let's have an overview of the  `ocanren_term'` entry which is responsible for half of the way of the transition `S (S O)`
+to `s (s (o ()))`.    
 
-The consequence
-
-The `ocanren_term'` entry has four levels, namely:
+ four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications. Applications are treated as being left associative.
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
 by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
