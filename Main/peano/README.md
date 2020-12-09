@@ -623,8 +623,7 @@ a fresh variable introduction (i.e., existential quantification):
    ```ocaml
    [ "fresh"; vars=LIST1 LIDENT SEP ","; "in"; b=ocanren_expr LEVEL "top" ->
        List.fold_right
-         (fun x b -> let p = <:patt< $lid:x$ >> in
-	 <:expr< OCanren.call_fresh ( fun $p$ -> $b$ ) >>) vars b                                 
+         (fun x b -> let p = <:patt< $lid:x$ >> in <:expr< OCanren.call_fresh ( fun $p$ -> $b$ ) >>) vars b                                 
    ] 
    ```
 - [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses individual terms (or values), atomic formulae and grouped formulae:
