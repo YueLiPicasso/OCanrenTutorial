@@ -577,7 +577,7 @@ sub-categories one of which is named _extend_:
 expr = ... | extend ; 
 extend = "EXTEND", extend-body, "END" ;
 ```
-Then an expression that belongs to the category "extend" would be called an _EXTEND statement_.
+An expression that belongs to the category "extend" would be called an _EXTEND statement_.
 Our formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
 EXTEND statement, before which there are
 auxiliary functions (such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
