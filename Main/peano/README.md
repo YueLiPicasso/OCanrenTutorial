@@ -562,7 +562,7 @@ by the `ocanren{}` quotation which takes care of, among others, precedence
 and associativity of the logic connectives. We take a look at the
 [implementation](../../Installation/ocanren/camlp5/pa_ocanren.ml) of
 the `ocanren{}` quotation which we will call _the formula parser_ in the
-rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://camlp5.github.io/).
+rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://camlp5.github.io/doc/htmlc/).
 
 
 The first line loads the Camlp5 syntax extension kit `pa_extend.cmo`:
