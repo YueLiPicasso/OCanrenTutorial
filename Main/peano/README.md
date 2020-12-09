@@ -650,7 +650,7 @@ parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
 implying that the scope of `fresh` extends to the right as far as possible. 
 
 
-In every rule above and on the right hand side of `->` we see a [_quotation_](https://camlp5.github.io/doc/htmlc/quot.html):
+In every rule above we see could at least one [_quotation_](https://camlp5.github.io/doc/htmlc/quot.html):
 ```ebnf
 quotation = "<:", quotation name, "<", quotation body, ">>"   
 ```
