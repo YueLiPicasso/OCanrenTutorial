@@ -601,7 +601,8 @@ are provided by the Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pca
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser. The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual.
+of the Camlp5 Manual. Since the semantics of entries are just parsers, for now on we use the words "entry" and "parser"
+ interchangeably.
 
 
 The entry `ocanren_embedding` directly
@@ -665,7 +666,7 @@ into an  abstract syntax tree (AST) of the quotation body. An antiquotaion body 
 into the the quotation body's AST.   
 
 
-The `ocanren_term` parser (or entry)  is responsible for,
+The `ocanren_term` parser  is responsible for,
 for example, converting the expression `S (S O)` into (the AST of) `s (s (o ()))`
 --- an application of constructors is converted into the application
 of injection functions, so that a value at the
