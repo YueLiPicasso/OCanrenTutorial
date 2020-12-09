@@ -650,6 +650,20 @@ parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
 implying that the scope of `fresh` extends to the right as far as possible. 
 
 
+In every rule above and on the right hand side of `->` we see a [_quotation_](https://camlp5.github.io/doc/htmlc/quot.html):
+```ebnf
+quotation = "<:", quotation name, "<", quotation body, ">>"   
+```
+Within a quotation body we may see an [_antiquotation_](https://camlp5.github.io/doc/htmlc/quot.html#a:Antiquotations):
+```ebnf
+antiquotation = "$", antiquotation body, "$"
+```
+If antiquotations are not allowed, then a quotation body is any expression in the [revised syntax](https://camlp5.github.io/doc/htmlc/revsynt.html) of OCaml.
+At parse time a quotation is expanded by the ([loaded](../../Installation/ocanren/camlp5/pa_ocanren.ml#L35) and predefined) quotation expander `q_MLast.cmo`
+into an  abstract syntax tree (AST) of the quotation body. An antiquotaion body is usually a pattern variable bound to some other AST which is inserted
+into the the quotation body'AST.   
+
+
 The `ocanren_term` parser (or entry)  is responsible for,
 for example, converting the expression `S (S O)` into `s (s (o ()))`
 --- an application of constructors is converted into the application
@@ -669,13 +683,7 @@ The `ocanren_term'` parser has  four levels, namely:
    ```ocaml
    "app"  LEFTA  [ l=SELF; r=SELF -> <:expr< $l$ $r$ >> ] 
    ```
-    Applications are treated as being left associative as indicated by `LEFTA`.
-   The quotation `<:expr< $l$ $r$ >>` is expanded by Camlp5 (using the predefined quotation expander `q_MLast.cmo`
-   which is [loaded](../../Installation/ocanren/camlp5/pa_ocanren.ml#L35) by the formula parser) into the abstract syntax
-   tree (AST) `MLast.ExApp loc l r` --- quotations of the form `<:name< ... >>` are
-   just short hands for writing (otherwise verbose) AST's. The rules for expanding quotations are given in
-   the [Syntax tree - strict mode](https://camlp5.github.io/doc/htmlc/ast_strict.html#a:Nodes-and-Quotations) section of the Camlp5 Manual. 
-   
+    Applications are treated as being left associative as indicated by `LEFTA`.   
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. 
    ```ocaml
    "list" RIGHTA [ l=SELF; "::"; r=SELF -> <:expr< OCanren.Std.List.cons $l$ $r$ >> ] 
