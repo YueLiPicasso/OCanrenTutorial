@@ -672,11 +672,17 @@ The `ocanren_term'` parser has  four levels, namely:
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
 by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
 for the constructor [`OCanren.Std.List.Cons`](../../Installation/ocanren/src/std/LList.mli#L27):
-   ```
+   ```ocaml
    "list" RIGHTA [ l=SELF; "::"; r=SELF -> <:expr< OCanren.Std.List.cons $l$ $r$ >> ] 
    ```
 1. ["primary"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262),
 which has rules for:
+   - [anti-quotations](../../Installation/ocanren/camlp5/pa_ocanren.ml#L262)
+     ```ocaml
+     "!"; "("; e=expr; ")" -> e
+     ```
+     So that the `ocanren{}` quotation would take any `<value>` from `!(<value>)` as is without further processing, or formally, in
+     other words, parsing `<value>` using the entry `expr`. 
    - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263),
    - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
    - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
