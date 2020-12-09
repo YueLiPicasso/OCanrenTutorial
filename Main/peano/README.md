@@ -665,10 +665,14 @@ immediately to process expressions like `S (S O)` and the intermediate result
 transition from `S (S O)` to  `s (s (o ()))` happens but before that let's have an overview of the  `ocanren_term'` entry which is responsible for half of the way of such transitions in general. 
 
 The `ocanren_term'` parser has  four levels, namely:
-1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications. Applications are treated as being left associative as indicated by `LEFTA`:
+1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
    ```ocaml
    "app"  LEFTA  [ l=SELF; r=SELF -> <:expr< $l$ $r$ >> ] 
    ```
+    Applications are treated as being left associative as indicated by `LEFTA`.
+   The quotation `<:expr< $l$ $r$ >>` is expanded by Camlp5 into the abstract syntax tree (AST) `MLast.ExApp loc l r` --- quotations of the form `<:name< ... >>` are
+   just short hands for writing (otherwise verbose) AST's. The rules for expanding quotations are given in the [Syntax tree - strict mode](https://camlp5.github.io/doc/htmlc/ast_strict.html#a:Nodes-and-Quotations) section of the Camlp5 Manual. 
+   
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. The constructor `::` is replaced
 by the OCanren standard library function [`cons`](../../Installation/ocanren/src/std/LList.mli#L47) which is the injection function
 for the constructor [`OCanren.Std.List.Cons`](../../Installation/ocanren/src/std/LList.mli#L27):
