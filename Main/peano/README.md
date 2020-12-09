@@ -606,7 +606,7 @@ by the formula parser.
 The entry `ocanren_embedding` directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
 calls the entry `ocanren_expr` to parse
-the content between the braces of a quotation.
+the content between the braces.
 
 The `ocanren_expr` entry has four levels separated by vertical bars:
 - [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
