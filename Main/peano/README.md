@@ -636,11 +636,7 @@ a fresh variable introduction (i.e., existential quantification):
                                                          <:expr< $a$ $r$ >>
       | x=ocanren_term                                -> x
       | "{"; e=ocanren_expr; "}"                      -> e 
-      | "||"; "("; es=LIST1 ocanren_expr SEP ";"; ")" -> <:expr< OCanren.conde $list_of_list es$ >> 
-      | "&&"; "("; es=LIST1 ocanren_expr SEP ";"; ")" ->
-         let op = <:expr< $lid:"?&"$ >> in
-         let id = <:expr< OCanren . $op$ >> in
-         <:expr< $id$ $list_of_list es$ >>  ]
+      (* other rules omitted *)  ]
   ```
 
 The relative order of the levels determines the precedence of the logic
