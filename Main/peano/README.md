@@ -584,14 +584,14 @@ An expression that belongs to the category "extend" would be called an _EXTEND s
 Our formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
 EXTEND statement, whose extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
-followed by a semicolon separated list of _entries_ whose names
+followed by a semicolon separated list of _entries_ (whose names
 are [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
 [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186),
 [`ocanren_embedding`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L222),
 [`ocanren_expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L226),
 [`ocanren_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L255),
 [`ocanren_term'`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L259) and
-[`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290). An _entry_ is a  (vertical
+[`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)). An _entry_ is a  (vertical
 bar separated) list of _levels_ (with a pair of enclosing square
   brackets); a _level_ is a (vertical bar separated) list of _rules_ (with a pair of enclosing square
   brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (acting as a pattern collectively) followed by an optional semantic
