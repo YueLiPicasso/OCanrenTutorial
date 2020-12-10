@@ -611,13 +611,14 @@ example, the `expr` entry is [instantiated](camlp5_src_ref/pa_o.ml#L556) accordi
 extends these entries with locally defined entries --- entries other than `expr` and `ctyp` in our
 EXTEND statements are locally defined, such as `ocanren_embedding`,  `ocanren_expr` and `ocanren_term` etc.
 The global indicator declares all and only predefined entries within the extend-body. The following table
-summarizes the stages of extension.
+summarizes the stages of extension, providing links to copies of relevant files from either OCanren source
+or Camlp5 source, together with their documentations. 
 
-Stages of Extension                 | File          |
-------------------------------------|---------------| 
-Stage 1. Initialization             | Pcaml         |
-Stage 2. Standard OCaml Definition  | pa_o.ml       |
-stage 3. OCanren Extension          | pa_ocanren.ml |
+Stages of Extension                 | Happens in file  |  Documentation                                   |
+------------------------------------|---------------   | -------------------------------------------------|
+Stage 1. Initialization             | [Pcaml](camlp5_src_ref/pcaml.ml):  [`expr`](camlp5_src_ref/pcaml.ml#L53),  [`ctyp`](camlp5_src_ref/pcaml.ml#L56)   | [The Pcaml module](https://camlp5.github.io/doc/htmlc/pcaml.html) |
+Stage 2. Standard OCaml Definition  | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`](camlp5_src_ref/pa_o.ml#L556),  [`ctyp`](camlp5_src_ref/pa_o.ml#L950    | [Commands and Files](https://camlp5.github.io/doc/htmlc/commands.html) |
+stage 3. OCanren Extension          | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document
 
 
 
