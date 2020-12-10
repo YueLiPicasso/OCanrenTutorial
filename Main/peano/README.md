@@ -603,7 +603,16 @@ are provided by the Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pca
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser. The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual. Since the semantics of entries are just parsers, from now on we use the words "entry" and "parser"
+of the Camlp5 Manual:
+- An entry is a  vertical bar (`|`) separated list of _levels_ with a pair of enclosing square
+  brackets.
+- A level is a vertical bar separated list of _rules_ with a pair of enclosing square
+  brackets.
+- A (non-empty) rule is a semicolon separated list of "psymbol" followed by an optional semantic
+  action that produces an abstract syntax tree (AST).
+- etc.
+
+Since entries are just parsers, from now on we use the words "entry" and "parser"
  interchangeably.
 
 
@@ -611,6 +620,9 @@ The entry `ocanren_embedding` directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
 calls the entry `ocanren_expr` to parse
 the content between the braces.
+```ocaml
+ocanren_embedding: [[ "ocanren"; "{"; e=ocanren_expr; "}" -> e ]];
+```
 
 The `ocanren_expr` entry has four levels:
 - [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
@@ -664,7 +676,7 @@ antiquotation = "$", antiquotation body, "$"
 If antiquotations are not allowed, then a quotation body is any expression in the [revised syntax](https://camlp5.github.io/doc/htmlc/revsynt.html) of OCaml.
 At parse time a quotation is expanded by the ([loaded](../../Installation/ocanren/camlp5/pa_ocanren.ml#L35) and [predefined](https://camlp5.github.io/doc/htmlc/commands.html#b:Quotations-expanders))
 quotation expander `q_MLast.cmo`
-into an  abstract syntax tree (AST) of the quotation body. An antiquotaion body is usually a pattern variable bound to some other AST which is inserted
+into an AST of the quotation body. An antiquotaion body is usually a pattern variable bound to some other AST which is inserted
 into the the quotation body's AST.   
 
 
