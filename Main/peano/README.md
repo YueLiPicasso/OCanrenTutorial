@@ -566,6 +566,8 @@ rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://c
 
 ### The structure of the parser
 
+#### What we see
+
 The first line loads the Camlp5 syntax extension kit `pa_extend.cmo` where  `pa_` in the name stands for "parser", and
 `extend` refers to the syntactic category named "extend", so that the name "pa_extend" means "parser for the 'extend' 
 syntactic category.":
@@ -602,6 +604,8 @@ of the Camlp5 Manual. Besides the EXTEND statement our formula parser has some a
 such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 [`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
 [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc.
+
+### How it works
 
 The entries `expr` and `ctyp` origin
 from the module Pcaml that
