@@ -635,7 +635,7 @@ Stage 3. OCanren Extension          | [pa_ocanren.ml](../../Installation/ocanren
 
 
 #### Conclusion
-
+ 
 The OCanren formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
 EXTEND statement itself consists of a list of entries, notably the global entries
 `expr`and `ctyp` that extends the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
