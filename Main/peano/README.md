@@ -645,7 +645,9 @@ As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
 
-### Entry I: `ocanren_embedding`
+### Global entry: `expr`
+
+### Local entry I: `ocanren_embedding`
 
 The entry `ocanren_embedding` is the most important extension to the standard `expr` category, and it directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
