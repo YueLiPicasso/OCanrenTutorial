@@ -602,8 +602,9 @@ are, exhaustively,  [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.
 [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)). An _entry_ is a  (vertical
 bar separated) list of _levels_ (with a pair of enclosing square
   brackets); a _level_ is a (vertical bar separated) list of _rules_ (with a pair of enclosing square
-  brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (collectively acting as a pattern) followed by an optional semantic
-  action that produces an abstract syntax tree (AST). The details on syntax and semantics of EXTEND statements can be found in the
+  brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (collectively acting as
+  a pattern) followed by an optional semantic action that produces an abstract syntax tree (or AST,
+  of any string that matches the pattern specified by the psymbols). The details on syntax and semantics of EXTEND statements can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
 of the Camlp5 Manual. Besides the EXTEND statement our formula parser has some auxiliary functions
 such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
