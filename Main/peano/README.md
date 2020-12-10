@@ -601,18 +601,12 @@ others are  locally defined. The global indicator declares all and only
 predefined syntactic categories within the extend-body. Predefined syntactic categories
 are provided by the Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser. The formal syntax of an EXTEND statement can be found in the
+by the formula parser.  An _entry_ is a  vertical bar (`|`) separated list of _levels_ with a pair of enclosing square
+  brackets; a _level_ is a vertical bar separated list of _rules_ with a pair of enclosing square
+  brackets; a (non-empty) _rule_ is a semicolon separated list of "psymbol"'s followed by an optional semantic
+  action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual:
-- An entry is a  vertical bar (`|`) separated list of _levels_ with a pair of enclosing square
-  brackets.
-- A level is a vertical bar separated list of _rules_ with a pair of enclosing square
-  brackets.
-- A (non-empty) rule is a semicolon separated list of "psymbol" followed by an optional semantic
-  action that produces an abstract syntax tree (AST).
-- etc.
-
-Since entries are just parsers, from now on we use the words "entry" and "parser"
+of the Camlp5 Manual. Since entries are just parsers, from now on we use the words "entry" and "parser"
  interchangeably.
 
 
