@@ -597,13 +597,13 @@ bar separated) list of _levels_ (with a pair of enclosing square
   brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (collectively acting as a pattern) followed by an optional semantic
   action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual. As far as the semantics is concerned entries are
-parsers for syntactic categories. From now on we use the words "entry" and "parser"
- interchangeably. The Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
+of the Camlp5 Manual. The Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser, predefines the entries  `expr` and `ctyp`,  and they are  extended by our EXTEND statement.
 Other entries  are  locally defined. The global indicator declares all and only predefined entries within the extend-body.
-
+As far as the semantics is concerned entries are
+parsers for syntactic categories. From now on we use the words "entry" and "parser"
+ interchangeably. 
 
 Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 [`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
