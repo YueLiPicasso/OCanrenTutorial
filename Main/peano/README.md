@@ -580,13 +580,9 @@ expr = ... | extend ;
 extend = "EXTEND", extend-body, "END" ;
 ```
 An expression that belongs to the category "extend" would be called an _EXTEND statement_.
-Our formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
-EXTEND statement, before which there are
-auxiliary functions (such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
-[`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
-[`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc.) and after which there is nothing else.
 
-The extend-body starts with a
+Our formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.ml#L168)
+EXTEND statement, whose extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
 followed by a semicolon separated list of _entries_ whose names
 are [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
@@ -595,19 +591,28 @@ are [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
 [`ocanren_expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L226),
 [`ocanren_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L255),
 [`ocanren_term'`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L259) and
-[`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290). The entries are syntactic categories some of which are
+[`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290). An _entry_ is a  (vertical
+bar separated) list of _levels_ (with a pair of enclosing square
+  brackets); a _level_ is a (vertical bar separated) list of _rules_ (with a pair of enclosing square
+  brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbol"'s followed by an optional semantic
+  action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
+[Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
+of the Camlp5 Manual. As far as the semantics is concerned entries are
+parsers for syntactic categories some of which are
 predefined and are to be extended by the EXTEND statement (like `expr` and `ctyp`), and
-others are  locally defined. The global indicator declares all and only
+others are  locally defined.
+The global indicator declares all and only
 predefined syntactic categories within the extend-body. Predefined syntactic categories
 are provided by the Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser.  An _entry_ is a  vertical bar (`|`) separated list of _levels_ with a pair of enclosing square
-  brackets; a _level_ is a vertical bar separated list of _rules_ with a pair of enclosing square
-  brackets; a (non-empty) _rule_ is a semicolon separated list of "psymbol"'s followed by an optional semantic
-  action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
-[Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual. Since entries are just parsers, from now on we use the words "entry" and "parser"
+by the formula parser. Since entries are just parsers, from now on we use the words "entry" and "parser"
  interchangeably.
+
+Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
+[`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
+[`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc., 
+are defined before the EXTEND statement.
+
 
 
 The entry `ocanren_embedding` directly
