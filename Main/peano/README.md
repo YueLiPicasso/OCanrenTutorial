@@ -585,7 +585,7 @@ Our formula parser has only [one](../../Installation/ocanren/camlp5/pa_ocanren.m
 EXTEND statement, whose extend-body starts with a
 [_global indicator_](../../Installation/ocanren/camlp5/pa_ocanren.ml#L169)
 followed by a semicolon separated list of _entries_ (whose names
-are [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
+are, exhaustively,  [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
 [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186),
 [`ocanren_embedding`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L222),
 [`ocanren_expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L226),
