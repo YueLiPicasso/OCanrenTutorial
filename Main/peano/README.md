@@ -594,7 +594,7 @@ are [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171),
 [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290). An _entry_ is a  (vertical
 bar separated) list of _levels_ (with a pair of enclosing square
   brackets); a _level_ is a (vertical bar separated) list of _rules_ (with a pair of enclosing square
-  brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbol"'s followed by an optional semantic
+  brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (acting as a pattern collectively) followed by an optional semantic
   action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
 of the Camlp5 Manual. As far as the semantics is concerned entries are
