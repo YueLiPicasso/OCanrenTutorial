@@ -17,7 +17,7 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 the body of a relation definition to modify the way in which the relation searches for answers in a given query.
 - [**T.8**](#t8-the-trick-of-generate-and-test) Programming a relation so that answers to certain queries are found by brute-force. 
 - [**T.9**](#t9-the-formula-parser) Observing that the  implementation of the  `ocanren {}` quotation takes
-care of the precedence, associativity and/or scope of the logic connectives. It also replaces  value constructors
+care of the precedence, associativity and scope of the logic connectives. It also replaces  value constructors
      of variant types by the corresponding injection functions, and primitive values by their
      injected versions.
 - [**T.10**](#t10-building-a-library) Writing and testing a library in OCanren.
