@@ -600,7 +600,10 @@ bar separated) list of _levels_ (with a pair of enclosing square
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
 of the Camlp5 Manual. The Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser, predefines the entries  `expr` and `ctyp`,  and they are  extended by our EXTEND statement.
+by the formula parser, provides the entry names  `expr` and `ctyp` which have predefined [standard definitions](camlp5_src_ref/pa_o.ml#L556)
+that are extended by our EXTEND statement with the entries of the same name.
+
+
 Other entries  are  locally defined. The global indicator declares all and only predefined entries within the extend-body.
 As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
