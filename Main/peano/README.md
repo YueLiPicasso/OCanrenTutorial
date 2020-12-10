@@ -617,7 +617,7 @@ or Camlp5 source, together with their documentations.
 Stages of Extension                 | Happens in file  |  Documentation                                   |
 ------------------------------------|---------------   | -------------------------------------------------|
 Stage 1. Initialization             | [Pcaml](camlp5_src_ref/pcaml.ml):  [`expr`](camlp5_src_ref/pcaml.ml#L53),  [`ctyp`](camlp5_src_ref/pcaml.ml#L56)   | [The Pcaml module](https://camlp5.github.io/doc/htmlc/pcaml.html) |
-Stage 2. Standard OCaml Definition  | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`](camlp5_src_ref/pa_o.ml#L556),  [`ctyp`](camlp5_src_ref/pa_o.ml#L950    | [Commands and Files](https://camlp5.github.io/doc/htmlc/commands.html) |
+Stage 2. Standard OCaml Definition  | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`](camlp5_src_ref/pa_o.ml#L556),  [`ctyp`](camlp5_src_ref/pa_o.ml#L950)    | [Commands and Files](https://camlp5.github.io/doc/htmlc/commands.html) |
 stage 3. OCanren Extension          | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document
 
 
