@@ -601,7 +601,7 @@ bar separated) list of _levels_ (with a pair of enclosing square
 of the Camlp5 Manual.
 
 The entries [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186)
-and [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290) origins
+and [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290) origin
 from the module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) (that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser) which initializes the (empty) grammar entries  [`expr`](camlp5_src_ref/pcaml.ml#L53)
