@@ -628,17 +628,16 @@ Stage 2. Standard OCaml Definition  | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`
 stage 3. OCanren Extension          | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document
 
 
+#### Conclusion
+
+The formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
+EXTEND statement itself consists of a list of entries, notably the global entries
+`expr`and `ctyp` that extends the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
+We will next focus on the extension of `expr` and leave `ctyp` aside.
 
 As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
-
-
-
-In conclusion, the formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
-EXTEND statement itself consists of a list of entries, notably the global entries
-`expr`and `ctyp` that extends the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
-We will next focus on the extension of `expr` and leave `ctyp` aside. 
 
 ### Entry I: `ocanren_embedding`
 
