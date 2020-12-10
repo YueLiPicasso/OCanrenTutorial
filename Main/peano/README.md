@@ -566,7 +566,7 @@ rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://c
 
 ### The structure of the parser
 
-We describe  the source code of the formula parser, followed by an revelation
+We describe  the source code of the formula parser, followed by an gentle revelation
 of the deeper mechanisms in which it works. 
 
 #### What we see
