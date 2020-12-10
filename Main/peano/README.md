@@ -634,7 +634,7 @@ We will next focus on the extension of `expr` and leave `ctyp` aside.
 
 ### Entry I: `ocanren_embedding`
 
-The entry `ocanren_embedding` directly
+The entry `ocanren_embedding` is the most important extension to the standard `expr` category, and it directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
 calls the entry `ocanren_expr` to parse
 the content between the braces:
