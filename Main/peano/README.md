@@ -607,7 +607,9 @@ bar separated) list of _levels_ (with a pair of enclosing square
   of any string that matches the pattern specified by the list of psymbols). The details on the
   syntax and semantics of EXTEND statements can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual. Besides the EXTEND statement our formula parser has some auxiliary functions
+of the Camlp5 Manual.
+
+Besides the EXTEND statement our formula parser has some auxiliary functions
 such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 [`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
 [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc.
