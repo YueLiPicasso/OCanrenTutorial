@@ -564,6 +564,7 @@ and associativity of the logic connectives. We take a look at the
 the `ocanren{}` quotation which we will call _the formula parser_ in the
 rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://camlp5.github.io/doc/htmlc/).
 
+### The structure of the parser
 
 The first line loads the Camlp5 syntax extension kit `pa_extend.cmo` where  `pa_` in the name stands for "parser", and
 `extend` refers to the syntactic category named "extend", so that the name "pa_extend" means "parser for the 'extend' 
@@ -610,7 +611,7 @@ Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/ca
 [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc., 
 are defined before the EXTEND statement.
 
-
+### Entry I: `ocanren_embedding`
 
 The entry `ocanren_embedding` directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
@@ -619,6 +620,8 @@ the content between the braces:
 ```ocaml
 ocanren_embedding: [[ "ocanren"; "{"; e=ocanren_expr; "}" -> e ]];
 ```
+
+### Entry II: `ocanren_expr`
 
 The `ocanren_expr` entry has four levels which strongly reminds us of the  recursive definition of a formula,
 i.e, a formula is either atomic, or a conjunction/ disjunction of two formulae,
@@ -662,6 +665,7 @@ associate to the right. The third level refers back to the first level (named "t
 parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
 implying that the scope of `fresh` extends to the right as far as possible. 
 
+### Quotations and antiquotations 
 
 In every rule above we see could at least one [_quotation_](https://camlp5.github.io/doc/htmlc/quot.html):
 ```ebnf
@@ -677,6 +681,7 @@ quotation expander `q_MLast.cmo`
 into an AST of the quotation body. An antiquotaion body is usually a pattern variable bound to some other AST which is inserted
 into the the quotation body's AST.   
 
+### Entry III: `ocanren_term` 
 
 The `ocanren_term` parser  is responsible for,
 for example, converting the expression `S (S O)` into (the AST of) `s (s (o ()))`
@@ -692,6 +697,8 @@ immediately to process expressions like `S (S O)` and the intermediate result (a
 is bound to the pattern variable `t` and then passed to the auxiliary function `fix_term`. The AST returned by `fix_term` is returned by the parser `ocanren_term`.
 We shall give a detailed follow-through concerning how exactly the
 transition from `S (S O)` to  `s (s (o ()))` happens but before that let's have an overview of the  `ocanren_term'` entry.
+
+### Entry IV: `ocanren_term'`
 
 The `ocanren_term'` parser has  four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
