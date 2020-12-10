@@ -627,7 +627,7 @@ parsers for syntactic categories. From now on we use the words "entry" and "pars
 
 
 
-IN conclusion, the formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
+In conclusion, the formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
 EXTEND statement itself consists of a list of entries, notably the global entries
 `expr`and `ctyp` that extends the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
 We will next focus on the extension of `expr` and leave `ctyp` aside. 
