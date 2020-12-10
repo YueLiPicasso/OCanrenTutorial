@@ -568,7 +568,7 @@ its individual entries.
 
 ### The structure of the parser
 
-We describe  the source code of the formula parser, followed by an gentle revelation
+We describe the structure of the formula parser, followed by an gentle revelation
 of the deeper mechanisms in which it works. 
 
 #### What we see
