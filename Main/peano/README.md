@@ -567,7 +567,7 @@ rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://c
 
 The first line loads the Camlp5 syntax extension kit `pa_extend.cmo` where  `pa_` in the name stands for "parser", and
 `extend` refers to the syntactic category named "extend", so that the name "pa_extend" means "parser for the 'extend' 
-syntactic category."
+syntactic category.":
 ```ocaml
 #load "pa_extend.cmo";;
 ```
@@ -615,7 +615,7 @@ are defined before the EXTEND statement.
 The entry `ocanren_embedding` directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
 calls the entry `ocanren_expr` to parse
-the content between the braces.
+the content between the braces:
 ```ocaml
 ocanren_embedding: [[ "ocanren"; "{"; e=ocanren_expr; "}" -> e ]];
 ```
