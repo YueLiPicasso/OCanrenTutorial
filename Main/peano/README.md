@@ -598,7 +598,10 @@ bar separated) list of _levels_ (with a pair of enclosing square
   brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (collectively acting as a pattern) followed by an optional semantic
   action that produces an abstract syntax tree (AST). The details on syntax and semantics of EXTEND statements can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual.
+of the Camlp5 Manual. Besides the EXTEND statement our formula parser has some auxiliary functions
+such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
+[`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
+[`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc.
 
 The entries `expr` and `ctyp` origin
 from the module Pcaml that
@@ -622,15 +625,12 @@ As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
 
-Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
-[`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
-[`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc., 
-are defined before the EXTEND statement.
 
-The formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
-EXTEND statement itself consists of a list of entries, notably the global entry
-[`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186) that extends
-the corresponding [predefined entry](camlp5_src_ref/pa_o.ml#L556) with locally defined entries such as `ocanren_embedding`.
+
+IN conclusion, the formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
+EXTEND statement itself consists of a list of entries, notably the global entries
+`expr`and `ctyp` that extends the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
+We will next focus on the extension of `expr` and leave `ctyp` aside. 
 
 ### Entry I: `ocanren_embedding`
 
