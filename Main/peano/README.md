@@ -611,6 +611,8 @@ Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/ca
 [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc., 
 are defined before the EXTEND statement.
 
+In summary, the formula parser has the EXTEND statement as its core, which refers to some auxiliary functions.
+
 ### Entry I: `ocanren_embedding`
 
 The entry `ocanren_embedding` directly
