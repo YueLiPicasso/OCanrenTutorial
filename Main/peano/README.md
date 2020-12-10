@@ -616,7 +616,7 @@ such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 
 #### How it works
 
-The kit `pa_extend.cmo` is fundamental for the cascade of extensions described below. 
+The syntac extension kit `pa_extend.cmo` is fundamental for the cascade of extensions described below. 
 The entries `expr` and `ctyp` origin
 from the module Pcaml that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
