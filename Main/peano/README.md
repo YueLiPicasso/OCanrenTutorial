@@ -600,18 +600,14 @@ bar separated) list of _levels_ (with a pair of enclosing square
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
 of the Camlp5 Manual.
 
-The entries [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186)
-and [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290) origin
-from the module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) (that
+The entries `expr` and `ctyp` origin
+from the module Pcaml that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser) which initializes the (empty) grammar entries  [`expr`](camlp5_src_ref/pcaml.ml#L53)
-and [`ctyp`](camlp5_src_ref/pcaml.ml#L56). The standard OCaml parsing kit of Camlp5 then instantiates them: for
-example, the `expr` entry is [instantiated](camlp5_src_ref/pa_o.ml#L556) according to the OCaml
-[expression](https://ocaml.org/releases/4.11/htmlman/expr.html) category. Our EXTEND statement further
-extends these entries with locally defined entries --- entries other than `expr` and `ctyp` in our
+by the formula parser,  which initializes the (empty) grammar entries `expr` and `ctyp`.
+The standard OCaml parsing kit of Camlp5 then instantiates them accordng to the standard syntax of OCaml.
+Our EXTEND statement further extends these entries with locally defined entries --- entries other than `expr` and `ctyp` in our
 EXTEND statements are locally defined, such as `ocanren_embedding`,  `ocanren_expr` and `ocanren_term` etc.
-The global indicator declares all and only predefined entries within the extend-body. The following table
-summarizes the stages of extension, providing links to copies of relevant files from either OCanren source
+ The following table summarizes the stages of extensions, providing links to copies of relevant files from either OCanren source
 or Camlp5 source, together with their documentations. 
 
 Stages of Extension                 | Happens in file  |  Documentation                                   |
