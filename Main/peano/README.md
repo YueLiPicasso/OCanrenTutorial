@@ -620,7 +620,9 @@ the content between the braces:
 ocanren_embedding: [[ "ocanren"; "{"; e=ocanren_expr; "}" -> e ]];
 ```
 
-The `ocanren_expr` entry has four levels:
+The `ocanren_expr` entry has four levels which strongly reminds us of the  recursive definition of a formula,
+i.e, a formula is either atomic, or a conjunction/ disjunction of two formulae,
+or an existential quantification over a formula, or an explicitly delimited formula (with braces).
 - [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
 parses a disjunction:
    ```ocaml
@@ -647,10 +649,7 @@ and grouped formulae (and else):
       | "{"; e=ocanren_expr; "}"                      -> e 
       (* other rules omitted *)  ]
   ```
-
-These levels strongly remind us of the recursive definition of a formula,
-i.e, a formula is either atomic, or a conjunction/ disjunction of two formulae,
-or an existential quantification over a formula, or an explicitly delimited formula (with braces).
+  
 The relative order of the levels determines the precedence of the logic
 connectives: the formula parser first sees if the formula is a
 disjunction at the top level, if not, sees if it is conjunction, and so on,
