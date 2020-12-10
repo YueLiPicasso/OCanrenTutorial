@@ -611,7 +611,9 @@ Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/ca
 [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) etc., 
 are defined before the EXTEND statement.
 
-In summary, the formula parser has the EXTEND statement as its core, which refers to some auxiliary functions.
+The formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
+EXTEND statement itself consists of a list of entries, notably the global `expr` and `ctyp` entries, which extends
+the corresponding predefined entries. In particular, we shall focus on the `expr` entry, and observe that 
 
 ### Entry I: `ocanren_embedding`
 
