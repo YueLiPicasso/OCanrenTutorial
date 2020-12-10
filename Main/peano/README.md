@@ -598,15 +598,12 @@ bar separated) list of _levels_ (with a pair of enclosing square
   action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
 of the Camlp5 Manual. As far as the semantics is concerned entries are
-parsers for syntactic categories some of which are
-predefined and are to be extended by the EXTEND statement (like `expr` and `ctyp`), and
-others are  locally defined.
-The global indicator declares all and only
-predefined syntactic categories within the extend-body. Predefined syntactic categories
-are provided by the Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
+parsers for syntactic categories. From now on we use the words "entry" and "parser"
+ interchangeably. The Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser. Since entries are just parsers, from now on we use the words "entry" and "parser"
- interchangeably.
+by the formula parser, predefines the entries  `expr` and `ctyp`,  and they are  extended by our EXTEND statement.
+Other entries  are  locally defined. The global indicator declares all and only predefined entries within the extend-body.
+
 
 Some auxiliary functions, such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 [`ctor`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L49) and
