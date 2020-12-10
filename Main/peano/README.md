@@ -598,13 +598,29 @@ bar separated) list of _levels_ (with a pair of enclosing square
   brackets); a (non-empty) _rule_ is a (semicolon separated) list of "psymbols" (collectively acting as a pattern) followed by an optional semantic
   action that produces an abstract syntax tree (AST). The formal syntax of an EXTEND statement can be found in the
 [Extensible Grammars](https://camlp5.github.io/doc/htmlc/grammars.html#a:Syntax-of-the-EXTEND-statement) section
-of the Camlp5 Manual. The Camlp5 module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) that
+of the Camlp5 Manual.
+
+The entries [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186)
+and [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290) origins
+from the module [Pcaml](https://camlp5.github.io/doc/htmlc/pcaml.html) (that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser, provides the entry names  `expr` and `ctyp` which have predefined [standard definitions](camlp5_src_ref/pa_o.ml#L556)
-that are extended by our EXTEND statement with the entries of the same name.
+by the formula parser) which initializes the (empty) grammar entries  [`expr`](camlp5_src_ref/pcaml.ml#L53)
+and [`ctyp`](camlp5_src_ref/pcaml.ml#L56). The standard OCaml parsing kit of Camlp5 then instantiates them: for
+example, the `expr` entry is [instantiated](camlp5_src_ref/pa_o.ml#L556) according to the OCaml
+[expression](https://ocaml.org/releases/4.11/htmlman/expr.html) category. Our EXTEND statement further
+extends these entries with locally defined entries --- entries other than `expr` and `ctyp` in our
+EXTEND statements are locally defined, such as `ocanren_embedding`,  `ocanren_expr` and `ocanren_term` etc.
+The global indicator declares all and only predefined entries within the extend-body. The following table
+summarizes the stages of extension.
+
+Stages of Extension                 | File          |
+------------------------------------|---------------| 
+Stage 1. Initialization             | Pcaml         |
+Stage 2. Standard OCaml Definition  | pa_o.ml       |
+stage 3. OCanren Extension          | pa_ocanren.ml |
 
 
-Other entries  are  locally defined. The global indicator declares all and only predefined entries within the extend-body.
+
 As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
