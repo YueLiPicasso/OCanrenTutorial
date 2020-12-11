@@ -620,7 +620,7 @@ The syntax extension kit `pa_extend.cmo` is fundamental for the cascade of exten
 The entries `expr` and `ctyp` origin
 from the module Pcaml that
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
-by the formula parser,  which initializes the (empty) grammar entries `expr` and `ctyp`.
+by the formula parser. Pcaml initializes the (empty) grammar entries `expr` and `ctyp`.
 The standard OCaml parsing kit of Camlp5 then defines them by means of an EXTEND statement and accordng to the standard syntax of OCaml.
 Our EXTEND statement further extends these global entries with locally defined entries --- entries other than `expr` and `ctyp` in our
 EXTEND statement are locally defined, such as `ocanren_embedding`,  `ocanren_expr` and `ocanren_term` etc.
