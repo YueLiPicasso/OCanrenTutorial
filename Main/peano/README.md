@@ -678,7 +678,7 @@ into standard OCaml AST. We now explain  the local entry  `ocanren_embedding`.
 ### Local entries I: `ocanren_embedding` and  `ocanren_expr`
 
 The entry `ocanren_embedding`  directly
-corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
+corresponds to the `ocanren{}` quotations we see in the library implementation, and it further
 calls the entry `ocanren_expr` to parse
 the content between the braces:
 ```ocaml
