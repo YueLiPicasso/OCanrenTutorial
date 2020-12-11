@@ -568,8 +568,8 @@ its individual entries.
 
 ### The structure of the parser: an overview
 
-We describe the structure of the formula parser, and then putting it in perspective, gently show how
- it works as enabled by Camlp5.  
+We describe the formula parser as the reader (a Camlp5 novice) sees it, and then putting it in perspective,
+briefly explain how it works.  
 
 #### What we see
 
