@@ -669,9 +669,11 @@ There are three levels in the OCanren-`expr`, the third of which is:
 ```ocaml
 [ e=ocanren_embedding -> e ]
 ```
-This third level of OCanren-`expr` is inserted as a new level in OCaml-`expr` so that
-any code that can be parsed by the entry `ocanren_embedding` would be regarded as an
-OCaml expression in the eyes of Camlp5. 
+This third level of OCanren-`expr` is inserted as a new level in OCaml-`expr`, and
+the entry `ocanren_embedding`  directly corresponds to the `ocanren{}` quotations we
+see in the library implementation, so that we can mix the `ocanren{}` quotation
+with standard OCaml expressions, and Camlp5 will take care to convert such mixture
+into standard OCaml AST. 
 
 ### Local entry I: `ocanren_embedding`
 
