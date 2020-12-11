@@ -617,8 +617,7 @@ such as [`decapitalize`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L46),
 #### How it works
 
 The syntax extension kit `pa_extend.cmo` is fundamental for the cascade of extensions described below. 
-The entries `expr` and `ctyp` origin
-from the module Pcaml that
+The entries `expr` and `ctyp` origin from the module Pcaml that is the core of Camlp5 and 
 is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser. Pcaml initializes the (empty) grammar entries `expr` and `ctyp`.
 The standard OCaml parsing kit of Camlp5 then defines them by means of an EXTEND statement and accordng to the standard syntax of OCaml.
@@ -631,7 +630,15 @@ Stages of Extension                 | Happens in file  |  Documentation         
 ------------------------------------|---------------   | -------------------------------------------------|
 Stage 1. Initialization             | [Pcaml](camlp5_src_ref/pcaml.ml):  [`expr`](camlp5_src_ref/pcaml.ml#L53),  [`ctyp`](camlp5_src_ref/pcaml.ml#L56)   | [The Pcaml module](https://camlp5.github.io/doc/htmlc/pcaml.html) |
 Stage 2. Parsing Kit for Standard OCaml | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`](camlp5_src_ref/pa_o.ml#L556),  [`ctyp`](camlp5_src_ref/pa_o.ml#L950)    | [Commands and Files](https://camlp5.github.io/doc/htmlc/commands.html) |
-Stage 3. OCanren Formula Parser  | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document
+Stage 3. OCanren Formula Parser  | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document |
+
+As a preprocessing tool, Camlp5 defines its own parser `pa_o.ml` for standard OCaml, so that any standard OCaml code can be
+converted by it into an AST recongnizable by the [OCaml compiler](https://ocaml.org/releases/4.11/htmlman/comp.html).
+Is `pa_o.ml` a redundant piece of work for we can just use the OCaml compiler to build the AST ? Not exactly, because
+besides `pa_o.ml`, Camlp5 also provides EXTEND statments so that syntactic categories defined in `pa_o.ml` can be extended. The
+result is that using the combination of `pa_ocanren.ml` and `pa_o.ml` we can convert code that is not wholly in OCaml into
+a purely Ocaml AST. 
+
 
 
 #### Conclusion
@@ -639,12 +646,7 @@ Stage 3. OCanren Formula Parser  | [pa_ocanren.ml](../../Installation/ocanren/ca
 The OCanren formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
 EXTEND statement itself consists of a list of entries, notably the global entries
 `expr`and `ctyp` that extend the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
-As a preprocessing tool, Camlp5 defines its own parser (`pa_o.ml`) for standard OCaml, so that any standard OCaml code can be
-converted by it into an AST recongnizable by the OCaml compiler [`ocamlc`](https://ocaml.org/releases/4.11/htmlman/comp.html).
-Is `pa_o.ml` a redundant piece of work since we can just use the OCaml compiler to build the AST ? Not exactly, because
-besides `pa_o.ml`, Camlp5 also provides EXTEND statments so that syntactic categories defined in `pa_o.ml` can be extended. The
-result is that using the combination of `pa_ocanren.ml` and `pa_o.ml` we can convert code that is not wholly in OCaml into
-a purely Ocaml AST. 
+
 
 We will next focus on the extension of `expr` and leave `ctyp` aside.  As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
