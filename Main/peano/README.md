@@ -639,9 +639,14 @@ Stage 3. OCanren Formula Parser  | [pa_ocanren.ml](../../Installation/ocanren/ca
 The OCanren formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
 EXTEND statement itself consists of a list of entries, notably the global entries
 `expr`and `ctyp` that extend the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
-We will next focus on the extension of `expr` and leave `ctyp` aside.
+As a preprocessing tool, Camlp5 defines its own parser (`pa_o.ml`) for standard OCaml, so that any standard OCaml code can be
+converted by it into an AST recongnizable by the OCaml compiler [`ocamlc`](https://ocaml.org/releases/4.11/htmlman/comp.html).
+Is `pa_o.ml` a redundant piece of work since we can just use the OCaml compiler to build the AST ? Not exactly, because
+besides `pa_o.ml`, Camlp5 also provides EXTEND statments so that syntactic categories defined in `pa_o.ml` can be extended. The
+result is that using the combination of `pa_ocanren.ml` and `pa_o.ml` we can convert code that is not wholly in OCaml into
+a purely Ocaml AST. 
 
-As far as the semantics is concerned entries are
+We will next focus on the extension of `expr` and leave `ctyp` aside.  As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
 
@@ -659,11 +664,18 @@ parsing kit for standard OCaml. OCanren-`expr` extends OCaml-`expr` in the posit
 with [the level named "expr1"](camlp5_src_ref/pa_o.ml#L563)
 of the OCaml-`expr`, i.e., their rules are put together
 and grouped as a single level named "expr1"; other levels from OCanren-`expr` are
-inserted into OCaml-`expr` as new levels, right below the extended "expr1" level. 
+inserted into OCaml-`expr` as new levels, right below the extended "expr1" level.
+There are three levels in the OCanren-`expr`, the third of which is:
+```ocaml
+[ e=ocanren_embedding -> e ]
+```
+This third level of OCanren-`expr` is inserted as a new level in OCaml-`expr` so that
+any code that can be parsed by the entry `ocanren_embedding` would be regarded as an
+OCaml expression in the eyes of Camlp5. 
 
 ### Local entry I: `ocanren_embedding`
 
-The entry `ocanren_embedding` is the most important extension to the standard `expr` category, and it directly
+The entry `ocanren_embedding`  directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
 calls the entry `ocanren_expr` to parse
 the content between the braces:
