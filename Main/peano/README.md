@@ -673,9 +673,9 @@ This third level of OCanren-`expr` is inserted as a new level in OCaml-`expr`, a
 the entry `ocanren_embedding`  directly corresponds to the `ocanren{}` quotations we
 see in the library implementation, so that we can mix the `ocanren{}` quotations
 with standard OCaml expressions, and Camlp5 will take care to convert such mixture
-into standard OCaml AST. 
+into standard OCaml AST. We now the explain local entry  `ocanren_embedding`.   
 
-### Local entry I: `ocanren_embedding`
+### Local entries I: `ocanren_embedding` and  `ocanren_expr`
 
 The entry `ocanren_embedding`  directly
 corresponds to the `ocanren{}` quotations we saw in the library implementation, and it further
@@ -684,9 +684,6 @@ the content between the braces:
 ```ocaml
 ocanren_embedding: [[ "ocanren"; "{"; e=ocanren_expr; "}" -> e ]];
 ```
-
-### Entry II: `ocanren_expr`
-
 The `ocanren_expr` entry has four levels which strongly reminds us of the  recursive definition of a formula,
 i.e, a formula is either atomic, or a conjunction/ disjunction of two formulae,
 or an existential quantification over a formula, or an explicitly delimited formula (with braces).
