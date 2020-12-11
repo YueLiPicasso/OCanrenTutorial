@@ -673,7 +673,7 @@ This third level of OCanren-`expr` is inserted as a new level in OCaml-`expr`, a
 the entry `ocanren_embedding`  directly corresponds to the `ocanren{}` quotations we
 see in the library implementation, so that we can mix the `ocanren{}` quotations
 with standard OCaml expressions, and Camlp5 will take care to convert such mixture
-into standard OCaml AST. We now the explain local entry  `ocanren_embedding`.   
+into standard OCaml AST. We now explain  the local entry  `ocanren_embedding`.   
 
 ### Local entries I: `ocanren_embedding` and  `ocanren_expr`
 
