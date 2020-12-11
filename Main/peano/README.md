@@ -637,15 +637,13 @@ converted by it into an AST recongnizable by the [OCaml compiler](https://ocaml.
 Is `pa_o.ml` a redundant piece of work for we can just use the OCaml compiler to build the AST ? Not exactly, because
 besides `pa_o.ml`, Camlp5 also provides EXTEND statments so that syntactic categories defined in `pa_o.ml` can be extended. The
 result is that using the combination of `pa_ocanren.ml` and `pa_o.ml` we can convert code that is not wholly in OCaml into
-a purely OCaml AST. 
-
-
+a purely OCaml AST.  
 
 #### Conclusion
  
-The OCanren formula parser has the EXTEND statement as its core, which refers to some auxiliary functions. The
-EXTEND statement itself consists of a list of entries, notably the global entries
-`expr`and `ctyp` that extend the corresponding predefined entries with locally defined entries such as `ocanren_embedding`.
+The OCanren formula parser has the EXTEND statement as its core, which consists of a list of entries, notably the global entries
+`expr`and `ctyp` that extend the corresponding predefined entries that conform to standard OCaml. Such extension is characterized
+by the locally defined entries such as `ocanren_embedding`.
 
 
 We will next focus on the extension of `expr` and leave `ctyp` aside.  As far as the semantics is concerned entries are
