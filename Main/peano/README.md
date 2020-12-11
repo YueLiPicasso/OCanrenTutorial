@@ -623,7 +623,7 @@ is [opened](../../Installation/ocanren/camlp5/pa_ocanren.ml#L37)
 by the formula parser,  which initializes the (empty) grammar entries `expr` and `ctyp`.
 The standard OCaml parsing kit of Camlp5 then defines them by means of an EXTEND statement and accordng to the standard syntax of OCaml.
 Our EXTEND statement further extends these global entries with locally defined entries --- entries other than `expr` and `ctyp` in our
-EXTEND statements are locally defined, such as `ocanren_embedding`,  `ocanren_expr` and `ocanren_term` etc.
+EXTEND statement are locally defined, such as `ocanren_embedding`,  `ocanren_expr` and `ocanren_term` etc.
  The following table summarizes the stages of extension, providing links to copies of relevant files from either OCanren source
 or Camlp5 source, together with their documentations. 
 
