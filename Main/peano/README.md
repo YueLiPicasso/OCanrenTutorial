@@ -645,7 +645,13 @@ As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
 
-### Global entry: `expr`
+### The global entry: `expr`
+
+This is the major entry of the OCanren formula parser, which starts like:
+```ocaml
+expr: LEVEL "expr1" [ ...
+```
+where we have shown the entry name _expr_ and the position `LEVEL "expr1"`. 
 
 ### Local entry I: `ocanren_embedding`
 
