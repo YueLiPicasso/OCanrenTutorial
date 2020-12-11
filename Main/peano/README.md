@@ -630,8 +630,8 @@ or Camlp5 source, together with their documentations.
 Stages of Extension                 | Happens in file  |  Documentation                                   |
 ------------------------------------|---------------   | -------------------------------------------------|
 Stage 1. Initialization             | [Pcaml](camlp5_src_ref/pcaml.ml):  [`expr`](camlp5_src_ref/pcaml.ml#L53),  [`ctyp`](camlp5_src_ref/pcaml.ml#L56)   | [The Pcaml module](https://camlp5.github.io/doc/htmlc/pcaml.html) |
-Stage 2. Standard OCaml Definition  | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`](camlp5_src_ref/pa_o.ml#L556),  [`ctyp`](camlp5_src_ref/pa_o.ml#L950)    | [Commands and Files](https://camlp5.github.io/doc/htmlc/commands.html) |
-Stage 3. OCanren Extension          | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document
+Stage 2. Parsing Kit for Standard OCaml | [pa_o.ml](camlp5_src_ref/pa_o.ml): [`expr`](camlp5_src_ref/pa_o.ml#L556),  [`ctyp`](camlp5_src_ref/pa_o.ml#L950)    | [Commands and Files](https://camlp5.github.io/doc/htmlc/commands.html) |
+Stage 3. OCanren Formula Parser  | [pa_ocanren.ml](../../Installation/ocanren/camlp5/pa_ocanren.ml): [`expr`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L186), [`ctyp`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L290)   | This document
 
 
 #### Conclusion
@@ -652,6 +652,14 @@ This is the major entry of the OCanren formula parser, which starts like:
 expr: LEVEL "expr1" [ ...
 ```
 where we see the entry name _expr_ and the position `LEVEL "expr1"`.
+We now use OCanren-`expr` to refer to the `expr` entry in the OCanren formula
+parser, and OCaml-`expr` to refer to the predefined entry `expr` in the Camlp5
+parsing kit for standard OCaml. OCanren-`expr` extends OCaml-`expr` in the position
+`LEVEL "expr1"`:  the first level of the OCanren-`expr` is merged
+with [the level named "expr1"](camlp5_src_ref/pa_o.ml#L563)
+of the OCaml-`expr`, i.e., their rules are put together
+and grouped as a single level named "expr1"; other levels from OCanren-`expr` are
+inserted into OCaml-`expr` as new levels, right below the extended "expr1" level. 
 
 ### Local entry I: `ocanren_embedding`
 
