@@ -569,7 +569,7 @@ its individual entries.
 ### The structure of the parser: an overview
 
 We describe the structure of the formula parser, and then putting it in perspective, gently show how
- it works as enbaled by Camlp5.  
+ it works as enabled by Camlp5.  
 
 #### What we see
 
