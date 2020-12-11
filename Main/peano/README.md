@@ -687,23 +687,23 @@ ocanren_embedding: [[ "ocanren"; "{"; e=ocanren_expr; "}" -> e ]];
 The `ocanren_expr` entry has four levels which strongly reminds us of the  recursive definition of a formula,
 i.e, a formula is either atomic, or a conjunction/ disjunction of two formulae,
 or an existential quantification over a formula, or an explicitly delimited formula (with braces).
-- [The first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
+- The [first level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L227)
 parses a disjunction:
    ```ocaml
     "top" RIGHTA [ l=SELF; "|"; r=SELF -> <:expr< OCanren.disj $l$ $r$ >> ]
     ```
-- [The second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction:
+- The [second level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L228) parses a conjunction:
    ```ocaml
    RIGHTA [ l=SELF; "&"; r=SELF -> <:expr< OCanren.conj $l$ $r$ >> ]
    ```
-- [The third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
+- The [third level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L229) parses
 a fresh variable introduction (i.e., existential quantification):
    ```ocaml
    [ "fresh"; vars=LIST1 LIDENT SEP ","; "in"; b=ocanren_expr LEVEL "top" ->
        List.fold_right
          (fun x b -> let p = <:patt< $lid:x$ >> in <:expr< OCanren.call_fresh ( fun $p$ -> $b$ ) >>) vars b  ] 
    ```
-- [The fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic, named
+- The [fourth level](../../Installation/ocanren/camlp5/pa_ocanren.ml#L238) parses atomic, named
 and grouped formulae (and else):
    ```ocaml
    "primary" [
