@@ -566,10 +566,10 @@ rest of this lesson. Our terminology follows [Camlp5 Reference Manual](https://c
 We take a top-down approach, starting with an overview of the structure of the parser, then explain
 its individual entries. 
 
-### The structure of the parser
+### The structure of the parser: an overview
 
-We describe the structure of the formula parser, followed by an gentle revelation
-of the deeper mechanisms in which it works. 
+We describe the structure of the formula parser, and then putting it in perspective, gently show how
+ it works as enbaled by Camlp5.  
 
 #### What we see
 
