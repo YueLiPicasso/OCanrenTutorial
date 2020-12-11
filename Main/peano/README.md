@@ -742,7 +742,7 @@ quotation expander `q_MLast.cmo`
 into an AST of the quotation body. An antiquotaion body is usually a pattern variable bound to some other AST which is inserted
 into the the quotation body's AST.   
 
-### Entry III: `ocanren_term` 
+### Local entries II: `ocanren_term` and `ocanren_term'`
 
 The `ocanren_term` parser  is responsible for,
 for example, converting the expression `S (S O)` into (the AST of) `s (s (o ()))`
@@ -758,8 +758,6 @@ immediately to process expressions like `S (S O)` and the intermediate result (a
 is bound to the pattern variable `t` and then passed to the auxiliary function `fix_term`. The AST returned by `fix_term` is returned by the parser `ocanren_term`.
 We shall give a detailed follow-through concerning how exactly the
 transition from `S (S O)` to  `s (s (o ()))` happens but before that let's have an overview of the  `ocanren_term'` entry.
-
-### Entry IV: `ocanren_term'`
 
 The `ocanren_term'` parser has  four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
