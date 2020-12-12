@@ -845,8 +845,8 @@ which has rules for:
    (possibly qualified) upper / lower case identifiers and  operators which are taken as is.
 
 Therefore, given `S (S O)` the `ocanren_term'` parser would return a straightforward translation into an AST. The interesting
-thing is done by `fix_term` and its helper `ctor` (read "C-tour").  The latter recognizes an upper case identifier (possibly
-qualified) and sets the initial letter to lower case, and returns `None` if the identifier is not originally in upper case:
+thing is done by `fix_term` and its helper `ctor` (read "C-tour").  The latter tests the input: if it is an upper case identifier (possibly
+qualified) and sets the initial letter to lower case, and returns `None` if the identifier is in upper case:
 ```ocaml
 let rec ctor e =
   let loc = MLast.loc_of_expr e in
