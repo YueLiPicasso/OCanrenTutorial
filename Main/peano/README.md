@@ -752,7 +752,8 @@ they seems to be in the eyes of the programmer. For example, the expression `S (
 be converted into (the AST of) `s (s (o ()))`
 --- an application of constructors is converted into the application
 of injection functions of the constructors. Such conversion bridges the gap between the programmer's
-intuition of writing OCaml values and OCanren's internal representation of the same values.  
+intuition of writing OCaml values and OCanren's internal representation of the same values.
+`ocanren_term` is the  entry that is responsible for such conversions --- let's take a look.
 
 
 
