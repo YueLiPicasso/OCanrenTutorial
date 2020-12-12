@@ -816,7 +816,8 @@ which has rules for:
      "["; ts=LIST0 ocanren_term' SEP ";"; "]" ->
       ( match ts with
       | [] -> <:expr< OCanren.Std.nil () >>
-      | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> ) ts <:expr< OCanren.Std.nil () >> )
+      | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> )
+                              ts <:expr< OCanren.Std.nil () >> )
      ```
      The entry `ocanren_term'` is recursively called to process the list members and the injection functions for list
      constructors are applied.
