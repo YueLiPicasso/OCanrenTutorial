@@ -865,6 +865,7 @@ are also replaced by their OCanren standard library counterpart --- [logic tuple
 
 These lowercase identifiers converted from constructors are supposed to be injection functions, which
 must be defined by the programmer somewhere in the program, otherwise there would be some compile-time error like "unbound identifier".
+This  explains why the injection function names are always differ from the corresponding constructor names by one letter: the initial letter.
 
 ## (T.10) Building a Library
 
