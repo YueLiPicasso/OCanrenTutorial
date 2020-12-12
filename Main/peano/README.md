@@ -845,8 +845,9 @@ which has rules for:
    (possibly qualified) upper / lower case identifiers and  operators which are taken as is.
 
 Therefore, given `S (S O)` the `ocanren_term'` parser would return a straightforward translation into an AST. The interesting
-thing is done by `fix_term` and its helper `ctor` (read "C-tour").  The latter tests the input: if it is an upper case identifier (possibly
-qualified) and sets the initial letter to lower case, and returns `None` if the identifier is in upper case:
+thing is done by `fix_term` and its helper `ctor` (read "C-tour").  The latter tests the input: if it is a (possibly qualified)
+uppercase identifier then sets the initial letter to lowercase and wraps the whole thing by `Some`, e.g., `Mod1.Mod2.ABC`
+becomes (roughly) `Some Mod1.Mod2.aBC`; if the input is not a (qualified) uppercase identifier then returns `None`:
 ```ocaml
 let rec ctor e =
   let loc = MLast.loc_of_expr e in
@@ -855,7 +856,13 @@ let rec ctor e =
   | <:expr< $m$ . $e$ >> -> (match ctor e with Some e -> Some (<:expr< $m$ . $e$ >>) | _ -> None)
   | _                    -> None
 ```
-The former 
+The `fix_term` then recurses down the structure of lists and tuples to systematically replace uppercase identifiers
+with lowercase identifiers.
+
+In summary, the `ocanren_term'` parser does not touch constructors that are uppercase identifiers, but simply injects
+base values and replaces other constructors by their injection functions. Then the `fix_term` function traverses the
+AST returned by `ocanren_term'` and replaces constructors that are uppercase identifiers by their injection function, making
+use of the function `ctor`.
 
 ## (T.10) Building a Library
 
