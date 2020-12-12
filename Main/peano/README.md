@@ -872,5 +872,4 @@ Being essentially an OCaml library, an OCanren library shall have its interface 
 type definitions (at the four levels), auxiliaries (such as injection functions, reifiers, etc.) and the relations. Note also the `@type` syntax
 in the interface.
 
-## Conclusion
 
