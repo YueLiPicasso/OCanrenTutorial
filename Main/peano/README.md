@@ -744,11 +744,18 @@ into the the quotation body's AST.
 
 ### Local entries II: `ocanren_term` and `ocanren_term'`
 
-The `ocanren_term` parser  is responsible for,
-for example, converting the expression `S (S O)` into (the AST of) `s (s (o ()))`
+The values that we write in the `ocanren{}` quotation, such as `"this is a string"`, `'c'`
+(a single character), `true` (a boolean value),  `S (S O)` (a constructor application),
+`(O, S O)` (a tuple), `15` (an integer), `[1;2;3]` (a list) and  `false :: []` (amending a list) etc.,
+are not taken as is. Instead, they are type casted into the injected level from the ground level where
+they seems to be in the eyes of the programmer. For example, the expression `S (S O)` would
+be converted into (the AST of) `s (s (o ()))`
 --- an application of constructors is converted into the application
-of injection functions, so that a value at the
-ground level becomes the  corresponding value at the injected level.
+of injection functions of the constructors. Such conversion bridges the gap between the programmer's
+intuition of writing OCaml values and OCanren's internal representation of the same values.  
+
+
+
 Below is the definition of the entry:
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
