@@ -766,7 +766,8 @@ ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
 where the `ocanren_term'` parser is called 
 immediately to process expressions like `S (S O)` and the intermediate result (an AST)
-is bound to the pattern variable `t` and then passed to the auxiliary function `fix_term`. The AST returned by `fix_term` is returned by the parser `ocanren_term`.
+is bound to the pattern variable `t` and then passed to the auxiliary function `fix_term`.
+The AST returned by `fix_term` is returned by the parser `ocanren_term`.
 
 The `ocanren_term'` parser has  four levels, namely:
 1. ["app"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L260), for applications.
@@ -774,8 +775,8 @@ The `ocanren_term'` parser has  four levels, namely:
    "app"  LEFTA  [ l=SELF; r=SELF -> <:expr< $l$ $r$ >> ] 
    ```
     Applications are treated as being left associative as indicated by `LEFTA`.  This level not yet converts constructor applications
-    into injection function applications. Instead it simply builds the AST of the application in a straightforward manner, not matter
-    there is a constructor application or a function application (see also the fourth level below).
+    into injection function applications. Instead it simply builds the AST of the application in a straightforward manner,
+    not distinguishing a constructor application from a function application (see also the fourth level below).
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. 
    ```ocaml
    "list" RIGHTA [ l=SELF; "::"; r=SELF -> <:expr< OCanren.Std.List.cons $l$ $r$ >> ] 
