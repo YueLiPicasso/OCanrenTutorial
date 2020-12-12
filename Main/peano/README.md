@@ -801,8 +801,8 @@ which has rules for:
      ```ocaml
      c=CHAR -> let s = <:expr< $chr:c$ >> in <:expr< OCanren.inj (OCanren.lift $s$) >>
      ```
-     Characters are injected using the primary injection function `!!` (see its [signature](../../Installation/ocanren/src/core/Logic.mli)
-     and [implementation](../../Installation/ocanren/src/core/Logic.ml)).
+     Characters are injected using the primary injection function `!!` (see its [signature](../../Installation/ocanren/src/core/Logic.mli#L57)
+     and [implementation](../../Installation/ocanren/src/core/Logic.ml#L65)).
    - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
      ```ocaml
      s=STRING ->
