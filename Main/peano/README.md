@@ -856,14 +856,17 @@ let rec ctor e =
   | <:expr< $m$ . $e$ >> -> (match ctor e with Some e -> Some (<:expr< $m$ . $e$ >>) | _ -> None)
   | _                    -> None
 ```
-The [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) then recurses down the structure of lists and tuples to systematically replace uppercase identifiers
-with lowercase identifiers produced by `ctor`. An isolated uppercase identifier, after being changed to lowercase, would also be provided with the
-unit value `()` as the argument. Other things are not changed.
+The [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) function then recurses down the structure of applications
+to systematically replace uppercase identifiers with lowercase identifiers produced by `ctor`. After a constant constructor
+is changed to lowercase, it is provided with the unit value `()` as the argument. A non-constant constructor is not only
+changed to lowercase, but also has its argument list transformed, e.g., `Cons(a,b)` becomes (roughly) `cons a b`. Tuples
+are also replaced by their OCanren standard library conterpart --- [logic tuples](../../Installation/ocanren/src/std/LPair.mli). 
+
 
 In summary, the `ocanren_term'` parser does not touch constructors that are uppercase identifiers, but simply injects
-base values and replaces other constructors by their injection functions. Then the `fix_term` function traverses the
+base values and replaces list constructors by their injection functions. Then the `fix_term` function traverses the
 AST returned by `ocanren_term'` and replaces constructors that are uppercase identifiers by their lowercase counterparts, making
-use of the function `ctor`.  These lowercase identifiers converted from constructors  are supposed to be injection functions, which
+use of the function `ctor` .  These lowercase identifiers converted from constructors  are supposed to be injection functions, which
 must be defined by the programmer somewhere in the program, otherwise there would be compile-time error like "unbound identifier".
 
 ## (T.10) Building a Library
