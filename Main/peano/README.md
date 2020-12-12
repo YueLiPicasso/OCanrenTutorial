@@ -774,8 +774,8 @@ The `ocanren_term'` parser has  four levels, namely:
    "app"  LEFTA  [ l=SELF; r=SELF -> <:expr< $l$ $r$ >> ] 
    ```
     Applications are treated as being left associative as indicated by `LEFTA`.  This level not yet converts constructor applications
-    into injection function applications. Instead it just builds the AST of the application, not matter there is a constructor application
-    or a function application (see also the fourth level below).
+    into injection function applications. Instead it simply builds the AST of the application in a straightforward manner, not matter
+    there is a constructor application or a function application (see also the fourth level below).
 1. ["list"](../../Installation/ocanren/camlp5/pa_ocanren.ml#L261) , for non-empty lists with `::` as the top level constructor. 
    ```ocaml
    "list" RIGHTA [ l=SELF; "::"; r=SELF -> <:expr< OCanren.Std.List.cons $l$ $r$ >> ] 
