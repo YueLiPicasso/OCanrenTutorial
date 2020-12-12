@@ -857,12 +857,14 @@ let rec ctor e =
   | _                    -> None
 ```
 The `fix_term` then recurses down the structure of lists and tuples to systematically replace uppercase identifiers
-with lowercase identifiers.
+with lowercase identifiers. An isolated uppercase identifier, after being changed to lowercase, would also be provided with the
+unit value `()` as the argument. Other things are not changed.
 
 In summary, the `ocanren_term'` parser does not touch constructors that are uppercase identifiers, but simply injects
 base values and replaces other constructors by their injection functions. Then the `fix_term` function traverses the
-AST returned by `ocanren_term'` and replaces constructors that are uppercase identifiers by their injection function, making
-use of the function `ctor`.
+AST returned by `ocanren_term'` and replaces constructors that are uppercase identifiers by their lowercase counterparts, making
+use of the function `ctor`.  These lowercase identifiers converted from constructors  are supposed to be injection functions, which
+must be defined by the programmer somewhere in the program, otherwise there would be compile-time error like "unbound identifier".
 
 ## (T.10) Building a Library
 
