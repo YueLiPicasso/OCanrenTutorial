@@ -797,23 +797,20 @@ which has rules for:
      ```
      Thus, occurrences of integers like `15` within the `ocanren{}` quotation would be converted to
      values of the Peano number type that is provided by the OCanren standard library [OCanren.Std.Nat](../../Installation/ocanren/src/std/LNat.mli). 
-   - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266)
+   - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266) and [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269)
      ```ocaml
-     c=CHAR -> let s = <:expr< $chr:c$ >> in <:expr< OCanren.inj (OCanren.lift $s$) >>
+       c=CHAR   -> let s = <:expr< $chr:c$ >> in <:expr< OCanren.inj (OCanren.lift $s$) >>
+     | s=STRING -> let s = <:expr< $str:s$ >> in <:expr< OCanren.inj (OCanren.lift $s$) >>   
      ```
-     Characters are injected using the primary injection function `!!` (see its [signature](../../Installation/ocanren/src/core/Logic.mli#L57)
+     Characters and strings are injected using the primary injection function `!!` (see its [signature](../../Installation/ocanren/src/core/Logic.mli#L57)
      and [implementation](../../Installation/ocanren/src/core/Logic.ml#L65)).
-   - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
-     ```ocaml
-     s=STRING ->
-      let s = <:expr< $str:s$ >> in
-      <:expr< OCanren.inj (OCanren.lift $s$) >>   
-     ```
    - [booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272),
      ```ocaml
-     "true"   -> <:expr< OCanren.Std.Bool.truo >>
+       "true"   -> <:expr< OCanren.Std.Bool.truo >>
      | "false"  -> <:expr< OCanren.Std.Bool.falso >>
      ```
+     Boolean values are converted into the corresponding injected values from the OCanren standard library
+     [LBool](../../Installation/ocanren/src/std/LBool.mli#L45). 
    - [lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274),
      ```ocaml
      "["; ts=LIST0 ocanren_term' SEP ";"; "]" ->
