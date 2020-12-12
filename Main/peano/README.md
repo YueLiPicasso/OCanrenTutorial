@@ -747,13 +747,16 @@ into the the quotation body's AST.
 The values that we write in the `ocanren{}` quotation, such as `"this is a string"`, `'c'`
 (a single character), `true` (a boolean value),  `S (S O)` (a constructor application),
 `(O, S O)` (a tuple), `15` (an integer), `[1;2;3]` (a list) and  `false :: []` (amending a list) etc.,
-are not taken as is. Instead, they are converted into the injected level from the ground level where
-they seem to be. For example, the expression `S (S O)` would
-be converted into (the AST of) `s (s (o ()))`
---- an application of constructors is converted into the application
-of injection functions of the constructors. Such conversion bridges the gap between the programmer's
-intuition of writing OCaml values and OCanren's internal representation of the same values.
-`ocanren_term` is the  entry that is responsible for such conversions --- let's take a look.
+are converted into the injected level from the ground level where
+they seem to be. For example, the occurrence of `S (S O)` in the expression below is
+transformed into `s (s (o ()))`:
+```ocaml
+ocanren { fresh x in S (S O) == x };;
+```
+Such conversion bridges the gap between the programmer's
+intuition of writing OCaml values and OCanren's internal representation of the same values,
+Inspecting the entries `ocanren_term`,  `ocanren_term'` and  their auxiliary functions
+help us know precisely how the conversion is performed.
 
 
 
