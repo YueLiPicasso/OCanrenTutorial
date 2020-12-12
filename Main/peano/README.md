@@ -857,7 +857,7 @@ let rec ctor e =
   | _                    -> None
 ```
 The `fix_term` then recurses down the structure of lists and tuples to systematically replace uppercase identifiers
-with lowercase identifiers. An isolated uppercase identifier, after being changed to lowercase, would also be provided with the
+with lowercase identifiers produced by `ctor`. An isolated uppercase identifier, after being changed to lowercase, would also be provided with the
 unit value `()` as the argument. Other things are not changed.
 
 In summary, the `ocanren_term'` parser does not touch constructors that are uppercase identifiers, but simply injects
