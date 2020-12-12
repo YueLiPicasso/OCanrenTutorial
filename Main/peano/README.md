@@ -825,7 +825,8 @@ which has rules for:
       ```ocaml
       "("; op=operator_rparen -> <:expr< $lid:op$ >>  
       ```
-      Operators are specified by the auxiliary function `is_operator` and extracted by another auxiliary function `operator_rparen` (the name
+      Operators are specified by the auxiliary function [`is_operator`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L92) and
+      extracted by another auxiliary function [`operator_rparen`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L104) (the name
       of which reads "operator right parenthesis"). 
    - [(possibly empty) tuples](../../Installation/ocanren/camlp5/pa_ocanren.ml#L280).
      ```ocaml
