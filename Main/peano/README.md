@@ -760,7 +760,7 @@ help us know precisely how the conversion is performed.
 
 
 
-Below is the definition of the entry:
+Below is the definition of the entry `ocanren_term`:
 ```ocaml
 ocanren_term: [[ t=ocanren_term' -> fix_term t ]];
 ```
