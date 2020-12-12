@@ -798,11 +798,42 @@ which has rules for:
      Thus, occurrences of integers like `15` within the `ocanren{}` quotation would be converted to
      values of the Peano number type that is provided by the OCanren standard library [OCanren.Std.Nat](../../Installation/ocanren/src/std/LNat.mli). 
    - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
+     ```ocaml
+     c=CHAR ->
+       let s = <:expr< $chr:c$ >> in
+       <:expr< OCanren.inj (OCanren.lift $s$) >>
+     ```
    - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
+     ```ocaml
+     s=STRING ->
+      let s = <:expr< $str:s$ >> in
+      <:expr< OCanren.inj (OCanren.lift $s$) >>   
+     ```
    - [booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272),
+     ```ocaml
+     "true"   -> <:expr< OCanren.Std.Bool.truo >>
+     | "false"  -> <:expr< OCanren.Std.Bool.falso >>
+     ```
    - [lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274),
-   - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279) and
+     ```ocaml
+     "["; ts=LIST0 ocanren_term' SEP ";"; "]" ->
+      (match ts with
+       | [] -> <:expr< OCanren.Std.nil () >>
+       | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> ) ts <:expr< OCanren.Std.nil () >>
+      )
+     ```
+   - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279)
+      ```ocaml
+      "("; op=operator_rparen                  -> <:expr< $lid:op$ >>  
+      ```
    - [(possibly empty) tuples](../../Installation/ocanren/camlp5/pa_ocanren.ml#L280).
+     ```ocaml
+     "("; ts=LIST0 ocanren_term' SEP ","; ")" ->
+      (match ts with
+       | []  -> <:expr< OCanren.inj (OCanren.lift ()) >>
+       | [t] -> t
+       | _   -> <:expr< ( $list:ts$ ) >> )
+     ```
 1. [Long identifiers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L287).
 
 ## (T.10) Building a Library
