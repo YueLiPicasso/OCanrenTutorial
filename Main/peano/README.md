@@ -858,16 +858,12 @@ let rec ctor e =
 ```
 The [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) function then recurses down the structure of applications
 to systematically replace uppercase identifiers with lowercase identifiers produced by `ctor`. After a constant constructor
-is changed to lowercase, it is provided with the unit value `()` as the argument. A non-constant constructor is not only
-changed to lowercase, but also has its argument list transformed, e.g., `Cons(a,b)` becomes (roughly) `cons a b`. Tuples
-are also replaced by their OCanren standard library conterpart --- [logic tuples](../../Installation/ocanren/src/std/LPair.mli). 
+is changed to lowercase, it is provided with the unit value `()` as the argument, e.g., `O` becomes `o ()`. A non-constant constructor is not only
+set to lowercase, but also has its argument list transformed, e.g., `Cons(a,b)` becomes (roughly) `cons a b`. Tuples
+are also replaced by their OCanren standard library counterpart --- [logic tuples](../../Installation/ocanren/src/std/LPair.mli). 
 
-
-In summary, the `ocanren_term'` parser does not touch constructors that are uppercase identifiers, but simply injects
-base values and replaces list constructors by their injection functions. Then the `fix_term` function traverses the
-AST returned by `ocanren_term'` and replaces constructors that are uppercase identifiers by their lowercase counterparts, making
-use of the function `ctor` .  These lowercase identifiers converted from constructors  are supposed to be injection functions, which
-must be defined by the programmer somewhere in the program, otherwise there would be compile-time error like "unbound identifier".
+These lowercase identifiers converted from constructors are supposed to be injection functions, which
+must be defined by the programmer somewhere in the program, otherwise there would be some compile-time error like "unbound identifier".
 
 ## (T.10) Building a Library
 
