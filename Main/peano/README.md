@@ -822,7 +822,7 @@ which has rules for:
      ```
      The entry `ocanren_term'` is recursively called to process the list members and the injection functions for list
      constructors are applied.
-   - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279)
+   - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279) (that are not qualified)
       ```ocaml
       "("; op=operator_rparen -> <:expr< $lid:op$ >>  
       ```
