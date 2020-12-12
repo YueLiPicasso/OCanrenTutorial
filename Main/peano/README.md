@@ -856,7 +856,7 @@ let rec ctor e =
   | <:expr< $m$ . $e$ >> -> (match ctor e with Some e -> Some (<:expr< $m$ . $e$ >>) | _ -> None)
   | _                    -> None
 ```
-The `fix_term` then recurses down the structure of lists and tuples to systematically replace uppercase identifiers
+The [`fix_term`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L61) then recurses down the structure of lists and tuples to systematically replace uppercase identifiers
 with lowercase identifiers produced by `ctor`. An isolated uppercase identifier, after being changed to lowercase, would also be provided with the
 unit value `()` as the argument. Other things are not changed.
 
