@@ -804,21 +804,22 @@ which has rules for:
      ```
      Characters and strings are injected using the primary injection function `!!` (see its [signature](../../Installation/ocanren/src/core/Logic.mli#L57)
      and [implementation](../../Installation/ocanren/src/core/Logic.ml#L65)).
-   - [booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272),
+   - [booleans](../../Installation/ocanren/camlp5/pa_ocanren.ml#L272)
      ```ocaml
        "true"   -> <:expr< OCanren.Std.Bool.truo >>
      | "false"  -> <:expr< OCanren.Std.Bool.falso >>
      ```
      Boolean values are converted into the corresponding injected values from the OCanren standard library
      [LBool](../../Installation/ocanren/src/std/LBool.mli#L45). 
-   - [lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274),
+   - [lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274)
      ```ocaml
      "["; ts=LIST0 ocanren_term' SEP ";"; "]" ->
       (match ts with
        | [] -> <:expr< OCanren.Std.nil () >>
-       | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> ) ts <:expr< OCanren.Std.nil () >>
-      )
+       | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> ) ts <:expr< OCanren.Std.nil () >>)
      ```
+     The entry `ocanren_term'` is recursively called to process the list members and the injection functions for list
+     constructors are applied.
    - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279)
       ```ocaml
       "("; op=operator_rparen                  -> <:expr< $lid:op$ >>  
