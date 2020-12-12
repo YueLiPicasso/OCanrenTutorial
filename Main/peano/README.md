@@ -814,9 +814,9 @@ which has rules for:
    - [lists delimited by `[]` and `;`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L274)
      ```ocaml
      "["; ts=LIST0 ocanren_term' SEP ";"; "]" ->
-      (match ts with
-       | [] -> <:expr< OCanren.Std.nil () >>
-       | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> ) ts <:expr< OCanren.Std.nil () >>)
+      ( match ts with
+      | [] -> <:expr< OCanren.Std.nil () >>
+      | _  -> List.fold_right (fun x l -> <:expr< OCanren.Std.List.cons $x$ $l$ >> ) ts <:expr< OCanren.Std.nil () >> )
      ```
      The entry `ocanren_term'` is recursively called to process the list members and the injection functions for list
      constructors are applied.
