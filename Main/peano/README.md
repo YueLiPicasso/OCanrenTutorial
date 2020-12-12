@@ -791,18 +791,18 @@ which has rules for:
      ```
      So that the `ocanren{}` quotation would take any `<value>` from `!(<value>)` as is without further processing. In
      other words, the `<value>` will be parsed using the entry `expr`.
-   - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263).
+   - [integers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L263)
      ```ocaml
      c=INT -> let n = <:expr< $int:c$ >> in <:expr< OCanren.Std.nat $n$ >>
      ```
      Thus, occurrences of integers like `15` within the `ocanren{}` quotation would be converted to
      values of the Peano number type that is provided by the OCanren standard library [OCanren.Std.Nat](../../Installation/ocanren/src/std/LNat.mli). 
-   - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266),
+   - [characters](../../Installation/ocanren/camlp5/pa_ocanren.ml#L266)
      ```ocaml
-     c=CHAR ->
-       let s = <:expr< $chr:c$ >> in
-       <:expr< OCanren.inj (OCanren.lift $s$) >>
+     c=CHAR -> let s = <:expr< $chr:c$ >> in <:expr< OCanren.inj (OCanren.lift $s$) >>
      ```
+     Characters are injected using the primary injection function `!!` (see its [signature](../../Installation/ocanren/src/core/Logic.mli)
+     and [implementation](../../Installation/ocanren/src/core/Logic.ml)).
    - [strings](../../Installation/ocanren/camlp5/pa_ocanren.ml#L269),
      ```ocaml
      s=STRING ->
