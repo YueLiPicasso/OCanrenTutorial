@@ -23,8 +23,7 @@ care of the precedence, associativity and scope of the logic connectives. It als
 - [**T.10**](#t10-building-a-library) Writing and testing a library in OCanren.
 
 The techniques are presented in detail in sections below, to which the labels ( **T.1**, **T.2**, etc) are linked. Each
-section is self-contained and could be read independent of other sections,
-except for T.10 which is based on T.9 .
+section is self-contained and could be read independent of other sections.
 
 The library has a systematic test file, which can be compiled (and linked) and executed by running the following shell commands
 in (your local copy of) the lesson directory:
