@@ -823,7 +823,7 @@ which has rules for:
      constructors are applied.
    - [operators](../../Installation/ocanren/camlp5/pa_ocanren.ml#L279)
       ```ocaml
-      "("; op=operator_rparen                  -> <:expr< $lid:op$ >>  
+      "("; op=operator_rparen -> <:expr< $lid:op$ >>  
       ```
       Operators are specified by the auxiliary function `is_operator` and extracted by another auxiliary function `operator_rparen` (the name
       of which reads "operator right parenthesis"). 
