@@ -842,7 +842,20 @@ which has rules for:
    [ long_ident ] 
    ```
    This level calls the entry [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171) to build AST's of
-   (possibly qualified) upper / lower case identifiers and  operators. Upper 
+   (possibly qualified) upper / lower case identifiers and  operators which are taken as is.
+
+Therefore, given `S (S O)` the `ocanren_term'` parser would return a straightforward translation into an AST. The interesting
+thing is done by `fix_term` and its helper `ctor` (read "C-tour").  The latter recognizes an upper case identifier (possibly
+qualified) and sets the initial letter to lower case, and returns `None` is the identifier is not originally in upper case:
+```ocaml
+let rec ctor e =
+  let loc = MLast.loc_of_expr e in
+  match e with
+  | <:expr< $uid:u$ >>   -> Some (<:expr< $lid:decapitalize u$ >>)
+  | <:expr< $m$ . $e$ >> -> (match ctor e with Some e -> Some (<:expr< $m$ . $e$ >>) | _ -> None)
+  | _                    -> None
+```
+The former 
 
 ## (T.10) Building a Library
 
