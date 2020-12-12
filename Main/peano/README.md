@@ -869,7 +869,7 @@ This  explains why the injection function names are always differ from the corre
 
 ## (T.10) Building a Library
 
-Being essentially OCaml libraries, an OCanren library shall have its interface `.mli` and implementation `.ml`. The interface typically contains
+Being essentially an OCaml library, an OCanren library shall have its interface `.mli` and implementation `.ml`. The interface typically contains
 types definitions (at the four levels), auxiliaries (such as injection functions, reifiers, etc.) and the relations. Note also the
 existense of `@type` definitions in the interface.
 
