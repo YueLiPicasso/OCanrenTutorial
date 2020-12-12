@@ -828,7 +828,7 @@ which has rules for:
       Operators are specified by the auxiliary function [`is_operator`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L92) and
       extracted by another auxiliary function [`operator_rparen`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L104) (the name
       of which reads "operator right parenthesis"). 
-   - [(possibly empty) tuples](../../Installation/ocanren/camlp5/pa_ocanren.ml#L280).
+   - [(possibly empty) tuples](../../Installation/ocanren/camlp5/pa_ocanren.ml#L280)
      ```ocaml
      "("; ts=LIST0 ocanren_term' SEP ","; ")" ->
       (match ts with
@@ -836,7 +836,13 @@ which has rules for:
        | [t] -> t
        | _   -> <:expr< ( $list:ts$ ) >> )
      ```
-1. [Long identifiers](../../Installation/ocanren/camlp5/pa_ocanren.ml#L287).
+     There is a recursive call of the entry itself to process members of the tuple, and then the AST of the tuple is built.
+1. The level for long identifiers.
+   ```ocaml
+   [ long_ident ] 
+   ```
+   This level calls the entry [`long_ident`](../../Installation/ocanren/camlp5/pa_ocanren.ml#L171) to build AST's of
+   (possibly qualified) upper / lower case identifiers and  operators. Upper 
 
 ## (T.10) Building a Library
 
