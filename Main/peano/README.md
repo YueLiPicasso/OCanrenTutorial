@@ -89,7 +89,7 @@ where a pair of enclosing square brackets `[]` signifies the injected status of 
 
 We advise the reader
 to find in the [interface](../../Installation/ocanren/src/core/Logic.mli) of the Logic module the Fmap module functor family
-and the (module) types of arguments of the functors: that would provide a more formal explanation of what advanced injection functions do and
+and the functors' argument types (which are module types): that would provide a more formal explanation of what advanced injection functions do and
 why they are defined in the given manner.
 
 ## (T.2) Reification and Reifiers
