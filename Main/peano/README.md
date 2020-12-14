@@ -709,7 +709,7 @@ and grouped formulae (and else):
       (* other rules omitted *)  ]
   ```
   
-The relative order of the levels determines the precedence of the logic
+The order of the levels determines the precedence of the logic
 connectives: the parser first sees if the formula is a
 disjunction at the top level, if not, sees if it is conjunction, and so on,
 implying that disjunction has the least precedence, above which is conjunction, then 
