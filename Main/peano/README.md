@@ -656,7 +656,7 @@ We now use OCanren-`expr` to refer to the `expr` entry in the OCanren formula
 parser, and OCaml-`expr` to refer to the predefined entry `expr` in the Camlp5
 parsing kit for standard OCaml. OCanren-`expr` extends OCaml-`expr` in the position
 `LEVEL "expr1"`:  the first level of the OCanren-`expr` is merged
-with [the level named "expr1"](camlp5_src_ref/pa_o.ml#L563)
+with the [level named "expr1"](camlp5_src_ref/pa_o.ml#L563)
 of the OCaml-`expr`, i.e., their rules are put together
 and grouped as a single level named "expr1"; other levels from OCanren-`expr` are
 inserted into OCaml-`expr` as new levels, right below the extended "expr1" level.
