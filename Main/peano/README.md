@@ -428,7 +428,7 @@ The test file offers a [comparison](test.ml#L199) of these two versions over the
 backward search behaviours. By _forward search_ we mean that given a ratio _a/b_ find its
 simplest form, e.g., 18/12 is simplified to 3/2. By _backward search_ we mean given a ratio
 in the simplest form, find its equal ratios, e.g., 3/2 could be simplified from 6/4, 9/6,
-12/8, etc. The test shows that the versions work equally well for forward search, but when
+12/8, etc. The test shows that both versions work well for forward search, but when
 it comes to backward search,  `simplify` returns answers quickly but `simplify'` took ages
 without returning anything.
 
