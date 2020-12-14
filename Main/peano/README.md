@@ -739,7 +739,7 @@ into the the quotation body's AST.
 
 ### Local entries II: `ocanren_term` and `ocanren_term'`
 
-The values that we write in the `ocanren{}` quotation, such as `"this is a string"`, `'c'`
+The values that we write in an `ocanren{}` quotation, such as `"this is a string"`, `'c'`
 (a single character), `true` (a boolean value),  `S (S O)` (a constructor application),
 `(O, S O)` (a tuple), `15` (an integer), `[1;2;3]` (a list) and  `false :: []` (amending a list) etc.,
 are converted into the injected level from the ground level where
