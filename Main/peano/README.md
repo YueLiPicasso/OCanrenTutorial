@@ -534,13 +534,13 @@ pairs of Peano numbers (in the same way Georg Cantor shows that the set of ratio
 
 
 Another example of generate-and-test is the `simplify a b a' b'` relation.
-When `a,b` are given but `a',b'` are left unknown, [the first `div`](peano.ml#L91)
+When `a,b` are given but `a',b'` are left unknown, the [first `div`](peano.ml#L91)
 generates all possible divisor-quotient
-pairs for `a`, and for each such pair [the second `div`](peano.ml#L92)
+pairs for `a`, and for each such pair the [second `div`](peano.ml#L92)
 tests if the divisor also divides
 `b` and if so generates the quotient. The sequence of two `div`'s then plays the role of
 a generator of all common divisors of `a,b` together with the corresponding pairs of numbers
-which are `a,b` divided by their common divisors. [The `gcd` sub-relation](peano.ml#L93) finally checks
+which are `a,b` divided by their common divisors. The [`gcd` sub-relation](peano.ml#L93) finally checks
 for the greatest common divisor, and the corresponding pair of quotients is the answer
 for `a',b'`.
 
