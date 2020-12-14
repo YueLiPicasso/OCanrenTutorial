@@ -434,7 +434,7 @@ without returning anything.
 
 The ordering of the conjuncts, together with the state of the logic varaibles
 and the search behaviour of the sub-relations, results in
-apparently different operational meaning of the conjunctions, as follows:
+apparently different operational meaning of the conjunctions in backward search, as follows:
 
 | Ordering of Conjuncts | Operational Meaning | State of Variables  | Knowledge on Sub-relations |
 | --------------- | ------------------- | --------------------|-------------------------   |
