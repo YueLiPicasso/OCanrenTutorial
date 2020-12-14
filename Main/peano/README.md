@@ -506,7 +506,7 @@ distribution of [the answers](answers.txt#L432) does not look balanced: the seco
 is 7 most of the time, while the first number is growing. In comparison,
 [the answers](answers.txt#L455) given by the `gcd'` relation has a more satisfactory
  distribution: the first number increases and for each possible first number,
- all possible second numbers are enumerated before the first number is increased. The
+ all possible second numbers are enumerated before the first number is further increased. The
  `gcd'` relation is defined using the famous technique known as _generate-and-test_, which
  we explain now. 
 
