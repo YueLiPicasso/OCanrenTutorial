@@ -136,7 +136,7 @@ parameter of the constructor `Var`. The redefinition happens within the record v
 severa methods, one of which is `show`: other plugins (or methods) keep their default meanings but `show` is redefined.   
 
 However, when there are too many repetitions of the constructor `S`, the
-_show_ function as redefined in the Logic module is no longer suitable. Our Peano Arithmetic library therefore offers a further customized [redefinition](peano.ml#L105)
+_show_ function as redefined in the Logic module is no longer suitable. Our Peano Arithmetic library therefore offers a further customized [redefinition](peano.ml#L107)
 just for displaying logic Peano numbers, converting
 those values without free variables directly to Arabic numbers and those with free variables a sum between an Arabic number and the symbol `n`.
 
