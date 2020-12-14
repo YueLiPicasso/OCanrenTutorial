@@ -10,7 +10,7 @@ We hope the reader will learn the following techniques (labeled as **T.1**, **T.
 - [**T.3**](#t3-overwriting-the-show-function) Overwriting, or redefining the "show" function for values of a logic type,
     to allow for more concise and human readable printing of them.
 - [**T.4**](#t4-relations-on-peano-numbers) Defining (possibly recursive) relations, e.g.,  comparison, addition and division on Peano numbers.
-- [**T.5**](#t5-scrutinizing-relations) Making queries to the defined relations in various ways, i.e., with various numbers
+- [**T.5**](#t5-scrutinizing-relations) Making queries to the defined relations with combinations
   of unknown arguments. 
 - [**T.6**](#t6-analyzing-the-search-behaviour) Analyzing why a query returns certain answers.
 - [**T.7**](#t7-modifying-the-search-behaviour) Reordering the conjuncts  within
