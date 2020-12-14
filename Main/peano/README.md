@@ -229,13 +229,13 @@ Running the [test](test.ml#L53)  shows that OCanren answers all the questions we
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
 asks about what is `q` so that  zero is less than one and  one is less than two, and the answer
-is just `n` meaning that `q` could be any number and the relation always holds among the given
+is just `n` meaning that `q` could be any number and the relation always holds between the given
 numbers. The similar goal:
 ```
 fun q -> ocanren { lt (S O) O | lt (S(S O)) (S O) }
 ```
 asks about what is `q` so that one is less than zero or two is less than one. There is
-no answer, meaning that there is no `q` to make the relation hold among the given numbers.
+no answer, meaning that there is no `q` to make the relation hold between the given numbers.
 
 
 The goal below asks what is less than five:
