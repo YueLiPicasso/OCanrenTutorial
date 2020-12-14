@@ -723,7 +723,7 @@ implying that the scope of `fresh` extends to the right as far as possible.
 
 ### Quotations and antiquotations 
 
-In every rule above we see could at least one [_quotation_](https://camlp5.github.io/doc/htmlc/quot.html):
+In every rule above we could see at least one [_quotation_](https://camlp5.github.io/doc/htmlc/quot.html):
 ```ebnf
 quotation = "<:", quotation name, "<", quotation body, ">>"   
 ```
