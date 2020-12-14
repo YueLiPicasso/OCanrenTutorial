@@ -224,7 +224,7 @@ In general, for a relation of N arguments, the total number of kinds of question
 
 <sub>N</sub>C<sub>0</sub> + <sub>N</sub>C<sub>1</sub> + <sub>N</sub>C<sub>2</sub> + ... + <sub>N</sub>C<sub>N-1</sub> + <sub>N</sub>C<sub>N</sub>
 
-Running the [test](test.ml#L44)  shows that OCanren answers all the questions well. For example, the goal:
+Running the [test](test.ml#L53)  shows that OCanren answers all the questions well. For example, the goal:
 ```
 fun q -> ocanren { lt O (S O) & lt (S O) (S(S O)) } 
 ```
