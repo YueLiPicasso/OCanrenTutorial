@@ -872,4 +872,7 @@ Being essentially an OCaml library, an OCanren library shall have its interface 
 type definitions (at the four levels), auxiliaries (such as injection functions, reifiers, etc.) and the relations. Note also the `@type` syntax
 in the interface.
 
+Relations shall be systematically tested. This means all possible combinations of unknown arguments shall be queried wrt. each relation. The benefits of
+such systematic test includes reducing surprises when running the programs, and helping with debugging "bigger" relations that are defined using smaller relations.
+
 
