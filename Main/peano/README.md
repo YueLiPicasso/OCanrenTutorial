@@ -874,5 +874,6 @@ in the interface.
 
 Relations shall be systematically tested. This means all possible combinations of unknown arguments shall be queried wrt. each relation. The benefits of
 such systematic test includes reducing surprises when running the programs, and helping with debugging "bigger" relations that are defined using smaller relations.
+For example, understanding the search behaviour of `simplify` requires knowledge of search behaviours of `div` and `gcd`  and in turn those of `lt`, `lte` and `add`.
 
 
