@@ -641,7 +641,7 @@ The OCanren formula parser has the EXTEND statement as its core, which consists 
 by the locally defined entries such as `ocanren_embedding`.
 
 
-We will next focus on the extension of `expr` and leave `ctyp` [aside](./ctype).  As far as the semantics is concerned entries are
+We will next focus on the extension of `expr` and leave `ctyp` [aside](./ctyp).  As far as the semantics is concerned entries are
 parsers for syntactic categories. From now on we use the words "entry" and "parser"
  interchangeably. 
 
