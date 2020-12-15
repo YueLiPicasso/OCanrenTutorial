@@ -52,8 +52,7 @@ original `ctyp` entry from [`pa_o.ml`](../camlp5_src_ref/pa_o.ml) is copied belo
       | "("; t = SELF; ","; tl = LIST1 ctyp SEP ","; ")";
         i = ctyp LEVEL "ctyp2" ->
           List.fold_left (fun c a -> <:ctyp< $c$ $a$ >>) i [t :: tl]
-      | "("; t = SELF; ")" -> <:ctyp< $t$ >> ] ]
-  ;
+      | "("; t = SELF; ")" -> <:ctyp< $t$ >> ] ];
 ```
 The `ctyp` entry from the OCanren syntax entension kit
 [pa_ocanren.ml](../../../Installation/ocanren/camlp5/pa_ocanren.ml) is reproduced as follows:
