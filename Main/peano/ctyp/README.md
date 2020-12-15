@@ -9,18 +9,18 @@ The effect of the extension is that we define the type constructor
 ```ocaml
 @type 'a llist = ocanren { ('a, !('a llist)) alist } with show    (* TyEq *)
 ```
-where `alist` is the type constructor for the abstract list type.
+where `alist` is the type constructor for the abstract list type. 
 
-The above logic type definition is closer in appearance to the ground level list type definition:
+The above logic type definition has the same structure as the ground level list type definition:
 ```ocaml
 @type 'a glist = ('a, 'a glist) alist  with show
 ```
-than its alternative:
+despite the syntactic elements: the  `ocanren{}` quotation and the `!()` antiquotation.
+
+The  alternative definition is conceptually more delicate:
 ```ocaml
 @type 'a llist = ('a, 'a llist) alist OCanren.logic with show
 ```
-
-
 We collect the definitions for `alist`, `glist` and `llist` in [`tt.ml`](./tt.ml) and generate
 its interface [`tt.mli`](./tt.mli) using the `-i` option in the [Makefile](./Makefile#L12)
 together with the command `make > tt.mli` (followded by some minor editing).
