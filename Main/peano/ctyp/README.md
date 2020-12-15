@@ -11,7 +11,7 @@ The effect of the extension is that we define the type constructor
 ```
 where `alist` is the type constructor for the abstract list type.
 
-The above logic type definition is closer to the ground level list type definition:
+The above logic type definition is conceptually closer to the ground level list type definition:
 ```ocaml
 @type 'a glist = ('a, 'a glist) alist  with show
 ```
