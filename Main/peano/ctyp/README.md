@@ -61,3 +61,65 @@ The `ctyp` entry from the OCanren syntax entension kit
       [ "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ]
     | "simple" [ "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ]];
 ```
+
+## question
+
+Which of the two below is the result of extension? The main difficulty is
+to decide where should the level named "simple" from the EXTEND statement
+ be inserted. 
+
+This? 
+```ocaml
+ ctyp:
+    [ [ t1 = SELF; "as"; "'"; i = ident -> <:ctyp< $t1$ as '$i$ >>
+      | "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ]
+    | "simple" [ "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ]  
+    | "arrow" RIGHTA
+      [ t1 = SELF; "->"; t2 = SELF -> <:ctyp< $t1$ -> $t2$ >> ]
+    | "star"
+      [ t = SELF; "*"; tl = LIST1 (ctyp LEVEL "apply") SEP "*" ->
+          <:ctyp< ( $list:[t :: tl]$ ) >> ]
+    | "apply"
+      [ t1 = SELF; t2 = SELF -> <:ctyp< $t2$ $t1$ >> ]
+    | "ctyp2"
+      [ t1 = SELF; "."; t2 = SELF -> <:ctyp< $t1$ . $t2$ >>
+      | t1 = SELF; "("; t2 = SELF; ")" -> <:ctyp< $t1$ $t2$ >> ]
+    | "simple"
+      [ "'"; i = V ident "" -> <:ctyp< '$_:i$ >>
+      | "_" -> <:ctyp< _ >>
+      | i = V LIDENT -> <:ctyp< $_lid:i$ >>
+      | i = V UIDENT -> <:ctyp< $_uid:i$ >>
+      | "("; "module"; mt = module_type; ")" -> <:ctyp< module $mt$ >>
+      | "("; t = SELF; ","; tl = LIST1 ctyp SEP ","; ")";
+        i = ctyp LEVEL "ctyp2" ->
+          List.fold_left (fun c a -> <:ctyp< $c$ $a$ >>) i [t :: tl]
+      | "("; t = SELF; ")" -> <:ctyp< $t$ >> ] ];
+```
+Or this?
+```ocaml
+ ctyp:
+    [ [ t1 = SELF; "as"; "'"; i = ident -> <:ctyp< $t1$ as '$i$ >>
+      | "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ]
+    | "simple" [ ]  
+    | "arrow" RIGHTA
+      [ t1 = SELF; "->"; t2 = SELF -> <:ctyp< $t1$ -> $t2$ >> ]
+    | "star"
+      [ t = SELF; "*"; tl = LIST1 (ctyp LEVEL "apply") SEP "*" ->
+          <:ctyp< ( $list:[t :: tl]$ ) >> ]
+    | "apply"
+      [ t1 = SELF; t2 = SELF -> <:ctyp< $t2$ $t1$ >> ]
+    | "ctyp2"
+      [ t1 = SELF; "."; t2 = SELF -> <:ctyp< $t1$ . $t2$ >>
+      | t1 = SELF; "("; t2 = SELF; ")" -> <:ctyp< $t1$ $t2$ >> ]
+    | "simple"
+      [ "'"; i = V ident "" -> <:ctyp< '$_:i$ >>
+      | "_" -> <:ctyp< _ >>
+      | i = V LIDENT -> <:ctyp< $_lid:i$ >>
+      | i = V UIDENT -> <:ctyp< $_uid:i$ >>
+      | "("; "module"; mt = module_type; ")" -> <:ctyp< module $mt$ >>
+      | "("; t = SELF; ","; tl = LIST1 ctyp SEP ","; ")";
+        i = ctyp LEVEL "ctyp2" ->
+          List.fold_left (fun c a -> <:ctyp< $c$ $a$ >>) i [t :: tl]
+      | "("; t = SELF; ")" -> <:ctyp< $t$ >> 
+      | "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ] ];
+```
