@@ -9,7 +9,7 @@ CAMLP5 = -syntax camlp5o -package ocanren.syntax,GT.syntax.all
 PXFLAGS = $(CAMLP5)
 # add flag -i to BFLAGS to show in the terminal the type signature of the program
 # add flag -dsource to BFLAG to dispaly in the terminal the source code after syntax expansion
-BFLAGS = -rectypes -g -i
+BFLAGS = -rectypes -g 
 OFLAGS = $(BFLAGS)
 CLEAN = $(wildcard *.cmi *.cmo *.cmx *.annot *.o *.opt *.byte *~ *depend)
 

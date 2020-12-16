@@ -287,8 +287,10 @@ EXTEND
     [ long_ident ] 
   ];
   
-  ctyp: [
-      [ "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ]
-    | "simple" [ "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ]];
-  
+  ctyp:
+    [ [ "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ] ]
+  ;
+  ctyp: LEVEL "simple"
+    [ ["!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ] ]
+  ;
 END;

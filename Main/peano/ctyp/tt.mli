@@ -111,4 +111,3 @@ val llist :
   
 val show_llist :
   ('a -> string) -> (('a, 'b) alist OCanren.logic as 'b) -> string
-ocamlfind opt -o tt.opt -rectypes -g -i  -linkpkg -package GT,ocanren tt.cmx 
