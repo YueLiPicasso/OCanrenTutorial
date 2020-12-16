@@ -4,7 +4,7 @@ The definition of types at the logic level can be conceptually simplified  by ex
 standard OCaml `ctyp` entry that is for the syntactic category of
 [type expressons](https://ocaml.org/releases/4.11/htmlman/types.html).
 
-The effect of the extension is that we define the type constructor
+The effect of the extension is that we can define the type constructor
 `llist` for logic list types by:
 ```ocaml
 @type 'a llist = ocanren { ('a, !('a llist)) alist } with show    (* TyEq *)
