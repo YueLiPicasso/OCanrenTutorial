@@ -715,7 +715,7 @@ disjunction at the top level, if not, sees if it is conjunction, and so on,
 implying that disjunction has the least precedence, above which is conjunction, then 
 existential quantification, and finally  syntactic equality,  disequality and braced groups
 (among others) enjoy
-the highest precedence. 
+the highest precedence. We can justly call a level: a  "precedence level".  
 The first and second level also have the associativity indicator `RIGHTA`, requiring that the conjunction and disjunction connectives
 associate to the right. The third level refers back to the first level (named "top") when
 parsing the `<body>` part of a formula of the form `fresh <vars> in <body>`,
