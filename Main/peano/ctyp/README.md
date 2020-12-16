@@ -66,7 +66,7 @@ The `ctyp` entry from the OCanren syntax entension kit
 
 Which of the two below is the result of extension? The main difficulty is
 to decide where should the level named "simple" from the EXTEND statement
- be inserted. 
+ be inserted. Intuitively the second one should be right.
 
 This? 
 ```ocaml
