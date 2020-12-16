@@ -73,7 +73,8 @@ This?
  ctyp:
     [ [ t1 = SELF; "as"; "'"; i = ident -> <:ctyp< $t1$ as '$i$ >>
       | "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ]
-    | "simple" [ "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ]  
+    | "simple"
+      [ "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ]  
     | "arrow" RIGHTA
       [ t1 = SELF; "->"; t2 = SELF -> <:ctyp< $t1$ -> $t2$ >> ]
     | "star"
@@ -100,7 +101,6 @@ Or this?
  ctyp:
     [ [ t1 = SELF; "as"; "'"; i = ident -> <:ctyp< $t1$ as '$i$ >>
       | "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ]
-    | "simple" [ ]  
     | "arrow" RIGHTA
       [ t1 = SELF; "->"; t2 = SELF -> <:ctyp< $t1$ -> $t2$ >> ]
     | "star"
