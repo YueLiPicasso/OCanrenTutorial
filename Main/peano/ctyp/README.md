@@ -23,7 +23,8 @@ The  alternative definition is conceptually more delicate:
 ```
 We collect the definitions for `alist`, `glist` and `llist` in [`tt.ml`](./tt.ml) and generate
 its interface [`tt.mli`](./tt.mli) using the `-i` option in the [Makefile](./Makefile#L12)
-together with the command `make > tt.mli` (followded by some minor editing).
+together with the command `make > tt` (followded by some minor editing such as renaming the file
+deleting some not needed output and adding extra spaces).
 
 
 Let's analyze, as a worked example, how the right hand side of the
