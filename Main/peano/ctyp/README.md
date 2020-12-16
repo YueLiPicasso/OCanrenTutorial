@@ -66,7 +66,10 @@ The `ctyp` entry from the OCanren syntax entension kit
 
 Which of the two below is the result of extension? The main difficulty is
 to decide where should the level named "simple" from the EXTEND statement
- be inserted. Intuitively the second one should be right.
+ be inserted. Intuitively the second one should be right. But by Camlp5
+ [manual](https://camlp5.github.io/doc/htmlc/grammars.html#b:Entries-list) the first one should be right:
+ > By default, if the entry has no level, the levels defined in the statement are inserted in the entry. Otherwise the first defined level is inserted at the first level of the entry, extending or modifying it. The other levels are inserted afterwards (before the possible second level which may previously exist in the entry).
+
 
 This? 
 ```ocaml
