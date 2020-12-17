@@ -132,9 +132,10 @@ into:
 ```ocaml
 <:ctyp< atree (ocanren (ltree 'b)) 'b >>
 ```
-which is then passed to `decorate_type` where the above clause applies.
+which is then passed to `decorate_type` and the above clause would apply.
 The recursive occurrence of the logic type constructor `ltree`
-is within the left part of the application (note that `atree (ocanren (ltree 'b))` is bound to `x`) which it is not further processed to
+is within the left part of the application `atree (ocanren (ltree 'b))`
+that is bound to `x`, which it is not further processed to
 remove the `ocanren` tag. Therefore the final result is:
 ```ocaml
 <:ctyp< OCanren.logic (atree (ocanren (ltree 'b)) 'b) >>
