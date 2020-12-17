@@ -106,3 +106,13 @@ function and the result is:
 <:ctyp< OCanren.logic (alist 'a (llist 'a))>>
 ```
 which reminds us of the right hand side of `(* TyEq-a *)`.
+
+## Exception
+
+The existing parser cannot tackle the following definition:
+
+```ocaml
+@type ('a, 'b) atree = Leaf of 'b | Node of 'b * 'a * 'a with show;;
+@type 'b       gtree = ('b gtree, 'b) atree with show;;
+@type 'b       ltree = ocanren { ('b !(ltree), 'b) atree } with show;;
+```
