@@ -135,4 +135,10 @@ into:
 which is then passed to `decorate_type` where the above clause applies.
 The recursive occurrence of the logic type constructor `ltree` is on the left
 part of the application (bound to `x`) but it is not further processed to
-remove the `ocanren` tag. 
+remove the `ocanren` tag. Therefore the final result is:
+```ocaml
+<:ctyp< OCanren.logic (atree (ocanren (ltree 'b)) 'b) >>
+```
+This explains the error message (something
+like): "unbound type constructor: ocanren."  if you remove the
+interface `tt.mli` and try to comiple the above type definitions.
