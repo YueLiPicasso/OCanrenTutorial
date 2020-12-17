@@ -145,4 +145,4 @@ remove the `ocanren` tag. Therefore the final result is:
 ```
 This explains the error message (something
 like): "unbound type constructor: ocanren." if  you remove the
-interface `tt.mli` and try to compile the above type definitions.
+interface `tt.mli` and try to compile the type definitions.
