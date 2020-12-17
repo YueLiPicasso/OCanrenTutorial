@@ -117,7 +117,7 @@ The existing parser cannot tackle the following definition:
 @type 'b       ltree = ocanren { (!('b ltree), 'b) atree } with show;;
 ```
 
-The cause is clause below from `decorate_type`:
+The cause is the clause below from `decorate_type`:
 ```ocaml
 let rec decorate_type ctyp = 
   (* ... *)
