@@ -142,7 +142,8 @@ let prefix =
                             List.mem s.[0] list && symbolchar s 1 -> Stream.junk strm; s
       | _ -> raise Stream.Failure
     )
-  
+
+
 let op_from_list l =
   let b = Buffer.create 64 in
   let add = Buffer.add_string b in
@@ -163,8 +164,7 @@ let rec decorate_type = function
   | <:ctyp< ( $list:ts$ ) >> -> fold_right1 (fun t1 t2 -> <:ctyp< OCanren.Std.Pair.logic $t1$ $t2$ >> ) @@ List.map decorate_type ts
   | _                        -> ctyp
 
-                                  
-                                  
+                                                                    
 EXTEND
   GLOBAL: expr ctyp;
 
