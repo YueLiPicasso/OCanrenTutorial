@@ -95,4 +95,14 @@ this version:
       | "!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ] ];
 ```
 The right hand side of  `(* TyEq *)` is parsed by `ctyp` and results in the AST
-(written as a quotation): 
+(written as a quotation):
+```ocaml
+<:ctyp< alist 'a (ocanren (llist 'a)) >>
+```
+This AST is then passed to the
+[`decorate_type`](../../../Installation/ocanren/camlp5/pa_ocanren.ml#L152)
+function and the result is:
+```ocaml
+<:ctyp< OCanren.logic (alist 'a (llist 'a))>>
+```
+which remainds us of the right hand side of `(* TyEq-a *)`.
