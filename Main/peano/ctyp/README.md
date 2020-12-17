@@ -105,4 +105,4 @@ function and the result is:
 ```ocaml
 <:ctyp< OCanren.logic (alist 'a (llist 'a))>>
 ```
-which remainds us of the right hand side of `(* TyEq-a *)`.
+which reminds us of the right hand side of `(* TyEq-a *)`.
