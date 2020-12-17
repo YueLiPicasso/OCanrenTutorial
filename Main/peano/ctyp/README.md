@@ -124,5 +124,15 @@ let rec decorate_type ctyp =
   | <:ctyp< $x$ $y$ >> -> let t = <:ctyp< $x$ $decorate_type y$ >> in <:ctyp< OCanren.logic $t$ >>
   (* ... *)
 ```
-The recursive occurrence of the logic type constructor is on the left
-part of the application but it is ignored.
+Observe that `ctyp` turns the type expression:
+```ocaml
+ocanren { (!('b ltree), 'b) atree } 
+```
+into:
+```ocaml
+<:ctyp< atree (ocanren (ltree 'b)) 'b >>
+```
+which is then passed to `decorate_type` where the above clause applies.
+The recursive occurrence of the logic type constructor `ltree` is on the left
+part of the application (bound to `x`) but it is not further processed to
+remove the `ocanren` tag. 
