@@ -66,7 +66,7 @@ ctyp: LEVEL "simple"
   [ ["!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ] ]
 ;
 ```
-The result of the extension is as follows, and froom now on when we say `ctyp` we mean
+The result of the extension is as follows, and from now on when we say `ctyp` we mean
 this version: 
 ```ocaml
  ctyp:
