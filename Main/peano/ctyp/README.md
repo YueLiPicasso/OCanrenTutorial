@@ -133,9 +133,12 @@ into:
 <:ctyp< atree (ocanren (ltree 'b)) 'b >>
 ```
 which is then passed to `decorate_type` and the above clause would apply.
+Note that type construtor
+application associates to the left in the [revised OCaml syntax](../camlp5_src_ref/pa_r.ml#L579). 
 The recursive occurrence of the logic type constructor `ltree`
-is within the left part of the application `atree (ocanren (ltree 'b))`
-that is bound to `x`, which it is not further processed to
+is within the left part `atree (ocanren (ltree 'b))` of the top-level
+application `atree (ocanren (ltree 'b)) 'b`.
+That left part is bound to `x`, which it is not further processed to
 remove the `ocanren` tag. Therefore the final result is:
 ```ocaml
 <:ctyp< OCanren.logic (atree (ocanren (ltree 'b)) 'b) >>
