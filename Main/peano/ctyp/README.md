@@ -116,3 +116,11 @@ The existing parser cannot tackle the following definition:
 @type 'b       gtree = ('b gtree, 'b) atree with show;;
 @type 'b       ltree = ocanren { ('b !(ltree), 'b) atree } with show;;
 ```
+
+The cause is this clause from `decorate_type`:
+```ocaml
+let rec decorate_type = function
+  (* ... *)
+  | <:ctyp< $x$ $y$ >> -> let t = <:ctyp< $x$ $decorate_type y$ >> in <:ctyp< OCanren.logic $t$ >>
+  (* ... *)
+```

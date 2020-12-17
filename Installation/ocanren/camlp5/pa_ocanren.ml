@@ -148,11 +148,10 @@ let op_from_list l =
   let add = Buffer.add_string b in
   List.iter add l;
   Buffer.contents b
-    
+
+  
 (* Decorate type expressions *)
-let rec decorate_type ctyp =
-  let loc = MLast.loc_of_ctyp ctyp in
-  match ctyp with
+let rec decorate_type = function
   | <:ctyp< int >>           -> <:ctyp< OCanren.Std.Nat.logic >>
   | <:ctyp< bool >>          -> <:ctyp< OCanren.Std.Bool.logic >>                                 
   | <:ctyp< $lid:id$ >>      -> <:ctyp< OCanren.logic $ctyp$ >>
@@ -164,6 +163,7 @@ let rec decorate_type ctyp =
   | <:ctyp< ( $list:ts$ ) >> -> fold_right1 (fun t1 t2 -> <:ctyp< OCanren.Std.Pair.logic $t1$ $t2$ >> ) @@ List.map decorate_type ts
   | _                        -> ctyp
 
+                                  
                                   
 EXTEND
   GLOBAL: expr ctyp;
