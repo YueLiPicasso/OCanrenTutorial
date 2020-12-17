@@ -114,13 +114,15 @@ The existing parser cannot tackle the following definition:
 ```ocaml
 @type ('a, 'b) atree = Leaf of 'b | Node of 'b * 'a * 'a with show;;
 @type 'b       gtree = ('b gtree, 'b) atree with show;;
-@type 'b       ltree = ocanren { ('b !(ltree), 'b) atree } with show;;
+@type 'b       ltree = ocanren { (!('b ltree), 'b) atree } with show;;
 ```
 
-The cause is this clause from `decorate_type`:
+The cause is clause below from `decorate_type`:
 ```ocaml
-let rec decorate_type = function
+let rec decorate_type ctyp = 
   (* ... *)
   | <:ctyp< $x$ $y$ >> -> let t = <:ctyp< $x$ $decorate_type y$ >> in <:ctyp< OCanren.logic $t$ >>
   (* ... *)
 ```
+The recursive occurrence of the logic type constructor is on the left
+part of the application but it is ignored.
