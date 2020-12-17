@@ -144,5 +144,5 @@ remove the `ocanren` tag. Therefore the final result is:
 <:ctyp< OCanren.logic (atree (ocanren (ltree 'b)) 'b) >>
 ```
 This explains the error message (something
-like): "unbound type constructor: ocanren."  if you remove the
-interface `tt.mli` and try to comiple the above type definitions.
+like): "unbound type constructor: ocanren." if  you remove the
+interface `tt.mli` and try to compile the above type definitions.
