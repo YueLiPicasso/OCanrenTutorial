@@ -10,5 +10,5 @@ The terminology of this tutorial follows that of the
 
 [Table of Contents](Main)
 
-**Acknowldgement** I would like to thank Dmitri Boulytchev and Iris Yuping Ren
+**Acknowledgement** I would like to thank Dmitri Boulytchev and Iris Yuping Ren
 for commenting on the draft. 
