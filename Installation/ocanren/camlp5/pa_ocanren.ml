@@ -149,7 +149,17 @@ let op_from_list l =
   List.iter add l;
   Buffer.contents b
     
-(* Decorate type expressions *)
+(* helper for [decorate_type] *)
+let rec dec_app ctyp =
+  let loc = MLast.loc_of_ctyp ctyp in
+  match ctyp with
+  | <:ctyp< ocanren $t$ >> -> t
+  | <:ctyp< $x$ $y$ >>     -> <:ctyp< $dec_app x$ $dec_app y$ >>
+  | <:ctyp< '$s$ >>        -> ctyp
+  | <:ctyp< $lid:i$ >>     -> ctyp
+;;
+       
+(* Decorate type expressions *)  
 let rec decorate_type ctyp =
   let loc = MLast.loc_of_ctyp ctyp in
   match ctyp with
@@ -159,10 +169,11 @@ let rec decorate_type ctyp =
   | <:ctyp< ocanren  $t$ >>  -> t
   | <:ctyp< list $y$ >>      -> <:ctyp< OCanren.Std.List.logic $decorate_type y$ >>                               
   | <:ctyp< option $y$ >>    -> <:ctyp< OCanren.Std.Option.logic $decorate_type y$ >>                               
-  | <:ctyp< $x$ $y$ >>       -> let t = <:ctyp< $x$ $decorate_type y$ >> in <:ctyp< OCanren.logic $t$ >>
   | <:ctyp< $p$ . $t$ >>     -> <:ctyp< OCanren.logic $ctyp$ >>
   | <:ctyp< ( $list:ts$ ) >> -> fold_right1 (fun t1 t2 -> <:ctyp< OCanren.Std.Pair.logic $t1$ $t2$ >> ) @@ List.map decorate_type ts
+  | <:ctyp< $x$ $y$ >>       -> let t = dec_app ctyp in <:ctyp< OCanren.logic $t$ >>
   | _                        -> ctyp
+;;
 
                                   
 EXTEND
