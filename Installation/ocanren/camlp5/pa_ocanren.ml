@@ -154,8 +154,13 @@ let rec dec_app ctyp =
   let loc = MLast.loc_of_ctyp ctyp in
   match ctyp with
   | <:ctyp< ocanren $t$ >> -> t
+  | <:ctyp< list $y$ >>    -> <:ctyp< OCanren.Std.List.logic $dec_app y$ >>
+  | <:ctyp< option $y$ >>  -> <:ctyp< OCanren.Std.Option.logic $dec_app y$ >> 
   | <:ctyp< $x$ $y$ >>     -> <:ctyp< $dec_app x$ $dec_app y$ >>
   | <:ctyp< '$s$ >>        -> ctyp
+  | <:ctyp< $p$ . $t$ >>   -> ctyp
+  | <:ctyp< int >>           -> <:ctyp< OCanren.Std.Nat.logic >>
+  | <:ctyp< bool >>          -> <:ctyp< OCanren.Std.Bool.logic >>    
   | <:ctyp< $lid:i$ >>     -> ctyp
 ;;
        
