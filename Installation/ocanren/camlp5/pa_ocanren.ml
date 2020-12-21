@@ -149,7 +149,7 @@ let op_from_list l =
   List.iter add l;
   Buffer.contents b
     
-(* Decorate type expressions *)  
+(* substitute for logic types without top level OCanren.logic *)  
 let rec logicize_type ctyp =
   let loc = MLast.loc_of_ctyp ctyp in
   match ctyp with
@@ -173,7 +173,22 @@ let rec logicize_type ctyp =
   (* misc *)
   | _                        -> ctyp                            
 ;;
-       
+
+(* following [logicize_type], test if a top level OCanren.logic wrapper is needed *)
+let rec need_wrap ctyp =
+  let loc = MLast.loc_of_ctyp ctyp in
+  match ctyp with
+  | <:ctyp< $x$ $y$ >>       -> need_wrap x
+  | <:ctyp< $lid:i$ >>       -> true
+  | _ -> false
+;;
+
+let decorate_type ctyp =
+  let ctyp' = logicize_type ctyp in
+  let loc = MLast.loc_of_ctyp ctyp' in
+  if need_wrap ctyp' then <:ctyp< OCanren.logic $ctyp'$ >> else ctyp'
+;;
+
    
 EXTEND
   GLOBAL: expr ctyp;
@@ -298,6 +313,6 @@ EXTEND
   ];
   
   ctyp:
-    [ [ "ocanren"; "{"; t=ctyp; "}" -> logicize_type t ] ]
+    [ [ "ocanren"; "{"; t=ctyp; "}" -> decorate_type t ] ]
   ;
 END;
