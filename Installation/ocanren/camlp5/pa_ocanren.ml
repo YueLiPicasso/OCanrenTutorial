@@ -150,53 +150,31 @@ let op_from_list l =
   Buffer.contents b
     
 (* Decorate type expressions *)  
-let rec decorate_type ctyp =
+let rec logicize_type ctyp =
   let loc = MLast.loc_of_ctyp ctyp in
   match ctyp with
-  (* special apply *)
-  | <:ctyp< ocanren $t$ >>   -> t
-  | <:ctyp< list $y$ >>      -> <:ctyp< OCanren.Std.List.logic $decorate_type y$ >>
-  | <:ctyp< option $y$ >>    -> <:ctyp< OCanren.Std.Option.logic $decorate_type y$ >>
-  (* other apply *)
-  | <:ctyp< $x$ $y$ >>       -> <:ctyp< $decorate_type x$ $decorate_type y$ >>
-  (* special lid *)
+  (* apply *)
+  | <:ctyp< $x$ $y$ >>       -> <:ctyp< $logicize_type x$ $logicize_type y$ >>
+  (* lid *)
   | <:ctyp< int >>           -> <:ctyp< OCanren.Std.Nat.logic >>
   | <:ctyp< bool >>          -> <:ctyp< OCanren.Std.Bool.logic >>
-  (* other lid *)
+  | <:ctyp< list >>          -> <:ctyp< OCanren.Std.List.logic  >>
+  | <:ctyp< option >>        -> <:ctyp< OCanren.Std.Option.logic >>
   | <:ctyp< $lid:i$ >>       -> ctyp
-  (* misc: var, access, tuple *)
+  (* type var *)
   | <:ctyp< '$s$ >>          -> ctyp
+  (* access *)
+  | <:ctyp< GT . $t$ >>      -> logicize_type t
   | <:ctyp< $p$ . $t$ >>     -> ctyp
+  (* tuple *)
   | <:ctyp< ( $list:ts$ ) >> -> fold_right1
                                   (fun t1 t2 -> <:ctyp< OCanren.Std.Pair.logic $t1$ $t2$ >> )
-                                @@ List.map decorate_type ts
+                                @@ List.map logicize_type ts
+  (* misc *)
   | _                        -> ctyp                            
 ;;
        
-
-let rec decorate_type' ctyp =
-  let loc = MLast.loc_of_ctyp ctyp in
-  match ctyp with
-  (* special apply *)
-  | <:ctyp< ocanren  $t$ >>  -> t
-  | <:ctyp< list $y$ >>      -> <:ctyp< OCanren.Std.List.logic $decorate_type' y$ >>   
-  | <:ctyp< option $y$ >>    -> <:ctyp< OCanren.Std.Option.logic $decorate_type' y$ >>              
-  (* other apply *)
-  | <:ctyp< $x$ $y$ >>       -> let t = <:ctyp< $x$ $decorate_type' y$>> in <:ctyp< OCanren.logic $t$ >>
-  (* special lid *)
-  | <:ctyp< int >>           -> <:ctyp< OCanren.Std.Nat.logic >>
-  | <:ctyp< bool >>          -> <:ctyp< OCanren.Std.Bool.logic >>
-  (* other lid *)
-  | <:ctyp< $lid:id$ >>      -> <:ctyp< OCanren.logic $ctyp$ >>
-  (* misc: var, access, tuple *)                            
-  | <:ctyp< $p$ . $t$ >>     -> <:ctyp< OCanren.logic $ctyp$ >>
-  | <:ctyp< ( $list:ts$ ) >> -> fold_right1
-                                  (fun t1 t2 -> <:ctyp< OCanren.Std.Pair.logic $t1$ $t2$ >> )
-                                @@ List.map decorate_type' ts  
-  | _                        -> ctyp
-;;
- 
-                                  
+   
 EXTEND
   GLOBAL: expr ctyp;
 
@@ -320,9 +298,6 @@ EXTEND
   ];
   
   ctyp:
-    [ [ "ocanren"; "{"; t=ctyp; "}" -> <:ctyp< OCanren.logic $decorate_type t$ >> ] ]
-  ;
-  ctyp: LEVEL "simple"
-    [ ["!"; "("; t=ctyp; ")" -> <:ctyp< ocanren $t$ >> ] ]
+    [ [ "ocanren"; "{"; t=ctyp; "}" -> logicize_type t ] ]
   ;
 END;
