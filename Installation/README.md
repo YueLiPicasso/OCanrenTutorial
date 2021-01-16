@@ -6,6 +6,7 @@ We then install the following:
 
 1. ocaml 4.07.1+fp+flambda
 1. GT
+1. Camlp5
 1. OCanren
 
 ## Step 1: Swtching to the right OCaml compiler
@@ -35,7 +36,12 @@ opam install GT
 **Note** Since GT is under active development, installation details of it may change. Please consult the project
 webpage for the most updated instructions.
 
-## Step 3:  Installing OCanren
+## Step 3: Installing Camlp5
+
+We use [Camlp5](https://github.com/camlp5/camlp5) version 7.10. Newer versions like 7.12 and 8.00 are not 
+compatible.  
+
+## Step 4:  Installing OCanren
 
 The [official OCanren](https://github.com/JetBrains-Research/OCanren.git) is
 under active development. This tutorial includes a stable and minimal distribution. 
