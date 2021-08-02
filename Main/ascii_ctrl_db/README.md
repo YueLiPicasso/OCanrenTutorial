@@ -32,12 +32,15 @@ Read the query:
 (** Find the control characters in a given range *)
 let _ =
   List.iter print_endline @@
-    Stream.take ~n:18 @@ 
+    Stream.take ~n:18 @@
       run q (fun s ->
           ocanren {fresh c,n in Std.Nat.(<=) 0 n
                                 & Std.Nat.(<=) n 10
                                 & ascii_ctrl c n s}) project;;
 ```
+
+** `Std.Nat.(<=) 0 n` in real OCanren is better to be written as `Std.Nat.(0 <= n)` **
+
 as:
 > Print at most 18 possible values of _s_, such that exist some _c_ and _n_
 where _n_ ranges from 0 to 10 inclusive, and the tuple _(c, n, s)_ satisfies the
@@ -76,9 +79,12 @@ The notion of a formula in OCanren is different from that in logic
 A formula is either atomic, or is compound and built from atomic formulae
 using conjunction (`&`), disjunction (`|`) and existential quantification (`fresh`).
 Atomic formulae are built from predicate  symbols followed by their arguments.
-There are only two predicate symbols `==` and `=/=`.  A formula 
+There are only two predicate symbols `==` and `=/=`.  A formula
 is allowed to be infinitely long but it shall always contain a finite
 number of free logic variabes.  Formulae can be abbreviated by (possibly recurisive) definitions.
+
+** `infinitely long` will probably require a clarification. I kind of understand that you are saying about ifinite list of phormulas connected with disjunction, but 1st idea that will come to mind of the reader is that we allow infinite programs **
+
 
 **Example.**  Atomic, compound, named and infinite formulae:
 - `x == y` and  `1 =/= 2` are two atomic formulae.
@@ -95,7 +101,7 @@ number of free logic variabes.  Formulae can be abbreviated by (possibly recuris
 			       | fresh y3 in
 			         y2 == S y3 & { ... }}}
   ```
-We now give the concrete syntax of a formula in OCanren. 
+We now give the concrete syntax of a formula in OCanren.
 
 ```ebnf
 formula  = atomic formula
@@ -109,9 +115,9 @@ compound formula = formula, '&', formula
                  | formula, '|', formula
 		 | 'fresh', lparams, 'in',  formula;
 
-named formula = formula name, ' ', values; 
+named formula = formula name, ' ', values;
 
-formula name definition = 'let', ['rec'], let-binding, {'and', let-binding}; 
+formula name definition = 'let', ['rec'], let-binding, {'and', let-binding};
 
 let-binding =  formula name, [':', typexpr, '->', 'goal' ], '=',
                'fun', fparams, '->', 'ocanren','{', formula, '}' ;
@@ -123,7 +129,7 @@ values  = value, {' ', value};
 The scope of `fresh...in` extends as far as possible.
 `&` binds tighter than `|`. A formula always has the type `goal` (this type constructor
 is provided by the module Core). The braces `{}` could be used
- for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`. 
+ for explicit grouping, as in  `{ x == 1 | x == 2 } & y == 0`.
 
 ## A Note on the Concept of a _Goal_
 
@@ -163,7 +169,7 @@ one-on-one correspondence with members of some _finite_  subset of the natural n
 members of a stream can be put on one-on-one correspondence with members of some
 possibly infinite subset of the natural numbers. Intuitively, the imaginary, infinitely
 long sequence of all natural numbers itself is an example of a stream. The sequence of
-all integers `...-3 -2 -1 0 1 2 3...` or equivalently `0 1 -1 2 -2 3 -3 ...` is another. 
+all integers `...-3 -2 -1 0 1 2 3...` or equivalently `0 1 -1 2 -2 3 -3 ...` is another.
 
 The set of all streams can also be defined in the more technical,  _coinductive_ manner as follows:
 1. Let **FS** be an operator whose input is a set of sequences and whose output
@@ -172,9 +178,9 @@ possible members.
 1. The output of **FS** is constructed by:
    1. Starting with an empty set, to add members to it incrementally;
    1. Adding the empty stream;
-   1. Prefixing each sequence of the input set with an arbitrary member, then adding the results. 
+   1. Prefixing each sequence of the input set with an arbitrary member, then adding the results.
 1. The set St of all streams is the _largest_ set that is a fixed-point of **FS**, in other words,
-   **FS**(St) = St and St is a superset of st for all **FS**(st) = st. 
+   **FS**(St) = St and St is a superset of st for all **FS**(st) = st.
 
 **Example** If we restrict sequence members to integers, and let the input be `{123, 111}`,
 which is the set whose  members are the sequences `123` and `111`. One possible output of **FS** operating
@@ -187,6 +193,8 @@ sequences of integers. They are both fixed-points of **FS**, known as the _least
 Note that in a typical inductive specification we could require that the set being defined
 is the samllest fixed-point. Here instead we ask for the _largest_, hence the _coinductive manner_.
 
+** It looks like very complex description of a stream but maybe it is only for me **
+
 ### Substitution
 
 A _substitution_ is a list of substitution components.
@@ -195,9 +203,9 @@ logic variable.  A substitution component (_lvar_, _value_)
 can be _applied_ to some value _value<sub>pre</sub>_, so that all occurrences
  of _lvar_ in _value<sub>pre</sub>_ are simultaneously replaced by _value_, and the
  result is another value _value<sub>post</sub>_. A component is _applicable_ if
- applying it would make a difference. 
+ applying it would make a difference.
 To apply a substitution is to repeatedly apply its components
-until none is applicable. 
+until none is applicable.
 
 **Example** Applying `[(x, Cons(1,y));(y, Cons(2,z));(z, Nil)]` to `Cons(0,x)`
 results in: `Cons(0,Cons(1,Cons(2,Nil)))`.
@@ -214,7 +222,7 @@ subst<sub>in</sub> ---> Formula--->  subst<sub>out</sub>, subst<sub>out</sub>, s
 
 For each substitution _subst<sub>out</sub>_ in the returned stream,
 applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the formula
- true in the sense of the declarational semantics. 
+ true in the sense of the declarational semantics.
 
 **Example.** Given as input the empty  substitution `[]`:
 - The formula `x == Cons(1,Nil)` returns the stream that consists of
@@ -233,9 +241,13 @@ applying the concatenation _subst<sub>in</sub> ^ subst<sub>out</sub>_  makes the
 
 To _zip_ two streams means to merge them by interleaving their members.
 
+** I think that Zipper in literature has different meaning, so it is not wise to use this term here **
+
 **Example.** Let _s_<sub>1</sub> denote the stream of all positive intergers,
 and _s_<sub>2</sub> the stream of all negative intergers. The result of
-zipping _s_<sub>1</sub> with _s_<sub>2</sub>,  denoted _s_<sub>1</sub> |<sub>zip</sub> _s_<sub>2</sub> , is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`. 
+zipping _s_<sub>1</sub> with _s_<sub>2</sub>,  denoted _s_<sub>1</sub> |<sub>zip</sub> _s_<sub>2</sub> , is `1, -1, 2, -2, ... ` or `-1, 1, -2, 2, ...`.
+
+** The reader may think that `zip` operation is nondeterministic... **
 
 The disjunction _F_<sub>1</sub> `|` _F_<sub>2</sub> of two formulae
 _F_<sub>1</sub>, _F_<sub>2</sub> is itself a formula on the top level, so it is
@@ -244,11 +256,13 @@ _F_<sub>1</sub>, _F_<sub>2</sub> is itself a formula on the top level, so it is
  separately by _F_<sub>1</sub> and _F_<sub>2</sub>, both of which share the
  same input as their immediate top level formula. In more formal terms:
 
-`(` _F_<sub>1</sub> `|` _F_<sub>2</sub> `)` subst<sub>in</sub> = 
-`(` _F_<sub>1</sub> subst<sub>in</sub> `)` |<sub>zip</sub> `(` _F_<sub>2</sub> subst<sub>in</sub> `)`  
+`(` _F_<sub>1</sub> `|` _F_<sub>2</sub> `)` subst<sub>in</sub> =
+`(` _F_<sub>1</sub> subst<sub>in</sub> `)` |<sub>zip</sub> `(` _F_<sub>2</sub> subst<sub>in</sub> `)`
 
 Every substitution from the output stream (concatenated with the input) makes either of the
-two disjuncts true. 
+two disjuncts true.
+
+** I paused here **
 
 ### Conjuction as a Stream Map-Zipper
 
@@ -282,11 +296,11 @@ _F_ &<sub>mzip</sub> 1,2,3
 A conjunction F<sub>1</sub> `&` F<sub>2</sub>  provides the input substitution to
 F<sub>1</sub> first, and then map-zips the output of F<sub>1</sub> with F<sub>2</sub>:
 
-`(` _F_<sub>1</sub> `&` _F_<sub>2</sub> `)` subst<sub>in</sub> = 
- _F_<sub>2</sub>  &<sub>mzip</sub> `(` _F_<sub>1</sub> subst<sub>in</sub> `)`  
+`(` _F_<sub>1</sub> `&` _F_<sub>2</sub> `)` subst<sub>in</sub> =
+ _F_<sub>2</sub>  &<sub>mzip</sub> `(` _F_<sub>1</sub> subst<sub>in</sub> `)`
 
 Every substitution from the output stream (concatenated with the input) makes both of the
-two conjuncts true. 
+two conjuncts true.
 
 ## Working with GT and Camlp5
 
@@ -295,7 +309,7 @@ The influence of GT is that we can use the `@type` syntax to define types,
 which convenienty genertes useful functions for the defined type, for example, a _show_
 function that converts values of the defined type into a string, which we use to
 print the result of a query. Camlp5 expands the content of the `ocanren{}` quotation,
-allowing us to write readable code. 
+allowing us to write readable code.
 
 ### The @type syntax
 
@@ -311,7 +325,7 @@ where the syntactic category `typedef` is the same as
 [that](https://ocaml.org/releases/4.11/htmlman/typedecl.html) of OCaml, and the category `etc` signifies omission:
 the most frequently used plugins in OCanren are _show_ and _gmap_, providing for the defined type a string converson function
 (like [Stdlib.string_of_int](https://ocaml.org/releases/4.11/htmlman/libref/Stdlib.html)) and
-a structure preserving map function 
+a structure preserving map function
 (a generalization of  [List.map](https://ocaml.org/releases/4.11/htmlman/libref/List.html))  respectively. The other less used
 plugins are not shown here.
 
@@ -325,7 +339,7 @@ The effect of syntactic transformation, including what the `@type`
 definitions become after expansion, can be viewed by adding the "dump source" option
 `-dsource` in the Makefile as explained in a comment line there. For instance, the `LString`
  module:
-```ocaml 
+```ocaml
  (** {2  The logic string type} *)
 module LString = struct
   @type t = GT.string with show;;
@@ -336,14 +350,14 @@ end;;
 ```
 would be expanded into [this](lstring.ml), where we could see that besides the type
  constructor definitions a lot more codes have actually been auto-generated to
- support any GT plugin that the user may request.   
+ support any GT plugin that the user may request.
 
 Note in the `LString` module that
 the type constructor name `string` is qualified by the module name `GT`,
 for we need to use the GT version of the string type which provides the
 useful plugins and otherwise it is the same as the OCaml built-in string type.
 Plugins are (auto-)created inductively: GT provides plugins for base types and
-rules for building plugins for compound types from component types. 
+rules for building plugins for compound types from component types.
 
 ### The injection functions and the `ocanren{...}` quotation
 
@@ -377,7 +391,7 @@ let ascii_ctrl =
                       (OCanren.conj (OCanren.unify n (OCanren.Std.nat 2))
                          (OCanren.unify s
                             (OCanren.inj (OCanren.lift "Start of text")))))
-(* ... etc *)			    
+(* ... etc *)
 
 ```
 The above code excerpt is also from what is displayed on the terminal after
