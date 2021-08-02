@@ -262,7 +262,6 @@ _F_<sub>1</sub>, _F_<sub>2</sub> is itself a formula on the top level, so it is
 Every substitution from the output stream (concatenated with the input) makes either of the
 two disjuncts true.
 
-** I paused here **
 
 ### Conjuction as a Stream Map-Zipper
 
@@ -306,7 +305,7 @@ two conjuncts true.
 
 We use packages GT and Camlp5 in OCanren programs.
 The influence of GT is that we can use the `@type` syntax to define types,
-which convenienty genertes useful functions for the defined type, for example, a _show_
+which convenienty generates useful functions for the defined type, for example, a _show_
 function that converts values of the defined type into a string, which we use to
 print the result of a query. Camlp5 expands the content of the `ocanren{}` quotation,
 allowing us to write readable code.
@@ -358,6 +357,9 @@ for we need to use the GT version of the string type which provides the
 useful plugins and otherwise it is the same as the OCaml built-in string type.
 Plugins are (auto-)created inductively: GT provides plugins for base types and
 rules for building plugins for compound types from component types.
+
+** I will clarify this a bit. We do not use the GT version of `string` type, inreality it is a just type alias: `module GT = struct type string = Stdlib.string ... end`. What is really happening here, is that functions for showing  adn gmapping string type are located in a module GT. So we need 1) either write `GT.string` instead of `string` and preprocessor will generare `GT.show GT.string` instead of `GT.show string`, 2) or make `open GT` somewhere about and use type `string` without fully qualified name. **
+
 
 ### The injection functions and the `ocanren{...}` quotation
 
