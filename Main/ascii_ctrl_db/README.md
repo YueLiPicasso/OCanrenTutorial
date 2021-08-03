@@ -358,7 +358,7 @@ useful plugins and otherwise it is the same as the OCaml built-in string type.
 Plugins are (auto-)created inductively: GT provides plugins for base types and
 rules for building plugins for compound types from component types.
 
-** I will clarify this a bit. We do not use the GT version of `string` type, inreality it is a just type alias: `module GT = struct type string = Stdlib.string ... end`. What is really happening here, is that functions for showing  adn gmapping string type are located in a module GT. So we need 1) either write `GT.string` instead of `string` and preprocessor will generare `GT.show GT.string` instead of `GT.show string`, 2) or make `open GT` somewhere about and use type `string` without fully qualified name. **
+** I will clarify this a bit. We do not use the GT version of `string` type, in reality it is a just type alias: `module GT = struct type string = Stdlib.string ... end`. What is really happening here, is that functions for showing  and gmapping string type are located in module GT. So we need 1) either write `GT.string` instead of `string` and preprocessor will generate `GT.show GT.string` instead of `GT.show string`, 2) or make `open GT` somewhere about and use type `string` without fully qualified name. **
 
 
 ### The injection functions and the `ocanren{...}` quotation

@@ -59,7 +59,7 @@ make
 make install
 ```
 
-** Does making a tutorial about 'minimal' version of OCanre worth something. Maybe it is better to stick to fixed release of OCanren? **
+** Does making a tutorial about 'minimal' version of OCanren worth something? Maybe it is better to stick to fixed release of OCanren? **
 
 ## To Uninstall OCanren:
 
